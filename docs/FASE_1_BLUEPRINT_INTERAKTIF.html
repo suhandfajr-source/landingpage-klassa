@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FASE 1: Master Blueprint 4 Landing Page KLASSA (BMAD)</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="../brand/klassa-mark.svg">
+
+  <!-- Fonts: Plus Jakarta Sans, Figtree, JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=JetBrains+Mono:wght@400;600&family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    :root {
+      --color-primary: #0F766E;
+      --color-primary-dark: #042F2E;
+      --color-mint: #14B8A6;
+      --color-mint-light: #CCFBF1;
+      --color-mint-subtle: #F0FDFA;
+      --color-ai: #6366F1;
+      --color-ai-subtle: #EEF2FF;
+      --color-amber: #D97706;
+      --color-amber-subtle: #FEF3C7;
+      --color-rose: #E11D48;
+      --color-rose-subtle: #FFE4E6;
+
+      --color-bg: #F8FAFA;
+      --color-surface: #FFFFFF;
+      --color-border: #E2E8F0;
+      --color-text-main: #0F172A;
+      --color-text-muted: #475569;
+      --color-text-subtle: #64748B;
+
+      --font-heading: 'Plus Jakarta Sans', system-ui, sans-serif;
+      --font-body: 'Figtree', system-ui, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+      --shadow-md: 0 6px 18px rgba(0,0,0,0.08);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--color-bg);
+      color: var(--color-text-main);
+      line-height: 1.6;
+      padding: 32px 20px;
+    }
+
+    .container {
+      max-width: 1140px;
+      margin: 0 auto;
+    }
+
+    /* Header Banner */
+    .header-banner {
+      background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
+      color: #FFFFFF;
+      border-radius: var(--radius-lg);
+      padding: 36px 40px;
+      margin-bottom: 28px;
+      box-shadow: var(--shadow-md);
+      position: relative;
+    }
+
+    .header-top-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .header-top-row img {
+      height: 38px;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.2);
+      color: #FFFFFF;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    .header-banner h1 {
+      font-family: var(--font-heading);
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #FFFFFF;
+      margin-bottom: 8px;
+      letter-spacing: -0.02em;
+    }
+
+    .header-banner p {
+      color: #CCFBF1;
+      font-size: 1.05rem;
+      max-width: 780px;
+    }
+
+    /* Tabs Navigation */
+    .blueprint-tabs {
+      display: flex;
+      gap: 8px;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 6px;
+      margin-bottom: 28px;
+      overflow-x: auto;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .tab-btn {
+      flex: 1;
+      padding: 12px 16px;
+      border: none;
+      background: transparent;
+      border-radius: 8px;
+      font-family: var(--font-heading);
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--color-text-muted);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+    }
+
+    .tab-btn:hover {
+      background: var(--color-surface-hover);
+      color: var(--color-primary);
+    }
+
+    .tab-btn.active {
+      background: var(--color-primary);
+      color: #FFFFFF;
+      box-shadow: 0 2px 8px rgba(15, 118, 110, 0.25);
+    }
+
+    .tab-btn.active-rose {
+      background: var(--color-rose);
+      color: #FFFFFF;
+    }
+
+    .tab-btn.active-amber {
+      background: var(--color-amber);
+      color: #FFFFFF;
+    }
+
+    .tab-btn.active-ai {
+      background: var(--color-ai);
+      color: #FFFFFF;
+    }
+
+    /* Tab Content Panes */
+    .tab-pane {
+      display: none;
+    }
+
+    .tab-pane.active {
+      display: block;
+      animation: fadeIn 0.25s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Cards & Components */
+    .card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 28px;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .card h2 {
+      font-family: var(--font-heading);
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: var(--color-primary-dark);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .card h3 {
+      font-family: var(--font-heading);
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin: 20px 0 10px 0;
+      color: var(--color-text-main);
+    }
+
+    .section-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .section-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 16px;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      background: var(--color-bg);
+      transition: border-color 0.2s;
+    }
+
+    .section-item:hover {
+      border-color: var(--color-primary);
+    }
+
+    .section-badge {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: var(--color-primary);
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+
+    .section-detail h4 {
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+      color: var(--color-text-main);
+    }
+
+    .section-detail p {
+      font-size: 0.9rem;
+      color: var(--color-text-muted);
+      line-height: 1.5;
+    }
+
+    .meta-tag {
+      display: inline-block;
+      margin-top: 6px;
+      font-size: 0.76rem;
+      font-family: var(--font-mono);
+      background: var(--color-mint-light);
+      color: var(--color-primary-dark);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+
+    /* Table Styles */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      font-size: 0.92rem;
+    }
+
+    th, td {
+      padding: 12px 14px;
+      border: 1px solid var(--color-border);
+      text-align: left;
+    }
+
+    th {
+      background: #F1F5F9;
+      font-weight: 700;
+      color: var(--color-text-main);
+    }
+
+    /* Badges */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      font-size: 0.76rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .badge-rose { background: var(--color-rose-subtle); color: var(--color-rose); }
+    .badge-teal { background: var(--color-mint-light); color: var(--color-primary-dark); }
+    .badge-amber { background: var(--color-amber-subtle); color: var(--color-amber); }
+    .badge-ai { background: var(--color-ai-subtle); color: var(--color-ai); }
+
+    .action-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 20px 28px;
+      margin-top: 24px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .btn {
+      padding: 10px 20px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: var(--color-primary);
+      color: #FFFFFF;
+    }
+
+    .btn-primary:hover {
+      background: #0D9488;
+      transform: translateY(-1px);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+    <!-- Top Banner -->
+    <header class="header-banner">
+      <div class="header-top-row">
+        <img src="../brand/klassa-logo-horizontal.svg" alt="KLASSA">
+        <span class="status-badge">
+          <i data-lucide="check-circle-2" style="width:16px; height:16px;"></i>
+          FASE 1: MASTER BLUEPRINT TERKUNCI
+        </span>
+      </div>
+      <h1>Arsitektur 4 Landing Page Penjualan KLASSA</h1>
+      <p>
+        Spesifikasi rancangan 2 Segmen Audiens (Guru vs Kepala Sekolah) × 2 Pendekatan Gaya (Jualan Banget vs Profesional) berbasis metodologi BMAD.
+      </p>
+    </header>
+
+    <!-- Tab Buttons -->
+    <nav class="blueprint-tabs">
+      <button class="tab-btn active" onclick="switchTab('tab-matrix')">
+        <i data-lucide="layout-grid"></i>
+        <span>Peta Matriks 4 Halaman</span>
+      </button>
+      <button class="tab-btn" onclick="switchTab('tab-guru-promo')">
+        <i data-lucide="flame" style="color:var(--color-rose);"></i>
+        <span>1. Guru (Jualan)</span>
+      </button>
+      <button class="tab-btn" onclick="switchTab('tab-guru-pro')">
+        <i data-lucide="sparkles" style="color:var(--color-primary);"></i>
+        <span>2. Guru (Profesional)</span>
+      </button>
+      <button class="tab-btn" onclick="switchTab('tab-sekolah-hemat')">
+        <i data-lucide="dollar-sign" style="color:var(--color-amber);"></i>
+        <span>3. Kepsek (Hemat Biaya)</span>
+      </button>
+      <button class="tab-btn" onclick="switchTab('tab-sekolah-pro')">
+        <i data-lucide="building" style="color:var(--color-ai);"></i>
+        <span>4. Kepsek (Institusi)</span>
+      </button>
+      <button class="tab-btn" onclick="switchTab('tab-wiring')">
+        <i data-lucide="workflow"></i>
+        <span>Conversion Wiring</span>
+      </button>
+    </nav>
+
+    <!-- TAB 1: PETA MATRIKS -->
+    <div id="tab-matrix" class="tab-pane active">
+      <div class="card">
+        <h2><i data-lucide="layout-grid"></i> Matriks Perbandingan 4 Variasi Landing Page</h2>
+        <p>
+          Setiap halaman dirancang khusus untuk memicu respon psikologis yang berbeda sesuai karakter target pengunjung dan sumber traffic iklan:
+        </p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Kode File</th>
+              <th>Target Audiens</th>
+              <th>Pendekatan Gaya</th>
+              <th>Core Hook / Headline Utama</th>
+              <th>Aksi Konversi (CTA Goal)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>guru-promo.html</code></td>
+              <td><span class="badge badge-rose">Guru Mandiri &amp; Wali Kelas</span></td>
+              <td><strong>Jualan Banget (Hard-Sell)</strong></td>
+              <td>*"Stop Begadang! Susun Modul Ajar 40 Detik, Siap Cetak Word."*</td>
+              <td>Form Uji Coba Gratis 7 Hari &amp; WhatsApp CS Promo</td>
+            </tr>
+            <tr>
+              <td><code>guru-pro.html</code></td>
+              <td><span class="badge badge-teal">Guru Penggerak &amp; PNS</span></td>
+              <td><strong>Profesional (Workspace)</strong></td>
+              <td>*"Personal Workspace &amp; AI Co-Pilot Pendidik Kurikulum Merdeka."*</td>
+              <td>Registrasi Akun Mandiri Guru &amp; Coba AI Studio</td>
+            </tr>
+            <tr>
+              <td><code>sekolah-hemat.html</code></td>
+              <td><span class="badge badge-amber">Kepsek Swasta &amp; Yayasan</span></td>
+              <td><strong>Jualan Banget (Cost Reduction)</strong></td>
+              <td>*"Pangkas Anggaran Kertas Ujian Hingga 80% &amp; Hilangkan Guru Stres."*</td>
+              <td>Hitung Anggaran Hemat &amp; Konsultasi WhatsApp B2B</td>
+            </tr>
+            <tr>
+              <td><code>sekolah-institusi.html</code></td>
+              <td><span class="badge badge-ai">Kepsek Negeri &amp; Pengawas</span></td>
+              <td><strong>Profesional (Tata Kelola)</strong></td>
+              <td>*"Membangun Sekolah Unggul: Tata Kelola Terpadu, Aman &amp; Siap Akreditasi."*</td>
+              <td>Jadwalkan Presentasi Zoom &amp; Unduh Proposal PDF</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- TAB 2: GURU JUALAN -->
+    <div id="tab-guru-promo" class="tab-pane">
+      <div class="card">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+          <span class="badge badge-rose">Halaman 1: Hard-Sell B2C</span>
+          <span class="meta-tag">File: guru-promo.html</span>
+        </div>
+        <h2><i data-lucide="flame" style="color:var(--color-rose);"></i> Guru / Wali Kelas — Versi Jualan Banget</h2>
+        <p>
+          <strong>Psikologi Target:</strong> Guru yang lelah, stres dengan revisi RPP supervisi, dan merasa waktu istirahat malam serta akhir pekannya terampas oleh ketik administrasi manual.
+        </p>
+
+        <h3>Anatomi Urutan Seksi (10 Seksi Konversi):</h3>
+        <div class="section-list">
+          <div class="section-item">
+            <div class="section-badge" style="background:var(--color-rose);">1</div>
+            <div class="section-detail">
+              <h4>Top Urgent Banner &amp; Hero Section (The Pain Hook)</h4>
+              <p>Banner promo uji coba 7 hari gratis. Headline menohok: <em>"Kembalikan Waktu Berharga Anda! Susun Modul Ajar 40 Detik, Siap Cetak Word."</em> Tombol CTA ganda + rating ulasan 3.400+ guru.</p>
+            </div>
+          </div>
+
+          <div class="section-item">
+            <div class="section-badge" style="background:var(--color-rose);">2</div>
+            <div class="section-detail">
+              <h4>The Pain Agitation (Mengungkit 3 Penderitaan Nyata)</h4>
+              <p>Kartu masalah: 1) Begadang sampai jam 1 malam ngetik RPP, 2) Mata lelah mengoreksi ratusan lembar kuis kertas, 3) Tabel format Word berantakan saat dipindah flashdisk.</p>
+            </div>
+          </div>
+
+          <div class="section-item">
+            <div class="section-badge" style="background:var(--color-rose);">3</div>
+            <div class="section-detail">
+              <h4>The Solution Reveal (Klassa Bukan ChatGPT Biasa)</h4>
+              <p>Menjelaskan 3 alasan mengapa Klassa berbeda: paham acuan BSKAP 032/H/KR/2024, hasil langsung format Word (.docx) resmi dengan kop surat, dan portal siswa tanpa butuh email.</p>
+            </div>
+          </div>
+
+          <div class="section-item">
+            <div class="section-badge" style="background:var(--color-rose);">4</div>
+            <div class="section-detail">
+              <h4>Interactive Simulator Playground (Live Proof)</h4>
+              <p>Guru mencoba langsung memilih mapel (IPAS/Matematika/B.Indo) dan melihat teks Modul Ajar tersusun 40 detik di layar ponselnya.</p>
+            </div>
+          </div>
+
+          <div class="section-item">
+            <div class="section-badge" style="background:var(--color-rose);">5</div>
+            <div class="section-detail">
+              <h4>Kalkulator Penghematan Jam Kerja (Logical ROI)</h4>
+              <p>Slider interaktif: membuktikan bahwa guru menghemat 40+ jam kerja setiap bulan (setara 5 hari bebas stres bersama keluarga).</p>
+            </div>
+          </div>
+
+          <div class="section-item">
+            <div class="section-badge" style="background:var(--color-rose);">6</div>
+            <div class="section-detail">
+              <h4>Tabel Komparasi Ekstrem (Sebelum vs Sesudah)</h4>
+              <p>Menjejerkan kontras: cara lama (lelah, stres, kertas tercecer) vs cara Klassa (santai, tidur nyenyak, cloud aman).</p>
+            </div>
+          </div>
+
+          <div class="section-item">
+            <div class="section-badge" style="background:var(--color-rose);">7</div>
+            <div class="section-detail">
+              <h4>Testimoni Emosional Guru Nyata</h4>
+              <p>Ulasan guru honorer dan guru SD/SMP yang terbantu lulus supervisi pengawas tanpa begadang.</p>
+            </div>
+          </div>
+
+          <div class="section-item">
+            <div class="section-badge" style="background:var(--color-rose);">8</div>
+            <div class="section-detail">
+              <h4>Penawaran Promo &amp; Garansi 100%</h4>
+              <p>Paket langganan super terjangkau (Rp49rb/bulan atau Rp299rb/tahun) + Garansi 100% uang kembali jika ditolak pengawas.</p>
+            </div>
+          </div>
+
+          <div class="section-item">
+            <div class="section-badge" style="background:var(--color-rose);">9</div>
+            <div class="section-detail">
+              <h4>FAQ Penghancur Keraguan (Objection Killer)</h4>
+              <p>Menjawab keraguan: "Apakah aman dari plagiasi?", "Apakah bisa diedit lagi di laptop?", "Bagaimana jika saya gaptek?".</p>
+            </div>
+          </div>
+
+          <div class="section-item">
+            <div class="section-badge" style="background:var(--color-rose);">10</div>
+            <div class="section-detail">
+              <h4>Final Closing &amp; Direct WhatsApp Support</h4>
+              <p>Tombol pendaftaran instan + tombol chat WhatsApp CS untuk guru yang butuh dipandu langkah demi langkah.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 3: GURU PRO -->
+    <div id="tab-guru-pro" class="tab-pane">
+      <div class="card">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+          <span class="badge badge-teal">Halaman 2: Profesional B2C</span>
+          <span class="meta-tag">File: guru-pro.html</span>
+        </div>
+        <h2><i data-lucide="sparkles" style="color:var(--color-primary);"></i> Guru / Wali Kelas — Versi Profesional (Workspace)</h2>
+        <p>
+          <strong>Psikologi Target:</strong> Guru Penggerak, Guru PNS berprestasi, dan pendidik karir yang mengutamakan mutu pedagogi, kepatuhan taksonomi Bloom, dan portofolio akademik berkelas.
+        </p>
+
+        <h3>Anatomi Urutan Seksi (8 Seksi Prestasi):</h3>
+        <div class="section-list">
+          <div class="section-item">
+            <div class="section-badge">1</div>
+            <div class="section-detail">
+              <h4>Executive Navbar &amp; Hero Pedagogi</h4>
+              <p>Headline elegan: <em>"Meningkatkan Mutu Pembelajaran dengan AI Co-Pilot Kurikulum Merdeka yang Terkalibrasi."</em> Sub-headline fokus pada diferensiasi kelas &amp; capaian holistik murid.</p>
+            </div>
+          </div>
+
+          <div class="section-item">
+            <div class="section-badge">2</div>
+            <div class="section-detail">
+              <h4>Diagram Arsitektur Kurikulum Merdeka Terintegrasi</h4>
+              <p>Visual hierarkis CP &rarr; TP &rarr; ATP &rarr; Rubrik Asesmen Formatif &amp; Sumatif sesuai BSKAP No. 032/H/KR/2024.</p>
+            </div>
+          </div>
+
+          <div class="section-item">
+            <div class="section-badge">3</div>
+            <div class="section-detail">
+              <h4>Pilar Kelas Modern: Diferensiasi &amp; WYSIWYG Editor</h4>
+              <p>Sorotan fitur editor Milkdown Crepe dan modul pembagian kelompok kesiapan belajar (visual, auditori, kinestetik).</p>
+            </div>
+          </div>
+
+          <div class="section-item">
+            <div class="section-badge">4</div>
+            <div class="section-detail">
+              <h4>Pohon Ketuntasan TP &amp; Evaluasi Sikap Digital</h4>
+              <p>Grafik visual kompetensi anak yang memudahkan guru memetakan kebutuhan remedial sebelum pelaporan semester.</p>
+            </div>
+          </div>
+
+          <div class="section-item">
+            <div class="section-badge">5</div>
+            <div class="section-detail">
+              <h4>Kepatuhan Standar Regulasi &amp; UU Perlindungan Data Pribadi (UU PDP)</h4>
+              <p>Menjelaskan keamanan data akademik murid yang terenkripsi dan bebas komersialisasi data pihak ketiga.</p>
+            </div>
+          </div>
+
+          <div class="section-item">
+            <div class="section-badge">6</div>
+            <div class="section-detail">
+              <h4>Studi Dampak Pedagogi (Impact Metrics)</h4>
+              <p>Peningkatan keterlibatan murid di kelas sebesar 35% karena waktu guru tidak lagi tersita oleh pekerjaan klerikal.</p>
+            </div>
+          </div>
+
+          <div class="section-item">
+            <div class="section-badge">7</div>
+            <div class="section-detail">
+              <h4>Paket Lisensi Profesional Guru &amp; Kolaborasi Komunitas MGMP</h4>
+              <p>Opsi akun individu dan akun kelompok guru untuk MGMP/KKG sekolah.</p>
+            </div>
+          </div>
+
+          <div class="section-item">
+            <div class="section-badge">8</div>
+            <div class="section-detail">
+              <h4>Portal Masuk &amp; Akses Dokumentasi Resmi</h4>
+              <p>Akses langsung ke ruang kerja guru dan unduhan panduan pedagogi.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 4: SEKOLAH HEMAT -->
+    <div id="tab-sekolah-hemat" class="tab-pane">
+      <div class="card">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+          <span class="badge badge-amber">Halaman 3: Hard-Sell B2B</span>
+          <span class="meta-tag">File: sekolah-hemat.html</span>
+        </div>
+        <h2><i data-lucide="dollar-sign" style="color:var(--color-amber);"></i> Kepala Sekolah / Yayasan — Versi Jualan (Hemat Biaya)</h2>
+        <p>
+          <strong>Psikologi Target:</strong> Kepala Sekolah Swasta &amp; Bendahara Yayasan yang pusing dengan tingginya biaya cetak kertas ujian, lembur fotokopi, dan guru yang tidak produktif karena kelelahan.
+        </p>
+
+        <h3>Anatomi Urutan Seksi (8 Seksi Efisiensi Finansial):</h3>
+        <div class="section-list">
+          <div class="section-item">
+            <div class="section-badge" style="background:var(--color-amber);">1</div>
+            <div class="section-detail">
+              <h4>Financial Hook Header &amp; Hero Section</h4>
+              <p>Headline: <em>"Pangkas Biaya Kertas Ujian Hingga 80% &amp; Hilangkan Stres Guru Sekolah Anda."</em> CTA: Hitung Penghematan Anggaran Sekolah.</p>
+            </div>
+          </div>
+
+          <div class="section-item">
+            <div class="section-badge" style="background:var(--color-amber);">2</div>
+            <div class="section-detail">
+              <h4>Audit Pemborosan Anggaran Konvensional Sekolah</h4>
+              <p>Tabel rincian biaya nyata: 500 siswa × 10 mapel × 4 halaman = 20.000 lembar kertas ujian + toner printer yang membengkak jutaan rupiah tiap semester.</p>
+            </div>
+          </div>
+
+          <div class="section-item">
+            <div class="section-badge" style="background:var(--color-amber);">3</div>
+            <div class="section-detail">
+              <h4>The Paperless Multi-Student Exam Engine</h4>
+              <p>Ujian online serentak via proyektor kelas dengan token PIN unik dan deteksi anti-pindah tab. Nilai terkoreksi otomatis ke Excel dalam 1 detik.</p>
+            </div>
+          </div>
+
+          <div class="section-item">
+            <div class="section-badge" style="background:var(--color-amber);">4</div>
+            <div class="section-detail">
+              <h4>Kalkulator Penghematan Kas Sekolah (BOS Optimizer)</h4>
+              <p>Kalkulator dinamis: masukkan jumlah siswa &amp; guru &rarr; kalkulator langsung memproyeksikan penghematan kas sekolah (misal: Hemat Rp18.500.000/tahun).</p>
+            </div>
+          </div>
+
+          <div class="section-item">
+            <div class="section-badge" style="background:var(--color-amber);">5</div>
+            <div class="section-detail">
+              <h4>Perbandingan Biaya Nyata (Kertas vs Klassa)</h4>
+              <p>Grafik komparasi biaya: investasi langganan sekolah jauh lebih murah daripada belanja kertas dan servis mesin fotokopi.</p>
+            </div>
+          </div>
+
+          <div class="section-item">
+            <div class="section-badge" style="background:var(--color-amber);">6</div>
+            <div class="section-detail">
+              <h4>Paket Lisensi Sekolah All-in-One</h4>
+              <p>Paket Sekolah Terjangkau: Akses semua guru, siswa unlimited, dan pelatihan onboarding gratis dari tim Klassa.</p>
+            </div>
+          </div>
+
+          <div class="section-item">
+            <div class="section-badge" style="background:var(--color-amber);">7</div>
+            <div class="section-detail">
+              <h4>Garansi Bebas Risiko (Demo Guru Gratis)</h4>
+              <p>Sesi uji coba gratis bersama 3 guru perwakilan sekolah sebelum yayasan memutuskan berlangganan.</p>
+            </div>
+          </div>
+
+          <div class="section-item">
+            <div class="section-badge" style="background:var(--color-amber);">8</div>
+            <div class="section-detail">
+              <h4>Form Klaim Diskon Paket Sekolah / WhatsApp Sales</h4>
+              <p>Kanal penutupan penjualan prioritas untuk Kepala Sekolah dan Yayasan.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 5: SEKOLAH PRO -->
+    <div id="tab-sekolah-pro" class="tab-pane">
+      <div class="card">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+          <span class="badge badge-ai">Halaman 4: Institusional B2B</span>
+          <span class="meta-tag">File: sekolah-institusi.html</span>
+        </div>
+        <h2><i data-lucide="building" style="color:var(--color-ai);"></i> Kepala Sekolah / Yayasan — Versi Profesional (Akreditasi)</h2>
+        <p>
+          <strong>Psikologi Target:</strong> Kepala Sekolah Negeri/Swasta Favorit dan Pengawas yang fokus pada Akreditasi Unggul, standarisasi mutu guru, tata kelola data terpadu, dan kesiapan Rapor Pendidikan.
+        </p>
+
+        <h3>Anatomi Urutan Seksi (8 Seksi Manajerial):</h3>
+        <div class="section-list">
+          <div class="section-item">
+            <div class="section-badge" style="background:var(--color-ai);">1</div>
+            <div class="section-detail">
+              <h4>Executive Header &amp; Institutional Hero</h4>
+              <p>Headline berwibawa: <em>"Membangun Sekolah Unggul: Tata Kelola Akademik Terpadu, Aman, dan Siap Rapor Pendidikan."</em> CTA: Unduh Proposal Resmi (PDF) &amp; Jadwalkan Presentasi Zoom.</p>
+            </div>
+          </div>
+
+          <div class="section-item">
+            <div class="section-badge" style="background:var(--color-ai);">2</div>
+            <div class="section-detail">
+              <h4>Tiga Pilar Tata Kelola Sekolah Unggul</h4>
+              <p>1) Standarisasi mutu perangkat ajar seragam, 2) Keamanan data akademik berdasar NPSN, 3) Kesiapan audit supervisi pengawas dinas.</p>
+            </div>
+          </div>
+
+          <div class="section-item">
+            <div class="section-badge" style="background:var(--color-ai);">3</div>
+            <div class="section-detail">
+              <h4>Superadmin Dashboard &amp; Cockpit Pimpinan</h4>
+              <p>Tangkapan layar dashboard: pemantauan status perangkat ajar guru, rekap ketuntasan kompetensi murid per kelas, dan kuota token AI sekolah.</p>
+            </div>
+          </div>
+
+          <div class="section-item">
+            <div class="section-badge" style="background:var(--color-ai);">4</div>
+            <div class="section-detail">
+              <h4>Mekanisme Rollover Tahun Ajaran Atomik</h4>
+              <p>Penjelasan teknis pergantian tahun ajaran baru tanpa kehilangan data capaian kompetensi dan rekap nilai tahun sebelumnya.</p>
+            </div>
+          </div>
+
+          <div class="section-item">
+            <div class="section-badge" style="background:var(--color-ai);">5</div>
+            <div class="section-detail">
+              <h4>Mode Kolaborasi Keluarga &amp; Transparansi Orang Tua</h4>
+              <p>Meningkatkan reputasi sekolah di mata orang tua murid melalui laporan capaian belajar yang transparan dan dapat dipantau dari rumah.</p>
+            </div>
+          </div>
+
+          <div class="section-item">
+            <div class="section-badge" style="background:var(--color-ai);">6</div>
+            <div class="section-detail">
+              <h4>Implementasi, SLA Layanan &amp; Pelatihan Guru</h4>
+              <p>Fasilitas pendampingan teknis, server berbasis cloud Singapore (SIN1) latensi rendah, dan sertifikat pelatihan untuk guru.</p>
+            </div>
+          </div>
+
+          <div class="section-item">
+            <div class="section-badge" style="background:var(--color-ai);">7</div>
+            <div class="section-detail">
+              <h4>Rancangan Program Kerjasama Sekolah Mitra</h4>
+              <p>Skema kemitraan resmi sekolah per semester atau tahunan.</p>
+            </div>
+          </div>
+
+          <div class="section-item">
+            <div class="section-badge" style="background:var(--color-ai);">8</div>
+            <div class="section-detail">
+              <h4>Formulir Permintaan Presentasi &amp; Audiensi Eksekutif</h4>
+              <p>Pemesanan jadwal audiensi daring via Zoom atau kunjungan presentasi tatap muka.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 6: CONVERSION WIRING -->
+    <div id="tab-wiring" class="tab-pane">
+      <div class="card">
+        <h2><i data-lucide="workflow"></i> Strategi Wiring Konversi &amp; Integrasi Tombol</h2>
+        <p>
+          Setiap tombol aksi di masing-masing landing page memiliki jalur penutupan penjualan yang disesuaikan dengan psikologi pengunjung:
+        </p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Halaman</th>
+              <th>Tombol Aksi Utama (CTA 1)</th>
+              <th>Tombol Aksi Sekunder (CTA 2)</th>
+              <th>Kanal Tujuan Konversi</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>guru-promo.html</strong></td>
+              <td>"Klaim Coba Gratis 7 Hari"</td>
+              <td>"Chat WhatsApp CS Promo"</td>
+              <td>Modal Form Cepat &rarr; Direct WhatsApp API CS</td>
+            </tr>
+            <tr>
+              <td><strong>guru-pro.html</strong></td>
+              <td>"Buka Workspace Guru"</td>
+              <td>"Baca Panduan Pedagogi"</td>
+              <td>Registrasi Akun Guru / Login Mandiri</td>
+            </tr>
+            <tr>
+              <td><strong>sekolah-hemat.html</strong></td>
+              <td>"Hitung Anggaran Hemat"</td>
+              <td>"Klaim Diskon Sekolah"</td>
+              <td>Kalkulator Dana &rarr; WhatsApp Sales B2B Prioritas</td>
+            </tr>
+            <tr>
+              <td><strong>sekolah-institusi.html</strong></td>
+              <td>"Jadwalkan Presentasi Zoom"</td>
+              <td>"Unduh Proposal PDF"</td>
+              <td>Formulir Booking Audiensi &rarr; Notifikasi Email / WA</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Action Footer -->
+    <div class="action-footer">
+      <div>
+        <h4 style="font-family:var(--font-heading); font-size:1.05rem;">Fase 1 Selesai Dirumuskan!</h4>
+        <p style="font-size:0.88rem; color:var(--color-text-muted);">
+          Apakah Anda menyetujui cetak biru ini untuk langsung kita eksekusi ke <strong>Fase 2 (Copywriting Naskah Lengkap)</strong>?
+        </p>
+      </div>
+      <a href="http://localhost:3030" class="btn btn-primary" target="_blank">
+        <i data-lucide="arrow-right"></i>
+        <span>Lihat Server Lokal</span>
+      </a>
+    </div>
+
+  </div>
+
+  <script>
+    // Tab Switching Logic
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+
+      const targetPane = document.getElementById(tabId);
+      if (targetPane) targetPane.classList.add('active');
+
+      const clickedBtn = event.currentTarget;
+      if (clickedBtn) clickedBtn.classList.add('active');
+    }
+
+    // Initialize Lucide Icons
+    if (window.lucide) {
+      window.lucide.createIcons();
+    }
+  </script>
+</body>
+</html>
