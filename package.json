@@ -1,0 +1,19 @@
+{
+  "name": "landing-page-klassa",
+  "version": "1.0.0",
+  "description": "Official Premium Landing Page for KLASSA - AI Co-Pilot & Personal Workspace Guru Indonesia",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx -y serve . -p 3000",
+    "start": "npx -y serve . -p 3000"
+  },
+  "keywords": [
+    "klassa",
+    "landing-page",
+    "ai-teacher",
+    "kurikulum-merdeka",
+    "edutech"
+  ],
+  "author": "KLASSA Team",
+  "license": "MIT"
+}
