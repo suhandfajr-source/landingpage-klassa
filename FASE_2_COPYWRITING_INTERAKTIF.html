@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FASE 2: Naskah Lengkap Copywriting 4 Landing Page (BMAD)</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="../brand/klassa-mark.svg">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=JetBrains+Mono:wght@400;600&family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    :root {
+      --color-primary: #0F766E;
+      --color-primary-dark: #042F2E;
+      --color-mint: #14B8A6;
+      --color-mint-light: #CCFBF1;
+      --color-mint-subtle: #F0FDFA;
+      --color-ai: #6366F1;
+      --color-ai-subtle: #EEF2FF;
+      --color-amber: #D97706;
+      --color-amber-subtle: #FEF3C7;
+      --color-rose: #E11D48;
+      --color-rose-subtle: #FFE4E6;
+
+      --color-bg: #F8FAFA;
+      --color-surface: #FFFFFF;
+      --color-border: #E2E8F0;
+      --color-text-main: #0F172A;
+      --color-text-muted: #475569;
+      --color-text-subtle: #64748B;
+
+      --font-heading: 'Plus Jakarta Sans', system-ui, sans-serif;
+      --font-body: 'Figtree', system-ui, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+      --shadow-md: 0 6px 18px rgba(0,0,0,0.08);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--color-bg);
+      color: var(--color-text-main);
+      line-height: 1.65;
+      padding: 32px 20px;
+    }
+
+    .container {
+      max-width: 1140px;
+      margin: 0 auto;
+    }
+
+    .banner {
+      background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
+      color: #FFFFFF;
+      border-radius: var(--radius-lg);
+      padding: 36px 40px;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow-md);
+    }
+
+    .banner-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .banner-top img {
+      height: 36px;
+    }
+
+    .badge-status {
+      padding: 4px 12px;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.2);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    .banner h1 {
+      font-family: var(--font-heading);
+      font-size: 2.1rem;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+
+    .banner p {
+      color: #CCFBF1;
+      font-size: 1.02rem;
+    }
+
+    /* Tabs */
+    .tabs-bar {
+      display: flex;
+      gap: 8px;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 6px;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow-sm);
+      overflow-x: auto;
+    }
+
+    .tab-btn {
+      flex: 1;
+      padding: 12px 14px;
+      border: none;
+      background: transparent;
+      border-radius: 8px;
+      font-family: var(--font-heading);
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--color-text-muted);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+
+    .tab-btn:hover {
+      background: var(--color-bg);
+      color: var(--color-primary);
+    }
+
+    .tab-btn.active {
+      background: var(--color-primary);
+      color: #FFFFFF;
+      box-shadow: 0 2px 6px rgba(15, 118, 110, 0.3);
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+      animation: fadeIn 0.25s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Copy Blocks */
+    .copy-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 28px;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .copy-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .copy-card-header h3 {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--color-primary-dark);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .copy-block {
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      padding: 16px 20px;
+      margin-bottom: 14px;
+    }
+
+    .copy-label {
+      font-size: 0.76rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--color-text-subtle);
+      margin-bottom: 6px;
+    }
+
+    .copy-headline {
+      font-family: var(--font-heading);
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--color-text-main);
+      line-height: 1.3;
+      margin-bottom: 8px;
+    }
+
+    .copy-subheadline {
+      font-size: 0.98rem;
+      color: var(--color-text-muted);
+      line-height: 1.6;
+    }
+
+    .copy-cta-row {
+      display: flex;
+      gap: 12px;
+      margin-top: 14px;
+      flex-wrap: wrap;
+    }
+
+    .cta-preview-btn {
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .cta-preview-primary {
+      background: var(--color-primary);
+      color: #FFFFFF;
+    }
+
+    .cta-preview-secondary {
+      background: #FFFFFF;
+      border: 1px solid var(--color-border);
+      color: var(--color-text-main);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      font-size: 0.76rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .badge-rose { background: var(--color-rose-subtle); color: var(--color-rose); }
+    .badge-teal { background: var(--color-mint-light); color: var(--color-primary-dark); }
+    .badge-amber { background: var(--color-amber-subtle); color: var(--color-amber); }
+    .badge-ai { background: var(--color-ai-subtle); color: var(--color-ai); }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      font-size: 0.9rem;
+    }
+
+    th, td {
+      padding: 12px 14px;
+      border: 1px solid var(--color-border);
+      text-align: left;
+    }
+
+    th {
+      background: #F1F5F9;
+      font-weight: 700;
+    }
+
+    .qa-box {
+      margin-top: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .qa-item {
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      padding: 12px 16px;
+      background: var(--color-surface);
+    }
+
+    .qa-question {
+      font-weight: 700;
+      font-size: 0.92rem;
+      color: var(--color-text-main);
+      margin-bottom: 4px;
+    }
+
+    .qa-answer {
+      font-size: 0.88rem;
+      color: var(--color-text-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+    <!-- Banner Header -->
+    <header class="banner">
+      <div class="banner-top">
+        <img src="../brand/klassa-logo-horizontal.svg" alt="KLASSA">
+        <span class="badge-status">
+          <i data-lucide="check-check" style="width:14px; height:14px;"></i>
+          FASE 2: NASKAH LENGKAP SIAP REVIEW
+        </span>
+      </div>
+      <h1>Naskah Penjualan Lengkap (Words That Sell)</h1>
+      <p>
+        Kumpulan naskah copywriting per kata dan per kalimat untuk 4 varian landing page tanpa teks dummy (lorem ipsum).
+      </p>
+    </header>
+
+    <!-- Tabs Bar -->
+    <nav class="tabs-bar">
+      <button class="tab-btn active" onclick="showTab('tab-guru-promo')">
+        <i data-lucide="flame" style="color:var(--color-rose);"></i>
+        <span>1. Guru (Jualan Banget)</span>
+      </button>
+      <button class="tab-btn" onclick="showTab('tab-guru-pro')">
+        <i data-lucide="sparkles" style="color:var(--color-primary);"></i>
+        <span>2. Guru (Profesional)</span>
+      </button>
+      <button class="tab-btn" onclick="showTab('tab-sekolah-hemat')">
+        <i data-lucide="dollar-sign" style="color:var(--color-amber);"></i>
+        <span>3. Kepsek (Hemat Biaya)</span>
+      </button>
+      <button class="tab-btn" onclick="showTab('tab-sekolah-pro')">
+        <i data-lucide="building" style="color:var(--color-ai);"></i>
+        <span>4. Kepsek (Institusi)</span>
+      </button>
+    </nav>
+
+    <!-- TAB 1: GURU JUALAN -->
+    <div id="tab-guru-promo" class="tab-content active">
+      <div class="copy-card">
+        <div class="copy-card-header">
+          <h3><i data-lucide="flame" style="color:var(--color-rose);"></i> Naskah: Guru / Wali Kelas (Versi Jualan Banget)</h3>
+          <span class="badge badge-rose">File: guru-promo.html</span>
+        </div>
+
+        <!-- Top Urgent Bar -->
+        <div class="copy-block">
+          <div class="copy-label">Top Urgent Announcement Bar</div>
+          <div style="font-weight:700; color:var(--color-rose);">
+            🔥 PROMO PELUNCURAN SEMESTER INI: Akses Gratis 7 Hari Tanpa Kartu Kredit + Bonus 50+ Format Modul Ajar Resmi Siap Pakai! <span style="text-decoration:underline; cursor:pointer;">[ Klaim Sekarang ➔ ]</span>
+          </div>
+        </div>
+
+        <!-- Hero Section -->
+        <div class="copy-block">
+          <div class="copy-label">Hero Section</div>
+          <span class="badge badge-rose" style="margin-bottom:8px;">⚠️ Peringatan: Guru Tidak Seharusnya Lembur Mengetik RPP Sampai Larut Malam</span>
+          <div class="copy-headline">
+            Kembalikan Waktu Berharga Anda!<br>
+            Susun Modul Ajar Kurikulum Merdeka dalam 40 Detik, Langsung Siap Cetak di Microsoft Word.
+          </div>
+          <p class="copy-subheadline">
+            Hentikan kebiasaan begadang mengetik administrasi atau menyalin template usang dari internet. Biarkan AI Co-Pilot Klassa menyelaraskan Capaian Pembelajaran (CP), Tujuan Pembelajaran (TP), langkah berdiferensiasi, hingga rubrik asesmen lengkap. Anda tinggal unduh format Word asli, tanda tangan, dan nikmati waktu istirahat bersama keluarga.
+          </p>
+          <div class="copy-cta-row">
+            <span class="cta-preview-btn cta-preview-primary">⚡ Mulai Coba Gratis 7 Hari Sekarang</span>
+            <span class="cta-preview-btn cta-preview-secondary">🎬 Buktikan Sendiri dalam 40 Detik ➔</span>
+          </div>
+          <div style="margin-top:10px; font-size:0.85rem; color:var(--color-text-subtle);">
+            ⭐⭐⭐⭐⭐ <strong>4.9/5 Rating Kepuasan</strong> dari <strong>3.400+ Guru &amp; Pendidik</strong> di seluruh Indonesia.
+          </div>
+        </div>
+
+        <!-- 3 Penderitaan Nyata -->
+        <div class="copy-block">
+          <div class="copy-label">Seksi 3 Penderitaan Nyata Guru</div>
+          <div class="copy-headline" style="font-size:1.15rem;">Apakah Anda Mengalami 3 Lingkaran Setan Administrasi Ini Setiap Pekan?</div>
+          <ul style="margin:10px 0 0 18px; font-size:0.92rem; color:var(--color-text-muted);">
+            <li><strong>1. Akhir Pekan Habis Mengetik RPP Manual:</strong> Niatnya santai bersama keluarga di hari Minggu, tapi laptop tetap terbuka sampai jam 1 malam mengetik perangkat ajar. Menyalin template dari internet pun berisiko ditolak pengawas saat supervisi dinas.</li>
+            <li><strong>2. Tumpukan 150+ Lembar Kertas Kuis:</strong> Menatap ratusan lembar jawaban murid satu per satu, menghitung skor manual, dan memasukkan nilai ke Excel dengan rumus yang rawan error. Waktu mengajar yang bermakna justru habis untuk pekerjaan klerikal.</li>
+            <li><strong>3. Format Tabel Berantakan &amp; Panik Supervisi:</strong> Saat dipindah flashdisk atau dicetak di printer sekolah, margin tabel terpotong dan font bergeser. Anda panik merevisi format di pagi hari sebelum Kepala Sekolah masuk ke ruang kelas.</li>
+          </ul>
+        </div>
+
+        <!-- 4 Fitur Unggulan -->
+        <div class="copy-block">
+          <div class="copy-label">Seksi Solusi Klassa</div>
+          <div class="copy-headline" style="font-size:1.15rem;">Bukan Sekadar AI Chat Biasa. Klassa Dirancang Khusus untuk Standar Resmi Dinas Pendidikan.</div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:10px;">
+            <div style="padding:10px; border:1px solid var(--color-border); border-radius:6px; background:#FFFFFF;">
+              <strong>📄 Ekspor Asli Word (.docx):</strong> Hasil akhir langsung berkas Word rapi lengkap dengan kop surat sekolah dan kolom tanda tangan Kepala Sekolah.
+            </div>
+            <div style="padding:10px; border:1px solid var(--color-border); border-radius:6px; background:#FFFFFF;">
+              <strong>⚖️ Patuh Regulasi BSKAP 032/2024:</strong> Selaras ketat dengan taksonomi Bloom, diferensiasi konten/proses/produk, dan Profil Pelajar Pancasila.
+            </div>
+            <div style="padding:10px; border:1px solid var(--color-border); border-radius:6px; background:#FFFFFF;">
+              <strong>✅ Koreksi Kuis 1-Detik:</strong> Ujian digital anti-contek di HP siswa, nilai terkoreksi otomatis ke Excel tanpa kertas fisik.
+            </div>
+            <div style="padding:10px; border:1px solid var(--color-border); border-radius:6px; background:#FFFFFF;">
+              <strong>📱 Presensi 1-Tap di HP:</strong> Catat absensi dan jurnal kelas dalam 15 detik langsung dari smartphone tanpa buku tebal.
+            </div>
+          </div>
+        </div>
+
+        <!-- Tabel Komparasi -->
+        <div class="copy-block">
+          <div class="copy-label">Tabel Komparasi Sebelum vs Sesudah</div>
+          <table>
+            <thead>
+              <tr>
+                <th>Aspek Kerja Guru</th>
+                <th>Cara Konvensional (Bikin Stres)</th>
+                <th>Bersama KLASSA (Beres 40 Detik)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Menyusun Modul Ajar</strong></td>
+                <td>4 - 6 Jam per pekan, mengetik larut malam.</td>
+                <td>Selesai dalam 40 detik, selaras regulasi BSKAP terbaru.</td>
+              </tr>
+              <tr>
+                <td><strong>Koreksi Kuis &amp; Ujian</strong></td>
+                <td>Periksa ratusan lembar kertas satu per satu.</td>
+                <td>Otomatis terkoreksi ke Excel saat siswa selesai submit.</td>
+              </tr>
+              <tr>
+                <td><strong>Pencatatan Presensi</strong></td>
+                <td>Buku absensi tebal, rawan basah/rusak.</td>
+                <td>1-Tap di smartphone, sinkronisasi aman ke cloud.</td>
+              </tr>
+              <tr>
+                <td><strong>Persiapan Supervisi</strong></td>
+                <td>Panik cetak ulang karena tabel berantakan.</td>
+                <td>Dokumen Word (.docx) siap cetak dan bebas revisi.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Penawaran & Garansi -->
+        <div class="copy-block">
+          <div class="copy-label">Seksi Penawaran &amp; Garansi</div>
+          <div class="copy-headline" style="font-size:1.15rem;">Investasi Terkecil untuk Ketenangan Hidup Anda Sepanjang Tahun.</div>
+          <div style="display:flex; gap:14px; margin-top:8px;">
+            <div style="flex:1; padding:12px; border:1px solid var(--color-border); border-radius:8px; background:#FFFFFF;">
+              <strong>Paket Bulanan:</strong> Rp49.000 / bulan <span style="font-size:0.8rem; color:var(--color-text-subtle);">(Hanya Rp1.600/hari, lebih murah dari segelas kopi!)</span>
+            </div>
+            <div style="flex:1; padding:12px; border:2px solid var(--color-primary); border-radius:8px; background:var(--color-mint-subtle);">
+              <strong>Paket Tahunan (Hemat 50%):</strong> Rp299.000 / tahun + Bonus 50+ Template PPT Interaktif.
+            </div>
+          </div>
+          <div style="margin-top:12px; padding:10px 14px; background:var(--color-mint-light); border-radius:6px; font-size:0.88rem; color:var(--color-primary-dark);">
+            🛡️ <strong>GARANSI 100% UANG KEMBALI 14 HARI:</strong> Jika dalam 14 hari Anda merasa Klassa tidak menghemat waktu administrasi Anda, hubungi tim kami dan uang Anda kami kembalikan 100% tanpa tanya.
+          </div>
+        </div>
+
+        <!-- FAQ -->
+        <div class="copy-block">
+          <div class="copy-label">Seksi FAQ (Objection Killer)</div>
+          <div class="qa-box">
+            <div class="qa-item">
+              <div class="qa-question">1. Apakah saya yang gaptek bisa mengoperasikannya?</div>
+              <div class="qa-answer">Sangat mudah! Tampilannya berbahasa Indonesia, tombolnya besar dan jelas, serta dapat dibuka langsung dari HP tanpa instalasi aplikasi yang rumit.</div>
+            </div>
+            <div class="qa-item">
+              <div class="qa-question">2. Apakah dokumen buatan Klassa diakui oleh Pengawas Dinas?</div>
+              <div class="qa-answer">Ya, 100%. Struktur dokumen disesuaikan ketat dengan acuan resmi BSKAP Kemendikbudristek No. 032/H/KR/2024.</div>
+            </div>
+            <div class="qa-item">
+              <div class="qa-question">3. Apakah file Word (.docx) hasil unduhan bisa diedit lagi di laptop saya?</div>
+              <div class="qa-answer">Sangat bisa! Dokumen diunduh dalam format standar Microsoft Word asli, sehingga Anda bebas menambah atau mengubah teks kapan pun.</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- TAB 2: GURU PRO -->
+    <div id="tab-guru-pro" class="tab-content">
+      <div class="copy-card">
+        <div class="copy-card-header">
+          <h3><i data-lucide="sparkles" style="color:var(--color-primary);"></i> Naskah: Guru / Wali Kelas (Versi Profesional)</h3>
+          <span class="badge badge-teal">File: guru-pro.html</span>
+        </div>
+
+        <div class="copy-block">
+          <div class="copy-label">Hero Section</div>
+          <span class="badge badge-teal" style="margin-bottom:8px;">Personal Workspace &amp; AI Co-Pilot Pendidik Merdeka</span>
+          <div class="copy-headline">
+            Meningkatkan Standar Pedagogi Pembelajaran dengan AI Co-Pilot yang Terkalibrasi.
+          </div>
+          <p class="copy-subheadline">
+            Ruang kerja terintegrasi bagi pendidik modern untuk memfasilitasi diferensiasi konten, proses, dan produk secara presisi. Selaraskan Taksonomi Bloom revisi dan Capaian Pembelajaran nasional ke dalam praktik kelas yang inspiratif.
+          </p>
+          <div class="copy-cta-row">
+            <span class="cta-preview-btn cta-preview-primary">Eksplorasi Workspace Guru</span>
+            <span class="cta-preview-btn cta-preview-secondary">Pelajari Kerangka Pedagogi ➔</span>
+          </div>
+        </div>
+
+        <div class="copy-block">
+          <div class="copy-label">Kerangka Pedagogi Kurikulum Merdeka (BSKAP 032/H/KR/2024)</div>
+          <p style="font-size:0.92rem; color:var(--color-text-muted);">
+            <strong>Arsitektur Pembelajaran Holistik:</strong><br>
+            • <em>Capaian Pembelajaran (CP):</em> Pemetaan kompetensi komprehensif per fase.<br>
+            • <em>Tujuan Pembelajaran (TP):</em> Perumusan indikator kompetensi kognitif dan afektif yang terukur.<br>
+            • <em>Alur Tujuan Pembelajaran (ATP):</em> Gradasi logis kegiatan ajar antar-pertemuan.<br>
+            • <em>Kriteria Ketercapaian (KKTP):</em> Rubrik asesmen autentik dan instrumen refleksi siswa.
+          </p>
+        </div>
+
+        <div class="copy-block">
+          <div class="copy-label">Fitur Unggulan Kelas Modern</div>
+          <ul style="margin-left:18px; font-size:0.92rem; color:var(--color-text-muted);">
+            <li><strong>Editor WYSIWYG Modern (Milkdown Crepe):</strong> Keleluasaan menyusun modul interaktif tanpa kendala format teknis.</li>
+            <li><strong>Bank Soal Stimulus HOTS:</strong> Merangsang daya nalar kritis siswa melalui studi kasus nyata dan data empiris.</li>
+            <li><strong>Pohon Ketuntasan Kompetensi Siswa:</strong> Analitik visual komparatif untuk intervensi remedial dan program pengayaan yang tepat sasaran.</li>
+            <li><strong>Keamanan Data Murid (UU PDP):</strong> Enkripsi tingkat bank untuk perlindungan privasi data akademik seluruh siswa.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 3: KEPSEK HEMAT -->
+    <div id="tab-sekolah-hemat" class="tab-content">
+      <div class="copy-card">
+        <div class="copy-card-header">
+          <h3><i data-lucide="dollar-sign" style="color:var(--color-amber);"></i> Naskah: Kepala Sekolah / Yayasan (Versi Hemat Biaya)</h3>
+          <span class="badge badge-amber">File: sekolah-hemat.html</span>
+        </div>
+
+        <div class="copy-block">
+          <div class="copy-label">Top Banner Finansial</div>
+          <div style="font-weight:700; color:var(--color-amber);">
+            💰 PERINGATAN KAS SEKOLAH: Tahukah Anda Berapa Belasan Juta Rupiah Anggaran Sekolah Terbuang Percuma untuk Biaya Kertas Fotokopi Ujian Setiap Semester?
+          </div>
+        </div>
+
+        <div class="copy-block">
+          <div class="copy-label">Hero Section</div>
+          <span class="badge badge-amber" style="margin-bottom:8px;">Solusi Efisiensi Finansial &amp; Operasional Sekolah</span>
+          <div class="copy-headline">
+            Pangkas Biaya Kertas Ujian Hingga 80% &amp; Tingkatkan Produktivitas Guru Sekolah Anda Sekaligus.
+          </div>
+          <p class="copy-subheadline">
+            Selamatkan kas sekolah dari pembengkakan belanja kertas HVS, tinta printer, dan biaya servis mesin fotokopi. Hadirkan ujian digital paperless yang anti-cheat langsung di ponsel siswa, dengan rekap nilai instan 1 detik ke Excel. Lebih hemat anggaran, guru bebas stres, reputasi sekolah meningkat.
+          </p>
+          <div class="copy-cta-row">
+            <span class="cta-preview-btn" style="background:var(--color-amber); color:#FFFFFF;">📊 Hitung Penghematan Anggaran Sekolah Anda</span>
+            <span class="cta-preview-btn cta-preview-secondary">Konsultasi Paket Sekolah via WhatsApp</span>
+          </div>
+        </div>
+
+        <div class="copy-block">
+          <div class="copy-label">Audit Pemborosan Anggaran Sekolah (Simulasi Riil 500 Siswa)</div>
+          <table style="background:#FFFFFF;">
+            <tr>
+              <td>Jumlah Kertas Ujian per Semester</td>
+              <td><strong>20.000 Lembar</strong> (500 siswa × 10 mapel × 4 lembar)</td>
+            </tr>
+            <tr>
+              <td>Biaya Belanja Kertas HVS + Toner Printer</td>
+              <td><strong>Rp7.500.000 / semester</strong></td>
+            </tr>
+            <tr>
+              <td>Uang Lembur Guru Mengoreksi Ujian Manual</td>
+              <td><strong>Rp3.000.000 / semester</strong></td>
+            </tr>
+            <tr style="background:var(--color-amber-subtle);">
+              <td><strong>Total Pemborosan Anggaran</strong></td>
+              <td><strong style="color:var(--color-amber); font-size:1.05rem;">> Rp21.000.000 Setiap Tahun!</strong></td>
+            </tr>
+          </table>
+        </div>
+
+        <div class="copy-block">
+          <div class="copy-label">Solusi Paperless Exam Engine Klassa</div>
+          <p style="font-size:0.92rem; color:var(--color-text-muted);">
+            • <strong>Zero Hardware Cost:</strong> Sekolah tidak perlu membangun lab komputer baru ratusan juta rupiah. Siswa menggunakan smartphone masing-masing dengan kode PIN sesi unik.<br>
+            • <strong>Rekap Nilai 1 Detik:</strong> Nilai ujian seluruh jenjang langsung terkapitulasi ke format Excel resmi seketika saat ujian selesai.<br>
+            • <strong>Paket Kemitraan Fleksibel:</strong> Akses semua dewan guru, siswa unlimited, dan pelatihan onboarding gratis dari tim ahli Klassa.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 4: KEPSEK INSTITUSI -->
+    <div id="tab-sekolah-pro" class="tab-content">
+      <div class="copy-card">
+        <div class="copy-card-header">
+          <h3><i data-lucide="building" style="color:var(--color-ai);"></i> Naskah: Kepala Sekolah / Yayasan (Versi Institusi)</h3>
+          <span class="badge badge-ai">File: sekolah-institusi.html</span>
+        </div>
+
+        <div class="copy-block">
+          <div class="copy-label">Hero Section</div>
+          <span class="badge badge-ai" style="margin-bottom:8px;">Sistem Tata Kelola Akademik Terpadu Sekolah Berakreditasi Unggul</span>
+          <div class="copy-headline">
+            Membangun Institusi Pendidikan Unggul: Tata Kelola Akademik Terstandarisasi, Aman, dan Siap Supervisi Dinas.
+          </div>
+          <p class="copy-subheadline">
+            Mengintegrasikan kepatuhan kurikulum seluruh dewan guru, monitoring ketuntasan kompetensi murid real-time, dan proteksi integritas data institusi berbasis NPSN dalam satu ekosistem cerdas.
+          </p>
+          <div class="copy-cta-row">
+            <span class="cta-preview-btn" style="background:var(--color-ai); color:#FFFFFF;">📄 Unduh Proposal Kerjasama Resmi (PDF)</span>
+            <span class="cta-preview-btn cta-preview-secondary">🗓️ Jadwalkan Audiensi Dewan Sekolah</span>
+          </div>
+        </div>
+
+        <div class="copy-block">
+          <div class="copy-label">Tiga Pilar Tata Kelola Sekolah Unggul</div>
+          <div style="font-size:0.92rem; color:var(--color-text-muted); display:flex; flex-direction:column; gap:8px;">
+            <div><strong>1. Standarisasi Perangkat Ajar Seluruh Guru:</strong> Mengeliminasi disparitas kualitas dokumen ajar antar-guru. Seluruh dokumen ajar seragam sesuai regulasi BSKAP terbaru.</div>
+            <div><strong>2. Dashboard Cockpit Pimpinan (Superadmin Lane):</strong> Kepala Sekolah memantau progres ketuntasan capaian belajar seluruh kelas dalam satu layar kendali visual.</div>
+            <div><strong>3. Mekanisme Rollover Kenaikan Kelas Atomik:</strong> Menjamin keamanan rekam jejak historis murid lintas tahun ajaran tanpa risiko data lama tertimpa.</div>
+            <div><strong>4. Kesiapan Penuh Audit Akreditasi:</strong> Tidak perlu membongkar gudang berkas fisik saat pengawas datang; semua portofolio dan asesmen terarsip rapi di cloud.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    function showTab(tabId) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+
+      const target = document.getElementById(tabId);
+      if (target) target.classList.add('active');
+
+      const clicked = event.currentTarget;
+      if (clicked) clicked.classList.add('active');
+    }
+
+    if (window.lucide) {
+      window.lucide.createIcons();
+    }
+  </script>
+</body>
+</html>
