@@ -4,8 +4,8 @@
   "description": "Official Premium Landing Page for KLASSA - AI Co-Pilot & Personal Workspace Guru Indonesia",
   "main": "index.html",
   "scripts": {
-    "dev": "npx -y serve . -p 3030",
-    "start": "npx -y serve . -p 3030"
+    "dev": "python -m http.server 3030",
+    "start": "python -m http.server 3030"
   },
   "keywords": [
     "klassa",

@@ -1,7 +1,7 @@
 /**
  * ============================================================================
- * KLASSA — Official Interactive & Motion Engine
- * Aesthetics: 60/120 FPS GPU Accelerated, 3D Tilt, Gyroscope, Dynamic Physics
+ * KLASSA — Official Interactive & Motion Engine (v4.0)
+ * Ultra-Smooth LERP Physics, Calm Parallax & Majestic Slow Reveals
  * ============================================================================
  */
 
@@ -11,595 +11,766 @@ document.addEventListener('DOMContentLoaded', () => {
     window.lucide.createIcons();
   }
 
-  // 2. Global Theme Switcher (Dark / Light)
-  initThemeToggle();
+  // 2. Sticky Navbar Blur & Mobile Drawer
+  initNavbarAndDrawer();
 
-  // 3. Header Scrolled Shadow & Mobile Menu
-  initHeaderAndMobileMenu();
+  // 3. Slow, Majestic Scroll-Triggered Entrance Reveals (1.2s Duration)
+  initScrollReveal();
 
-  // 4. Seksi 1: 3D Perspective Tilt on Cockpit & Fast AI Typewriter
-  initHero3DTilt();
-  initAITypewriter();
-  initLiveQuizCounter();
+  // 4. Ultra-Smooth LERP Physics Parallax Engine
+  initLerpParallaxEngine();
 
-  // 5. Seksi 3: Midnight Digital Clock Agitation
-  initMidnightClock();
+  // 5. Cockpit 3D Mouse Perspective with LERP Damping
+  initCockpitMouseTilt();
 
-  // 6. Seksi 4: Cosmic Convergence Magnetic Pull & Shockwave
-  initConvergenceSimulation();
+  // 6. FAQ Accordion Interaction
+  initFaqAccordion();
 
-  // 7. Seksi 5: Bento Showstoppers (Stamp Impact, Anti-Cheat Radar, 1-Tap Attendance)
-  initBentoShowstoppers();
+  // 7. Sticky Bottom Mobile CTA on Scroll
+  initStickyMobileCta();
 
-  // 8. Seksi 6: Hexagonal Radar Bloom Matrix
-  initHexagonalRadarBloom();
+  // 8. Demo Video Walkthrough Timer
+  initDemoWalkthrough();
 
-  // 9. Seksi 7: Dual Morphing Arena (Portal Guru vs Siswa)
-  initDualMorphingArena();
+  // 9. Ecosystem Interactive Device Stage
+  initEcosystemInteractiveStage();
 
-  // 10. Seksi 8: Time-Swipe Curtain Slider (Curtain Before vs After)
-  initCurtainSwipeSlider();
-
-  // 11. Seksi 10: Pricing Spring Bouncing Toggle
-  initPricingSpringToggle();
-
-  // 12. Seksi 12: Liquid Smooth Accordion FAQ
-  initLiquidAccordion();
-
-  // 13. Social Proof Toast Simulation & Demo Modal
-  initSocialProofToasts();
+  // 10. Synchronized 5-Point Timeline & Problem Carousel
+  initProblemCarousel();
 });
 
 /* ============================================================================
-   1. THEME SWITCHER
+   2. NAVBAR & MOBILE DRAWER
    ============================================================================ */
-function initThemeToggle() {
-  const themeToggleBtn = document.getElementById('theme-toggle-btn');
-  const savedTheme = localStorage.getItem('klassa-theme') || 'dark'; // Default dark pine bioluminescent
+function initNavbarAndDrawer() {
+  const navbar = document.getElementById('site-navbar');
+  const toggleBtn = document.getElementById('mobile-toggle-btn');
+  const closeBtn = document.getElementById('drawer-close-btn');
+  const drawer = document.getElementById('mobile-drawer');
 
-  document.documentElement.setAttribute('data-theme', savedTheme);
-
-  if (themeToggleBtn) {
-    themeToggleBtn.addEventListener('click', () => {
-      const currentTheme = document.documentElement.getAttribute('data-theme');
-      const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
-      document.documentElement.setAttribute('data-theme', nextTheme);
-      localStorage.setItem('klassa-theme', nextTheme);
-      if (window.lucide) window.lucide.createIcons();
-    });
-  }
-}
-
-/* ============================================================================
-   2. HEADER & MOBILE DRAWER
-   ============================================================================ */
-function initHeaderAndMobileMenu() {
-  const siteHeader = document.getElementById('site-header');
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 20) {
-      siteHeader.classList.add('scrolled');
+    if (window.scrollY > 30) {
+      navbar.classList.add('scrolled');
     } else {
-      siteHeader.classList.remove('scrolled');
+      navbar.classList.remove('scrolled');
     }
   }, { passive: true });
 
-  const btnOpenMobile = document.getElementById('btn-open-mobile');
-  const btnCloseMobile = document.getElementById('btn-close-mobile');
-  const mobileDrawer = document.getElementById('mobile-drawer');
-
-  if (btnOpenMobile && mobileDrawer) {
-    btnOpenMobile.addEventListener('click', () => {
-      mobileDrawer.classList.add('open');
+  if (toggleBtn && drawer) {
+    toggleBtn.addEventListener('click', () => {
+      drawer.classList.add('open');
     });
   }
 
-  if (btnCloseMobile && mobileDrawer) {
-    btnCloseMobile.addEventListener('click', () => {
-      mobileDrawer.classList.remove('open');
+  if (closeBtn && drawer) {
+    closeBtn.addEventListener('click', () => {
+      drawer.classList.remove('open');
     });
   }
 }
 
 function closeMobileDrawer() {
-  const mobileDrawer = document.getElementById('mobile-drawer');
-  if (mobileDrawer) {
-    mobileDrawer.classList.remove('open');
-  }
+  const drawer = document.getElementById('mobile-drawer');
+  if (drawer) drawer.classList.remove('open');
 }
 
 /* ============================================================================
-   SEKSI 1: 3D PERSPECTIVE TILT & AI TYPEWRITER
+   3. MAJESTIC SLOW ENTRANCE REVEALS (1.2s Duration)
    ============================================================================ */
-function initHero3DTilt() {
-  const container = document.getElementById('hero-cockpit-container');
-  const card = document.getElementById('cockpit-card');
-  if (!container || !card) return;
+function initScrollReveal() {
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const revealElements = document.querySelectorAll('.reveal-on-scroll');
 
-  // Mouse move perspective 3D tilt
-  container.addEventListener('mousemove', (e) => {
-    const rect = container.getBoundingClientRect();
-    const x = e.clientX - rect.left; // x position within container
-    const y = e.clientY - rect.top;  // y position within container
-
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-
-    const rotateX = ((y - centerY) / centerY) * -10; // Max tilt 10 deg
-    const rotateY = ((x - centerX) / centerX) * 12;
-
-    card.style.transform = `perspective(1200px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) scale3d(1.02, 1.02, 1.02)`;
-  });
-
-  // Reset to original flat position on leave
-  container.addEventListener('mouseleave', () => {
-    card.style.transform = 'perspective(1200px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
-  });
-}
-
-function initAITypewriter() {
-  const textElement = document.getElementById('ai-typewriter-text');
-  const downloadBtn = document.getElementById('btn-demo-download-docx');
-  if (!textElement) return;
-
-  const sampleDoc = `KLASSA AI STUDIO — PENYUSUNAN MODUL AJAR RESMI
-Mata Pelajaran: IPAS (Ilmu Pengetahuan Alam & Sosial)
-Fase / Kelas: B / Kelas 4 SD (Semester 1)
-Regulasi Acuan: BSKAP Kemendikbudristek No. 032/H/KR/2024
-
-[A. TUJUAN PEMBELAJARAN (TP)]
-1. Menganalisis hubungan antarmakhluk hidup dalam suatu ekosistem secara kritis.
-2. Menggambar bagan rantai makanan berbasis kearifan lokal lingkungan sekitar.
-
-[B. LANGKAH PEMBELAJARAN BERDIFERENSIASI]
-• Visual: Mengamati infografik siklus energi produsen ke konsumen puncak.
-• Auditori: Diskusi kelompok kecil menceritakan peran dekomposer tanah.
-• Kinestetik: Simulasi jaring-jaring makanan menggunakan kartu peran siswa.
-
-[C. ASESMEN FORMATIF & RUBRIK PENILAIAN]
-Kriteria Ketuntasan Tujuan Pembelajaran (KKTP): 4 Skala Deskriptor Siap Cetak.`;
-
-  let charIndex = 0;
-  let isStreaming = true;
-
-  function streamNextChar() {
-    if (!isStreaming) return;
-
-    if (charIndex < sampleDoc.length) {
-      textElement.innerHTML = escapeHtml(sampleDoc.substring(0, charIndex + 1)) + '<span class="blinking-cursor"></span>';
-      charIndex += 2; // Fast streaming speed
-      const delay = Math.random() * 15 + 10;
-      setTimeout(streamNextChar, delay);
-    } else {
-      textElement.innerHTML = escapeHtml(sampleDoc);
-      if (downloadBtn) {
-        downloadBtn.style.boxShadow = '0 0 25px rgba(20, 184, 166, 0.8)';
-        downloadBtn.innerHTML = '<i data-lucide="check-circle" style="width:14px; height:14px;"></i> Siap Diunduh (.docx)';
-        if (window.lucide) window.lucide.createIcons();
-      }
-    }
+  if (prefersReduced) {
+    revealElements.forEach(el => el.classList.add('revealed'));
+    return;
   }
 
-  // Trigger stream after short greeting delay
-  setTimeout(() => {
-    streamNextChar();
-  }, 600);
-
-  if (downloadBtn) {
-    downloadBtn.addEventListener('click', () => {
-      alert('Dokumen Word Modul Ajar (.docx) berhasil digenerate dengan standar BSKAP 032! Siap dicetak langsung.');
-    });
-  }
-}
-
-function escapeHtml(text) {
-  return text
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;");
-}
-
-function initLiveQuizCounter() {
-  const counter = document.getElementById('live-quiz-counter');
-  if (!counter) return;
-
-  let count = 36;
-  setInterval(() => {
-    if (Math.random() > 0.6) {
-      count = 36 + Math.floor(Math.random() * 4);
-      counter.innerText = count;
-    }
-  }, 4500);
-}
-
-/* ============================================================================
-   SEKSI 3: MIDNIGHT DIGITAL CLOCK AGITATION
-   ============================================================================ */
-function initMidnightClock() {
-  const clockElement = document.getElementById('midnight-clock');
-  if (!clockElement) return;
-
-  let seconds = 38;
-  setInterval(() => {
-    seconds++;
-    if (seconds >= 60) seconds = 0;
-    const secStr = seconds < 10 ? '0' + seconds : seconds;
-    clockElement.innerHTML = `<span class="clock-dot"></span><span>01:14:${secStr} AM</span>`;
-  }, 1000);
-}
-
-/* ============================================================================
-   SEKSI 4: COSMIC CONVERGENCE SIMULATION (MAGNETIC SUCTION)
-   ============================================================================ */
-function initConvergenceSimulation() {
-  const btn = document.getElementById('btn-trigger-convergence');
-  const nodes = [
-    document.getElementById('cnode-1'),
-    document.getElementById('cnode-2'),
-    document.getElementById('cnode-3'),
-    document.getElementById('cnode-4')
-  ];
-  const core = document.getElementById('klassa-monogram-core');
-  const status = document.getElementById('convergence-status');
-  if (!btn || !core) return;
-
-  let converged = false;
-
-  btn.addEventListener('click', () => {
-    if (!converged) {
-      // Pull nodes magnetically to the center core
-      nodes.forEach(node => {
-        if (node) {
-          node.style.transition = 'all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
-          node.style.transform = 'scale(0.3)';
-          node.style.opacity = '0';
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // Staggered delay for sibling cards (140ms apart)
+        const parent = entry.target.parentElement;
+        if (parent && parent.children) {
+          const siblings = Array.from(parent.querySelectorAll('.reveal-on-scroll'));
+          const idx = siblings.indexOf(entry.target);
+          if (idx > 0) {
+            entry.target.style.transitionDelay = `${idx * 140}ms`;
+          }
         }
-      });
-
-      // Expand pulse core
-      core.style.transform = 'scale(1.25)';
-      core.style.boxShadow = '0 0 90px rgba(45, 212, 191, 0.9)';
-
-      status.innerHTML = '✨ <strong>Sukses! Seluruh data menyatu di KLASSA:</strong> Rapor, presensi, jurnal, dan modul ajar terintegrasi tanpa redundansi!';
-      status.style.color = '#10B981';
-      btn.innerHTML = '<i data-lucide="rotate-ccw" style="width:16px; height:16px;"></i> Kembalikan Simulasi';
-      if (window.lucide) window.lucide.createIcons();
-      converged = true;
-    } else {
-      // Reset
-      nodes.forEach(node => {
-        if (node) {
-          node.style.transform = 'scale(1)';
-          node.style.opacity = '1';
-        }
-      });
-      core.style.transform = 'scale(1)';
-      core.style.boxShadow = '0 0 50px rgba(20,184,166,0.5)';
-      status.innerText = 'Klik tombol untuk menyedot seluruh file ke ekosistem terpadu KLASSA!';
-      status.style.color = 'var(--color-primary)';
-      btn.innerHTML = '<i data-lucide="wand-2" style="width:16px; height:16px;"></i> Simulasikan Penyatuan Magnetik';
-      if (window.lucide) window.lucide.createIcons();
-      converged = false;
-    }
-  });
-}
-
-/* ============================================================================
-   SEKSI 5: BENTO SHOWSTOPPERS
-   ============================================================================ */
-function initBentoShowstoppers() {
-  // 1. Radar Anti-Cheat Alarm on Mouse Leave
-  const radarBox = document.getElementById('radar-box');
-  const radarWarning = document.getElementById('radar-warning');
-
-  if (radarBox && radarWarning) {
-    radarBox.addEventListener('mouseleave', () => {
-      radarWarning.style.display = 'block';
-      radarBox.style.borderColor = '#EF4444';
-      radarBox.style.boxShadow = '0 0 30px rgba(239, 68, 68, 0.5)';
-    });
-
-    radarBox.addEventListener('mouseenter', () => {
-      radarWarning.style.display = 'none';
-      radarBox.style.borderColor = 'var(--color-border)';
-      radarBox.style.boxShadow = 'none';
-    });
-  }
-
-  // 2. Attendance 1-Tap Animated Circle Fill
-  const btnAttendance = document.getElementById('btn-tap-attendance');
-  const attendanceCircle = document.getElementById('attendance-circle-bar');
-  const attendancePercentage = document.getElementById('attendance-percentage');
-  const tapAttendanceLabel = document.getElementById('tap-attendance-label');
-
-  if (btnAttendance && attendanceCircle) {
-    let isFull = true;
-
-    btnAttendance.addEventListener('click', () => {
-      if (isFull) {
-        // Reset to partial attendance
-        attendanceCircle.style.strokeDashoffset = '70'; // ~60%
-        attendancePercentage.innerText = '60%';
-        attendancePercentage.style.color = '#F59E0B';
-        tapAttendanceLabel.innerText = 'Sentuh: "Hadirkan 14 Siswa Lagi"';
-        isFull = false;
-      } else {
-        // Animate to 100% full
-        attendanceCircle.style.strokeDashoffset = '0'; // 100%
-        attendancePercentage.innerText = '100%';
-        attendancePercentage.style.color = '#10B981';
-        tapAttendanceLabel.innerText = '✓ Kelas VIII-A Tuntas (36/36 Hadir)';
-        isFull = true;
+        entry.target.classList.add('revealed');
+        observer.unobserve(entry.target);
       }
     });
-  }
-}
+  }, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  });
 
-function triggerStampEffect() {
-  const stamp = document.getElementById('stamp-bskap');
-  if (!stamp) return;
-
-  stamp.style.animation = 'none';
-  // Trigger DOM reflow
-  void stamp.offsetWidth;
-  stamp.style.animation = 'stamp-drop 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+  revealElements.forEach(el => observer.observe(el));
 }
 
 /* ============================================================================
-   SEKSI 6: HEXAGONAL RADAR BLOOM MATRIX
+   4. ULTRA-SMOOTH LERP PARALLAX ENGINE (No Jitter, Zero Layout Thrashing)
    ============================================================================ */
-function initHexagonalRadarBloom() {
-  const studentCard = document.getElementById('card-radar-student');
-  const polygon = document.getElementById('radar-bloom-polygon');
+let smoothedScrollY = window.pageYOffset || document.documentElement.scrollTop;
+let targetScrollY = smoothedScrollY;
 
-  if (studentCard && polygon) {
-    const normalPoints = "100,45 145,75 140,110 100,135 60,110 60,75";
-    const bloomPoints = "100,20 175,55 170,125 100,165 25,120 25,60";
+// Cockpit tilt state with LERP
+let targetTiltX = 0;
+let targetTiltY = 0;
+let currentTiltX = 0;
+let currentTiltY = 0;
 
-    studentCard.addEventListener('mouseenter', () => {
-      polygon.setAttribute('points', bloomPoints);
-      polygon.style.fill = 'rgba(20, 184, 166, 0.55)';
-    });
+// Universal Parallax Registry for ALL sections
+let parallaxRegistry = [];
 
-    studentCard.addEventListener('mouseleave', () => {
-      polygon.setAttribute('points', normalPoints);
-      polygon.style.fill = 'rgba(20, 184, 166, 0.25)';
-    });
-  }
-}
+function updateParallaxMetrics() {
+  const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+  const elements = document.querySelectorAll('[data-parallax-depth]');
+  
+  parallaxRegistry = Array.from(elements).map(el => {
+    const depth = parseFloat(el.getAttribute('data-parallax-depth')) || 0;
+    const rot = parseFloat(el.getAttribute('data-parallax-rot')) || 0;
+    const rect = el.getBoundingClientRect();
+    const top = rect.top + currentScroll;
+    const height = rect.height;
+    const id = el.id || '';
+    const isSpecialGlow = el.classList.contains('ambient-glow-top');
+    const isCockpit = id === 'cockpit-window';
+    const isChip1 = id === 'float-chip-1';
+    const isChip2 = id === 'float-chip-2';
+    const isChip3 = id === 'float-chip-3';
 
-/* ============================================================================
-   SEKSI 7: DUAL MORPHING ARENA (PORTAL GURU VS SISWA)
-   ============================================================================ */
-function initDualMorphingArena() {
-  const btnGuru = document.getElementById('morph-btn-guru');
-  const btnSiswa = document.getElementById('morph-btn-siswa');
-
-  const descTag = document.getElementById('morph-mode-tag');
-  const descTitle = document.getElementById('morph-mode-title');
-  const descParagraph = document.getElementById('morph-mode-paragraph');
-  const descList = document.getElementById('morph-mode-list');
-
-  const guruMockup = document.getElementById('mockup-guru-view');
-  const siswaMockup = document.getElementById('mockup-siswa-view');
-
-  if (!btnGuru || !btnSiswa) return;
-
-  btnGuru.addEventListener('click', () => {
-    btnGuru.classList.add('active');
-    btnSiswa.classList.remove('active');
-
-    descTag.className = 'badge badge-teal';
-    descTag.innerText = 'Portal Guru • Ruang Kerja Komprehensif';
-    descTitle.innerText = 'Kendali Penuh Administrasi & Penilaian Mengajar';
-    descParagraph.innerText = 'Guru menikmati dashboard luas berfitur lengkap di laptop: merancang asesmen berdiferensiasi, memantau pengumpulan tugas siswa secara langsung, dan mengekspor rekap capaian nilai dalam sekali klik.';
-
-    descList.innerHTML = `
-      <li style="display:flex; align-items:center; gap:10px;"><i data-lucide="check-circle-2" style="color:var(--color-mint); width:18px; height:18px;"></i> AI Modul Ajar Generator &amp; Bank Soal HOTS</li>
-      <li style="display:flex; align-items:center; gap:10px;"><i data-lucide="check-circle-2" style="color:var(--color-mint); width:18px; height:18px;"></i> Rekap Presensi &amp; Jurnal Harian Otomatis</li>
-      <li style="display:flex; align-items:center; gap:10px;"><i data-lucide="check-circle-2" style="color:var(--color-mint); width:18px; height:18px;"></i> Penguncian Layar Ujian Anti-Cheat</li>
-    `;
-
-    guruMockup.style.display = 'block';
-    siswaMockup.style.display = 'none';
-    if (window.lucide) window.lucide.createIcons();
-  });
-
-  btnSiswa.addEventListener('click', () => {
-    btnSiswa.classList.add('active');
-    btnGuru.classList.remove('active');
-
-    descTag.className = 'badge badge-ai';
-    descTag.innerText = 'Portal Siswa • Akses Cepat Ramah Murid';
-    descTitle.innerText = 'Login Cepat Tanpa Email: Cukup Nomor Induk & PIN';
-    descParagraph.innerText = 'Siswa mengakses materi, mengikuti kuis anti-cheat, dan mengunggah dokumen tugas langsung dari smartphone mereka tanpa kendala lupa password akun Google.';
-
-    descList.innerHTML = `
-      <li style="display:flex; align-items:center; gap:10px;"><i data-lucide="check-circle-2" style="color:var(--color-ai); width:18px; height:18px;"></i> Akses instan via browser HP tanpa instal aplikasi</li>
-      <li style="display:flex; align-items:center; gap:10px;"><i data-lucide="check-circle-2" style="color:var(--color-ai); width:18px; height:18px;"></i> Sistem PIN acak aman tanpa password rumit</li>
-      <li style="display:flex; align-items:center; gap:10px;"><i data-lucide="check-circle-2" style="color:var(--color-ai); width:18px; height:18px;"></i> Pengunggahan file tugas langsung ke cloud aman</li>
-    `;
-
-    guruMockup.style.display = 'none';
-    siswaMockup.style.display = 'block';
-    if (window.lucide) window.lucide.createIcons();
+    return {
+      el,
+      depth,
+      rot,
+      top,
+      height,
+      id,
+      isSpecialGlow,
+      isCockpit,
+      isChip1,
+      isChip2,
+      isChip3
+    };
   });
 }
 
-/* ============================================================================
-   SEKSI 8: TIME-SWIPE CURTAIN SLIDER
-   ============================================================================ */
-function initCurtainSwipeSlider() {
-  const container = document.getElementById('curtain-swipe-wrapper');
-  const afterLayer = document.getElementById('curtain-after-layer');
-  const handleLine = document.getElementById('curtain-handle-line');
-  const handleCircle = document.getElementById('curtain-handle-circle');
+function initLerpParallaxEngine() {
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReduced) return;
 
-  if (!container || !afterLayer || !handleLine || !handleCircle) return;
+  // Initial metric caching (prevents layout thrashing in RAF loop)
+  updateParallaxMetrics();
 
-  let isDragging = false;
-
-  function updateCurtain(clientX) {
-    const rect = container.getBoundingClientRect();
-    let offsetX = clientX - rect.left;
-    let percentage = (offsetX / rect.width) * 100;
-
-    if (percentage < 5) percentage = 5;
-    if (percentage > 95) percentage = 95;
-
-    afterLayer.style.clipPath = `polygon(0 0, ${percentage}% 0, ${percentage}% 100%, 0 100%)`;
-    handleLine.style.left = `${percentage}%`;
-    handleCircle.style.left = `${percentage}%`;
-  }
-
-  container.addEventListener('mousedown', (e) => {
-    isDragging = true;
-    updateCurtain(e.clientX);
-  });
-
-  window.addEventListener('mouseup', () => {
-    isDragging = false;
-  });
-
-  window.addEventListener('mousemove', (e) => {
-    if (!isDragging) return;
-    updateCurtain(e.clientX);
-  });
-
-  // Touch Support for Mobile / Tablet
-  container.addEventListener('touchstart', (e) => {
-    isDragging = true;
-    if (e.touches[0]) updateCurtain(e.touches[0].clientX);
+  // Recalculate metrics on resize and when images/fonts finish loading
+  window.addEventListener('resize', () => {
+    updateParallaxMetrics();
   }, { passive: true });
 
-  window.addEventListener('touchend', () => {
-    isDragging = false;
+  window.addEventListener('load', () => {
+    updateParallaxMetrics();
   });
 
-  window.addEventListener('touchmove', (e) => {
-    if (!isDragging || !e.touches[0]) return;
-    updateCurtain(e.touches[0].clientX);
+  // Track target scroll
+  window.addEventListener('scroll', () => {
+    targetScrollY = window.pageYOffset || document.documentElement.scrollTop;
   }, { passive: true });
-}
 
-/* ============================================================================
-   SEKSI 10: PRICING SPRING TOGGLE SWITCH
-   ============================================================================ */
-function initPricingSpringToggle() {
-  const toggleSwitch = document.getElementById('pricing-toggle-switch');
-  const toggleKnob = document.getElementById('pricing-toggle-knob');
-  const discountBadge = document.getElementById('discount-badge');
-  const proPriceVal = document.getElementById('pro-price-val');
-  const proPeriodLabel = document.getElementById('pro-period-label');
+  const connector = document.getElementById('workflow-connector');
+  const connectorFill = document.getElementById('connector-line-fill');
 
-  if (!toggleSwitch || !toggleKnob) return;
+  // Ultra-Smooth 60/120 FPS Physics Loop
+  function loop(time) {
+    // LERP smoothing: 0.085 creates velvety, responsive physical momentum
+    smoothedScrollY += (targetScrollY - smoothedScrollY) * 0.085;
 
-  let isYearly = false;
+    // Cockpit mouse tilt LERP damping
+    currentTiltX += (targetTiltX - currentTiltX) * 0.07;
+    currentTiltY += (targetTiltY - currentTiltY) * 0.07;
 
-  toggleSwitch.addEventListener('click', () => {
-    isYearly = !isYearly;
+    const windowH = window.innerHeight;
+    const viewportTop = smoothedScrollY;
+    const viewportBottom = smoothedScrollY + windowH;
+    const viewportCenter = smoothedScrollY + windowH * 0.5;
+    const t = time * 0.0016; // smooth oscillation clock
 
-    if (isYearly) {
-      toggleKnob.classList.add('yearly');
-      if (discountBadge) {
-        discountBadge.style.transform = 'scale(1.2) rotate(-3deg)';
-        setTimeout(() => {
-          discountBadge.style.transform = 'scale(1) rotate(0deg)';
-        }, 300);
+    // Loop through ALL registered parallax items across all 12 sections
+    for (let i = 0; i < parallaxRegistry.length; i++) {
+      const item = parallaxRegistry[i];
+
+      // Visibility buffer: only process when visible in viewport (+250px buffer)
+      if (viewportBottom > item.top - 250 && viewportTop < item.top + item.height + 250) {
+        const itemCenter = item.top + item.height * 0.5;
+        const distFromCenter = viewportCenter - itemCenter;
+
+        // Progress ratio relative to viewport height
+        const progress = distFromCenter / windowH;
+
+        // Parallax vertical displacement in px (calm & elegant)
+        const yShift = progress * item.depth * 140;
+
+        // Specific element handling:
+        if (item.isCockpit) {
+          // Cockpit combines 3D mouse tilt + organic float drift + scroll parallax
+          const floatY = Math.sin(t * 0.6) * 4;
+          const totalCockpitY = yShift + floatY;
+          item.el.style.transform = `perspective(1000px) rotateX(${currentTiltX.toFixed(2)}deg) rotateY(${currentTiltY.toFixed(2)}deg) translate3d(0, ${totalCockpitY.toFixed(2)}px, 0)`;
+        } else if (item.isChip1) {
+          // Chip 1: Modul Ajar (organic floating sine wave A)
+          const floatY = Math.sin(t * 0.9) * 6;
+          item.el.style.transform = `translate3d(0, ${(yShift + floatY).toFixed(2)}px, 0)`;
+        } else if (item.isChip2) {
+          // Chip 2: Presensi (organic floating cosine wave B)
+          const floatY = Math.cos(t * 0.8) * 5;
+          item.el.style.transform = `translate3d(0, ${(yShift + floatY).toFixed(2)}px, 0)`;
+        } else if (item.isChip3) {
+          // Chip 3: Koreksi AI (organic floating sine wave C)
+          const floatY = Math.sin(t * 1.05 + 1.8) * 7;
+          item.el.style.transform = `translate3d(0, ${(yShift + floatY).toFixed(2)}px, 0)`;
+        } else if (item.isSpecialGlow) {
+          // Ambient Glow Top: preserves translateX(-50%)
+          item.el.style.transform = `translate3d(-50%, ${yShift.toFixed(2)}px, 0)`;
+        } else if (item.rot !== 0) {
+          // Elements with subtle rotation (e.g. K-wing SVG)
+          const rotDeg = progress * item.rot * 120;
+          item.el.style.transform = `translate3d(0, ${yShift.toFixed(2)}px, 0) rotate(${rotDeg.toFixed(2)}deg)`;
+        } else {
+          // Standard parallax items across Section 2 - 16
+          item.el.style.transform = `translate3d(0, ${yShift.toFixed(2)}px, 0)`;
+        }
       }
-      if (proPriceVal) proPriceVal.innerText = 'Rp 299.000';
-      if (proPeriodLabel) proPeriodLabel.innerText = 'per tahun (~Rp 24.900/bulan • Hemat 50%)';
-    } else {
-      toggleKnob.classList.remove('yearly');
-      if (proPriceVal) proPriceVal.innerText = 'Rp 49.000';
-      if (proPeriodLabel) proPeriodLabel.innerText = 'per bulan (ditagih bulanan)';
     }
-  });
-}
 
-/* ============================================================================
-   SEKSI 12: LIQUID SMOOTH ACCORDION FAQ
-   ============================================================================ */
-function initLiquidAccordion() {
-  const faqItems = document.querySelectorAll('.faq-item');
-
-  faqItems.forEach(item => {
-    const btn = item.querySelector('.faq-question-btn');
-    if (!btn) return;
-
-    btn.addEventListener('click', () => {
-      const isOpen = item.classList.contains('open');
-
-      // Close all other items for clean liquid feel
-      faqItems.forEach(otherItem => {
-        otherItem.classList.remove('open');
-      });
-
-      if (!isOpen) {
-        item.classList.add('open');
+    // Workflow connector track fill in Section 6
+    if (connector && connectorFill) {
+      const connTop = connector.offsetTop;
+      if (viewportBottom > connTop && smoothedScrollY < connTop + windowH) {
+        const progress = Math.min(1, Math.max(0, (viewportBottom - connTop) / (windowH * 0.6)));
+        connectorFill.style.width = `${(progress * 100).toFixed(1)}%`;
       }
-    });
-  });
+    }
+
+    requestAnimationFrame(loop);
+  }
+
+  requestAnimationFrame(loop);
 }
 
 /* ============================================================================
-   SOCIAL PROOF TOAST SIMULATOR & DEMO MODAL
+   5. COCKPIT 3D MOUSE PERSPECTIVE
    ============================================================================ */
-function initSocialProofToasts() {
-  const toast = document.getElementById('social-toast');
-  const toastTitle = document.getElementById('toast-title');
-  const toastDesc = document.getElementById('toast-desc');
+function initCockpitMouseTilt() {
+  const viewport = document.getElementById('cockpit-viewport');
+  if (!viewport) return;
 
-  if (!toast) return;
+  viewport.addEventListener('mousemove', (e) => {
+    const rect = viewport.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
 
-  const activities = [
-    { title: "Guru di SMPN 2 Bandung", desc: "Baru saja mengunduh Modul Ajar Matematika Fase D (.docx)" },
-    { title: "Guru di SMAN 1 Yogyakarta", desc: "Selesai koreksi kuis 36 siswa dalam 1 detik" },
-    { title: "Guru di SDN 03 Menteng Jakarta", desc: "Berhasil mengimpor 32 data siswa dari Dapodik" },
-    { title: "Guru di SMKN 4 Surabaya", desc: "Mengaktifkan ujian anti-cheat untuk 4 kelas paralel" }
+    targetTiltX = -(y / rect.height) * 7; // max 7deg tilt
+    targetTiltY = (x / rect.width) * 7;
+  });
+
+  viewport.addEventListener('mouseleave', () => {
+    targetTiltX = 0;
+    targetTiltY = 0;
+  });
+}
+
+function simulateCockpitAction() {
+  alert('✦ KLASSA AI Co-Pilot: "Modul Ajar Matematika Fase D telah diselaraskan dengan Capaian Pembelajaran BSKAP terbaru. Apakah Anda ingin mengunduh draft .docx sekarang?"');
+}
+
+/* ============================================================================
+   6. FEATURE 1: AI STUDIO MODUL AJAR SIMULATOR
+   ============================================================================ */
+function triggerAISimulator() {
+  const el = document.getElementById('ai-simulator-card');
+  if (el) {
+    el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    runAIGenerationSimulation();
+  }
+}
+
+function runAIGenerationSimulation() {
+  const btn = document.getElementById('btn-run-ai-sim');
+  const btnText = document.getElementById('sim-btn-text');
+  const stepsContainer = document.getElementById('ai-generation-steps');
+  const preview = document.getElementById('sim-doc-preview');
+
+  if (!btn || !stepsContainer) return;
+
+  btn.disabled = true;
+  btnText.textContent = 'KLASSA AI sedang menyusun...';
+  stepsContainer.style.display = 'flex';
+  preview.style.opacity = '0.5';
+
+  const steps = [
+    { id: 'ai-step-1', text: 'Memahami konteks kelas & CP ✓' },
+    { id: 'ai-step-2', text: 'Menyusun aktivitas berdiferensiasi ✓' },
+    { id: 'ai-step-3', text: 'Membuat rubrik asesmen lengkap ✓' },
+    { id: 'ai-step-4', text: 'Menyiapkan dokumen Word .docx siap unduh ✓' }
   ];
 
-  let actIdx = 0;
+  steps.forEach((step) => {
+    const el = document.getElementById(step.id);
+    if (el) {
+      el.classList.remove('done');
+      el.querySelector('span').textContent = step.text.replace(' ✓', '...');
+    }
+  });
 
-  function showNextToast() {
-    const current = activities[actIdx];
-    if (toastTitle) toastTitle.innerText = current.title;
-    if (toastDesc) toastDesc.innerText = current.desc;
+  let currentStep = 0;
+  const interval = setInterval(() => {
+    if (currentStep < steps.length) {
+      const el = document.getElementById(steps[currentStep].id);
+      if (el) {
+        el.classList.add('done');
+        el.querySelector('span').textContent = steps[currentStep].text;
+      }
+      currentStep++;
+    } else {
+      clearInterval(interval);
+      btn.disabled = false;
+      btnText.textContent = 'Modul Selesai Dibuat ✦ Generate Ulang';
+      preview.style.opacity = '1';
+      if (window.lucide) window.lucide.createIcons();
+    }
+  }, 450);
+}
 
-    toast.style.transform = 'translateY(0)';
+/* ============================================================================
+   7. FEATURE 2: SMART ASSESSMENT SIMULATOR
+   ============================================================================ */
+let isQuizSubmitted = false;
+
+function simulateQuizSubmit() {
+  const studentCount = document.getElementById('quiz-student-count');
+  const statusTag = document.getElementById('quiz-status-tag');
+  const warning = document.getElementById('tab-warning-bubble');
+  const flowIndicator = document.getElementById('assessment-flow-indicator');
+
+  if (!studentCount || !statusTag) return;
+
+  if (!isQuizSubmitted) {
+    studentCount.textContent = '32/32';
+    statusTag.textContent = 'Koreksi Otomatis Selesai (100%)';
+    statusTag.style.color = '#10B981';
+
+    if (warning) {
+      warning.innerHTML = '<i data-lucide="shield-check" style="width: 12px; height: 12px;"></i><span>Anti-Cheat Aman: 0 pelanggaran tab</span>';
+      warning.style.color = '#15803D';
+      warning.style.backgroundColor = '#DCFCE7';
+    }
+
+    if (flowIndicator) {
+      flowIndicator.style.backgroundColor = '#CCFBF1';
+    }
+
+    isQuizSubmitted = true;
+    if (window.lucide) window.lucide.createIcons();
 
     setTimeout(() => {
-      toast.style.transform = 'translateY(120px)';
-      actIdx = (actIdx + 1) % activities.length;
-      setTimeout(showNextToast, 9000);
-    }, 4500);
-  }
-
-  setTimeout(showNextToast, 4000);
-}
-
-function openDemoModal() {
-  const modal = document.getElementById('demo-modal');
-  if (modal) {
-    modal.style.display = 'flex';
+      alert('✓ 32 Siswa berhasil submit ujian!\nKoreksi otomatis selesai, skor tersimpan, dan rekap Excel siap dicetak.');
+    }, 300);
+  } else {
+    studentCount.textContent = '31/32';
+    statusTag.textContent = 'Sedang Mengoreksi...';
+    statusTag.style.color = '#F59E0B';
+    isQuizSubmitted = false;
   }
 }
 
-function closeDemoModal() {
-  const modal = document.getElementById('demo-modal');
-  if (modal) {
-    modal.style.display = 'none';
+/* ============================================================================
+   8. FEATURE 3: ATTENDANCE TAP SIMULATOR
+   ============================================================================ */
+function simulateAttendanceAll() {
+  const toast = document.getElementById('journal-toast');
+  const dimasStatus = document.getElementById('student-dimas-status');
+
+  if (dimasStatus) {
+    dimasStatus.className = 'status-pill status-hadir';
+    dimasStatus.textContent = 'Hadir';
+  }
+
+  if (toast) {
+    toast.style.display = 'flex';
+    toast.style.animation = 'none';
+    setTimeout(() => {
+      toast.style.animation = 'toast-glow 1.5s infinite alternate';
+    }, 10);
   }
 }
 
-function handleDemoSubmit(e) {
+function toggleStudentAttendance(index) {
+  const dimasStatus = document.getElementById('student-dimas-status');
+  if (dimasStatus) {
+    if (dimasStatus.textContent === 'Hadir') {
+      dimasStatus.className = 'status-pill status-sakit';
+      dimasStatus.textContent = 'Sakit';
+    } else {
+      dimasStatus.className = 'status-pill status-hadir';
+      dimasStatus.textContent = 'Hadir';
+    }
+  }
+}
+
+/* ============================================================================
+   9. FAQ ACCORDION
+   ============================================================================ */
+function initFaqAccordion() {
+  const accordionItems = document.querySelectorAll('.accordion-item');
+
+  accordionItems.forEach(item => {
+    const header = item.querySelector('.accordion-header');
+    if (!header) return;
+
+    header.addEventListener('click', () => {
+      const isOpen = item.classList.contains('active');
+
+      accordionItems.forEach(other => other.classList.remove('active'));
+
+      if (!isOpen) {
+        item.classList.add('active');
+      }
+
+      // Recalculate metrics when accordion expands or closes
+      setTimeout(updateParallaxMetrics, 350);
+    });
+  });
+}
+
+/* ============================================================================
+   10. STICKY MOBILE CTA
+   ============================================================================ */
+function initStickyMobileCta() {
+  const stickyCta = document.getElementById('sticky-mobile-cta');
+  const heroSection = document.getElementById('hero');
+
+  if (!stickyCta || !heroSection) return;
+
+  window.addEventListener('scroll', () => {
+    const heroBottom = heroSection.getBoundingClientRect().bottom;
+    if (heroBottom < 0 && window.innerWidth <= 768) {
+      stickyCta.classList.add('visible');
+    } else {
+      stickyCta.classList.remove('visible');
+    }
+  }, { passive: true });
+}
+
+/* ============================================================================
+   11. INTERACTIVE MODALS
+   ============================================================================ */
+function openTrialModal() {
+  const modal = document.getElementById('trial-modal');
+  if (modal) modal.classList.add('open');
+}
+
+function closeTrialModal(e) {
+  if (e && e.target !== e.currentTarget && !e.target.classList.contains('modal-close-btn')) return;
+  const modal = document.getElementById('trial-modal');
+  if (modal) modal.classList.remove('open');
+}
+
+function openLoginModal() {
+  openTrialModal();
+}
+
+function handleTrialSubmit(e) {
   e.preventDefault();
-  alert('Terima kasih! Akses Akun Uji Coba Gratis 7 Hari Anda sedang disiapkan dan dikirimkan ke WhatsApp Anda.');
-  closeDemoModal();
+  alert('🎉 Terima kasih! Tautan aktivasi akun uji coba gratis 7 hari KLASSA telah disiapkan dan dikirimkan.');
+  closeTrialModal();
 }
 
-// Make functions available globally for inline HTML events
-window.openDemoModal = openDemoModal;
-window.closeDemoModal = closeDemoModal;
-window.closeMobileDrawer = closeMobileDrawer;
-window.handleDemoSubmit = handleDemoSubmit;
-window.triggerStampEffect = triggerStampEffect;
+/* Demo Video Walkthrough Modal */
+const demoSteps = [
+  {
+    title: 'Langkah 1: Pilih Capaian Pembelajaran',
+    desc: 'AI KLASSA secara otomatis membaca pedoman BSKAP dan menyusun sintaks aktivitas berdiferensiasi.',
+    progress: '25%'
+  },
+  {
+    title: 'Langkah 2: Rancang Kuis & Assessment Anti-Cheat',
+    desc: 'Generator soal HOTS menyiapkan 10 butir soal lengkap dengan kunci dan rubrik esai otomatis.',
+    progress: '50%'
+  },
+  {
+    title: 'Langkah 3: 1-Tap Presensi Kelas dari Smartphone',
+    desc: 'Kehadiran siswa terekam seketika dan jurnal mengajar harian langsung terisi tanpa ketik ulang.',
+    progress: '75%'
+  },
+  {
+    title: 'Langkah 4: Ekspor Word .docx & Rekap Nilai Excel',
+    desc: 'Dokumen administrasi selesai dan siap dicetak untuk supervisi kepala sekolah.',
+    progress: '100%'
+  }
+];
+
+let currentDemoIdx = 0;
+
+function openDemoVideoModal() {
+  const modal = document.getElementById('demo-video-modal');
+  if (modal) {
+    modal.classList.add('open');
+    updateDemoView();
+  }
+}
+
+function closeDemoVideoModal(e) {
+  if (e && e.target !== e.currentTarget && !e.target.classList.contains('modal-close-btn')) return;
+  const modal = document.getElementById('demo-video-modal');
+  if (modal) modal.classList.remove('open');
+}
+
+function advanceDemoStep() {
+  currentDemoIdx = (currentDemoIdx + 1) % demoSteps.length;
+  updateDemoView();
+}
+
+function updateDemoView() {
+  const title = document.getElementById('demo-step-title');
+  const desc = document.getElementById('demo-step-desc');
+  const bar = document.getElementById('demo-progress-bar');
+
+  if (title && desc && bar) {
+    title.textContent = demoSteps[currentDemoIdx].title;
+    desc.textContent = demoSteps[currentDemoIdx].desc;
+    bar.style.width = demoSteps[currentDemoIdx].progress;
+  }
+}
+
+function initDemoWalkthrough() {
+  // Auto-advance demo steps every 6.5s if modal is open
+  setInterval(() => {
+    const modal = document.getElementById('demo-video-modal');
+    if (modal && modal.classList.contains('open')) {
+      advanceDemoStep();
+    }
+  }, 6500);
+}
+
+/* ============================================================================
+   12. ECOSYSTEM STAGE: CLEAN STATIC MOCKUP & LIVE SYNC SIMULATION
+   ============================================================================ */
+function initEcosystemInteractiveStage() {
+  // Device mockups are kept purely static, proportional, and stable
+  const stage = document.getElementById('eco-stage-viewport');
+  if (!stage) return;
+}
+
+// Student Choice Selection on Smartphone Mockup
+function selectPhoneOption(event, el) {
+  if (event) event.stopPropagation();
+  const choices = document.querySelectorAll('.phone-options-group .phone-opt-btn');
+  choices.forEach(c => {
+    c.classList.remove('active');
+    const existingCheck = c.querySelector('.opt-check');
+    if (existingCheck) existingCheck.remove();
+  });
+
+  el.classList.add('active');
+  const check = document.createElement('span');
+  check.className = 'opt-check';
+  check.textContent = '✓';
+  el.appendChild(check);
+}
+
+// Universal Ecosystem Pure-Code Live Sync Simulation Trigger
+let isEcoSyncActive = false;
+function triggerEcosystemLiveSync(event) {
+  if (event) event.stopPropagation();
+  if (isEcoSyncActive) return;
+  isEcoSyncActive = true;
+
+  const dataBeam = document.getElementById('eco-data-beam');
+  const syncPill = document.getElementById('eco-sync-indicator');
+  const syncPillText = document.getElementById('sync-pill-text');
+  const dimasScore = document.getElementById('dimas-score-text');
+  const dimasPill = document.getElementById('stream-pill-dimas');
+  const phoneBtn = document.getElementById('phone-quiz-submit');
+  const phoneBtnText = document.getElementById('phone-btn-text');
+  const laptop = document.getElementById('macbook-device');
+
+  // 1. Elevate & highlight laptop on live sync
+  if (laptop) {
+    laptop.style.filter = 'drop-shadow(0 25px 40px rgba(16, 185, 129, 0.3))';
+  }
+
+  // 2. Fire luminous data sync beam from phone to laptop
+  if (dataBeam) {
+    dataBeam.classList.remove('firing');
+    void dataBeam.offsetWidth; // trigger reflow
+    dataBeam.classList.add('firing');
+  }
+
+  // 3. Update iPhone submit button
+  if (phoneBtn && phoneBtnText) {
+    phoneBtn.style.backgroundColor = '#10B981';
+    phoneBtnText.textContent = 'Terkirim ✓';
+  }
+
+  // 4. Update teacher cockpit on MacBook
+  if (dimasScore && dimasPill) {
+    setTimeout(() => {
+      dimasScore.textContent = '100';
+      dimasScore.className = 'pill-score';
+      dimasPill.className = 'stream-pill done';
+    }, 450);
+  }
+
+  // 5. Highlight sync pill
+  if (syncPill && syncPillText) {
+    syncPill.style.backgroundColor = '#10B981';
+    syncPillText.textContent = '⚡ Sinkron Sukses: Jawaban Dimas Terkoreksi 100!';
+  }
+
+  // 6. Reset after 4s for replayability
+  setTimeout(() => {
+    if (syncPill && syncPillText) {
+      syncPill.style.backgroundColor = 'rgba(15, 118, 110, 0.95)';
+      syncPillText.textContent = '⚡ Sinkron Real-Time Otomatis';
+    }
+    if (phoneBtn && phoneBtnText) {
+      phoneBtn.style.backgroundColor = '#0F766E';
+      phoneBtnText.textContent = 'Kirim Jawaban ➔';
+    }
+    if (dimasScore && dimasPill) {
+      dimasScore.textContent = 'Menjawab...';
+      dimasScore.className = 'pill-score score-wait';
+      dimasPill.className = 'stream-pill in-progress';
+    }
+    if (laptop) {
+      laptop.style.filter = '';
+    }
+    isEcoSyncActive = false;
+  }, 4200);
+}
+
+function simulateStudentQuizInteraction(event) {
+  triggerEcosystemLiveSync(event);
+}
+
+function simulateLaptopWorkspaceClick() {
+  triggerEcosystemLiveSync();
+}
+
+/* ============================================================================
+   13. SYNCHRONIZED 5-POINT TIMELINE & PROBLEM AGITATION CAROUSEL
+   ============================================================================ */
+let currentProblemIndex = 0;
+const totalProblemSlides = 5;
+let problemAutoPlayTimer = null;
+
+function updateProblemCarouselUI(index) {
+  currentProblemIndex = index;
+  const track = document.getElementById('problem-carousel-track');
+  const navNodes = document.querySelectorAll('.problem-nav-node');
+  const dots = document.querySelectorAll('.problem-carousel-dots .carousel-dot-btn');
+  const slides = document.querySelectorAll('.problem-slide');
+
+  // 1. Move track horizontally
+  if (track) {
+    track.style.transform = `translateX(-${index * 100}%)`;
+  }
+
+  // 2. Toggle active slide
+  slides.forEach((s, idx) => {
+    s.classList.toggle('active', idx === index);
+  });
+
+  // 3. Update timeline nodes & connecting lines
+  navNodes.forEach((node, idx) => {
+    node.classList.toggle('active', idx === index);
+  });
+
+  for (let i = 0; i < 4; i++) {
+    const fill = document.getElementById(`timeline-fill-${i}`);
+    if (fill) {
+      if (i < index) {
+        fill.classList.add('filled');
+      } else {
+        fill.classList.remove('filled');
+      }
+    }
+  }
+
+  // 4. Update dots
+  dots.forEach((dot, idx) => {
+    dot.classList.toggle('active', idx === index);
+  });
+
+  // 5. Re-render Lucide icons
+  if (window.lucide) {
+    window.lucide.createIcons();
+  }
+}
+
+function goToProblemSlide(index) {
+  if (index < 0) index = 0;
+  if (index >= totalProblemSlides) index = totalProblemSlides - 1;
+  updateProblemCarouselUI(index);
+  resetProblemAutoPlay();
+}
+
+function nextProblemSlide() {
+  const nextIdx = (currentProblemIndex + 1) % totalProblemSlides;
+  goToProblemSlide(nextIdx);
+}
+
+function prevProblemSlide() {
+  const prevIdx = (currentProblemIndex - 1 + totalProblemSlides) % totalProblemSlides;
+  goToProblemSlide(prevIdx);
+}
+
+function resetProblemAutoPlay() {
+  if (problemAutoPlayTimer) {
+    clearInterval(problemAutoPlayTimer);
+  }
+  problemAutoPlayTimer = setInterval(() => {
+    nextProblemSlide();
+  }, 7500);
+}
+
+function initProblemCarousel() {
+  const container = document.getElementById('problem-carousel-container');
+  if (!container) return;
+
+  // Set initial state
+  updateProblemCarouselUI(0);
+
+  // Auto-play every 7.5s, pause on hover
+  resetProblemAutoPlay();
+
+  container.addEventListener('mouseenter', () => {
+    if (problemAutoPlayTimer) clearInterval(problemAutoPlayTimer);
+  });
+
+  container.addEventListener('mouseleave', () => {
+    resetProblemAutoPlay();
+  });
+
+  // Mobile swipe support
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  container.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+  }, { passive: true });
+
+  container.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    const diff = touchStartX - touchEndX;
+    if (Math.abs(diff) > 40) {
+      if (diff > 0) {
+        nextProblemSlide();
+      } else {
+        prevProblemSlide();
+      }
+    }
+  }, { passive: true });
+}
