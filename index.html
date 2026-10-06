@@ -105,251 +105,333 @@
   </div>
 
   <main>
-    <!-- ====================================================================
-         5. HERO SECTION — THE COCKPIT KLASSA
+                    <!-- ====================================================================
+         5. HERO SECTION — 3D ATOMIC ECOSYSTEM (HERO) & LAPTOP FOUNDATION
          ==================================================================== -->
     <section class="hero-section" id="hero">
+      <div class="hero-ambient-glow" aria-hidden="true"></div>
+
       <div class="container hero-container">
-        
-        <!-- Top Pill Badge -->
-        <div class="hero-badge animate-fade-down">
-          <span class="badge-icon-sparkle">✦</span>
-          <span>Personal Workspace &amp; AI Co-Pilot Guru Indonesia</span>
-          <span class="badge-tag-verified">Resmi Terverifikasi</span>
-        </div>
-
-        <!-- Main Headline -->
-        <h1 class="hero-headline animate-fade-up">
-          Kembalikan <span class="text-highlight-teal">Waktu Berharga</span> Anda.<br>
-          Birokrasi Tuntas dalam Hitungan Detik,<br>
-          Mengajar <span class="text-highlight-mint">Lebih Berkelas</span>.
-        </h1>
-
-        <!-- Subheadline -->
-        <p class="hero-subheadline animate-fade-up delay-1">
-          Hentikan lingkaran setan input data berulang di spreadsheet, chat, dan dokumen yang terpecah. 
-          KLASSA menyatukan administrasi, AI Modul Ajar, ujian anti-contek, dan pelaporan rapor ke dalam satu ekosistem terpadu.
-        </p>
-
-        <!-- CTA Buttons Group -->
-        <div class="hero-cta-group animate-fade-up delay-2">
-          <div class="cta-primary-wrap">
-            <button class="btn btn-primary btn-hero-primary" onclick="openTrialModal()">
-              <span>Mulai Coba Gratis</span>
-              <span class="ai-sparkle-inline">✦</span>
-            </button>
-            <span class="cta-micro-guarantee">7 hari gratis • Tanpa kartu kredit</span>
-          </div>
-
-          <button class="btn btn-secondary btn-hero-secondary" onclick="openDemoVideoModal()">
-            <div class="play-icon-circle">
-              <i data-lucide="play" style="width: 14px; height: 14px; margin-left: 2px;"></i>
-            </div>
-            <span>Lihat Demo 40 Detik</span>
-          </button>
-        </div>
-
-        <!-- Social Proof / Verified Trust Rating -->
-        <div class="hero-social-proof animate-fade-up delay-3">
-          <div class="stars-row">
-            <i data-lucide="star" class="star-filled"></i>
-            <i data-lucide="star" class="star-filled"></i>
-            <i data-lucide="star" class="star-filled"></i>
-            <i data-lucide="star" class="star-filled"></i>
-            <i data-lucide="star" class="star-filled"></i>
-          </div>
-          <p class="social-proof-text">
-            <strong>Dipercaya oleh 3.400+ Guru &amp; Sekolah Penggerak</strong> di seluruh Indonesia.
-            <span class="social-proof-note">(Estimasi data aktif terverifikasi)</span>
-          </p>
-        </div>
-
-        <!-- Hero Product Visual: "Cockpit KLASSA" -->
-        <div class="cockpit-viewport animate-scale-in delay-3" id="cockpit-viewport">
+        <div class="hero-split-grid">
           
-          <!-- Floating Mini UI Card 1: Modul Ajar -->
-          <div class="floating-chip chip-modul" id="float-chip-1" data-parallax-depth="-0.42">
-            <div class="chip-icon-box chip-ai">
-              <span>✦</span>
+          <!-- LEFT SIDE: Content, Headline & CTA (100% Preserved) -->
+          <div class="hero-content-col">
+            <!-- Top Pill Badge -->
+            <div class="hero-badge">
+              <span class="badge-icon-sparkle">✦</span>
+              <span>Personal Workspace &amp; AI Co-Pilot Guru Indonesia</span>
+              <span class="badge-tag-verified">Resmi Terverifikasi</span>
             </div>
-            <div class="chip-content">
-              <div class="chip-title">Modul Ajar selesai ✦</div>
-              <div class="chip-desc">Fase D • Matematika • Siap .docx</div>
+
+            <!-- Main Headline -->
+            <h1 class="hero-headline">
+              Kembalikan <span class="text-highlight-teal">Waktu Berharga</span> Anda.<br>
+              Birokrasi Tuntas dalam Hitungan Detik,<br>
+              Mengajar <span class="text-highlight-mint">Lebih Berkelas</span>.
+            </h1>
+
+            <!-- Description / Subheadline -->
+            <p class="hero-subheadline">
+              Hentikan lingkaran setan input data berulang di spreadsheet, chat, dan dokumen yang terpecah. KLASSA menyatukan administrasi, AI Modul Ajar, ujian anti-contek, dan pelaporan rapor ke dalam satu ekosistem terpadu.
+            </p>
+
+            <!-- CTA Buttons Group -->
+            <div class="hero-cta-group">
+              <div class="cta-primary-wrap">
+                <button class="btn btn-primary btn-hero-primary" onclick="openTrialModal()">
+                  <span>Mulai Coba Gratis</span>
+                  <span class="ai-sparkle-inline">✦</span>
+                </button>
+                <span class="cta-micro-guarantee">7 hari gratis • Tanpa kartu kredit</span>
+              </div>
+
+              <button class="btn btn-secondary btn-hero-secondary" onclick="openDemoVideoModal()">
+                <div class="play-icon-circle">
+                  <i data-lucide="play" style="width: 14px; height: 14px; margin-left: 2px;"></i>
+                </div>
+                <span>Lihat Demo 40 Detik</span>
+              </button>
+            </div>
+
+            <!-- Social Proof / Verified Trust Rating -->
+            <div class="hero-social-proof">
+              <div class="stars-row">
+                <i data-lucide="star" class="star-filled"></i>
+                <i data-lucide="star" class="star-filled"></i>
+                <i data-lucide="star" class="star-filled"></i>
+                <i data-lucide="star" class="star-filled"></i>
+                <i data-lucide="star" class="star-filled"></i>
+              </div>
+              <p class="social-proof-text">
+                <strong>Dipercaya oleh 3.400+ Guru &amp; Sekolah Penggerak</strong> di seluruh Indonesia.
+                <span class="social-proof-note">(Estimasi data aktif terverifikasi)</span>
+              </p>
             </div>
           </div>
 
-          <!-- Floating Mini UI Card 2: Presensi -->
-          <div class="floating-chip chip-presensi" id="float-chip-2" data-parallax-depth="0.28">
-            <div class="chip-icon-box chip-teal">
-              <i data-lucide="check-circle-2" style="width: 16px; height: 16px;"></i>
-            </div>
-            <div class="chip-content">
-              <div class="chip-title">32 siswa hadir</div>
-              <div class="chip-desc">Kelas VII-B • Presensi tuntas</div>
-            </div>
-          </div>
+          <!-- RIGHT SIDE: 3D Atomic Ecosystem (Hero Object) & Laptop Foundation -->
 
-          <!-- Floating Mini UI Card 3: Koreksi AI -->
-          <div class="floating-chip chip-koreksi" id="float-chip-3" data-parallax-depth="-0.52">
-            <div class="chip-icon-box chip-violet">
-              <i data-lucide="sparkles" style="width: 16px; height: 16px;"></i>
-            </div>
-            <div class="chip-content">
-              <div class="chip-title">8 tugas dikoreksi AI</div>
-              <div class="chip-desc">Rubrik asesmen objektif</div>
-            </div>
-          </div>
+          `                                        <!-- RIGHT SIDE: KLASSA Interactive 3D Atomic Ecosystem (Hero Object) -->
+          <div class="hero-ecosystem-col" id="hero-ecosystem-col">
+            <div class="atomic-ecosystem-stage" id="atomic-ecosystem-stage" aria-label="Visualisasi Ekosistem Cerdas 3D KLASSA" role="region">
+              
+              <!-- Subtle Clean Ambient Radial Glow -->
+              <div class="atomic-ambient-glow" aria-hidden="true"></div>
 
-          <!-- Cockpit Window Mockup -->
-          <div class="cockpit-window" id="cockpit-window" data-parallax-depth="-0.12">
-            <!-- Window Topbar -->
-            <div class="cockpit-topbar">
-              <div class="window-controls">
-                <span class="dot dot-red"></span>
-                <span class="dot dot-yellow"></span>
-                <span class="dot dot-green"></span>
-              </div>
-              <div class="window-url-bar">
-                <i data-lucide="lock" style="width: 12px; height: 12px; color: #0F766E;"></i>
-                <span>app.klassa.id/cockpit/workspace</span>
-              </div>
-              <div class="topbar-actions">
-                <span class="user-badge-mini">Ibu Siti Rahmawati, S.Pd.</span>
-              </div>
-            </div>
-
-            <!-- Cockpit Workspace Grid -->
-            <div class="cockpit-layout">
-              <!-- Sidebar Navigation -->
-              <aside class="cockpit-sidebar">
-                <div class="sidebar-brand">
-                  <div class="sidebar-logo-icon">K</div>
-                  <span class="sidebar-logo-text">KLASSA</span>
-                </div>
-                <ul class="sidebar-menu">
-                  <li class="menu-item active">
-                    <i data-lucide="layout-dashboard"></i>
-                    <span>Beranda</span>
-                  </li>
-                  <li class="menu-item">
-                    <i data-lucide="book-open"></i>
-                    <span>Kelas Saya</span>
-                  </li>
-                  <li class="menu-item highlight-menu">
-                    <i data-lucide="file-text"></i>
-                    <span>Modul Ajar</span>
-                    <span class="menu-badge">BSKAP</span>
-                  </li>
-                  <li class="menu-item">
-                    <i data-lucide="user-check"></i>
-                    <span>Presensi</span>
-                  </li>
-                  <li class="menu-item">
-                    <i data-lucide="clipboard-list"></i>
-                    <span>Jurnal</span>
-                  </li>
-                  <li class="menu-item">
-                    <i data-lucide="help-circle"></i>
-                    <span>Assessment</span>
-                  </li>
-                  <li class="menu-item">
-                    <i data-lucide="bar-chart-2"></i>
-                    <span>Nilai</span>
-                  </li>
-                  <li class="menu-item">
-                    <i data-lucide="users"></i>
-                    <span>Siswa</span>
-                  </li>
-                  <li class="menu-item">
-                    <i data-lucide="file-spreadsheet"></i>
-                    <span>Laporan</span>
-                  </li>
-                  <li class="menu-item ai-co-pilot-item">
-                    <span class="ai-sparkle">✦</span>
-                    <span class="ai-label">KLASSA AI</span>
-                  </li>
-                </ul>
-              </aside>
-
-              <!-- Cockpit Main Display -->
-              <div class="cockpit-main">
-                <!-- Welcome Banner -->
-                <div class="cockpit-welcome">
-                  <div>
-                    <h3 class="welcome-title">Selamat pagi, Bu Siti! 👋</h3>
-                    <p class="welcome-sub">Jadwal hari ini: <strong>Matematika Kelas VII-B (Jam Ke-3)</strong>. Modul Ajar siap dieksekusi.</p>
-                  </div>
-                  <button class="btn-cockpit-quick" onclick="simulateCockpitAction()">
-                    <span class="ai-sparkle">✦</span>
-                    <span>Tanya Co-Pilot</span>
-                  </button>
-                </div>
-
-                <!-- 3 Quick KPI Cards -->
-                <div class="cockpit-kpi-row">
-                  <div class="kpi-mini-card">
-                    <div class="kpi-head">
-                      <span class="kpi-title">Kelengkapan Administrasi</span>
-                      <i data-lucide="check-circle" class="kpi-icon-teal"></i>
-                    </div>
-                    <div class="kpi-val">100% Tuntas</div>
-                    <div class="kpi-progress"><div class="progress-bar-fill" style="width: 100%;"></div></div>
-                  </div>
-
-                  <div class="kpi-mini-card">
-                    <div class="kpi-head">
-                      <span class="kpi-title">Kehadiran Siswa Hari Ini</span>
-                      <i data-lucide="users" class="kpi-icon-teal"></i>
-                    </div>
-                    <div class="kpi-val">97.4% (31/32)</div>
-                    <div class="kpi-sub">1 Siswa Izin Sakit</div>
-                  </div>
-
-                  <div class="kpi-mini-card highlight-ai">
-                    <div class="kpi-head">
-                      <span class="kpi-title">AI Remedial Radar</span>
-                      <span class="ai-sparkle">✦</span>
-                    </div>
-                    <div class="kpi-val">2 Siswa Butuh Remedial</div>
-                    <div class="kpi-sub">Topik: Persamaan Linear</div>
+              <!-- MASTER 3D ATOMIC CAGE (Single Coherent Rigid 3D Object centered at 0,0,0) -->
+              <div class="atomic-cage-3d" id="atomic-cage-3d">
+                
+                <!-- 1. SHARED 3D NUCLEUS AT EXACT CENTER (0,0,0) (12px Extruded Physical Object) -->
+                <div class="atomic-core-center" id="atomic-core-center">
+                  <div class="core-radial-aura"></div>
+                  <div class="core-inner-glow"></div>
+                  <div class="core-k-3d-prism">
+                    <!-- Extruded Depth Layers -->
+                    <img src="brand/klassa-mark.svg" alt="" class="core-k-layer layer-back" aria-hidden="true">
+                    <img src="brand/klassa-mark.svg" alt="" class="core-k-layer layer-mid-1" aria-hidden="true">
+                    <img src="brand/klassa-mark.svg" alt="" class="core-k-layer layer-mid-2" aria-hidden="true">
+                    <img src="brand/klassa-mark.svg" alt="" class="core-k-layer layer-mid-3" aria-hidden="true">
+                    <img src="brand/klassa-mark.svg" alt="KLASSA Symbol" class="core-k-layer layer-front">
+                    <span class="core-sparkle-star">✦</span>
                   </div>
                 </div>
 
-                <!-- Cockpit Interactive Working Canvas -->
-                <div class="cockpit-canvas-preview">
-                  <div class="canvas-header-strip">
-                    <span class="badge-tag">Modul Ajar Aktif</span>
-                    <span class="canvas-doc-name">Modul_Ajar_Matematika_Fase_D_Aljabar.docx</span>
-                    <div class="canvas-action-icons">
-                      <button class="icon-tool" title="Edit Inline"><i data-lucide="edit-3"></i></button>
-                      <button class="icon-tool" title="Ekspor Word"><i data-lucide="download"></i></button>
+                <!-- 2. THREE CANONICAL 3D ORBIT RINGS (Generated from ONE Master Geometry, Shared Center 0,0,0) -->
+                <div class="atomic-orbit-system-3d" id="atomic-orbit-system-3d">
+                  
+                  <!-- Master Orbit A (Vertical plane, 440px x 196px) -->
+                  <div class="master-orbit-plane orbit-plane-a" id="orbit-plane-a">
+                    <div class="orbit-filament-filament">
+                      <div class="orbit-filament-front"></div>
+                      <div class="orbit-filament-edge"></div>
                     </div>
+                    <!-- Volumetric 3D Electron Node on Orbit A -->
+                    <div class="electron-node-sphere node-ea"></div>
                   </div>
-                  <div class="canvas-body-mockup">
-                    <div class="mockup-line title-line">MODUL AJAR KURIKULUM MERDEKA (BSKAP NO. 032)</div>
-                    <div class="mockup-meta-grid">
-                      <div><strong>Sekolah:</strong> SMP Negeri 1 Madani</div>
-                      <div><strong>Fase / Kelas:</strong> D / VII</div>
-                      <div><strong>Alokasi Waktu:</strong> 2 x 40 Menit</div>
-                      <div><strong>Penyusun:</strong> Siti Rahmawati, S.Pd.</div>
+
+                  <!-- Master Orbit B (Tilted Right plane, 440px x 196px) -->
+                  <div class="master-orbit-plane orbit-plane-b" id="orbit-plane-b">
+                    <div class="orbit-filament-filament">
+                      <div class="orbit-filament-front"></div>
+                      <div class="orbit-filament-edge"></div>
                     </div>
-                    <div class="mockup-text-para">
-                      <strong>Tujuan Pembelajaran:</strong> Peserta didik mampu menyelesaikan persamaan linear satu variabel dan memodelkan masalah kontekstual kehidupan sehari-hari melalui pendekatan diferensiasi proses berkelompok.
+                    <!-- Volumetric 3D Electron Node on Orbit B -->
+                    <div class="electron-node-sphere node-eb"></div>
+                  </div>
+
+                  <!-- Master Orbit C (Tilted Left plane, 440px x 196px) -->
+                  <div class="master-orbit-plane orbit-plane-c" id="orbit-plane-c">
+                    <div class="orbit-filament-filament">
+                      <div class="orbit-filament-front"></div>
+                      <div class="orbit-filament-edge"></div>
                     </div>
-                    <div class="mockup-tags-row">
-                      <span class="tag-pill">Diferensiasi Konten</span>
-                      <span class="tag-pill">Sintaks Problem-Based Learning</span>
-                      <span class="tag-pill">Rubrik Asesmen Lengkap</span>
+                    <!-- Volumetric 3D Electron Node on Orbit C -->
+                    <div class="electron-node-sphere node-ec"></div>
+                  </div>
+
+                </div>
+
+                <!-- 3. SIX 3D VOLUMETRIC GLASS CARDS (Mathematically Anchored to Orbit Nodes) -->
+
+                <!-- Card 1: AI Modul Ajar (Anchored to Orbit A Apex Top) -->
+                <div class="atomic-card card-modul-ajar" id="node-modul" data-index="0">
+                  <div class="card-3d-prism">
+                    <div class="card-face-front">
+                      <span class="card-orbit-node-dot dot-bottom"></span>
+                      <div class="card-head-row">
+                        <div class="card-icon-box icon-purple">
+                          <span class="icon-spark">✦</span>
+                        </div>
+                        <div class="card-meta">
+                          <span class="card-title">AI Modul Ajar</span>
+                          <span class="card-status-sub">Sedang membuat modul...</span>
+                        </div>
+                      </div>
+                      <div class="card-progress-bar-wrap">
+                        <div class="card-progress-fill" style="width: 82%;"></div>
+                        <span class="progress-pct">82%</span>
+                      </div>
                     </div>
+                    <!-- Volumetric Acrylic Edges & Frosted Back -->
+                    <div class="card-edge-top"></div>
+                    <div class="card-edge-bottom"></div>
+                    <div class="card-edge-left"></div>
+                    <div class="card-edge-right"></div>
+                    <div class="card-face-back"></div>
+                  </div>
+                </div>
+
+                <!-- Card 2: Nilai (Anchored to Orbit C Upper-Left Loop) -->
+                <div class="atomic-card card-nilai-stats" id="node-nilai" data-index="1">
+                  <div class="card-3d-prism">
+                    <div class="card-face-front">
+                      <span class="card-orbit-node-dot dot-right"></span>
+                      <div class="card-head-row">
+                        <div class="card-icon-box icon-teal-green">
+                          <i data-lucide="bar-chart-2"></i>
+                        </div>
+                        <span class="card-title">Nilai</span>
+                      </div>
+                      <div class="card-metric-row">
+                        <div class="metric-left">
+                          <span class="big-score">88</span>
+                          <span class="score-trend">↑ 12%</span>
+                        </div>
+                        <!-- Mini Bar Chart Graphic -->
+                        <div class="mini-bar-bars">
+                          <span style="height: 10px;"></span>
+                          <span style="height: 16px;"></span>
+                          <span style="height: 14px;"></span>
+                          <span style="height: 22px;"></span>
+                          <span style="height: 26px;" class="bar-active"></span>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Volumetric Acrylic Edges & Frosted Back -->
+                    <div class="card-edge-top"></div>
+                    <div class="card-edge-bottom"></div>
+                    <div class="card-edge-left"></div>
+                    <div class="card-edge-right"></div>
+                    <div class="card-face-back"></div>
+                  </div>
+                </div>
+
+                <!-- Card 3: Presensi (Anchored to Orbit B Upper-Right Loop) -->
+                <div class="atomic-card card-presensi-live" id="node-presensi" data-index="2">
+                  <div class="card-3d-prism">
+                    <div class="card-face-front">
+                      <span class="card-orbit-node-dot dot-left"></span>
+                      <div class="card-head-row">
+                        <div class="card-icon-box icon-mint">
+                          <i data-lucide="check-circle-2"></i>
+                        </div>
+                        <div class="card-meta">
+                          <span class="card-title">Presensi</span>
+                          <span class="card-status-sub highlight-teal">34 / 36 hadir</span>
+                        </div>
+                      </div>
+                      <!-- Mini Avatars Row -->
+                      <div class="mini-avatar-cluster">
+                        <span class="av-circle av-1">👨‍🎓</span>
+                        <span class="av-circle av-2">👩‍🎓</span>
+                        <span class="av-circle av-3">👧</span>
+                        <span class="av-more">+32</span>
+                      </div>
+                    </div>
+                    <!-- Volumetric Acrylic Edges & Frosted Back -->
+                    <div class="card-edge-top"></div>
+                    <div class="card-edge-bottom"></div>
+                    <div class="card-edge-left"></div>
+                    <div class="card-edge-right"></div>
+                    <div class="card-face-back"></div>
+                  </div>
+                </div>
+
+                <!-- Card 4: Analisis Siswa (Anchored to Orbit B Lower-Left Loop) -->
+                <div class="atomic-card card-analisis-radar" id="node-analisis" data-index="3">
+                  <div class="card-3d-prism">
+                    <div class="card-face-front">
+                      <span class="card-orbit-node-dot dot-right"></span>
+                      <div class="card-head-row">
+                        <div class="card-icon-box icon-indigo">
+                          <i data-lucide="trending-up"></i>
+                        </div>
+                        <div class="card-meta">
+                          <span class="card-title">Analisis Siswa</span>
+                          <span class="card-status-sub alert-sub">4 siswa perlu perhatian</span>
+                        </div>
+                      </div>
+                      <div class="analisis-avatars-row">
+                        <div class="av-warning-group">
+                          <span class="av-circle av-warn-1">👦</span>
+                          <span class="av-circle av-warn-2">👧</span>
+                          <span class="av-circle av-warn-3">🧑</span>
+                        </div>
+                        <span class="btn-mini-arrow"><i data-lucide="chevron-right"></i></span>
+                      </div>
+                    </div>
+                    <!-- Volumetric Acrylic Edges & Frosted Back -->
+                    <div class="card-edge-top"></div>
+                    <div class="card-edge-bottom"></div>
+                    <div class="card-edge-left"></div>
+                    <div class="card-edge-right"></div>
+                    <div class="card-face-back"></div>
+                  </div>
+                </div>
+
+                <!-- Card 5: Ujian Anti-Contek (Anchored to Orbit C Lower-Right Loop) -->
+                <div class="atomic-card card-ujian-guard" id="node-ujian" data-index="4">
+                  <div class="card-3d-prism">
+                    <div class="card-face-front">
+                      <span class="card-orbit-node-dot dot-left"></span>
+                      <div class="card-head-row">
+                        <div class="card-icon-box icon-blue">
+                          <i data-lucide="shield-check"></i>
+                        </div>
+                        <div class="card-meta">
+                          <span class="card-title">Ujian Anti-Contek</span>
+                          <span class="card-status-sub">Sedang aktif</span>
+                        </div>
+                      </div>
+                      <div class="ujian-live-status">
+                        <!-- Mini wave graphic -->
+                        <svg class="mini-wave-svg" viewBox="0 0 70 18" fill="none">
+                          <path d="M0 10 Q 15 2, 30 11 T 55 7 T 70 10" stroke="#38BDF8" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                        <span class="badge-aman-dot"><span class="dot-green"></span> Aman</span>
+                      </div>
+                    </div>
+                    <!-- Volumetric Acrylic Edges & Frosted Back -->
+                    <div class="card-edge-top"></div>
+                    <div class="card-edge-bottom"></div>
+                    <div class="card-edge-left"></div>
+                    <div class="card-edge-right"></div>
+                    <div class="card-face-back"></div>
+                  </div>
+                </div>
+
+                <!-- Card 6: Rapor (Anchored to Orbit A Apex Bottom) -->
+                <div class="atomic-card card-rapor-doc" id="node-rapor" data-index="5">
+                  <div class="card-3d-prism">
+                    <div class="card-face-front">
+                      <span class="card-orbit-node-dot dot-top"></span>
+                      <div class="card-head-row">
+                        <div class="card-icon-box icon-amber">
+                          <i data-lucide="file-text"></i>
+                        </div>
+                        <div class="card-meta">
+                          <span class="card-title">Rapor</span>
+                          <span class="card-status-sub">Siap diproses</span>
+                        </div>
+                        <!-- Mini document preview graphic -->
+                        <div class="mini-report-preview">
+                          <span class="rpt-line w-full"></span>
+                          <span class="rpt-line w-half"></span>
+                          <div class="rpt-bars"><span style="height:5px"></span><span style="height:9px"></span><span style="height:7px"></span></div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Volumetric Acrylic Edges & Frosted Back -->
+                    <div class="card-edge-top"></div>
+                    <div class="card-edge-bottom"></div>
+                    <div class="card-edge-left"></div>
+                    <div class="card-edge-right"></div>
+                    <div class="card-face-back"></div>
                   </div>
                 </div>
 
               </div>
+
+              <!-- FIRST-TIME INTERACTION HINT PILL -->
+              <div class="ecosystem-drag-hint" id="ecosystem-drag-hint">
+                <i data-lucide="move-horizontal" class="hint-drag-icon"></i>
+                <span>Klik &amp; geser untuk menjelajahi ekosistem</span>
+              </div>
+
             </div>
           </div>
 
         </div>
-
       </div>
     </section>
 

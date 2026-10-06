@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initLerpParallaxEngine();
 
   // 5. Cockpit 3D Mouse Perspective with LERP Damping
-  initCockpitMouseTilt();
+  initAtomicEcosystemEngine();
 
   // 6. FAQ Accordion Interaction
   initFaqAccordion();
@@ -260,211 +260,254 @@ function initLerpParallaxEngine() {
 }
 
 /* ============================================================================
-   5. COCKPIT 3D MOUSE PERSPECTIVE
+   5. KLASSA CANONICAL 3D ATOMIC CAGE ENGINE
+   - ONE Master 3D Atomic Cage rotating as a single rigid physical object
+   - Fixed Master Orbit Geometry (440px x 196px, shared center 0,0,0)
+   - Controlled Viewing Envelope: rotateY [-50°, +50°], rotateX [-18°, +18°]
+   - Soft Limits with elastic boundary resistance (feels like a premium 3D viewer)
+   - Mathematical Node & Card Attachment (Always positioned on orbital track)
+   - Smart Partial Billboarding (5°-18° tilt shows 3D glass edge, NEVER mirrors)
    ============================================================================ */
-function initCockpitMouseTilt() {
-  const viewport = document.getElementById('cockpit-viewport');
-  if (!viewport) return;
+function initAtomicEcosystemEngine() {
+  const stage = document.getElementById('atomic-ecosystem-stage');
+  const atomicCage = document.getElementById('atomic-cage-3d');
+  const coreK = document.getElementById('atomic-core-center');
+  const dragHint = document.getElementById('ecosystem-drag-hint');
+  const cards = document.querySelectorAll('.atomic-card');
 
-  viewport.addEventListener('mousemove', (e) => {
-    const rect = viewport.getBoundingClientRect();
-    const x = e.clientX - rect.left - rect.width / 2;
-    const y = e.clientY - rect.top - rect.height / 2;
+  if (!stage || !atomicCage) return;
 
-    targetTiltX = -(y / rect.height) * 7; // max 7deg tilt
-    targetTiltY = (x / rect.width) * 7;
-  });
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  viewport.addEventListener('mouseleave', () => {
-    targetTiltX = 0;
-    targetTiltY = 0;
-  });
-}
-
-function simulateCockpitAction() {
-  alert('✦ KLASSA AI Co-Pilot: "Modul Ajar Matematika Fase D telah diselaraskan dengan Capaian Pembelajaran BSKAP terbaru. Apakah Anda ingin mengunduh draft .docx sekarang?"');
-}
-
-/* ============================================================================
-   6. FEATURE 1: AI STUDIO MODUL AJAR SIMULATOR
-   ============================================================================ */
-function triggerAISimulator() {
-  const el = document.getElementById('ai-simulator-card');
-  if (el) {
-    el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    runAIGenerationSimulation();
-  }
-}
-
-function runAIGenerationSimulation() {
-  const btn = document.getElementById('btn-run-ai-sim');
-  const btnText = document.getElementById('sim-btn-text');
-  const stepsContainer = document.getElementById('ai-generation-steps');
-  const preview = document.getElementById('sim-doc-preview');
-
-  if (!btn || !stepsContainer) return;
-
-  btn.disabled = true;
-  btnText.textContent = 'KLASSA AI sedang menyusun...';
-  stepsContainer.style.display = 'flex';
-  preview.style.opacity = '0.5';
-
-  const steps = [
-    { id: 'ai-step-1', text: 'Memahami konteks kelas & CP ✓' },
-    { id: 'ai-step-2', text: 'Menyusun aktivitas berdiferensiasi ✓' },
-    { id: 'ai-step-3', text: 'Membuat rubrik asesmen lengkap ✓' },
-    { id: 'ai-step-4', text: 'Menyiapkan dokumen Word .docx siap unduh ✓' }
+  // 6 Mathematical Card Anchors on the 3 Master Orbits
+  // Local cage coordinates (X, Y, Z) derived directly from the master orbit geometry:
+  // Orbit A (Horizontal belt): AI Modul Ajar (apex top) & Rapor (apex bottom)
+  // Orbit B (Right diagonal: bottom-left → top-right): Presensi (top-right) & Analisis (bottom-left)
+  // Orbit C (Left diagonal: top-left → bottom-right): Nilai (top-left) & Ujian (bottom-right)
+  // KLASSA K Nucleus is permanently protected at (0, 0, 0)
+  const nodeConfig = [
+    // 1. AI Modul Ajar: Apex Top
+    { el: document.getElementById('node-modul'),    cageX: 0,    cageY: -205, cageZ: 20,   tiltYFactor: 0.10, tiltXFactor: 0.35 },
+    // 2. Nilai: Orbit C Upper-Left (top-left of Left-Diagonal Orbit)
+    { el: document.getElementById('node-nilai'),    cageX: -180, cageY: -105, cageZ: -60,  tiltYFactor: -0.22, tiltXFactor: 0.15 },
+    // 3. Presensi: Orbit B Upper-Right (top-right of Right-Diagonal Orbit)
+    { el: document.getElementById('node-presensi'), cageX: 180,  cageY: -105, cageZ: -60,  tiltYFactor: 0.22,  tiltXFactor: 0.15 },
+    // 4. Analisis Siswa: Orbit B Lower-Left (bottom-left of Right-Diagonal Orbit)
+    { el: document.getElementById('node-analisis'), cageX: -180, cageY: 105,  cageZ: 60,   tiltYFactor: -0.22, tiltXFactor: -0.15 },
+    // 5. Ujian Anti-Contek: Orbit C Lower-Right (bottom-right of Left-Diagonal Orbit)
+    { el: document.getElementById('node-ujian'),    cageX: 180,  cageY: 105,  cageZ: 60,   tiltYFactor: 0.22,  tiltXFactor: -0.15 },
+    // 6. Rapor: Apex Bottom
+    { el: document.getElementById('node-rapor'),    cageX: 0,    cageY: 205,  cageZ: 20,   tiltYFactor: -0.10, tiltXFactor: -0.35 }
   ];
 
-  steps.forEach((step) => {
-    const el = document.getElementById(step.id);
-    if (el) {
-      el.classList.remove('done');
-      el.querySelector('span').textContent = step.text.replace(' ✓', '...');
-    }
-  });
+  // Preserved Interaction Limits (Section 12 & 13)
+  // Prevents atomic silhouette collapse; prioritizes 100% atom readability
+  const MAX_DEG_Y = 28;         // Horizontal soft maximum: ±28 degrees
+  const MAX_DEG_X = 12;         // Vertical soft maximum: ±12 degrees
+  const NORMAL_ZONE_Y = 20;     // Normal linear response up to 20 degrees
+  const NORMAL_ZONE_X = 8;      // Normal linear response up to 8 degrees
 
-  let currentStep = 0;
-  const interval = setInterval(() => {
-    if (currentStep < steps.length) {
-      const el = document.getElementById(steps[currentStep].id);
-      if (el) {
-        el.classList.add('done');
-        el.querySelector('span').textContent = steps[currentStep].text;
-      }
-      currentStep++;
-    } else {
-      clearInterval(interval);
-      btn.disabled = false;
-      btnText.textContent = 'Modul Selesai Dibuat ✦ Generate Ulang';
-      preview.style.opacity = '1';
-      if (window.lucide) window.lucide.createIcons();
-    }
-  }, 450);
-}
+  // Art-directed 3/4 Perspective Default Resting State (Distinct 3D depth on initial view)
+  let rawAngleY = 10.0;         // ~10 deg resting Y-rotation
+  let currentAngleY = 10.0;
+  let rawTiltX = 5.0;           // ~5 deg resting downward pitch
+  let currentTiltX = 5.0;
 
-/* ============================================================================
-   7. FEATURE 2: SMART ASSESSMENT SIMULATOR
-   ============================================================================ */
-let isQuizSubmitted = false;
+  let velocityY = 0;
+  let isDragging = false;
+  let dragStartX = 0;
+  let dragStartY = 0;
+  let dragStartRawY = 0;
+  let dragStartRawX = 0;
+  let hasDraggedOnce = false;
+  let isCardHovered = false;
 
-function simulateQuizSubmit() {
-  const studentCount = document.getElementById('quiz-student-count');
-  const statusTag = document.getElementById('quiz-status-tag');
-  const warning = document.getElementById('tab-warning-bubble');
-  const flowIndicator = document.getElementById('assessment-flow-indicator');
-
-  if (!studentCount || !statusTag) return;
-
-  if (!isQuizSubmitted) {
-    studentCount.textContent = '32/32';
-    statusTag.textContent = 'Koreksi Otomatis Selesai (100%)';
-    statusTag.style.color = '#10B981';
-
-    if (warning) {
-      warning.innerHTML = '<i data-lucide="shield-check" style="width: 12px; height: 12px;"></i><span>Anti-Cheat Aman: 0 pelanggaran tab</span>';
-      warning.style.color = '#15803D';
-      warning.style.backgroundColor = '#DCFCE7';
-    }
-
-    if (flowIndicator) {
-      flowIndicator.style.backgroundColor = '#CCFBF1';
-    }
-
-    isQuizSubmitted = true;
-    if (window.lucide) window.lucide.createIcons();
-
-    setTimeout(() => {
-      alert('✓ 32 Siswa berhasil submit ujian!\nKoreksi otomatis selesai, skor tersimpan, dan rekap Excel siap dicetak.');
-    }, 300);
-  } else {
-    studentCount.textContent = '31/32';
-    statusTag.textContent = 'Sedang Mengoreksi...';
-    statusTag.style.color = '#F59E0B';
-    isQuizSubmitted = false;
-  }
-}
-
-/* ============================================================================
-   8. FEATURE 3: ATTENDANCE TAP SIMULATOR
-   ============================================================================ */
-function simulateAttendanceAll() {
-  const toast = document.getElementById('journal-toast');
-  const dimasStatus = document.getElementById('student-dimas-status');
-
-  if (dimasStatus) {
-    dimasStatus.className = 'status-pill status-hadir';
-    dimasStatus.textContent = 'Hadir';
+  // Progressive resistance soft limit curve (Section 13):
+  // 0 to normalZone: 100% direct linear response
+  // normalZone to maxLimit: progressively stronger hyperbolic resistance
+  // maxLimit: soft physical boundary ceiling
+  function applySoftLimit(val, normalZone, maxLimit) {
+    const abs = Math.abs(val);
+    if (abs <= normalZone) return val;
+    const sign = Math.sign(val);
+    const excess = abs - normalZone;
+    const headroom = maxLimit - normalZone; // e.g. 28 - 20 = 8 deg
+    const resisted = Math.tanh(excess / (headroom * 1.25)) * headroom;
+    return sign * (normalZone + resisted);
   }
 
-  if (toast) {
-    toast.style.display = 'flex';
-    toast.style.animation = 'none';
-    setTimeout(() => {
-      toast.style.animation = 'toast-glow 1.5s infinite alternate';
-    }, 10);
-  }
-}
+  // Set initial cage position immediately
+  renderCageFrame(currentAngleY, currentTiltX);
 
-function toggleStudentAttendance(index) {
-  const dimasStatus = document.getElementById('student-dimas-status');
-  if (dimasStatus) {
-    if (dimasStatus.textContent === 'Hadir') {
-      dimasStatus.className = 'status-pill status-sakit';
-      dimasStatus.textContent = 'Sakit';
-    } else {
-      dimasStatus.className = 'status-pill status-hadir';
-      dimasStatus.textContent = 'Hadir';
+  if (prefersReduced) return;
+
+  // 1. POINTER INTERACTION (Click + Hold + Drag Rotates ONLY Master Cage)
+  function onPointerDown(e) {
+    isDragging = true;
+    const clientX = e.clientX || (e.touches && e.touches[0].clientX) || 0;
+    const clientY = e.clientY || (e.touches && e.touches[0].clientY) || 0;
+
+    dragStartX = clientX;
+    dragStartY = clientY;
+    dragStartRawY = rawAngleY;
+    dragStartRawX = rawTiltX;
+    velocityY = 0;
+
+    stage.classList.add('is-dragging');
+
+    // Fade out first-time hint permanently
+    if (!hasDraggedOnce && dragHint) {
+      hasDraggedOnce = true;
+      dragHint.classList.add('is-hidden');
     }
   }
-}
 
-/* ============================================================================
-   9. FAQ ACCORDION
-   ============================================================================ */
-function initFaqAccordion() {
-  const accordionItems = document.querySelectorAll('.accordion-item');
+  function onPointerMove(e) {
+    if (!isDragging) return;
 
-  accordionItems.forEach(item => {
-    const header = item.querySelector('.accordion-header');
-    if (!header) return;
+    const clientX = e.clientX || (e.touches && e.touches[0].clientX) || 0;
+    const clientY = e.clientY || (e.touches && e.touches[0].clientY) || 0;
 
-    header.addEventListener('click', () => {
-      const isOpen = item.classList.contains('active');
+    const deltaX = clientX - dragStartX;
+    const deltaY = clientY - dragStartY;
 
-      accordionItems.forEach(other => other.classList.remove('active'));
+    const prevY = rawAngleY;
+    // Map mouse movement strictly to Master Group rotation angles
+    rawAngleY = dragStartRawY + deltaX * 0.28;
+    velocityY = rawAngleY - prevY;
 
-      if (!isOpen) {
-        item.classList.add('active');
-      }
+    rawTiltX = dragStartRawX - deltaY * 0.14;
+  }
 
-      // Recalculate metrics when accordion expands or closes
-      setTimeout(updateParallaxMetrics, 350);
+  function onPointerUp() {
+    if (!isDragging) return;
+    isDragging = false;
+    stage.classList.remove('is-dragging');
+  }
+
+  stage.addEventListener('mousedown', onPointerDown);
+  window.addEventListener('mousemove', onPointerMove, { passive: true });
+  window.addEventListener('mouseup', onPointerUp);
+
+  stage.addEventListener('touchstart', onPointerDown, { passive: true });
+  window.addEventListener('touchmove', onPointerMove, { passive: true });
+  window.addEventListener('touchend', onPointerUp);
+  window.addEventListener('touchcancel', onPointerUp);
+
+  // 2. CARD HOVER
+  cards.forEach(card => {
+    card.addEventListener('mouseenter', () => {
+      if (!isDragging) isCardHovered = true;
+    });
+    card.addEventListener('mouseleave', () => {
+      isCardHovered = false;
     });
   });
-}
 
-/* ============================================================================
-   10. STICKY MOBILE CTA
-   ============================================================================ */
-function initStickyMobileCta() {
-  const stickyCta = document.getElementById('sticky-mobile-cta');
-  const heroSection = document.getElementById('hero');
+  // 3. RENDER 3D CAGE FRAME
+  function renderCageFrame(viewY, viewX) {
+    // A. Rotate ONLY the MASTER 3D ATOMIC CAGE as one immutable physical sculpture.
+    // The three orbit rings NEVER move, deform, or recalculate relative to each other!
+    atomicCage.style.transform = `rotateY(${viewY.toFixed(2)}deg) rotateX(${viewX.toFixed(2)}deg)`;
 
-  if (!stickyCta || !heroSection) return;
-
-  window.addEventListener('scroll', () => {
-    const heroBottom = heroSection.getBoundingClientRect().bottom;
-    if (heroBottom < 0 && window.innerWidth <= 768) {
-      stickyCta.classList.add('visible');
-    } else {
-      stickyCta.classList.remove('visible');
+    // B. KLASSA K Nucleus: Permanently at (0, 0, 0)
+    // Subtle counter-rotation keeps the 12px extruded physical mark facing the viewer
+    if (coreK) {
+      coreK.style.transform = `translate(-50%, -50%) rotateY(${(-viewY * 0.12).toFixed(2)}deg) rotateX(${(-viewX * 0.12).toFixed(2)}deg)`;
     }
-  }, { passive: true });
+
+    // C. Cards: Rigidly anchored in 3D XYZ space to their respective orbit coordinates,
+    // with partial billboarding so card faces remain legible, never mirror, and show side depth.
+    const radY = viewY * Math.PI / 180;
+    const radX = viewX * Math.PI / 180;
+
+    nodeConfig.forEach(node => {
+      if (!node.el) return;
+
+      // Camera-space Z depth for dynamic depth styling
+      const worldZ_y = -node.cageX * Math.sin(radY) + node.cageZ * Math.cos(radY);
+      const cameraZ = node.cageY * Math.sin(radX) + worldZ_y * Math.cos(radX);
+
+      // Normalized Z: -1 (back) to +1 (front)
+      const normZ = Math.max(-1, Math.min(1, cameraZ / 140));
+
+      const depthScale = 1.0 + normZ * 0.06;            // 0.94 to 1.06
+      const depthOpacity = 0.90 + (normZ + 1) * 0.05;    // 0.90 to 1.00
+      const depthZIndex = Math.round(25 + normZ * 15);   // 10 to 40
+
+      // Partial Billboarding:
+      // Counter-rotates ~72% of cage rotation so the card face stays facing forward
+      // while displaying a crisp 6° to 10° 3D acrylic edge angle. NEVER mirrors!
+      const cardRotY = -viewY * 0.72 + (node.tiltYFactor * 10);
+      const cardRotX = -viewX * 0.72 + (node.tiltXFactor * 8);
+
+      node.el.style.transform = `translate3d(${node.cageX}px, ${node.cageY}px, ${node.cageZ}px) translate(-50%, -50%) rotateY(${cardRotY.toFixed(1)}deg) rotateX(${cardRotX.toFixed(1)}deg) scale(${depthScale.toFixed(3)})`;
+      node.el.style.opacity = depthOpacity.toFixed(2);
+      node.el.style.zIndex = depthZIndex;
+
+      // Depth-aware shadow on front acrylic face
+      const frontFace = node.el.querySelector('.card-face-front');
+      if (frontFace) {
+        if (normZ > 0) {
+          const shadowBlur = 28 + normZ * 14;
+          const shadowY = 14 + normZ * 8;
+          frontFace.style.boxShadow = `0 ${shadowY.toFixed(0)}px ${shadowBlur.toFixed(0)}px -6px rgba(15, 118, 110, 0.20), 0 2px 8px rgba(0, 0, 0, 0.04), inset 0 1px 1px #FFFFFF, inset 0 -1px 2px rgba(15, 118, 110, 0.08)`;
+        } else {
+          frontFace.style.boxShadow = `0 8px 18px -4px rgba(15, 118, 110, 0.10), 0 1px 4px rgba(0, 0, 0, 0.02), inset 0 1px 1px rgba(255, 255, 255, 0.8)`;
+        }
+      }
+    });
+  }
+
+  // 4. ANIMATION & PHYSICS RAF LOOP
+  let idleTime = 0;
+  function cagePhysicsLoop() {
+    idleTime += 0.012;
+
+    // A. Idle subtle drift (paused during active drag or card hover)
+    if (!isDragging && !isCardHovered) {
+      // Gentle harmonic oscillation within ±6° comfort zone
+      const idleTargetY = 8.0 + Math.sin(idleTime * 0.8) * 4.0;
+      const idleTargetX = 4.0 + Math.cos(idleTime * 0.6) * 2.0;
+      rawAngleY += (idleTargetY - rawAngleY) * 0.02;
+      rawTiltX += (idleTargetX - rawTiltX) * 0.02;
+    }
+
+    // B. Momentum inertia on release
+    if (!isDragging && Math.abs(velocityY) > 0.001) {
+      rawAngleY += velocityY;
+      velocityY *= 0.88; // Damping
+    }
+
+    // C. Progressive Soft Limits & Elastic Return at Envelope Boundaries
+    const effectiveTargetY = applySoftLimit(rawAngleY, NORMAL_ZONE_Y, MAX_DEG_Y);
+    if (!isDragging && Math.abs(rawAngleY) > NORMAL_ZONE_Y) {
+      // Elastic spring-back to comfort boundary
+      rawAngleY += (Math.sign(rawAngleY) * NORMAL_ZONE_Y - rawAngleY) * 0.10;
+    }
+
+    const effectiveTargetX = applySoftLimit(rawTiltX, NORMAL_ZONE_X, MAX_DEG_X);
+    if (!isDragging && Math.abs(rawTiltX) > NORMAL_ZONE_X) {
+      // Elastic spring-back to comfort boundary
+      rawTiltX += (Math.sign(rawTiltX) * NORMAL_ZONE_X - rawTiltX) * 0.12;
+    }
+
+    // D. Smooth LERP interpolation
+    currentAngleY += (effectiveTargetY - currentAngleY) * 0.10;
+    currentTiltX += (effectiveTargetX - currentTiltX) * 0.10;
+
+    // E. Render the rigid 3D cage
+    renderCageFrame(currentAngleY, currentTiltX);
+
+    requestAnimationFrame(cagePhysicsLoop);
+  }
+
+  requestAnimationFrame(cagePhysicsLoop);
 }
 
+
 /* ============================================================================
-   11. INTERACTIVE MODALS
+   6. MODAL HANDLERS & INTERACTIONS
    ============================================================================ */
 function openTrialModal() {
   const modal = document.getElementById('trial-modal');
