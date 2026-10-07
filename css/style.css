@@ -2111,6 +2111,435 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ====================================================================
+   7. PARADOKS WAKTU GURU — 40% MENGAJAR VS 60% ADMINISTRASI
+   ==================================================================== */
+.time-paradox-section {
+  position: relative;
+  padding: 90px 0 100px 0;
+  background: linear-gradient(180deg, #F8FAFC 0%, #FFFFFF 60%, #F0FDFA 100%);
+  border-top: 1px solid rgba(226, 232, 240, 0.8);
+  border-bottom: 1px solid rgba(204, 251, 241, 0.8);
+  overflow: hidden;
+  z-index: 2;
+}
+
+.time-paradox-ambient-glow {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 900px;
+  height: 450px;
+  background: radial-gradient(circle, rgba(239, 68, 68, 0.05) 0%, rgba(20, 184, 166, 0.05) 50%, transparent 70%);
+  filter: blur(75px);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.badge-tag-alert {
+  background: #FEF2F2 !important;
+  color: #DC2626 !important;
+  border: 1px solid #FECACA !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pulse-dot-red {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: #EF4444;
+  box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
+  animation: pulse-red-anim 2s infinite;
+}
+
+@keyframes pulse-red-anim {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 6px rgba(239, 68, 68, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+  }
+}
+
+.text-highlight-danger {
+  color: #DC2626;
+  position: relative;
+  display: inline-block;
+}
+
+.text-highlight-danger::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: rgba(239, 68, 68, 0.22);
+  border-radius: 2px;
+  z-index: -1;
+}
+
+/* ====================================================================
+   DOMINANT STEPPED PIE INFOGRAPHIC SHOWCASE & POINTER LINES
+   ==================================================================== */
+.infographic-showcase-wrap {
+  display: grid;
+  grid-template-columns: minmax(220px, 270px) auto minmax(220px, 270px);
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  max-width: 1140px;
+  margin: 48px auto 36px auto;
+  position: relative;
+}
+
+/* Side Annotation Columns (Lightweight & Clean) */
+.infographic-side-col {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  position: relative;
+}
+
+.infographic-side-col.col-left {
+  justify-content: flex-end;
+  text-align: right;
+}
+
+.infographic-side-col.col-right {
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.side-annotation-content {
+  max-width: 250px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.col-left .side-annotation-content {
+  align-items: flex-end;
+}
+
+.col-right .side-annotation-content {
+  align-items: flex-start;
+}
+
+/* Annotation Badges */
+.annotation-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  padding: 3px 10px;
+  border-radius: 99px;
+  text-transform: uppercase;
+}
+
+.badge-admin {
+  background: #FEF2F2;
+  color: #DC2626;
+  border: 1px solid #FECACA;
+}
+
+.badge-teaching {
+  background: #F0FDFA;
+  color: #0F766E;
+  border: 1px solid #99F6E4;
+}
+
+.dot-indicator {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+.dot-red {
+  background: #EF4444;
+  box-shadow: 0 0 5px rgba(239, 68, 68, 0.5);
+}
+
+.dot-teal {
+  background: #0F766E;
+  box-shadow: 0 0 5px rgba(15, 118, 110, 0.5);
+}
+
+.annotation-title {
+  font-size: 1.12rem;
+  font-weight: 800;
+  line-height: 1.25;
+  margin: 0;
+}
+
+.text-danger { color: #DC2626; }
+.text-teal { color: #0F766E; }
+
+.annotation-time {
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: #64748B;
+  margin-top: -2px;
+  margin-bottom: 2px;
+}
+
+/* Checklist Points (Clean & Lightweight) */
+.annotation-checklist {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 0;
+  margin: 4px 0 0 0;
+}
+
+.annotation-checklist li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 0.81rem;
+  color: #334155;
+  line-height: 1.4;
+}
+
+.col-left .annotation-checklist li {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+.check-icon {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.icon-danger { color: #EF4444; }
+.icon-teal { color: #0F766E; }
+
+/* Pointer Leader Lines */
+.pointer-line {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.pointer-left {
+  flex-direction: row;
+}
+
+.pointer-right {
+  flex-direction: row;
+}
+
+.pointer-bar {
+  width: 36px;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(226, 232, 240, 0.4), #CBD5E1);
+  position: relative;
+}
+
+.pointer-left .pointer-bar {
+  background: linear-gradient(90deg, #CBD5E1, #FCA5A5);
+}
+
+.pointer-right .pointer-bar {
+  background: linear-gradient(90deg, #99F6E4, #CBD5E1);
+}
+
+.pointer-beacon {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.beacon-red {
+  background: #EF4444;
+  border: 2px solid #FFFFFF;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.25), 0 2px 6px rgba(239, 68, 68, 0.4);
+}
+
+.beacon-teal {
+  background: #0F766E;
+  border: 2px solid #FFFFFF;
+  box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.25), 0 2px 6px rgba(15, 118, 110, 0.4);
+}
+
+/* CENTER DOMINANT PIE STAGE */
+.infographic-center-stage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 5;
+}
+
+.stepped-pie-wrapper {
+  position: relative;
+  width: 420px;
+  height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 22px 40px rgba(15, 23, 42, 0.1));
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.stepped-pie-wrapper:hover {
+  transform: scale(1.02);
+}
+
+.stepped-pie-svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  display: block;
+}
+
+.pie-slice-path {
+  transition: transform 0.35s ease, filter 0.35s ease;
+  cursor: pointer;
+  transform-origin: 210px 210px;
+}
+
+.pie-slice-path.slice-admin:hover {
+  transform: scale(1.03) translate(3px, -3px);
+  filter: drop-shadow(0 14px 22px rgba(239, 68, 68, 0.35));
+}
+
+.pie-slice-path.slice-teach:hover {
+  transform: scale(1.03) translate(-3px, 3px);
+  filter: drop-shadow(0 14px 22px rgba(15, 118, 110, 0.35));
+}
+
+.slice-label-group text {
+  user-select: none;
+  pointer-events: none;
+}
+
+.center-hub-content text {
+  user-select: none;
+  pointer-events: none;
+}
+
+/* BOTTOM CALLOUT (Centered & Minimalist) */
+.infographic-bottom-callout {
+  display: flex;
+  justify-content: center;
+  margin-top: 36px;
+}
+
+.callout-pill-box {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  background: #FFFBEB;
+  border: 1.5px solid #FDE68A;
+  padding: 14px 24px;
+  border-radius: 99px;
+  box-shadow: 0 10px 25px -5px rgba(217, 119, 6, 0.08);
+  max-width: 680px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.callout-pill-box:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px -6px rgba(217, 119, 6, 0.12);
+}
+
+.callout-icon-circle {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #FEF3C7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.callout-icon {
+  width: 18px;
+  height: 18px;
+  color: #D97706;
+}
+
+.callout-text {
+  font-size: 0.92rem;
+  color: #92400E;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.callout-text strong {
+  color: #78350F;
+  font-weight: 800;
+}
+
+/* Responsive Styles for Stepped Pie Infographic */
+@media (max-width: 1024px) {
+  .infographic-showcase-wrap {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
+  }
+
+  .infographic-side-col {
+    justify-content: center !important;
+    text-align: center !important;
+  }
+
+  .col-left .side-annotation-content,
+  .col-right .side-annotation-content {
+    align-items: center;
+    text-align: center;
+  }
+
+  .col-left .annotation-checklist li {
+    flex-direction: row;
+    text-align: left;
+  }
+
+  .pointer-line {
+    display: none;
+  }
+
+  .stepped-pie-wrapper {
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .time-paradox-section {
+    padding: 65px 0 75px 0;
+  }
+
+  .stepped-pie-wrapper {
+    width: 300px;
+    height: 300px;
+  }
+
+  .callout-pill-box {
+    border-radius: 20px;
+    padding: 16px 18px;
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+/* ====================================================================
    8. MEMPERKENALKAN KLASSA — 4 RUANG EKOSISTEM (INTERACTIVE TABS)
    ==================================================================== */
 .introducing-section {

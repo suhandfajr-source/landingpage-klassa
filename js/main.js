@@ -37,6 +37,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 10. Synchronized 5-Point Timeline & Problem Carousel
   initProblemCarousel();
+
+  // 11. Time Paradox 40/60 Donut Chart Animation
+  initTimeParadoxChart();
 });
 
 /* ============================================================================
@@ -844,4 +847,46 @@ function switchRuangTab(index) {
   if (window.lucide) {
     window.lucide.createIcons();
   }
+}
+
+
+/* ====================================================================
+   15. TIME PARADOX 40/60 STEPPED PIE INFOGRAPHIC ANIMATION
+   ==================================================================== */
+function initTimeParadoxChart() {
+  const chartSection = document.getElementById('paradoks-waktu');
+  if (!chartSection) return;
+
+  const sliceAdmin = chartSection.querySelector('.slice-admin');
+  const sliceTeach = chartSection.querySelector('.slice-teach');
+  const centerHub = chartSection.querySelector('.center-hub-content');
+  const labels60 = chartSection.querySelector('.label-60');
+  const labels40 = chartSection.querySelector('.label-40');
+
+  if (sliceAdmin && sliceTeach) {
+    sliceAdmin.style.opacity = '0';
+    sliceAdmin.style.transform = 'scale(0.8) rotate(-15deg)';
+    sliceAdmin.style.transition = 'all 1s cubic-bezier(0.16, 1, 0.3, 1)';
+
+    sliceTeach.style.opacity = '0';
+    sliceTeach.style.transform = 'scale(0.8) rotate(15deg)';
+    sliceTeach.style.transition = 'all 1s cubic-bezier(0.16, 1, 0.3, 1) 0.15s';
+  }
+
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        if (sliceAdmin && sliceTeach) {
+          sliceAdmin.style.opacity = '1';
+          sliceAdmin.style.transform = 'scale(1) rotate(0deg)';
+          sliceTeach.style.opacity = '1';
+          sliceTeach.style.transform = 'scale(1) rotate(0deg)';
+        }
+        if (window.lucide) window.lucide.createIcons();
+        obs.unobserve(chartSection);
+      }
+    });
+  }, { threshold: 0.2 });
+
+  observer.observe(chartSection);
 }

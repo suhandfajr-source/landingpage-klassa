@@ -27,7 +27,7 @@
   <script src="https://unpkg.com/lucide@latest"></script>
 
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="css/style.css?v=19.0">
+  <link rel="stylesheet" href="css/style.css?v=20.0">
 </head>
 <body>
 
@@ -654,6 +654,187 @@
           </div>
           </div>
 
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         7. PARADOKS WAKTU GURU — 40% MENGAJAR VS 60% ADMINISTRASI
+         ==================================================================== -->
+    <section class="time-paradox-section" id="paradoks-waktu">
+      <div class="time-paradox-ambient-glow" aria-hidden="true"></div>
+      <div class="container">
+        
+        <!-- Section Header -->
+        <div class="section-badge-center">
+          <span class="badge-tag-dark badge-tag-alert">
+            <span class="pulse-dot-red"></span>
+            REALITA WAKTU GURU INDONESIA
+          </span>
+        </div>
+        
+        <h2 class="section-headline text-center">
+          Gelar Anda Pendidik, Tapi <span class="text-highlight-danger">60% Waktu Habis</span><br>
+          Sebagai Operator Entri Data
+        </h2>
+        
+        <p class="section-subheadline text-center">
+          Guru berniat mendidik dan mencerdaskan generasi. Namun kenyataannya, energi terbesar Anda justru tergerus di depan spreadsheet, format dokumen berulang, dan tumpukan administrasi.
+        </p>
+
+        <!-- Main Stepped Infographic Showcase (Dominant Pie + Pointer Lines) -->
+        <div class="infographic-showcase-wrap">
+          
+          <!-- LEFT POINTER COLUMN: 60% Tugas Administrasi (Points to 60% Red Slice on Left) -->
+          <div class="infographic-side-col col-left">
+            <div class="side-annotation-content">
+              <div class="annotation-badge badge-admin">
+                <span class="dot-indicator dot-red"></span>
+                <span>60% WAKTU TERSITA</span>
+              </div>
+              <h3 class="annotation-title text-danger">Tugas Administrasi &amp; Birokrasi</h3>
+              <p class="annotation-time">±24 - 30 Jam / Minggu</p>
+              
+              <ul class="annotation-checklist">
+                <li>
+                  <i data-lucide="x" class="check-icon icon-danger"></i>
+                  <span>Susun Modul Ajar &amp; RPP panjang dari nol</span>
+                </li>
+                <li>
+                  <i data-lucide="x" class="check-icon icon-danger"></i>
+                  <span>Input ganda nilai &amp; presensi ke banyak file</span>
+                </li>
+                <li>
+                  <i data-lucide="x" class="check-icon icon-danger"></i>
+                  <span>Koreksi manual ratusan lembar ulangan malam hari</span>
+                </li>
+                <li>
+                  <i data-lucide="x" class="check-icon icon-danger"></i>
+                  <span>Panik rekap deskripsi capaian e-Rapor semester</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Pointer Line Left (Connects to 60% Red Slice) -->
+            <div class="pointer-line pointer-left" aria-hidden="true">
+              <span class="pointer-bar"></span>
+              <span class="pointer-beacon beacon-red"></span>
+            </div>
+          </div>
+
+          <!-- CENTER DOMINANT PIE INFOGRAPHIC (420px, 60% on Left, 40% on Right) -->
+          <div class="infographic-center-stage">
+            <div class="stepped-pie-wrapper">
+              <svg class="stepped-pie-svg" viewBox="0 0 420 420" width="420" height="420" fill="none" aria-label="Infografis: 60% Administrasi vs 40% Mengajar">
+                <defs>
+                  <!-- Gradient 60% Administrasi (Coral Red to Vibrant Sunset Orange) -->
+                  <linearGradient id="gradAdminStepped" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#EF4444" />
+                    <stop offset="50%" stop-color="#F43F5E" />
+                    <stop offset="100%" stop-color="#FB923C" />
+                  </linearGradient>
+
+                  <!-- Gradient 40% Mengajar (Deep Pine Teal to Soft Mint) -->
+                  <linearGradient id="gradTeachStepped" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#0F766E" />
+                    <stop offset="60%" stop-color="#0D9488" />
+                    <stop offset="100%" stop-color="#14B8A6" />
+                  </linearGradient>
+
+                  <!-- Outer Drop Shadow -->
+                  <filter id="pieElevatedShadow" x="-15%" y="-15%" width="130%" height="130%">
+                    <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="rgba(15, 23, 42, 0.12)"/>
+                  </filter>
+
+                  <!-- Center Hub Shadow -->
+                  <filter id="centerHubShadow" x="-20%" y="-20%" width="140%" height="140%">
+                    <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="rgba(15, 23, 42, 0.1)"/>
+                  </filter>
+                </defs>
+
+                <!-- 60% Administrasi Stepped Arc ON THE LEFT (Outer Radius 190px) -->
+                <path class="pie-slice-path slice-admin"
+                      d="M 321.68 363.71 A 190 190 0 1 1 210 20 L 210 130 A 80 80 0 1 0 257.02 274.72 Z"
+                      fill="url(#gradAdminStepped)"
+                      filter="url(#pieElevatedShadow)" />
+
+                <!-- 40% Mengajar Stepped Arc ON THE RIGHT (Outer Radius 172px) -->
+                <path class="pie-slice-path slice-teach"
+                      d="M 210 38 A 172 172 0 0 1 311.10 349.15 L 257.02 274.72 A 80 80 0 0 0 210 130 Z"
+                      fill="url(#gradTeachStepped)"
+                      filter="url(#pieElevatedShadow)" />
+
+                <!-- Slice 60% Embedded Labels (Placed on Left Arc, No Overlap) -->
+                <g class="slice-label-group label-60">
+                  <text x="95" y="200" text-anchor="middle" fill="#FFFFFF" font-size="32" font-weight="900" font-family="'Plus Jakarta Sans', sans-serif">60%</text>
+                  <text x="95" y="222" text-anchor="middle" fill="#FFE4E6" font-size="11" font-weight="800" letter-spacing="1.2" font-family="'Plus Jakarta Sans', sans-serif">ADMINISTRASI</text>
+                </g>
+
+                <!-- Slice 40% Embedded Labels (Placed on Right Arc, No Overlap) -->
+                <g class="slice-label-group label-40">
+                  <text x="315" y="180" text-anchor="middle" fill="#FFFFFF" font-size="28" font-weight="900" font-family="'Plus Jakarta Sans', sans-serif">40%</text>
+                  <text x="315" y="201" text-anchor="middle" fill="#CCFBF1" font-size="11" font-weight="800" letter-spacing="1.2" font-family="'Plus Jakarta Sans', sans-serif">MENGAJAR</text>
+                </g>
+
+                <!-- Center Circular Hub -->
+                <circle cx="210" cy="210" r="70" fill="#FFFFFF" stroke="#F1F5F9" stroke-width="4" filter="url(#centerHubShadow)" />
+                <circle cx="210" cy="210" r="62" fill="none" stroke="rgba(15, 118, 110, 0.1)" stroke-width="1.5" stroke-dasharray="4 4" />
+
+                <!-- Center Hub Text: Simply ADMIN VS GURU -->
+                <g class="center-hub-content">
+                  <text x="210" y="205" text-anchor="middle" fill="#0F172A" font-size="15" font-weight="900" letter-spacing="1.5" font-family="'Plus Jakarta Sans', sans-serif">ADMIN</text>
+                  <text x="210" y="223" text-anchor="middle" fill="#0F766E" font-size="11" font-weight="800" letter-spacing="1.8" font-family="'Plus Jakarta Sans', sans-serif">VS GURU</text>
+                </g>
+              </svg>
+            </div>
+          </div>
+
+          <!-- RIGHT POINTER COLUMN: 40% Porsi Mengajar (Points to 40% Teal Slice on Right) -->
+          <div class="infographic-side-col col-right">
+            <!-- Pointer Line Right (Connects to 40% Teal Slice) -->
+            <div class="pointer-line pointer-right" aria-hidden="true">
+              <span class="pointer-beacon beacon-teal"></span>
+              <span class="pointer-bar"></span>
+            </div>
+
+            <div class="side-annotation-content">
+              <div class="annotation-badge badge-teaching">
+                <span class="dot-indicator dot-teal"></span>
+                <span>HANYA 40% SISA WAKTU</span>
+              </div>
+              <h3 class="annotation-title text-teal">Waktu Mengajar &amp; Bimbingan</h3>
+              <p class="annotation-time">±16 Jam / Minggu</p>
+              
+              <ul class="annotation-checklist">
+                <li>
+                  <i data-lucide="check" class="check-icon icon-teal"></i>
+                  <span>Tatap muka &amp; menerangkan materi di kelas</span>
+                </li>
+                <li>
+                  <i data-lucide="check" class="check-icon icon-teal"></i>
+                  <span>Bimbingan karakter &amp; diskusi personal murid</span>
+                </li>
+                <li>
+                  <i data-lucide="check" class="check-icon icon-teal"></i>
+                  <span>Membangun interaksi belajar yang bermakna</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Bottom Stat Callout Quote (Centered & Sleek) -->
+        <div class="infographic-bottom-callout">
+          <div class="callout-pill-box">
+            <div class="callout-icon-circle">
+              <i data-lucide="clock" class="callout-icon"></i>
+            </div>
+            <p class="callout-text">
+              “Hampir <strong>30 jam waktu Anda setiap minggu hilang</strong> hanya untuk melakukan hal yang sama secara berulang.”
+            </p>
+          </div>
         </div>
 
       </div>
