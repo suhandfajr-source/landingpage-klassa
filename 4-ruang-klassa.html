@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arsitektur 4 Ruang Ekosistem KLASSA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0D9488;
+      --primary-dark: #0F766E;
+      --primary-light: #CCFBF1;
+      --navy: #0F172A;
+      --slate: #475569;
+      --slate-light: #94A3B8;
+      --bg-page: #F8FAFC;
+      --card-bg: #FFFFFF;
+      --border: #E2E8F0;
+      
+      --room1-color: #2563EB;
+      --room1-bg: #EFF6FF;
+      --room1-border: #BFDBFE;
+      
+      --room2-color: #E11D48;
+      --room2-bg: #FFF1F2;
+      --room2-border: #FECDD3;
+      
+      --room3-color: #7C3AED;
+      --room3-bg: #F5F3FF;
+      --room3-border: #DDD6FE;
+      
+      --room4-color: #D97706;
+      --room4-bg: #FFFBEB;
+      --room4-border: #FDE68A;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: var(--bg-page);
+      color: var(--navy);
+      line-height: 1.6;
+      padding: 40px 20px;
+    }
+
+    .doc-container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #FFFFFF;
+      padding: 48px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+    }
+
+    /* Header */
+    .doc-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 28px;
+      margin-bottom: 32px;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      background: linear-gradient(135deg, #0D9488 0%, #14B8A6 100%);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #FFFFFF;
+      font-weight: 800;
+      font-size: 22px;
+      box-shadow: 0 4px 12px rgba(13, 148, 136, 0.25);
+    }
+
+    .brand-text h1 {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--navy);
+    }
+
+    .brand-text p {
+      font-size: 13px;
+      color: var(--slate);
+      font-weight: 500;
+    }
+
+    .doc-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 700;
+      background: var(--primary-light);
+      color: var(--primary-dark);
+      padding: 6px 14px;
+      border-radius: 99px;
+      border: 1px solid rgba(13, 148, 136, 0.2);
+    }
+
+    /* Document Title */
+    .title-section {
+      margin-bottom: 36px;
+    }
+
+    .title-section h2 {
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+
+    .title-section p {
+      font-size: 15px;
+      color: var(--slate);
+      line-height: 1.6;
+    }
+
+    /* Grid of 4 Rooms */
+    .rooms-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 36px;
+    }
+
+    .room-card {
+      border-radius: 16px;
+      padding: 24px;
+      background: #FFFFFF;
+      border: 1.5px solid var(--border);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+
+    .room-card.room-1 { border-color: var(--room1-border); }
+    .room-card.room-2 { border-color: var(--room2-border); }
+    .room-card.room-3 { border-color: var(--room3-border); }
+    .room-card.room-4 { border-color: var(--room4-border); }
+
+    .room-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .room-icon-box {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+    }
+
+    .room-1 .room-icon-box { background: var(--room1-bg); color: var(--room1-color); }
+    .room-2 .room-icon-box { background: var(--room2-bg); color: var(--room2-color); }
+    .room-3 .room-icon-box { background: var(--room3-bg); color: var(--room3-color); }
+    .room-4 .room-icon-box { background: var(--room4-bg); color: var(--room4-color); }
+
+    .room-title-area h3 {
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    .room-1 .room-title-area h3 { color: var(--room1-color); }
+    .room-2 .room-title-area h3 { color: var(--room2-color); }
+    .room-3 .room-title-area h3 { color: var(--room3-color); }
+    .room-4 .room-title-area h3 { color: var(--room4-color); }
+
+    .room-focus-box {
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      line-height: 1.45;
+    }
+
+    .room-1 .room-focus-box { background: var(--room1-bg); color: #1E40AF; }
+    .room-2 .room-focus-box { background: var(--room2-bg); color: #9F1239; }
+    .room-3 .room-focus-box { background: var(--room3-bg); color: #5B21B6; }
+    .room-4 .room-focus-box { background: var(--room4-bg); color: #92400E; }
+
+    .feature-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex-grow: 1;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 13.5px;
+      color: #334155;
+      line-height: 1.5;
+    }
+
+    .feature-bullet {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      margin-top: 7px;
+      flex-shrink: 0;
+    }
+
+    .room-1 .feature-bullet { background: var(--room1-color); }
+    .room-2 .feature-bullet { background: var(--room2-color); }
+    .room-3 .feature-bullet { background: var(--room3-color); }
+    .room-4 .feature-bullet { background: var(--room4-color); }
+
+    .feature-item strong {
+      color: var(--navy);
+      font-weight: 700;
+    }
+
+    /* Key Summary / Architecture Principle */
+    .doc-summary {
+      background: linear-gradient(135deg, #042F2E 0%, #0F766E 100%);
+      color: #FFFFFF;
+      border-radius: 16px;
+      padding: 24px 28px;
+      margin-top: 8px;
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+
+    .doc-summary h4 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: #CCFBF1;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .doc-summary p {
+      font-size: 13.5px;
+      color: #E6FFFA;
+      line-height: 1.6;
+    }
+
+    /* Footer */
+    .doc-footer {
+      margin-top: 36px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 12px;
+      color: var(--slate-light);
+    }
+
+    /* Print styling */
+    @media print {
+      body {
+        padding: 0;
+        background: #FFFFFF;
+      }
+      .doc-container {
+        border: none;
+        box-shadow: none;
+        padding: 20px 0;
+        max-width: 100%;
+      }
+      .room-card, .doc-summary {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .rooms-grid {
+        grid-template-columns: 1fr;
+      }
+      .doc-container {
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="doc-container">
+    
+    <!-- Document Header -->
+    <header class="doc-header">
+      <div class="brand-logo">
+        <div class="brand-mark">K</div>
+        <div class="brand-text">
+          <h1>KLASSA</h1>
+          <p>Personal Workspace &amp; AI Co-Pilot Guru Indonesia</p>
+        </div>
+      </div>
+      <div class="doc-badge">ARSITEKTUR PRODUK</div>
+    </header>
+
+    <!-- Title Section -->
+    <div class="title-section">
+      <h2>Klasifikasi 4 Ruang Ekosistem KLASSA</h2>
+      <p>
+        Pemetaan komprehensif seluruh fitur terintegrasi KLASSA ke dalam 4 pilar ruang kerja mandiri pendidik untuk menyederhanakan administrasi, mengoptimalkan evaluasi, dan meningkatkan kualitas pembelajaran.
+      </p>
+    </div>
+
+    <!-- 4 Rooms Grid -->
+    <div class="rooms-grid">
+
+      <!-- RUANG 1: RUANG MENGAJAR -->
+      <div class="room-card room-1">
+        <div class="room-header">
+          <div class="room-icon-box">📖</div>
+          <div class="room-title-area">
+            <h3>1. Ruang Mengajar</h3>
+          </div>
+        </div>
+        <div class="room-focus-box">
+          Fokus: Persiapan materi, perencanaan perangkat ajar, dan pelaksanaan linimasa sesi belajar.
+        </div>
+        <ul class="feature-list">
+          <li class="feature-item">
+            <span class="feature-bullet"></span>
+            <div><strong>AI Co-Pilot Modul Ajar (BSKAP):</strong> Generator RPP/Modul Ajar otomatis berbasis CP/TP siap ekspor Word (.docx).</div>
+          </li>
+          <li class="feature-item">
+            <span class="feature-bullet"></span>
+            <div><strong>Bank Aktivitas &amp; Diferensiasi:</strong> Rekomendasi sintaks interaktif (audio, visual, kinestetik) sesuai profil murid.</div>
+          </li>
+          <li class="feature-item">
+            <span class="feature-bullet"></span>
+            <div><strong>Linimasa Sesi Mengajar:</strong> Rencana terstruktur pertemuan 1 s/d 16 per semester terhubung kalender akademik.</div>
+          </li>
+          <li class="feature-item">
+            <span class="feature-bullet"></span>
+            <div><strong>Buku Jurnal Guru Digital:</strong> Pencatatan otomatis materi pertemuan harian dan catatan refleksi ketercapaian kelas.</div>
+          </li>
+          <li class="feature-item">
+            <span class="feature-bullet"></span>
+            <div><strong>Presensi 1-Tap Kelas:</strong> Rekap absensi instan (Hadir, Sakit, Izin, Alpa, Terlambat) yang langsung mengisi jurnal.</div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- RUANG 2: RUANG NILAI & EVALUASI -->
+      <div class="room-card room-2">
+        <div class="room-header">
+          <div class="room-icon-box">🎯</div>
+          <div class="room-title-area">
+            <h3>2. Ruang Nilai &amp; Evaluasi</h3>
+          </div>
+        </div>
+        <div class="room-focus-box">
+          Fokus: Pelaksanaan asesmen, koreksi otomatis, matriks buku nilai, dan analisis ketuntasan.
+        </div>
+        <ul class="feature-list">
+          <li class="feature-item">
+            <span class="feature-bullet"></span>
+            <div><strong>Engine Asesmen &amp; Radar Anti-Contek:</strong> Kuis digital dengan deteksi fokus layar jika siswa berpindah tab/aplikasi.</div>
+          </li>
+          <li class="feature-item">
+            <span class="feature-bullet"></span>
+            <div><strong>Koreksi Otomatis &amp; Analisis Soal:</strong> Penilaian instan pilihan ganda &amp; isian beserta visualisasi daya serap materi.</div>
+          </li>
+          <li class="feature-item">
+            <span class="feature-bullet"></span>
+            <div><strong>Matriks Buku Nilai Terpadu:</strong> Lembar nilai dinamis dengan sticky header tanpa perlu mengetik rumus manual.</div>
+          </li>
+          <li class="feature-item">
+            <span class="feature-bullet"></span>
+            <div><strong>Kebijakan Bobot Nilai Fleksibel:</strong> Pengaturan bobot nilai akhir (misal: Tugas 20%, Formatif 30%, Sumatif 50%).</div>
+          </li>
+          <li class="feature-item">
+            <span class="feature-bullet"></span>
+            <div><strong>Pelacak Remedial &amp; Batas KKTP:</strong> Peringatan otomatis untuk siswa di bawah ambang KKTP beserta antrean remedial.</div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- RUANG 3: RUANG SISWA & KOMUNIKASI -->
+      <div class="room-card room-3">
+        <div class="room-header">
+          <div class="room-icon-box">👥</div>
+          <div class="room-title-area">
+            <h3>3. Ruang Siswa &amp; Komunikasi</h3>
+          </div>
+        </div>
+        <div class="room-focus-box">
+          Fokus: Manajemen profil siswa, portal belajar mandiri ringan, dan transparansi wali murid.
+        </div>
+        <ul class="feature-list">
+          <li class="feature-item">
+            <span class="feature-bullet"></span>
+            <div><strong>Portal Siswa Ringan (No-App/No-Google):</strong> Akses kuis &amp; materi dari HP apa pun hanya dengan NIS dan PIN.</div>
+          </li>
+          <li class="feature-item">
+            <span class="feature-bullet"></span>
+            <div><strong>Pengumpulan Tugas Foto 1-Klik:</strong> Siswa memfoto lembar kerja catatan dan langsung terkirim tanpa alat scanner.</div>
+          </li>
+          <li class="feature-item">
+            <span class="feature-bullet"></span>
+            <div><strong>Roster Siswa Pintar:</strong> Profil komprehensif riwayat kehadiran, rata-rata nilai, dan tren capaian belajar.</div>
+          </li>
+          <li class="feature-item">
+            <span class="feature-bullet"></span>
+            <div><strong>Log Catatan Bimbingan:</strong> Observasi perkembangan karakter (catatan privat guru vs butuh konsultasi wali).</div>
+          </li>
+          <li class="feature-item">
+            <span class="feature-bullet"></span>
+            <div><strong>Mode Pantau Keluarga:</strong> Ringkasan capaian belajar dan absensi transparan untuk orang tua tanpa grup chat riuh.</div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- RUANG 4: RUANG ADMINISTRASI & RAPOR -->
+      <div class="room-card room-4">
+        <div class="room-header">
+          <div class="room-icon-box">📑</div>
+          <div class="room-title-area">
+            <h3>4. Ruang Administrasi &amp; Rapor</h3>
+          </div>
+        </div>
+        <div class="room-focus-box">
+          Fokus: Pemenuhan kurikulum resmi, arsip supervisi, dan integrasi pelaporan akhir semester.
+        </div>
+        <ul class="feature-list">
+          <li class="feature-item">
+            <span class="feature-bullet"></span>
+            <div><strong>Pemetaan Kurikulum (CP, TP, ATP):</strong> Distribusi capaian pembelajaran resmi langsung ke modul dan kisi-kisi asesmen.</div>
+          </li>
+          <li class="feature-item">
+            <span class="feature-bullet"></span>
+            <div><strong>Pusat Ekspor e-Rapor &amp; Excel:</strong> Unduh rekap format resmi buku nilai dan e-Rapor Kemendikbudristek siap cetak.</div>
+          </li>
+          <li class="feature-item">
+            <span class="feature-bullet"></span>
+            <div><strong>Arsip Siap Supervisi &amp; Akreditasi:</strong> Berkas modul, absensi, jurnal, dan nilai tersimpan rapi dalam 1 folder siap audit.</div>
+          </li>
+          <li class="feature-item">
+            <span class="feature-bullet"></span>
+            <div><strong>Generator Deskripsi Capaian:</strong> Narasi otomatis kekuatan &amp; rekomendasi perbaikan siswa berbasis akumulasi data.</div>
+          </li>
+          <li class="feature-item">
+            <span class="feature-bullet"></span>
+            <div><strong>Prinsip Input Once, Output Everywhere:</strong> Menjamin nol duplikasi input data dari awal semester hingga rapor dibagikan.</div>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Principle Highlight Summary -->
+    <div class="doc-summary">
+      <h4>✦ Nilai Utama Ekosistem KLASSA</h4>
+      <p>
+        Keempat ruang ini tidak bekerja secara terpisah, melainkan saling bertukar data secara otomatis secara *real-time*. Aktivitas di <strong>Ruang Mengajar</strong> dan <strong>Ruang Nilai</strong> secara otomatis menyusun data di <strong>Ruang Siswa</strong> dan menerbitkan dokumen resmi di <strong>Ruang Administrasi &amp; Rapor</strong> tanpa perlu input ulang.
+      </p>
+    </div>
+
+    <!-- Document Footer -->
+    <footer class="doc-footer">
+      <div>Dokumen Resmi Spesifikasi Fitur KLASSA • © 2026 PT Naik Kelas Bersama</div>
+      <div>Terakhir diperbarui: 7 Oktober 2026</div>
+    </footer>
+
+  </div>
+
+</body>
+</html>

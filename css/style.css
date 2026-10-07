@@ -713,7 +713,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ====================================================================
-   RIGHT COLUMN: KLASSA 3D ATOMIC SCULPTURE STAGE
+   RIGHT COLUMN: KLASSA ATOMIC ECOSYSTEM HERO STAGE
    ==================================================================== */
 .hero-ecosystem-col {
   position: relative;
@@ -721,28 +721,19 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 600px;
+  min-height: 560px;
   z-index: 3;
 }
 
 .atomic-ecosystem-stage {
   position: relative;
-  width: 100%;
-  max-width: 640px;
-  height: 580px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 580px;
+  height: 500px;
   user-select: none;
-  perspective: 1100px;
-  transform-style: preserve-3d;
   overflow: visible;
-  padding: 16px;
-  cursor: grab;
-}
-
-.atomic-ecosystem-stage.is-dragging {
-  cursor: grabbing !important;
+  padding: 0;
+  margin: 0 auto;
+  cursor: default;
 }
 
 /* Ambient Radial Glow */
@@ -751,356 +742,298 @@ h1, h2, h3, h4, h5, h6 {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 520px;
-  height: 500px;
+  width: 480px;
+  height: 460px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(20, 184, 166, 0.16) 0%, rgba(56, 189, 248, 0.08) 42%, rgba(99, 102, 241, 0.04) 65%, transparent 75%);
-  filter: blur(52px);
+  background: radial-gradient(circle, rgba(20, 184, 166, 0.18) 0%, rgba(56, 189, 248, 0.09) 45%, rgba(99, 102, 241, 0.03) 68%, transparent 75%);
+  filter: blur(48px);
   pointer-events: none;
   z-index: 1;
 }
 
 /* ====================================================================
-   MASTER 3D ATOMIC CAGE (Single Coherent Rigid 3D Object)
-   Centered at (0, 0, 0), rotated as one single unit
+   MAIN ATOM CONTAINER & COMPACT GEOMETRY
    ==================================================================== */
-.atomic-cage-3d {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  transform-style: preserve-3d;
-  pointer-events: auto;
-  z-index: 8;
-  will-change: transform;
-}
-
-/* ====================================================================
-   MASTER 3D ORBIT SYSTEM (Identical Geometry: 440px x 196px)
-   ==================================================================== */
-.atomic-orbit-system-3d {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 0;
-  height: 0;
-  transform-style: preserve-3d;
-  pointer-events: none;
-}
-
-/* Canonical Master Orbit Plane: Fixed at (0, 0, 0) */
-.master-orbit-plane {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 440px;
-  height: 196px;
-  margin-top: -98px;
-  margin-left: -220px;
-  border-radius: 50%;
-  transform-style: preserve-3d;
-  pointer-events: none;
-}
-
-/* Three Directional 3D Orientations derived from Master Orbit (FROZEN RIGID 3D CAGE)
-   - Orbit A: Horizontal Orbit (wide horizontal ellipse belt)
-   - Orbit B: Right-Diagonal Orbit (bottom-left → center → top-right)
-   - Orbit C: Left-Diagonal Orbit (top-left → center → bottom-right)
-   Identical geometry: 440px x 196px, shared center (0, 0, 0) */
-.orbit-plane-a {
-  transform: rotateZ(0deg) rotateY(0deg) rotateX(20deg);
-}
-
-.orbit-plane-b {
-  transform: rotateZ(-36deg) rotateY(22deg) rotateX(20deg);
-}
-
-.orbit-plane-c {
-  transform: rotateZ(36deg) rotateY(-22deg) rotateX(20deg);
-}
-
-/* Consistent Acrylic Filament Material (2.5px thickness across all rings) */
-.orbit-filament-filament {
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  transform-style: preserve-3d;
-}
-
-/* Brighter upper/front edge */
-.orbit-filament-front {
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  border: 2px solid rgba(45, 212, 191, 0.82);
-  box-shadow: 0 0 10px rgba(20, 184, 166, 0.35), inset 0 0 8px rgba(45, 212, 191, 0.22);
-  transform: translateZ(1.5px);
-}
-
-/* Subtly darker back edge creating physical 3px acrylic filament */
-.orbit-filament-edge {
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  border: 2.2px solid rgba(15, 118, 110, 0.48);
-  box-shadow: 0 0 6px rgba(15, 118, 110, 0.22);
-  transform: translateZ(-1.5px);
-}
-
-/* Volumetric Spherical Electron Nodes locked to 440px x 196px elliptical orbit */
-.electron-node-sphere {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 12px;
-  height: 12px;
-  margin-left: -6px;
-  margin-top: -6px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 35% 30%, #FFFFFF 0%, #2DD4BF 45%, #0F766E 82%, #042F2E 100%);
-  box-shadow: 0 0 10px rgba(45, 212, 191, 0.7), 0 3px 6px rgba(0, 0, 0, 0.25);
-  transform: translateZ(3px);
-  animation: electronTravel 14s linear infinite;
-}
-
-.node-eb {
-  animation-duration: 17s;
-  animation-delay: -5.5s;
-}
-
-.node-ec {
-  animation-duration: 20s;
-  animation-delay: -11s;
-}
-
-/* Mathematically pinned to the 440px x 196px ellipse (radius 220px, 98px) */
-@keyframes electronTravel {
-  0%   { transform: translate(220px, 0px) translateZ(3px); }
-  8.3%  { transform: translate(190.5px, 49px) translateZ(3px); }
-  16.7% { transform: translate(110px, 84.9px) translateZ(3px); }
-  25%  { transform: translate(0px, 98px) translateZ(3px); }
-  33.3% { transform: translate(-110px, 84.9px) translateZ(3px); }
-  41.7% { transform: translate(-190.5px, 49px) translateZ(3px); }
-  50%  { transform: translate(-220px, 0px) translateZ(3px); }
-  58.3% { transform: translate(-190.5px, -49px) translateZ(3px); }
-  66.7% { transform: translate(-110px, -84.9px) translateZ(3px); }
-  75%  { transform: translate(0px, -98px) translateZ(3px); }
-  83.3% { transform: translate(110px, -84.9px) translateZ(3px); }
-  91.7% { transform: translate(190.5px, -49px) translateZ(3px); }
-  100% { transform: translate(220px, 0px) translateZ(3px); }
-}
-
-/* ====================================================================
-   EXTRUDED 12px KLASSA 'K' SYMBOL NUCLEUS (Shared Center at 0,0,0)
-   ==================================================================== */
-.atomic-core-center {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 0;
-  height: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 20;
-  pointer-events: none;
-  transform-style: preserve-3d;
-  will-change: transform;
-}
-
-.core-radial-aura {
-  position: absolute;
-  width: 160px;
-  height: 160px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(20, 184, 166, 0.45) 0%, rgba(56, 189, 248, 0.22) 42%, rgba(99, 102, 241, 0.12) 65%, transparent 75%);
-  filter: blur(22px);
-  animation: coreAuraBreathe 4s ease-in-out infinite alternate;
-  transform: translateZ(-20px);
-}
-
-.core-inner-glow {
-  position: absolute;
-  width: 85px;
-  height: 85px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(45, 212, 191, 0.45) 60%, transparent 80%);
-  filter: blur(8px);
-  transform: translateZ(-10px);
-}
-
-@keyframes coreAuraBreathe {
-  0% { transform: translateZ(-20px) scale(0.92); opacity: 0.75; }
-  100% { transform: translateZ(-20px) scale(1.18); opacity: 1; }
-}
-
-/* 3D Extruded KLASSA K Prism */
-.core-k-3d-prism {
+.klassa-atom-container {
   position: relative;
-  width: 72px;
-  height: 72px;
-  transform-style: preserve-3d;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  filter: drop-shadow(0 14px 28px rgba(15, 118, 110, 0.4));
-}
-
-.core-k-layer {
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
-  pointer-events: none;
-}
-
-.layer-front {
-  transform: translateZ(6px);
-  filter: drop-shadow(0 2px 5px rgba(255, 255, 255, 0.7));
-}
-
-.layer-mid-3 {
-  transform: translateZ(3px);
-  filter: brightness(0.92) contrast(1.1);
-  opacity: 0.88;
-}
-
-.layer-mid-2 {
-  transform: translateZ(0px);
-  filter: brightness(0.84) contrast(1.15) hue-rotate(-5deg);
-  opacity: 0.92;
-}
-
-.layer-mid-1 {
-  transform: translateZ(-3px);
-  filter: brightness(0.76) contrast(1.2) hue-rotate(-10deg);
-  opacity: 0.96;
-}
-
-.layer-back {
-  transform: translateZ(-6px);
-  filter: brightness(0.66) contrast(1.25);
-  opacity: 0.98;
-}
-
-.core-sparkle-star {
-  position: absolute;
-  top: -4px;
-  right: -6px;
-  font-size: 0.95rem;
-  color: #6366F1;
-  text-shadow: 0 0 10px #818CF8;
-  transform: translateZ(9px);
-  animation: pulse 2s infinite ease-in-out;
 }
 
 /* ====================================================================
-   VOLUMETRIC 3D GLASS INTERFACE PANELS (10px Physical Thickness)
+   1. KLASSA 'K' LOGO NUCLEUS (Center Focal Point)
+   ==================================================================== */
+.atom-nucleus {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 110px;
+  height: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.nucleus-radial-aura {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(20, 184, 166, 0.38) 0%, rgba(56, 189, 248, 0.20) 45%, rgba(99, 102, 241, 0.08) 68%, transparent 75%);
+  filter: blur(24px);
+  animation: nucleusAuraBreathe 4s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+.nucleus-inner-glow {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.95) 0%, rgba(45, 212, 191, 0.45) 55%, transparent 75%);
+  filter: blur(10px);
+  pointer-events: none;
+}
+
+@keyframes nucleusAuraBreathe {
+  0% { transform: scale(0.92); opacity: 0.75; }
+  100% { transform: scale(1.15); opacity: 1; }
+}
+
+.nucleus-k-box {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 10px 24px rgba(15, 118, 110, 0.35)) drop-shadow(0 0 14px rgba(45, 212, 191, 0.45));
+  z-index: 2;
+}
+
+.nucleus-k-img {
+  width: 96px;
+  height: 96px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 6px rgba(255, 255, 255, 0.6));
+}
+
+/* ====================================================================
+   2. EXACTLY THREE ELEGANT ORBIT RINGS (Compact Cluster)
+   ==================================================================== */
+.atom-orbits-system {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.atom-orbit-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 380px;
+  height: 170px;
+  margin-left: -190px;
+  margin-top: -85px;
+  border-radius: 50%;
+  border: 1.8px solid rgba(45, 212, 191, 0.48);
+  box-shadow: 0 0 12px rgba(20, 184, 166, 0.18), inset 0 0 8px rgba(45, 212, 191, 0.10);
+  pointer-events: none;
+}
+
+/* Orbit 1: Wide horizontal ellipse */
+.orbit-ring-horizontal {
+  transform: rotate(0deg);
+}
+
+/* Orbit 2: Diagonal ellipse tilted direction A */
+.orbit-ring-diag-1 {
+  transform: rotate(-38deg);
+  border-color: rgba(45, 212, 191, 0.38);
+}
+
+/* Orbit 3: Diagonal ellipse tilted direction B */
+.orbit-ring-diag-2 {
+  transform: rotate(38deg);
+  border-color: rgba(45, 212, 191, 0.38);
+}
+
+/* Glowing Traveling Electrons along the Elliptical Orbits */
+.electron-glider {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 9px;
+  height: 9px;
+  margin-left: -4.5px;
+  margin-top: -4.5px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #FFFFFF 0%, #2DD4BF 55%, #0F766E 100%);
+  box-shadow: 0 0 10px #2DD4BF, 0 0 4px #FFFFFF, 0 0 18px rgba(45, 212, 191, 0.6);
+  pointer-events: none;
+  animation: electronTravelEllipse 12s linear infinite;
+  will-change: transform;
+}
+
+/* Staggered timings for the 6 gliders */
+.glider-h1 { animation-delay: 0s; }
+.glider-h2 { animation-delay: -6s; }
+
+.glider-d1-a { animation-delay: -2s; animation-duration: 14s; }
+.glider-d1-b { animation-delay: -9s; animation-duration: 14s; }
+
+.glider-d2-a { animation-delay: -4s; animation-duration: 16s; }
+.glider-d2-b { animation-delay: -12s; animation-duration: 16s; }
+
+/* 380px x 170px Ellipse Path (a = 190px, b = 85px) */
+@keyframes electronTravelEllipse {
+  0%     { transform: translate(190px, 0px); }
+  8.33%  { transform: translate(164.5px, 42.5px); }
+  16.67% { transform: translate(95px, 73.6px); }
+  25%    { transform: translate(0px, 85px); }
+  33.33% { transform: translate(-95px, 73.6px); }
+  41.67% { transform: translate(-164.5px, 42.5px); }
+  50%    { transform: translate(-190px, 0px); }
+  58.33% { transform: translate(-164.5px, -42.5px); }
+  66.67% { transform: translate(-95px, -73.6px); }
+  75%    { transform: translate(0px, -85px); }
+  83.33% { transform: translate(95px, -73.6px); }
+  91.67% { transform: translate(164.5px, -42.5px); }
+  100%   { transform: translate(190px, 0px); }
+}
+
+/* ====================================================================
+   3. SIX BALANCED FEATURE CARDS (Satellite Local Orbit / Micro-Sway)
    ==================================================================== */
 .atomic-card {
   position: absolute;
-  top: 0;
-  left: 0;
-  transform-style: preserve-3d;
-  will-change: transform, opacity;
+  z-index: 15;
   pointer-events: auto;
   cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
 }
 
-/* 3D Prism Container */
-.card-3d-prism {
-  position: relative;
-  width: 100%;
-  transform-style: preserve-3d;
-}
-
-/* Front Face: Clean Glass SaaS UI */
-.card-face-front {
-  position: relative;
-  transform: translateZ(5px);
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.96) 0%, rgba(246, 252, 251, 0.90) 100%);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1.2px solid rgba(255, 255, 255, 0.98);
-  border-radius: 14px;
-  padding: 9px 13px;
-  box-shadow: 0 16px 36px -6px rgba(15, 118, 110, 0.16), 0 2px 8px rgba(0, 0, 0, 0.04), inset 0 1px 1px #FFFFFF, inset 0 -1px 2px rgba(15, 118, 110, 0.06);
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  z-index: 2;
-  backface-visibility: hidden;
-  transition: border-color 0.25s ease, box-shadow 0.25s ease;
-}
-
-/* Frosted Acrylic Back Surface (Ensures no mirrored UI is ever visible) */
-.card-face-back {
-  position: absolute;
-  inset: 0;
-  border-radius: 14px;
-  background: linear-gradient(135deg, rgba(230, 248, 245, 0.92) 0%, rgba(215, 243, 240, 0.85) 100%);
-  border: 1px solid rgba(20, 184, 166, 0.25);
-  box-shadow: 0 8px 24px rgba(15, 118, 110, 0.12);
-  transform: translateZ(-5px) rotateY(180deg);
-  backface-visibility: hidden;
-  pointer-events: none;
-}
-
-/* Acrylic 3D Edges: Light-facing Top & Left, Shadowed Bottom & Right */
-.card-edge-top {
-  position: absolute;
-  top: 0;
-  left: 8px;
-  right: 8px;
-  height: 10px;
-  background: linear-gradient(90deg, rgba(255,255,255,0.7), rgba(153, 246, 228, 0.95), rgba(255,255,255,0.7));
-  transform: rotateX(90deg) translateZ(5px);
-  transform-origin: top center;
-  pointer-events: none;
-}
-
-.card-edge-bottom {
-  position: absolute;
-  bottom: 0;
-  left: 8px;
-  right: 8px;
-  height: 10px;
-  background: rgba(15, 118, 110, 0.24);
-  transform: rotateX(-90deg) translateZ(5px);
-  transform-origin: bottom center;
-  pointer-events: none;
-}
-
-.card-edge-left {
-  position: absolute;
+/* TOP CENTER: AI Modul Ajar */
+.card-pos-top {
   top: 8px;
-  bottom: 8px;
-  left: 0;
-  width: 10px;
-  background: linear-gradient(180deg, rgba(255,255,255,0.85), rgba(45, 212, 191, 0.45));
-  transform: rotateY(-90deg) translateZ(5px);
-  transform-origin: left center;
-  pointer-events: none;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: localOrbitTop 6s ease-in-out infinite;
 }
 
-.card-edge-right {
-  position: absolute;
-  top: 8px;
+/* UPPER LEFT: Nilai */
+.card-pos-upper-left {
+  top: 90px;
+  left: 0px;
+  animation: localOrbitUpperLeft 7s ease-in-out infinite 0.6s;
+}
+
+/* UPPER RIGHT: Presensi */
+.card-pos-upper-right {
+  top: 90px;
+  right: 0px;
+  animation: localOrbitUpperRight 6.6s ease-in-out infinite 1.2s;
+}
+
+/* LOWER LEFT: Analisis Siswa */
+.card-pos-lower-left {
+  bottom: 90px;
+  left: 0px;
+  animation: localOrbitLowerLeft 7.4s ease-in-out infinite 1.8s;
+}
+
+/* LOWER RIGHT: Ujian Anti-Contek */
+.card-pos-lower-right {
+  bottom: 90px;
+  right: 0px;
+  animation: localOrbitLowerRight 6.8s ease-in-out infinite 2.4s;
+}
+
+/* BOTTOM CENTER: Rapor */
+.card-pos-bottom {
   bottom: 8px;
-  right: 0;
-  width: 10px;
-  background: rgba(15, 23, 42, 0.14);
-  transform: rotateY(90deg) translateZ(5px);
-  transform-origin: right center;
-  pointer-events: none;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: localOrbitBottom 6.4s ease-in-out infinite 3s;
+}
+
+/* Satellite Local Elliptical Orbit Paths (~8-12px sway) */
+@keyframes localOrbitTop {
+  0%, 100% { transform: translateX(-50%) translate(0, 0); }
+  25% { transform: translateX(-50%) translate(6px, -4px); }
+  50% { transform: translateX(-50%) translate(0, -6px); }
+  75% { transform: translateX(-50%) translate(-6px, -2px); }
+}
+
+@keyframes localOrbitUpperLeft {
+  0%, 100% { transform: translate(0, 0); }
+  25% { transform: translate(-4px, 5px); }
+  50% { transform: translate(-6px, 0px); }
+  75% { transform: translate(-2px, -5px); }
+}
+
+@keyframes localOrbitUpperRight {
+  0%, 100% { transform: translate(0, 0); }
+  25% { transform: translate(4px, -5px); }
+  50% { transform: translate(6px, 0px); }
+  75% { transform: translate(2px, 5px); }
+}
+
+@keyframes localOrbitLowerLeft {
+  0%, 100% { transform: translate(0, 0); }
+  25% { transform: translate(-5px, -4px); }
+  50% { transform: translate(0px, -6px); }
+  75% { transform: translate(4px, -2px); }
+}
+
+@keyframes localOrbitLowerRight {
+  0%, 100% { transform: translate(0, 0); }
+  25% { transform: translate(5px, 4px); }
+  50% { transform: translate(0px, 6px); }
+  75% { transform: translate(-4px, 2px); }
+}
+
+@keyframes localOrbitBottom {
+  0%, 100% { transform: translateX(-50%) translate(0, 0); }
+  25% { transform: translateX(-50%) translate(-6px, 4px); }
+  50% { transform: translateX(-50%) translate(0, 6px); }
+  75% { transform: translateX(-50%) translate(6px, 2px); }
 }
 
 /* Hover Lift Effect */
+.card-pos-top:hover { transform: translateX(-50%) translateY(-6px) scale(1.02); }
+.card-pos-upper-left:hover { transform: translateY(-6px) scale(1.02); }
+.card-pos-upper-right:hover { transform: translateY(-6px) scale(1.02); }
+.card-pos-lower-left:hover { transform: translateY(-6px) scale(1.02); }
+.card-pos-lower-right:hover { transform: translateY(-6px) scale(1.02); }
+.card-pos-bottom:hover { transform: translateX(-50%) translateY(-6px) scale(1.02); }
+
 .atomic-card:hover .card-face-front {
   border-color: #0F766E;
-  box-shadow: 0 24px 50px -8px rgba(15, 118, 110, 0.32), 0 0 22px rgba(20, 184, 166, 0.28), inset 0 1px 1px #FFFFFF;
+  box-shadow: 0 20px 42px -6px rgba(15, 118, 110, 0.24), 0 0 16px rgba(20, 184, 166, 0.20), inset 0 1px 1px #FFFFFF;
+}
+
+/* Card Glass Surface */
+.card-face-front {
+  position: relative;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.97) 0%, rgba(246, 252, 251, 0.92) 100%);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1.2px solid rgba(255, 255, 255, 0.98);
+  border-radius: 14px;
+  padding: 9px 13px;
+  box-shadow: 0 14px 32px -6px rgba(15, 118, 110, 0.12), 0 2px 8px rgba(0, 0, 0, 0.04), inset 0 1px 1px #FFFFFF, inset 0 -1px 2px rgba(15, 118, 110, 0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 /* Volumetric Spherical Orbit Node Anchor Dot */
@@ -1367,42 +1300,6 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 1px;
 }
 
-/* First-Time Interaction Hint Microcopy */
-.ecosystem-drag-hint {
-  position: absolute;
-  bottom: 8px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(15, 118, 110, 0.18);
-  padding: 6px 16px;
-  border-radius: 9999px;
-  font-size: 0.74rem;
-  font-weight: 600;
-  color: #0F766E;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  box-shadow: 0 4px 16px rgba(15, 118, 110, 0.08);
-  pointer-events: none;
-  z-index: 40;
-  transition: opacity 0.5s ease, transform 0.5s ease;
-}
-
-.ecosystem-drag-hint.is-hidden {
-  opacity: 0;
-  transform: translateX(-50%) translateY(8px);
-  pointer-events: none;
-}
-
-.hint-drag-icon {
-  width: 14px;
-  height: 14px;
-  color: #14B8A6;
-}
-
 /* Responsive Breakpoints for Hero Section */
 @media (max-width: 1024px) {
   .hero-split-grid {
@@ -1433,8 +1330,8 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .atomic-ecosystem-stage {
-    max-width: 540px;
-    height: 540px;
+    transform: scale(0.92);
+    transform-origin: center center;
   }
 }
 
@@ -1444,10 +1341,15 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .atomic-ecosystem-stage {
-    max-width: 100%;
-    height: 480px;
-    transform: scale(0.82);
-    transform-origin: center top;
+    transform: scale(0.78);
+    transform-origin: center center;
+  }
+}
+
+@media (max-width: 460px) {
+  .atomic-ecosystem-stage {
+    transform: scale(0.64);
+    transform-origin: center center;
   }
 }
 
@@ -1583,6 +1485,12 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Cinematic Problem Agitation Carousel Container */
 .problem-carousel-container {
+  position: relative;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.problem-carousel-viewport {
   position: relative;
   background: #FFFFFF;
   border: 1px solid rgba(226, 232, 240, 0.9);
@@ -2036,8 +1944,71 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-/* Carousel Controls */
-.problem-carousel-controls {
+/* Side Floating Navigators (Option 3) */
+.carousel-side-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  border: 1.5px solid #E2E8F0;
+  color: #0F172A;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 30;
+  box-shadow: 0 10px 25px -4px rgba(15, 23, 42, 0.14), 0 4px 10px -2px rgba(15, 23, 42, 0.05);
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.carousel-side-btn.side-prev {
+  left: -26px;
+}
+
+.carousel-side-btn.side-next {
+  right: -26px;
+}
+
+.carousel-side-btn:hover {
+  background: var(--teal-primary, #0D9488);
+  border-color: var(--teal-primary, #0D9488);
+  color: #FFFFFF;
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 14px 28px -4px rgba(13, 148, 136, 0.38), 0 6px 12px -2px rgba(13, 148, 136, 0.2);
+}
+
+.carousel-side-btn:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+.carousel-side-btn svg {
+  width: 22px;
+  height: 22px;
+  stroke-width: 2.5;
+  transition: transform 0.2s ease;
+}
+
+.carousel-side-btn.side-prev:hover svg {
+  transform: translateX(-2px);
+}
+
+.carousel-side-btn.side-next:hover svg {
+  transform: translateX(2px);
+}
+
+/* Minimalist Bottom Bar */
+.problem-carousel-bottom-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 24px;
+  background: #F8FAFC;
+  border-top: 1px solid #E2E8F0;
+}
+.old-problem-carousel-controls-unused {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -2113,7 +2084,13 @@ h1, h2, h3, h4, h5, h6 {
   .problem-slide {
     padding: 32px 24px;
   }
-  .problem-carousel-controls {
+  .carousel-side-btn.side-prev {
+    left: 8px;
+  }
+  .carousel-side-btn.side-next {
+    right: 8px;
+  }
+  .problem-carousel-bottom-bar {
     padding: 14px 24px;
   }
 }
@@ -2134,307 +2111,625 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ====================================================================
-   7. EMOTIONAL AGITATION SECTION (Deep Pine Teal Background)
+   8. MEMPERKENALKAN KLASSA — 4 RUANG EKOSISTEM (INTERACTIVE TABS)
    ==================================================================== */
-.agitation-section {
-  padding: 110px 0;
-  background-color: var(--teal-dark);
-  background: linear-gradient(180deg, #073B3A 0%, #042F2E 100%);
+.introducing-section {
+  padding: 100px 0 110px 0;
+  background-color: var(--bg-main, #FFFFFF);
   position: relative;
   z-index: 1;
 }
 
-.text-white {
-  color: var(--white) !important;
-}
-
-.text-white-muted {
-  color: var(--mint-soft) !important;
-  opacity: 0.85;
-}
-
-.storytelling-panels-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
-  margin-bottom: 60px;
-}
-
-.story-card {
-  background-color: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(204, 251, 241, 0.15);
-  border-radius: var(--radius-xl);
-  padding: 32px 24px;
-  transition: background-color 0.3s var(--ease-smooth), border-color 0.3s var(--ease-smooth), box-shadow 0.3s var(--ease-smooth);
-}
-
-.story-card:hover {
-  background-color: rgba(255, 255, 255, 0.09);
-  border-color: rgba(20, 184, 166, 0.5);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
-}
-
-.story-header {
+.intro-header-wrapper {
+  max-width: 860px;
+  margin: 0 auto 44px auto;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  margin-bottom: 20px;
 }
 
-.story-clock-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
+.intro-eyebrow {
+  margin-bottom: 18px;
+}
+
+.intro-eyebrow-pill {
+  display: inline-block;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.8rem;
   font-weight: 700;
-  padding: 4px 10px;
-  border-radius: var(--radius-full);
-  background-color: rgba(204, 251, 241, 0.15);
-  color: var(--mint-soft);
-}
-
-.story-clock-badge.danger {
-  background-color: rgba(239, 68, 68, 0.2);
-  color: #FCA5A5;
-}
-
-.story-category {
-  font-size: 0.75rem;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: rgba(204, 251, 241, 0.7);
-  font-weight: 600;
+  color: var(--teal-primary, #0D9488);
+  background: rgba(13, 148, 136, 0.08);
+  border: 1px solid rgba(13, 148, 136, 0.22);
+  padding: 6px 18px;
+  border-radius: 99px;
 }
 
-.story-visual-item {
-  height: 100px;
-  background-color: rgba(0, 0, 0, 0.2);
-  border-radius: var(--radius-md);
-  margin-bottom: 24px;
+.intro-logo-brand {
+  margin-bottom: 22px;
+  display: flex;
+  justify-content: center;
+}
+
+.intro-brand-logo-img {
+  height: 44px;
+  width: auto;
+  object-fit: contain;
+}
+
+.intro-headline-statement {
+  font-family: var(--font-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: 1.38rem;
+  font-weight: 700;
+  line-height: 1.55;
+  color: #1E293B;
+  letter-spacing: -0.02em;
+  margin-bottom: 18px;
+}
+
+.intro-headline-statement em {
+  font-style: normal;
+  color: var(--teal-primary, #0D9488);
+  font-weight: 800;
+}
+
+.intro-lead-in {
+  font-size: 1.05rem;
+  color: #475569;
+  line-height: 1.6;
+}
+
+.intro-lead-in strong {
+  color: #0F172A;
+  font-weight: 700;
+}
+
+/* 4-Tab Navigation Bar */
+.ruang-tabs-nav {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  background: #F1F5F9;
+  padding: 8px;
+  border-radius: 18px;
+  border: 1px solid #E2E8F0;
+  max-width: 1080px;
+  margin: 0 auto 28px auto;
+}
+
+.ruang-tab-btn {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.06);
-}
-
-/* Visual Mockups */
-.calendar-card-mockup {
-  text-align: center;
-}
-.cal-month { font-size: 0.7rem; font-weight: 700; color: #EF4444; }
-.cal-day { font-size: 1.4rem; font-weight: 800; color: var(--white); font-family: var(--font-mono); }
-.cal-alert { font-size: 0.68rem; color: #CBD5E1; }
-
-.quiz-stack-mockup {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  width: 100%;
-}
-.paper-layer {
-  font-size: 0.72rem;
-  padding: 4px 10px;
-  border-radius: 4px;
-  background: rgba(255, 255, 255, 0.1);
-  color: var(--white);
-}
-.paper-layer.layer-3 { color: #F59E0B; font-weight: 600; }
-
-.excel-error-mockup {
-  width: 100%;
-}
-.excel-cell {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  padding: 3px 8px;
-}
-.header-cell { background: rgba(255, 255, 255, 0.1); color: #94A3B8; }
-.error-cell { background: rgba(239, 68, 68, 0.3); color: #FCA5A5; font-weight: 700; }
-.excel-note { font-size: 0.65rem; color: #CBD5E1; margin-top: 4px; }
-
-.story-title {
-  font-size: 1.25rem;
+  gap: 10px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1.5px solid transparent;
+  background: transparent;
+  color: #475569;
+  font-family: var(--font-heading, sans-serif);
+  font-size: 0.95rem;
   font-weight: 700;
-  color: var(--white);
-  margin-bottom: 12px;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.story-body {
-  font-size: 0.92rem;
-  color: rgba(204, 251, 241, 0.85);
-  line-height: 1.6;
+.ruang-tab-btn:hover {
+  background: rgba(255, 255, 255, 0.6);
+  color: #0F172A;
 }
 
-.agitation-conclusion {
-  text-align: center;
-  max-width: 680px;
+.tab-badge {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 2px 7px;
+  border-radius: 6px;
+  background: #E2E8F0;
+  color: #64748B;
+  transition: all 0.25s ease;
+}
+
+.tab-icon {
+  font-size: 1.1rem;
+}
+
+.tab-title {
+  white-space: nowrap;
+}
+
+/* Active Tab Styles */
+.ruang-tab-btn.active {
+  background: #FFFFFF;
+  box-shadow: 0 6px 18px -4px rgba(15, 23, 42, 0.1), 0 2px 6px -2px rgba(15, 23, 42, 0.05);
+}
+
+.ruang-tab-btn.tab-blue.active {
+  color: #2563EB;
+  border-color: #BFDBFE;
+}
+.ruang-tab-btn.tab-blue.active .tab-badge {
+  background: #EFF6FF;
+  color: #2563EB;
+}
+
+.ruang-tab-btn.tab-rose.active {
+  color: #E11D48;
+  border-color: #FECDD3;
+}
+.ruang-tab-btn.tab-rose.active .tab-badge {
+  background: #FFF1F2;
+  color: #E11D48;
+}
+
+.ruang-tab-btn.tab-purple.active {
+  color: #7C3AED;
+  border-color: #DDD6FE;
+}
+.ruang-tab-btn.tab-purple.active .tab-badge {
+  background: #F5F3FF;
+  color: #7C3AED;
+}
+
+.ruang-tab-btn.tab-amber.active {
+  color: #D97706;
+  border-color: #FDE68A;
+}
+.ruang-tab-btn.tab-amber.active .tab-badge {
+  background: #FFFBEB;
+  color: #D97706;
+}
+
+/* Showcase Panels */
+.ruang-showcase-container {
+  max-width: 1080px;
   margin: 0 auto;
-  padding-top: 24px;
-  border-top: 1px solid rgba(204, 251, 241, 0.15);
 }
 
-.conclusion-quote {
-  font-size: 1.35rem;
-  color: var(--mint-soft);
-  font-family: var(--font-heading);
-  line-height: 1.5;
+.ruang-panel {
+  display: none;
 }
 
-.conclusion-quote strong {
-  color: var(--white);
-  font-weight: 800;
+.ruang-panel.active {
+  display: block;
+  animation: panelFadeSlide 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* ====================================================================
-   8. INTRODUCING KLASSA — 3 PRINCIPLES
-   ==================================================================== */
-.introducing-section {
-  padding: 110px 0;
-  background-color: var(--bg-main);
-  position: relative;
-  z-index: 1;
+@keyframes panelFadeSlide {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.principles-grid {
+.ruang-panel-layout {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
+  grid-template-columns: 1.15fr 0.95fr;
+  gap: 36px;
+  align-items: center;
+  background: #FFFFFF;
+  border: 1.5px solid #E2E8F0;
+  border-radius: 24px;
+  padding: 38px 40px;
+  box-shadow: 0 16px 40px -10px rgba(15, 23, 42, 0.08), 0 0 0 1px rgba(15, 23, 42, 0.02);
+  position: relative;
 }
 
-.principle-card {
-  background-color: var(--bg-card);
-  border: 1px solid var(--border-light);
-  border-radius: var(--radius-xl);
-  padding: 36px 28px;
-  box-shadow: var(--shadow-sm);
-  display: flex;
-  flex-direction: column;
-  transition: box-shadow 0.3s var(--ease-smooth), border-color 0.3s var(--ease-smooth);
-}
+.panel-blue { border-color: #DBEAFE; }
+.panel-rose { border-color: #FFE4E6; }
+.panel-purple { border-color: #EDE9FE; }
+.panel-amber { border-color: #FEF3C7; }
 
-.principle-card:hover {
-  box-shadow: var(--shadow-card-hover);
-  border-color: var(--mint-primary);
-}
-
-.principle-number {
-  font-family: var(--font-mono);
-  font-size: 1rem;
-  font-weight: 800;
-  color: var(--teal-primary);
-  margin-bottom: 16px;
-}
-
-.principle-title {
-  font-size: 1.15rem;
-  font-weight: 800;
-  color: var(--text-dark);
+/* Left Column Info */
+.panel-header-badge {
   margin-bottom: 12px;
-  letter-spacing: -0.01em;
 }
 
-.principle-desc {
-  font-size: 0.92rem;
-  color: var(--text-muted);
+.panel-pill {
+  display: inline-block;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  padding: 4px 12px;
+  border-radius: 99px;
+}
+
+.pill-blue { background: #EFF6FF; color: #2563EB; border: 1px solid #BFDBFE; }
+.pill-rose { background: #FFF1F2; color: #E11D48; border: 1px solid #FECDD3; }
+.pill-purple { background: #F5F3FF; color: #7C3AED; border: 1px solid #DDD6FE; }
+.pill-amber { background: #FFFBEB; color: #D97706; border: 1px solid #FDE68A; }
+
+.panel-headline {
+  font-family: var(--font-heading, sans-serif);
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: #0F172A;
+  line-height: 1.35;
+  letter-spacing: -0.02em;
+  margin-bottom: 10px;
+}
+
+.panel-desc {
+  font-size: 0.95rem;
+  color: #64748B;
   line-height: 1.6;
-  margin-bottom: 28px;
+  margin-bottom: 22px;
 }
 
-.principle-visual {
-  margin-top: auto;
-  background-color: var(--mint-light);
-  border-radius: var(--radius-md);
-  padding: 20px;
-  border: 1px solid rgba(20, 184, 166, 0.15);
+/* Feature Chips Grid */
+.panel-feature-chips {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-bottom: 24px;
 }
 
-/* Branching diagram */
-.center-source-card {
+.f-chip {
   display: flex;
   align-items: center;
   gap: 8px;
-  background-color: var(--white);
-  padding: 8px 14px;
-  border-radius: var(--radius-full);
-  font-weight: 700;
-  font-size: 0.8rem;
-  color: var(--teal-primary);
-  width: max-content;
-  margin: 0 auto 12px auto;
-  box-shadow: var(--shadow-sm);
-}
-
-.target-modules {
-  display: flex;
-  justify-content: space-between;
-  gap: 6px;
-}
-
-.mod-pill {
-  font-size: 0.72rem;
-  background-color: var(--white);
-  padding: 4px 8px;
-  border-radius: 4px;
+  font-size: 0.86rem;
   font-weight: 600;
-  color: var(--text-dark);
-  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  color: #1E293B;
+  transition: all 0.2s ease;
 }
 
-/* Context chips */
-.context-chips-box {
+.f-chip svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.chip-blue svg { color: #2563EB; }
+.chip-rose svg { color: #E11D48; }
+.chip-purple svg { color: #7C3AED; }
+.chip-amber svg { color: #D97706; }
+
+.panel-sync-badge {
   display: flex;
-  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #0D9488;
+  padding-top: 14px;
+  border-top: 1px dashed #E2E8F0;
+}
+
+.panel-sync-badge svg {
+  width: 15px;
+  height: 15px;
+  color: #0D9488;
+  flex-shrink: 0;
+}
+
+/* Right Column Mockup Card */
+.mockup-cockpit-card {
+  background: #FFFFFF;
+  border-radius: 18px;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 12px 30px -8px rgba(15, 23, 42, 0.08);
+  overflow: hidden;
+}
+
+.mockup-blue { border-top: 3px solid #2563EB; }
+.mockup-rose { border-top: 3px solid #E11D48; }
+.mockup-purple { border-top: 3px solid #7C3AED; }
+.mockup-amber { border-top: 3px solid #D97706; }
+
+.mockup-topbar {
+  display: flex;
+  align-items: center;
   gap: 6px;
+  padding: 10px 16px;
+  background: #F8FAFC;
+  border-bottom: 1px solid #E2E8F0;
+}
+
+.mockup-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+.mockup-dot.red { background: #EF4444; }
+.mockup-dot.yellow { background: #F59E0B; }
+.mockup-dot.green { background: #10B981; }
+
+.mockup-title {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #64748B;
+  margin-left: 6px;
+}
+
+.mockup-body {
+  padding: 18px;
+}
+
+.mockup-row-highlight {
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  padding: 12px 14px;
+  margin-bottom: 14px;
+}
+
+.m-badge-ai {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #2563EB;
+  background: #EFF6FF;
+  padding: 2px 8px;
+  border-radius: 6px;
+  margin-bottom: 6px;
+}
+
+.m-topic {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #0F172A;
+}
+
+.mockup-mini-attendance {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  background: #FFFFFF;
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1px dashed #CBD5E1;
+}
+
+.att-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #475569;
+}
+
+.att-pills {
+  display: flex;
+  gap: 6px;
+}
+
+.att-tag {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 6px;
+}
+.tag-h { background: #ECFDF5; color: #059669; }
+.tag-s { background: #EFF6FF; color: #2563EB; }
+.tag-i { background: #FFFBEB; color: #D97706; }
+
+.mockup-status-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #64748B;
+  padding-top: 10px;
+  border-top: 1px solid #F1F5F9;
+}
+
+.status-time, .status-done, .status-verified, .status-ready {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: 6px;
+}
+
+.status-time { background: #F1F5F9; color: #475569; }
+.status-done { background: #ECFDF5; color: #059669; }
+.status-verified { background: #F5F3FF; color: #7C3AED; }
+.status-ready { background: #FFFBEB; color: #D97706; }
+
+/* Rose Panel Radar Specifics */
+.radar-status-active {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.88rem;
+  color: #0F172A;
+  margin-bottom: 4px;
+}
+
+.radar-pulse {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #10B981;
+  box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.25);
+}
+
+.radar-clean {
+  font-size: 0.78rem;
+  color: #059669;
+  font-weight: 600;
+}
+
+.score-summary-bar {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.score-stat {
+  background: #F8FAFC;
+  padding: 8px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.s-label {
+  display: block;
+  font-size: 0.68rem;
+  color: #64748B;
+  margin-bottom: 2px;
+}
+
+.s-val {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.95rem;
+  font-weight: 800;
+}
+.val-green { color: #059669; }
+.val-blue { color: #2563EB; }
+.val-rose { color: #E11D48; }
+
+/* Purple Panel Student Specifics */
+.student-mini-profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #F5F3FF;
+  padding: 10px 14px;
+  border-radius: 10px;
   margin-bottom: 12px;
 }
 
-.context-chip {
-  font-size: 0.72rem;
-  background-color: var(--white);
-  color: var(--teal-dark);
-  padding: 3px 8px;
-  border-radius: var(--radius-full);
-  font-weight: 600;
-  border: 1px solid var(--border-light);
+.student-avatar-box {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #EDE9FE;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
 }
 
-.context-ai-result {
+.student-name {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #4C1D95;
+}
+
+.student-presence {
+  font-size: 0.75rem;
+  color: #6D28D9;
+}
+
+.task-submit-card {
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 10px;
+  padding: 10px 14px;
+  margin-bottom: 14px;
+}
+
+.task-tag {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #475569;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.task-photo-status {
   display: flex;
   align-items: center;
   gap: 6px;
-  font-size: 0.75rem;
-  color: var(--violet-ai);
+  font-size: 0.8rem;
   font-weight: 600;
+  color: #059669;
 }
 
-/* Flow pill chain */
-.flow-pill-chain {
+.task-photo-status svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* Amber Panel Admin Specifics */
+.report-export-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 4px;
+  background: #FFFBEB;
+  border: 1px solid #FDE68A;
+  padding: 10px 14px;
+  border-radius: 10px;
+  margin-bottom: 12px;
 }
 
-.flow-box {
+.doc-badge-excel {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #92400E;
+}
+
+.btn-download-mini {
   font-size: 0.72rem;
-  font-weight: 600;
-  background: var(--white);
-  padding: 6px 10px;
+  font-weight: 700;
+  background: #10B981;
+  color: #FFFFFF;
+  padding: 3px 8px;
   border-radius: 6px;
-  box-shadow: var(--shadow-sm);
 }
 
-.flow-success {
-  background-color: var(--teal-primary);
-  color: var(--white);
+.ai-narration-box {
+  background: #F8FAFC;
+  border-left: 3px solid #D97706;
+  padding: 8px 12px;
+  border-radius: 0 8px 8px 0;
+  margin-bottom: 14px;
 }
 
-.flow-arrow {
-  width: 14px;
-  height: 14px;
-  color: var(--teal-primary);
+.narr-label {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #D97706;
+  margin-bottom: 4px;
+}
+
+.narr-text {
+  font-size: 0.78rem;
+  color: #475569;
+  line-height: 1.45;
+  font-style: italic;
+}
+
+/* Responsive Breakpoints for 4-Tab Switcher */
+@media (max-width: 960px) {
+  .ruang-tabs-nav {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .ruang-panel-layout {
+    grid-template-columns: 1fr;
+    padding: 28px 24px;
+    gap: 28px;
+  }
+  .panel-feature-chips {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .ruang-tabs-nav {
+    grid-template-columns: 1fr;
+  }
+  .ruang-tab-btn {
+    justify-content: flex-start;
+  }
+  .intro-headline-statement {
+    font-size: 1.2rem;
+  }
 }
 
 /* ====================================================================

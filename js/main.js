@@ -269,6 +269,11 @@ function initLerpParallaxEngine() {
    - Smart Partial Billboarding (5°-18° tilt shows 3D glass edge, NEVER mirrors)
    ============================================================================ */
 function initAtomicEcosystemEngine() {
+  // Stable Hero Atom visualization: No drag, no cursor tracking, no 3D rotation.
+  return;
+}
+
+function _unusedOldAtomicEngine() {
   const stage = document.getElementById('atomic-ecosystem-stage');
   const atomicCage = document.getElementById('atomic-cage-3d');
   const coreK = document.getElementById('atomic-core-center');
@@ -816,4 +821,27 @@ function initProblemCarousel() {
       }
     }
   }, { passive: true });
+}
+
+/* ====================================================================
+   14. INTERACTIVE 4-TAB SWITCHER (4 RUANG EKOSISTEM)
+   ==================================================================== */
+function switchRuangTab(index) {
+  const tabBtns = document.querySelectorAll('.ruang-tab-btn');
+  const panels = document.querySelectorAll('.ruang-panel');
+
+  tabBtns.forEach((btn, idx) => {
+    const isActive = idx === index;
+    btn.classList.toggle('active', isActive);
+    btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+  });
+
+  panels.forEach((panel, idx) => {
+    const isActive = idx === index;
+    panel.classList.toggle('active', isActive);
+  });
+
+  if (window.lucide) {
+    window.lucide.createIcons();
+  }
 }
