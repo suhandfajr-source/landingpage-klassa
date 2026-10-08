@@ -40,6 +40,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 11. Time Paradox 40/60 Donut Chart Animation
   initTimeParadoxChart();
+
+  // 12. Teacher Workload Calculator Engine
+  initWorkloadCalculator();
 });
 
 /* ============================================================================
@@ -889,4 +892,114 @@ function initTimeParadoxChart() {
   }, { threshold: 0.2 });
 
   observer.observe(chartSection);
+}
+
+
+/* ====================================================================
+   16. TEACHER WORKLOAD INTERACTIVE CALCULATOR ENGINE
+   ==================================================================== */
+function initWorkloadCalculator() {
+  const inputClasses = document.getElementById('input-classes');
+  const inputStudents = document.getElementById('input-students');
+  const inputTopics = document.getElementById('input-topics');
+  const inputGrading = document.getElementById('input-grading-time');
+
+  if (!inputClasses || !inputStudents || !inputTopics || !inputGrading) return;
+
+  const displayClasses = document.getElementById('val-classes-display');
+  const displayStudents = document.getElementById('val-students-display');
+  const displayTopics = document.getElementById('val-topics-display');
+  const displayGrading = document.getElementById('val-grading-display');
+
+  const resModuleHours = document.getElementById('res-module-hours');
+  const resModuleSub = document.getElementById('res-module-sub');
+  const resGradingHours = document.getElementById('res-grading-hours');
+  const resGradingSub = document.getElementById('res-grading-sub');
+  const resSpreadsheetHours = document.getElementById('res-spreadsheet-hours');
+  const resSpreadsheetSub = document.getElementById('res-spreadsheet-sub');
+  const resReportHours = document.getElementById('res-report-hours');
+  const resReportSub = document.getElementById('res-report-sub');
+  const resTotalHours = document.getElementById('res-total-hours');
+  const resTotalStudents = document.getElementById('res-total-students');
+
+  let currentAnimatedTotal = 19.9;
+
+  function recalculate() {
+    const classes = parseInt(inputClasses.value, 10) || 5;
+    const studentsPerClass = parseInt(inputStudents.value, 10) || 32;
+    const topics = parseInt(inputTopics.value, 10) || 4;
+    const gradingSeconds = parseInt(inputGrading.value, 10) || 45;
+
+    // Update Bubble Displays
+    if (displayClasses) displayClasses.textContent = classes + ' Kelas';
+    if (displayStudents) displayStudents.textContent = studentsPerClass + ' Siswa / kls';
+    if (displayTopics) displayTopics.textContent = topics + ' Topik';
+    if (displayGrading) displayGrading.textContent = gradingSeconds + ' Detik / lbr';
+
+    // Exact Prompt Formulas
+    const totalStudents = classes * studentsPerClass;
+    const moduleHours = topics * 3.5;
+    const gradingHours = (totalStudents * gradingSeconds) / 3600;
+    const spreadsheetCells = totalStudents * 4;
+    const spreadsheetHours = (spreadsheetCells * 7) / 3600;
+    const reportHours = (totalStudents * 1) / 60;
+    const totalHours = moduleHours + gradingHours + spreadsheetHours + reportHours;
+
+    // Update Breakdown Cards
+    if (resModuleHours) resModuleHours.textContent = moduleHours.toFixed(1) + ' Jam';
+    if (resModuleSub) resModuleSub.textContent = topics + ' Topik × 3.5 Jam';
+
+    if (resGradingHours) resGradingHours.textContent = gradingHours.toFixed(1) + ' Jam';
+    if (resGradingSub) resGradingSub.textContent = totalStudents + ' Lbr × ' + gradingSeconds + ' dtk';
+
+    if (resSpreadsheetHours) resSpreadsheetHours.textContent = spreadsheetHours.toFixed(1) + ' Jam';
+    if (resSpreadsheetSub) resSpreadsheetSub.textContent = spreadsheetCells + ' Sel Data (4 kolom)';
+
+    if (resReportHours) resReportHours.textContent = reportHours.toFixed(1) + ' Jam';
+    if (resReportSub) resReportSub.textContent = (totalStudents * 2) + ' Kalimat (' + totalStudents + ' siswa)';
+
+    if (resTotalStudents) {
+      resTotalStudents.textContent = totalStudents;
+    }
+
+    // Smooth counter animation for total
+    animateTotal(totalHours);
+  }
+
+  let animFrameId = null;
+  function animateTotal(targetVal) {
+    if (animFrameId) cancelAnimationFrame(animFrameId);
+
+    const startVal = currentAnimatedTotal;
+    const duration = 280;
+    const startTime = performance.now();
+
+    function step(currentTime) {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const ease = 1 - Math.pow(1 - progress, 3);
+      const current = startVal + (targetVal - startVal) * ease;
+      currentAnimatedTotal = current;
+
+      if (resTotalHours) {
+        resTotalHours.textContent = current.toFixed(1);
+      }
+
+      if (progress < 1) {
+        animFrameId = requestAnimationFrame(step);
+      } else {
+        currentAnimatedTotal = targetVal;
+        if (resTotalHours) resTotalHours.textContent = targetVal.toFixed(1);
+      }
+    }
+
+    animFrameId = requestAnimationFrame(step);
+  }
+
+  [inputClasses, inputStudents, inputTopics, inputGrading].forEach(input => {
+    input.addEventListener('input', recalculate);
+  });
+
+  // Initial calculation run
+  recalculate();
 }
