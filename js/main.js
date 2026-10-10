@@ -49,11 +49,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // 10b. Integrated Ecosystem Showcase (4 Ruang Terpadu)
   initSafe(initIntegratedEcosystemShowcase, 'IntegratedEcosystemShowcase');
 
-  // 10c. AI Content Studio Interactive Showcase (Simulation)
-  initSafe(initAiContentStudio, 'AiContentStudio');
-
-  // 10d. Quiz Online & CBT Light Engine (Interactive Showcase)
-  initSafe(initQuizCbtEngine, 'QuizCbtEngine');
+  // 10c. KLASSA Feature Spotlight (3-Feature Interactive Showcase)
+  initSafe(initFeatureSpotlight, 'FeatureSpotlight');
 
   // 11. Time Paradox 40/60 Donut Chart Animation
   initSafe(initTimeParadoxChart, 'TimeParadoxChart');
@@ -1814,1432 +1811,409 @@ function initStickyMobileCta() {
 }
 
 /* ============================================================================
-   19. KLASSA AI CONTENT STUDIO — INTERACTIVE SHOWCASE (SIMULATION ENGINE)
+   19. KLASSA FEATURE SPOTLIGHT — LIGHT PREMIUM BROWSER FRAME & AUTOPLAY ENGINE
    ============================================================================ */
-const aiScenariosData = {
-  ppt: {
-    id: 'ppt',
-    displayName: 'Adaptive PPT Generator',
-    icon: 'presentation',
-    subject: 'IPS',
-    grade: 'Kelas VIII',
-    topic: 'Interaksi Sosial dan Lembaga Sosial',
-    instruction: 'Buat presentasi visual 6 slide untuk materi Interaksi Sosial dan Lembaga Sosial, gunakan alur apersepsi fenomena remaja dan speaker notes guru.',
-    docTypeBadge: 'Adaptive PPT Generator',
-    formatTag: 'Format: PPTX (PowerPoint) • 6 Slide Adaptif',
-    slides: [
+const SPOTLIGHT_FEATURES = [
+  {
+    id: 0,
+    title: 'AI Studio',
+    url: 'app.klassa.id/ai-studio',
+    badge: 'LIVE APP',
+    indicator: 'AI Studio • Generator Perangkat Ajar',
+    status: 'VIDEO DEMO',
+    type: 'video',
+    videoSrc: 'Fitur KLASSA/AI Studio.mp4',
+    loop: true,
+    hasChapters: false
+  },
+  {
+    id: 1,
+    title: 'Quiz & CBT Online',
+    url: 'app.klassa.id/quiz-cbt',
+    badge: 'LIVE CBT',
+    indicator: 'Quiz & CBT Online • Alur Evaluasi Terpadu',
+    status: '3 CHAPTER SEQUENCE',
+    type: 'video',
+    loop: false,
+    hasChapters: true,
+    chapters: [
       {
-        num: 1,
-        title: 'Interaksi Sosial & Lembaga Sosial',
-        sub: 'Ilmu Pengetahuan Sosial • Kelas VIII Fase D',
-        content: `
-          <div class="ppt-slide-hero">
-            <span class="slide-tag">Modul Ajar IPS #04</span>
-            <h3 class="slide-main-title">Membangun Harmoni Lewat Interaksi Sosial</h3>
-            <p class="slide-caption">Bagaimana pola hubungan antarindividu membentuk keteraturan di masyarakat?</p>
-            <div class="slide-pills-row">
-              <span class="p-pill">✦ Bentuk Interaksi</span>
-              <span class="p-pill">✦ Syarat Kontak & Komunikasi</span>
-              <span class="p-pill">✦ Peran Lembaga Sosial</span>
-            </div>
-          </div>
-        `,
-        speakerNotes: 'Awali dengan menanyakan fenomena gotong royong di lingkungan sekitar tempat tinggal siswa sebagai apersepsi kontekstual.'
+        id: 0,
+        title: '1. Persiapan Guru',
+        url: 'app.klassa.id/quiz-cbt/persiapan-guru',
+        indicator: 'Quiz CBT (1/3) • Persiapan Ujian Guru',
+        videoSrc: 'Fitur KLASSA/Quiz 1.mp4'
       },
       {
-        num: 2,
-        title: 'Tujuan Pembelajaran',
-        sub: 'Capaian & Indikator Kompetensi',
-        content: `
-          <div class="ppt-slide-grid2">
-            <div class="grid-box">
-              <span class="box-num">01</span>
-              <h4>Membedakan Proses Asosiatif vs Disosiatif</h4>
-              <p>Menganalisis contoh nyata kerjasama, akomodasi, dan asimilasi dalam kehidupan sehari-hari.</p>
-            </div>
-            <div class="grid-box">
-              <span class="box-num">02</span>
-              <h4>Fungsi Lembaga Sosial</h4>
-              <p>Menjelaskan peran keluarga, sekolah, dan agama dalam menjaga keteraturan sosial.</p>
-            </div>
-          </div>
-        `,
-        speakerNotes: 'Arahkan siswa untuk mencatat 2 kata kunci utama: Asosiatif (menyatukan) dan Disosiatif (merenggangkan).'
+        id: 1,
+        title: '2. Pengerjaan Siswa',
+        url: 'app.klassa.id/quiz-cbt/pengerjaan-siswa',
+        indicator: 'Quiz CBT (2/3) • Tampilan Ujian Siswa di HP',
+        videoSrc: 'Fitur KLASSA/Quiz 2 - Jawaban Siswa.mp4'
       },
       {
-        num: 3,
-        title: '2 Syarat Terjadinya Interaksi Sosial',
-        sub: 'Konsep Kunci Sosiologi',
-        content: `
-          <div class="ppt-slide-compare">
-            <div class="compare-card blue">
-              <div class="card-icon">🤝</div>
-              <h4>1. Kontak Sosial</h4>
-              <p>Pertemuan fisik langsung (primer) maupun perantara media digital (sekunder).</p>
-            </div>
-            <div class="compare-card teal">
-              <div class="card-icon">💬</div>
-              <h4>2. Komunikasi</h4>
-              <p>Proses penyampaian pesan, simbol makna, dan respons timbal-balik antarpihak.</p>
-            </div>
-          </div>
-        `,
-        speakerNotes: 'Tegaskan bahwa kontak tanpa pemahaman pesan belum menjadi interaksi yang utuh.'
-      },
-      {
-        num: 4,
-        title: 'Studi Kasus: Gotong Royong Digital',
-        sub: 'Contoh Kontekstual Remaja',
-        content: `
-          <div class="ppt-slide-case">
-            <div class="case-badge">STUDI FENOMENA NYATA</div>
-            <h4>Penggalangan Donasi Bencana via Media Sosial</h4>
-            <p>Siswa mengorganisir bantuan untuk korban banjir melalui grup kelas dan platform crowdfunding.</p>
-            <div class="case-reflection">
-              <strong>Pertanyaan Diskusi:</strong> Termasuk bentuk interaksi asosiatif manakah aksi gotong royong digital ini?
-            </div>
-          </div>
-        `,
-        speakerNotes: 'Beri waktu 2 menit bagi siswa untuk berdiskusi dengan teman sebangku mengenai studi kasus ini.'
-      },
-      {
-        num: 5,
-        title: 'Aktivitas Kelompok: Analisis Lembaga',
-        sub: 'Sintaks Problem-Based Learning (PBL)',
-        content: `
-          <div class="ppt-slide-activity">
-            <div class="act-step"><span class="step-badge">Tahap 1</span> Bentuk kelompok 4–5 orang</div>
-            <div class="act-step"><span class="step-badge">Tahap 2</span> Pilih 1 lembaga: Keluarga, Pendidikan, Agama, atau Ekonomi</div>
-            <div class="act-step"><span class="step-badge">Tahap 3</span> Identifikasi 3 peran lembaga tersebut dalam mengatasi konflik remaja</div>
-          </div>
-        `,
-        speakerNotes: 'Kelilingi kelompok dan amati pembagian tugas antaranggota. Dokumentasikan keaktifan murid di Ruang Mengajar.'
-      },
-      {
-        num: 6,
-        title: 'Rangkuman & Refleksi Belajar',
-        sub: 'Penutup Sesi Pertemuan #04',
-        content: `
-          <div class="ppt-slide-summary">
-            <div class="sum-box">
-              <span class="sum-icon">💡</span>
-              <p>“Masyarakat terbentuk karena interaksi, dan bertahan karena lembaga sosial yang berfungsi dengan baik.”</p>
-            </div>
-            <div class="sum-footer-note">Tugas Mandiri: Kerjakan LKPD #04 di Portal Siswa sebelum pertemuan berikutnya.</div>
-          </div>
-        `,
-        speakerNotes: 'Tutup sesi dengan meminta 1 perwakilan siswa menyampaikan 1 hal baru yang paling berkesan hari ini.'
+        id: 2,
+        title: '3. Hasil di Portal Guru',
+        url: 'app.klassa.id/quiz-cbt/portal-hasil',
+        indicator: 'Quiz CBT (3/3) • Hasil & Rekap Nilai Portal Guru',
+        videoSrc: 'Fitur KLASSA/Quiz 3 - Hasil di Portal guru.mp4'
       }
     ]
   },
-  modul: {
-    id: 'modul',
-    displayName: 'Modul Ajar',
-    icon: 'file-text',
-    subject: 'Matematika',
-    grade: 'Kelas VII',
-    topic: 'Persamaan Linear Satu Variabel (PLSV)',
-    instruction: 'Susun Modul Ajar Kurikulum Merdeka topik PLSV dengan model Problem Based Learning (PBL) 2x40 menit, lengkap dengan asesmen formatif.',
-    docTypeBadge: 'Modul Ajar BSKAP',
-    formatTag: 'Format: DOCX (Word) • Siap Cetak & Tanda Tangan',
-    pages: [
-      {
-        num: 1,
-        title: 'Bagian I: Identitas & Capaian Pembelajaran',
-        content: `
-          <div class="doc-page-canvas">
-            <div class="doc-header-kop">
-              <div class="doc-title-main">MODUL AJAR KURIKULUM MERDEKA</div>
-              <div class="doc-title-sub">Mata Pelajaran: Matematika • Fase D • Kelas VII</div>
-            </div>
-            <table class="doc-meta-table">
-              <tr><td><strong>Penyusun</strong></td><td>Dra. Sri Wahyuni, M.Pd.</td><td><strong>Alokasi Waktu</strong></td><td>2 JP (2 × 40 Menit)</td></tr>
-              <tr><td><strong>Fase / Kelas</strong></td><td>Fase D / Kelas VII</td><td><strong>Model Belajar</strong></td><td>Problem Based Learning (PBL)</td></tr>
-              <tr><td><strong>Elemen</strong></td><td>Aljabar</td><td><strong>Profil Pelajar</strong></td><td>Bernalar Kritis, Gotong Royong</td></tr>
-            </table>
-            <div class="doc-section-block">
-              <h5>A. Capaian Pembelajaran (CP)</h5>
-              <p>Peserta didik dapat menyelesaikan persamaan dan pertidaksamaan linear satu variabel dengan berbagai cara pemodelan matematika dari masalah kontekstual.</p>
-              <h5>B. Tujuan Pembelajaran (TP)</h5>
-              <ul>
-                <li><strong>TP.01:</strong> Mengidentifikasi masalah kontekstual yang dapat dimodelkan menjadi persamaan linear satu variabel.</li>
-                <li><strong>TP.02:</strong> Menentukan nilai variabel pengganti yang membuat persamaan bernilai benar menggunakan prinsip kesetaraan.</li>
-              </ul>
-            </div>
-          </div>
-        `
-      },
-      {
-        num: 2,
-        title: 'Bagian II: Langkah Kegiatan Pembelajaran (PBL)',
-        content: `
-          <div class="doc-page-canvas">
-            <div class="doc-section-block">
-              <h5>C. Urutan Kegiatan Pembelajaran (80 Menit)</h5>
-              
-              <div class="doc-activity-stage">
-                <span class="stage-tag intro">Kegiatan Awal (10 Menit)</span>
-                <p>1. Guru membuka kelas dengan salam, presensi 1-tap via KLASSA, dan apersepsi timbangan neraca setimbang.</p>
-                <p>2. Menyampaikan tujuan pembelajaran dan manfaat PLSV dalam belanja sehari-hari.</p>
-              </div>
-
-              <div class="doc-activity-stage main">
-                <span class="stage-tag main">Kegiatan Inti — Sintaks PBL (60 Menit)</span>
-                <p><strong>Fase 1: Orientasi Masalah</strong> — Siswa mengamati stimulus visual belanja buah dengan harga total diketahui.</p>
-                <p><strong>Fase 2: Organisasi Belajar</strong> — Siswa dibagi ke dalam kelompok heterogen 4 orang dan menerima LKPD.</p>
-                <p><strong>Fase 3: Penyelidikan Mandiri</strong> — Guru membimbing kelompok memodelkan kalimat cerita ke bentuk <em>ax + b = c</em>.</p>
-                <p><strong>Fase 4: Penyajian Hasil</strong> — 2 kelompok mempresentasikan strategi penyelesaian di depan kelas.</p>
-                <p><strong>Fase 5: Evaluasi & Refleksi</strong> — Guru bersama siswa menarik kesimpulan sifat kesetaraan aljabar.</p>
-              </div>
-
-              <div class="doc-activity-stage close">
-                <span class="stage-tag close">Kegiatan Penutup (10 Menit)</span>
-                <p>Refleksi pembelajaran, kuis 3 menit di HP siswa, dan penyampaian materi pertemuan berikutnya.</p>
-              </div>
-            </div>
-          </div>
-        `
-      },
-      {
-        num: 3,
-        title: 'Bagian III: Asesmen & Refleksi Guru',
-        content: `
-          <div class="doc-page-canvas">
-            <div class="doc-section-block">
-              <h5>D. Rancangan Asesmen</h5>
-              <table class="doc-data-table">
-                <thead>
-                  <tr><th>Jenis Asesmen</th><th>Bentuk Instrumen</th><th>Waktu Pelaksanaan</th></tr>
-                </thead>
-                <tbody>
-                  <tr><td>Asesmen Diagnostik</td><td>Tanya Jawab Operasi Bilangan Bulat</td><td>Awal Pertemuan</td></tr>
-                  <tr><td>Asesmen Formatif</td><td>Lembar Observasi Diskusi & LKPD #01</td><td>Saat Kegiatan Inti</td></tr>
-                  <tr><td>Asesmen Sumatif</td><td>Kuis Digital Anti-Contek (3 Soal)</td><td>Akhir Pembelajaran</td></tr>
-                </tbody>
-              </table>
-
-              <h5>E. Instrumen Refleksi Guru</h5>
-              <div class="doc-reflection-box">
-                <p>• Apakah seluruh siswa terlibat aktif dalam pemodelan persamaan linear?</p>
-                <p>• Bagian manakah yang membutuhkan penguatan scaffolding pada pertemuan berikutnya?</p>
-              </div>
-            </div>
-          </div>
-        `
-      }
-    ]
-  },
-  soal: {
-    id: 'soal',
-    displayName: 'Bank Soal & Kisi-Kisi',
-    icon: 'check-square',
-    subject: 'IPA',
-    grade: 'Kelas VIII',
-    topic: 'Sistem Pernapasan Manusia',
-    instruction: 'Buat 5 butir soal pilihan ganda HOTS dan 1 esai analitik tentang mekanisme pertukaran gas alveolus, lengkapi kisi-kisi dan rubrik pembahasan.',
-    docTypeBadge: 'Bank Soal & Kisi-Kisi',
-    formatTag: 'Format: XLSX / CBT Online Ready',
-    questions: [
-      {
-        num: 1,
-        level: 'HOTS (C4 - Analisis)',
-        indicator: 'Menganalisis dampak perubahan tekanan rongga dada terhadap pertukaran gas',
-        questionText: 'Seorang atlet berlari cepat sejauh 400 meter. Setelah mencapai garis finis, frekuensi pernapasan atlet tersebut meningkat drastis. Faktor fisiologis utama yang memicu peningkatan frekuensi pernapasan tersebut adalah...',
-        options: [
-          'A. Penurunan kadar hemoglobin dalam sel darah merah',
-          'B. Peningkatan konsentrasi CO₂ dan penurunan pH darah yang dideteksi oleh medula oblongata',
-          'C. Penumpukan gas oksigen yang berlebihan di dalam alveolus',
-          'D. Kontraksi otot diafragma yang melambat akibat kelelahan otot'
-        ],
-        correct: 'B',
-        explanation: 'Saat berolahraga berat, respirasi seluler menghasilkan CO₂ tinggi. CO₂ bereaksi dengan air membentuk asam karbonat yang menurunkan pH darah. Pusat pernapasan di medula oblongata merespons penurunan pH ini dengan meningkatkan laju ventilasi paru-paru.'
-      },
-      {
-        num: 2,
-        level: 'C2 (Pemahaman Konseptual)',
-        indicator: 'Mengidentifikasi struktur alveolus yang mendukung difusi gas efisien',
-        questionText: 'Alveolus pada paru-paru manusia memiliki dinding yang sangat tipis dan dikelilingi oleh jaring-jaring kapiler darah yang rapat. Adaptasi struktural ini bertujuan untuk...',
-        options: [
-          'A. Mempercepat laju difusi gas oksigen dan karbon dioksida dengan memperluas bidang permukaan',
-          'B. Mencegah debu dan mikroorganisme masuk ke saluran bronkus',
-          'C. Menghangatkan udara dingin yang masuk dari hidung',
-          'D. Menghasilkan lendir pembersih silia paru-paru'
-        ],
-        correct: 'A',
-        explanation: 'Dinding tipis (satu lapis epitel) dan luas permukaan alveolus yang besar meminimalkan jarak difusi sehingga pertukaran gas O₂ dan CO₂ berlangsung sangat efisien.'
-      }
-    ]
-  },
-  lkpd: {
-    id: 'lkpd',
-    displayName: 'LKPD',
-    icon: 'layout-template',
-    subject: 'Bahasa Indonesia',
-    grade: 'Kelas VII',
-    topic: 'Teks Deskripsi',
-    instruction: 'Rancang LKPD observasi lingkungan sekolah untuk melatih keterampilan menulis teks deskripsi dengan rubrik panca indera.',
-    docTypeBadge: 'LKPD Siswa',
-    formatTag: 'Format: DOCX (Word) • Siap Cetak Siswa',
-    content: `
-      <div class="worksheet-canvas">
-        <div class="ws-header">
-          <div class="ws-title-badge">LEMBAR KERJA PESERTA DIDIK (LKPD)</div>
-          <h4>Petualangan Mengamati: Menjelajah Objek dengan Panca Indera</h4>
-          <div class="ws-student-meta">
-            <span>Nama Siswa: ____________________</span>
-            <span>Kelas: VII - ____</span>
-            <span>Kelompok: ____</span>
-          </div>
-        </div>
-
-        <div class="ws-section">
-          <span class="ws-step-tag">Aktivitas 1: Stimulus Pengamatan</span>
-          <p>Pilihlah salah satu sudut sekolah (misal: Perpustakaan, Kantin, Taman Sekolah, atau Laboratorium). Amati suasana sekitarmu selama 5 menit secara hening.</p>
-        </div>
-
-        <div class="ws-section">
-          <span class="ws-step-tag">Aktivitas 2: Matriks Panca Indera</span>
-          <table class="ws-table">
-            <thead>
-              <tr><th>Panca Indera</th><th>Apa yang Anda Rasakan / Amati?</th><th>Pilihan Kata Konkret</th></tr>
-            </thead>
-            <tbody>
-              <tr><td>👀 Penglihatan</td><td>Warna daun, susunan buku, cahaya jendela...</td><td><em>Contoh: Hijau pupus, remang keemasan</em></td></tr>
-              <tr><td>👂 Pendengaran</td><td>Suara gesekan kertas, gemerisik dedaunan...</td><td><em>Contoh: Gemerisik lirih, sayup-sayup</em></td></tr>
-              <tr><td>👃 Penciuman / Peraba</td><td>Aroma rumput basah, tekstur meja kayu...</td><td><em>Contoh: Lembap segar, kasar berurat</em></td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="ws-section">
-          <span class="ws-step-tag">Aktivitas 3: Rangkai Menjadi 1 Paragraf Deskripsi Utuh</span>
-          <div class="ws-writing-box">
-            <span class="ws-line"></span>
-            <span class="ws-line"></span>
-            <span class="ws-line"></span>
-          </div>
-        </div>
-      </div>
-    `
-  },
-  bacaan: {
-    id: 'bacaan',
-    displayName: 'Bahan Bacaan',
-    icon: 'book-open',
-    subject: 'IPAS',
-    grade: 'Kelas V',
-    topic: 'Siklus Air (Hidrologi)',
-    instruction: 'Susun bahan bacaan bertingkat tentang siklus hidrologi untuk 2 tingkat kesiapan belajar (Tingkat Dasar & Tingkat Pengayaan) beserta glosarium.',
-    docTypeBadge: 'Bahan Bacaan Berdiferensiasi',
-    formatTag: 'Format: DOCX (Word) • Berdiferensiasi',
-    levels: {
-      dasar: {
-        label: 'Tingkat Kesiapan Dasar (Analogi & Visual Sederhana)',
-        content: `
-          <div class="reading-material-box">
-            <div class="rm-header">
-              <span class="rm-badge blue">Tingkat Dasar • Bahasa Kontekstual</span>
-              <h4>Petualangan Tetes Air: Dari Samudra Kembali ke Samudra</h4>
-            </div>
-            <div class="rm-story">
-              <p>Pernahkah kalian berpikir dari mana asal air hujan yang membasahi jendela rumahmu? Air di bumi kita tidak pernah bertambah dan tidak pernah hilang. Air hanya terus berputar seperti komidi putar raksasa!</p>
-              <div class="rm-analogy-card">
-                <strong>💡 Analogi Panci Rebus:</strong> Ketika ibu merebus air di dapur, uap air akan naik ke atas. Begitu juga air laut yang dipanaskan oleh sinar matahari. Uap air naik ke langit membentuk awan putih.
-              </div>
-              <div class="rm-vocab-cluster">
-                <span class="v-tag"><strong>Evaporasi:</strong> Penguapan air oleh matahari</span>
-                <span class="v-tag"><strong>Kondensasi:</strong> Uap air berubah jadi awan</span>
-                <span class="v-tag"><strong>Presipitasi:</strong> Turunnya air hujan ke bumi</span>
-              </div>
-            </div>
-          </div>
-        `
-      },
-      pengayaan: {
-        label: 'Tingkat Pengayaan (Konsep Ilmiah & Dampak Ekologis)',
-        content: `
-          <div class="reading-material-box">
-            <div class="rm-header">
-              <span class="rm-badge purple">Tingkat Pengayaan • Analisis Ekologis</span>
-              <h4>Dinamika Siklus Hidrologi & Dampak Alih Fungsi Lahan</h4>
-            </div>
-            <div class="rm-story">
-              <p>Siklus hidrologi adalah sirkulasi air yang tidak pernah berhenti dari atmosfer ke bumi dan kembali lagi melalui proses evaporasi, transpirasi vegetasi, kondensasi, presipitasi, dan infiltrasi air tanah.</p>
-              <div class="rm-analogy-card purple-card">
-                <strong>🌳 Peran Infiltrasi & Hutan:</strong> Hutan bertindak sebagai spons alami. Ketika tutupan pohon berkurang akibat deforestasi, air hujan langsung menjadi limpasan permukaan (surface runoff) yang memicu erosi dan banjir bandang.
-              </div>
-              <div class="rm-vocab-cluster">
-                <span class="v-tag"><strong>Transpirasi:</strong> Penguapan air dari stomata tumbuhan</span>
-                <span class="v-tag"><strong>Perkolasi:</strong> Gerak air meresap ke lapisan akuifer</span>
-              </div>
-            </div>
-          </div>
-        `
-      }
-    }
-  },
-  rubrik: {
-    id: 'rubrik',
-    displayName: 'Rubrik Penilaian',
-    icon: 'award',
-    subject: 'Seni Budaya',
-    grade: 'Kelas VIII',
-    topic: 'Presentasi Karya Seni Rupa',
-    instruction: 'Buat rubrik asesmen autentik 4 level pencapaian untuk menilai penguasaan teknik, kreativitas, dan artikulasi presentasi karya seni rupa.',
-    docTypeBadge: 'Rubrik Asesmen Autentik',
-    formatTag: 'Format: DOCX / PDF • Rubrik Autentik 4 Level',
-    content: `
-      <div class="rubric-canvas">
-        <div class="rubric-top-meta">
-          <h4>Rubrik Penilaian Presentasi & Apresiasi Karya Seni Rupa</h4>
-          <p>Panduan Asesmen Otentik Kurikulum Merdeka (4 Kategori Pencapaian)</p>
-        </div>
-        <table class="rubric-table">
-          <thead>
-            <tr>
-              <th style="width: 22%;">Kriteria</th>
-              <th style="width: 19%;">Perlu Bimbingan (1)</th>
-              <th style="width: 19%;">Cukup (2)</th>
-              <th style="width: 20%;">Cakap (3)</th>
-              <th style="width: 20%;" class="highlight-mahir">Mahir (4)</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Penguasaan Teknik & Komposisi</strong></td>
-              <td>Belum mampu menjelaskan teknik dan komposisi warna karya.</td>
-              <td>Menjelaskan teknik dasar namun belum runtut menguraikan pilihan warna.</td>
-              <td>Mampu menguraikan teknik lukis, proporsi, dan pencahayaan dengan tepat.</td>
-              <td class="cell-mahir">Menjelaskan filosofi pemilihan teknik, medium, dan harmoni komposisi secara komprehensif.</td>
-            </tr>
-            <tr>
-              <td><strong>Kreativitas & Orisinalitas</strong></td>
-              <td>Karya meniru penuh contoh tanpa ada gagasan mandiri.</td>
-              <td>Menunjukkan sedikit modifikasi dari contoh referensi.</td>
-              <td>Memiliki gagasan orisinal dan variasi visual yang menarik.</td>
-              <td class="cell-mahir">Menghasilkan karya yang sangat unik, bermakna simbolik mendalam, dan berani bereksplorasi.</td>
-            </tr>
-            <tr>
-              <td><strong>Artikulasi Presentasi</strong></td>
-              <td>Suara pelan, membaca teks, dan tidak ada kontak mata.</td>
-              <td>Menyampaikan poin utama namun kurang percaya diri saat tanya jawab.</td>
-              <td>Presentasi percaya diri, kontak mata baik, dan artikulasi jelas.</td>
-              <td class="cell-mahir">Sangat komunikatif, artikulatif, responsif terhadap umpan balik, dan menginspirasi audiens.</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    `
+  {
+    id: 2,
+    title: 'KLASSA Agent',
+    url: 'app.klassa.id/ai-agent',
+    badge: 'CO-PILOT',
+    indicator: 'KLASSA Agent • Asisten Cerdas Alur Kerja Guru',
+    status: 'PREVIEW FITUR',
+    type: 'agent-preview',
+    loop: false,
+    videoSrc: null,
+    hasChapters: false
   }
-};
+];
 
-let activeAiGeneratorId = 'ppt';
-let currentPptSlideIdx = 0;
-let currentModulPageIdx = 0;
-let activeReadingLevel = 'dasar';
-let isAnswerKeyVisible = false;
+let activeFeatureIdx = 0;
+let activeQuizChapterIdx = 0;
+let isSectionInView = false;
+let userPrefersReducedMotion = false;
 
-function selectAiGenerator(genId) {
-  if (!aiScenariosData[genId]) return;
-  activeAiGeneratorId = genId;
-  currentPptSlideIdx = 0;
-  currentModulPageIdx = 0;
-  isAnswerKeyVisible = false;
+function updateProgressBeam(idx) {
+  const beam = document.getElementById('spotlight-progress-beam');
+  const items = document.querySelectorAll('.spotlight-nav-item');
+  if (!beam || !items || items.length === 0) return;
+  
+  const total = items.length;
+  const percentage = 100 / total;
+  beam.style.top = `${idx * percentage}%`;
+  beam.style.height = `${percentage}%`;
+}
 
-  // 1. Update tabs state
-  const cards = document.querySelectorAll('.ai-generator-card');
-  cards.forEach(card => {
-    const isAct = card.getAttribute('data-gen') === genId;
-    card.classList.toggle('active', isAct);
-    card.setAttribute('aria-selected', isAct ? 'true' : 'false');
+function updatePlayPauseIcon() {
+  const videoEl = document.getElementById('spotlight-main-video');
+  const iconEl = document.getElementById('icon-play-state');
+  if (!iconEl) return;
+
+  const isPaused = !videoEl || videoEl.paused;
+  iconEl.setAttribute('data-lucide', isPaused ? 'play' : 'pause');
+  if (window.lucide) window.lucide.createIcons();
+}
+
+function updateMuteIcon() {
+  const videoEl = document.getElementById('spotlight-main-video');
+  const iconEl = document.getElementById('icon-mute-state');
+  if (!iconEl) return;
+
+  const isMuted = !videoEl || videoEl.muted;
+  iconEl.setAttribute('data-lucide', isMuted ? 'volume-x' : 'volume-2');
+  if (window.lucide) window.lucide.createIcons();
+}
+
+function showPlayOverlay() {
+  const overlay = document.getElementById('stage-play-overlay');
+  if (overlay) overlay.style.display = 'flex';
+  if (window.lucide) window.lucide.createIcons();
+}
+
+function hidePlayOverlay() {
+  const overlay = document.getElementById('stage-play-overlay');
+  if (overlay) overlay.style.display = 'none';
+}
+
+function playActiveVideo() {
+  const videoEl = document.getElementById('spotlight-main-video');
+  const currentFeature = SPOTLIGHT_FEATURES[activeFeatureIdx];
+  if (!videoEl || !currentFeature || currentFeature.type !== 'video' || !isSectionInView) return;
+
+  if (userPrefersReducedMotion) {
+    showPlayOverlay();
+    return;
+  }
+
+  videoEl.muted = true;
+  const playPromise = videoEl.play();
+  if (playPromise !== undefined) {
+    playPromise.then(() => {
+      hidePlayOverlay();
+      updatePlayPauseIcon();
+      updateMuteIcon();
+    }).catch(err => {
+      console.warn('[KLASSA] Autoplay blocked by browser policy:', err);
+      showPlayOverlay();
+      updatePlayPauseIcon();
+    });
+  }
+}
+
+function switchSpotlightFeature(featureIdx) {
+  if (featureIdx < 0 || featureIdx >= SPOTLIGHT_FEATURES.length) return;
+  activeFeatureIdx = featureIdx;
+  
+  const feature = SPOTLIGHT_FEATURES[featureIdx];
+  const videoEl = document.getElementById('spotlight-main-video');
+  const videoBox = document.getElementById('browser-video-box');
+  const agentStage = document.getElementById('agent-preview-stage');
+  const chapterStrip = document.getElementById('browser-chapter-strip');
+  const addressUrl = document.getElementById('browser-address-url');
+  const addressBadge = document.getElementById('browser-address-badge');
+  const progressBar = document.getElementById('stage-video-progress');
+  const fallbackEl = document.getElementById('stage-error-fallback');
+
+  if (fallbackEl) fallbackEl.style.display = 'none';
+  if (progressBar) progressBar.style.width = '0%';
+
+  // 1. Update Timeline Navigation Items
+  const navItems = document.querySelectorAll('.spotlight-nav-item');
+  navItems.forEach((item, i) => {
+    const isAct = i === featureIdx;
+    item.classList.toggle('active', isAct);
+    item.setAttribute('aria-selected', isAct ? 'true' : 'false');
   });
 
-  // 2. Update Left Instruction Panel
-  const scenario = aiScenariosData[genId];
-  const subjectEl = document.getElementById('ai-meta-subject');
-  const gradeEl = document.getElementById('ai-meta-grade');
-  const topicEl = document.getElementById('ai-meta-topic');
-  const instTextEl = document.getElementById('ai-inst-text');
-  const docTypeBadge = document.getElementById('ai-doc-type-text');
-  const docFormatTag = document.getElementById('ai-doc-format-tag');
+  // 2. Update Progress Beam
+  updateProgressBeam(featureIdx);
 
-  if (subjectEl) subjectEl.textContent = scenario.subject;
-  if (gradeEl) gradeEl.textContent = scenario.grade;
-  if (topicEl) topicEl.textContent = scenario.topic;
-  if (instTextEl) instTextEl.textContent = `"${scenario.instruction}"`;
-  if (docTypeBadge) docTypeBadge.textContent = scenario.docTypeBadge;
-  if (docFormatTag) docFormatTag.innerHTML = `<span>${scenario.formatTag}</span>`;
-
-  // 3. Render Right Output Viewport
-  renderAiOutputViewport();
-
-  // Refresh icons
-  if (window.lucide) window.lucide.createIcons();
-}
-
-function triggerAiOutputPreview() {
-  const stage = document.getElementById('ai-preview-stage');
-  if (stage) {
-    stage.classList.remove('pulse-reveal');
-    void stage.offsetWidth;
-    stage.classList.add('pulse-reveal');
-  }
-  renderAiOutputViewport();
-}
-
-function switchPptSlide(slideIdx) {
-  const scenario = aiScenariosData.ppt;
-  if (!scenario || slideIdx < 0 || slideIdx >= scenario.slides.length) return;
-  currentPptSlideIdx = slideIdx;
-  renderAiOutputViewport();
-}
-
-function switchModulPage(pageIdx) {
-  const scenario = aiScenariosData.modul;
-  if (!scenario || pageIdx < 0 || pageIdx >= scenario.pages.length) return;
-  currentModulPageIdx = pageIdx;
-  renderAiOutputViewport();
-}
-
-function toggleAnswerKey() {
-  isAnswerKeyVisible = !isAnswerKeyVisible;
-  renderAiOutputViewport();
-}
-
-function switchReadingLevel(levelId) {
-  activeReadingLevel = levelId;
-  renderAiOutputViewport();
-}
-
-function renderAiOutputViewport() {
-  const viewport = document.getElementById('ai-canvas-viewport');
-  if (!viewport) return;
-
-  const genId = activeAiGeneratorId;
-  const scenario = aiScenariosData[genId];
-
-  if (genId === 'ppt') {
-    const s = scenario.slides[currentPptSlideIdx];
-    viewport.innerHTML = `
-      <div class="ai-ppt-deck-viewer fade-in">
-        <!-- Slide Top Nav Bar -->
-        <div class="ppt-top-nav">
-          <div class="ppt-slide-counter">
-            <span>Slide <strong>${currentPptSlideIdx + 1}</strong> dari ${scenario.slides.length}</span>
-          </div>
-          <div class="ppt-nav-actions">
-            <button type="button" class="ppt-btn-prev" onclick="switchPptSlide(${currentPptSlideIdx - 1})" ${currentPptSlideIdx === 0 ? 'disabled' : ''}>
-              <i data-lucide="chevron-left"></i>
-            </button>
-            <button type="button" class="ppt-btn-next" onclick="switchPptSlide(${currentPptSlideIdx + 1})" ${currentPptSlideIdx === scenario.slides.length - 1 ? 'disabled' : ''}>
-              <i data-lucide="chevron-right"></i>
-            </button>
-          </div>
-        </div>
-
-        <!-- Main Slide Presentation Canvas (16:9 Aspect Ratio) -->
-        <div class="ppt-slide-canvas">
-          ${s.content}
-        </div>
-
-        <!-- Interactive Slide Thumbnails Strip -->
-        <div class="ppt-thumbnails-strip">
-          ${scenario.slides.map((sl, idx) => `
-            <button type="button" class="ppt-thumb-btn ${idx === currentPptSlideIdx ? 'active' : ''}" onclick="switchPptSlide(${idx})">
-              <span class="thumb-num">0${sl.num}</span>
-              <span class="thumb-label">${sl.title}</span>
-            </button>
-          `).join('')}
-        </div>
-
-        <!-- Speaker Notes Bar -->
-        <div class="ppt-speaker-notes-bar">
-          <div class="notes-badge">🎙️ Speaker Notes Guru:</div>
-          <p class="notes-text">${s.speakerNotes}</p>
-        </div>
-      </div>
-    `;
-  } else if (genId === 'modul') {
-    const p = scenario.pages[currentModulPageIdx];
-    viewport.innerHTML = `
-      <div class="ai-modul-viewer fade-in">
-        <!-- Page Tab Switcher -->
-        <div class="modul-page-tabs">
-          ${scenario.pages.map((pg, idx) => `
-            <button type="button" class="modul-tab-btn ${idx === currentModulPageIdx ? 'active' : ''}" onclick="switchModulPage(${idx})">
-              <span>Halaman ${pg.num}</span>
-            </button>
-          `).join('')}
-        </div>
-
-        <!-- Render Page Canvas -->
-        <div class="modul-page-container">
-          <div class="page-title-banner">${p.title}</div>
-          ${p.content}
-        </div>
-      </div>
-    `;
-  } else if (genId === 'soal') {
-    viewport.innerHTML = `
-      <div class="ai-soal-viewer fade-in">
-        <div class="soal-top-control">
-          <div class="soal-meta-badge">📋 Bank Soal Formatif (Kurikulum Merdeka)</div>
-          <button type="button" class="btn-toggle-key ${isAnswerKeyVisible ? 'active' : ''}" onclick="toggleAnswerKey()">
-            <i data-lucide="${isAnswerKeyVisible ? 'eye-off' : 'eye'}"></i>
-            <span>${isAnswerKeyVisible ? 'Sembunyikan Kunci' : 'Tampilkan Kunci & Pembahasan'}</span>
-          </button>
-        </div>
-
-        <div class="soal-cards-stack">
-          ${scenario.questions.map(q => `
-            <div class="soal-item-card">
-              <div class="soal-card-head">
-                <span class="soal-num">Soal #${q.num}</span>
-                <span class="soal-level-pill">${q.level}</span>
-                <span class="soal-ind-text">${q.indicator}</span>
-              </div>
-              <p class="soal-stem">${q.questionText}</p>
-              <div class="soal-options-list">
-                ${q.options.map(opt => {
-                  const optLetter = opt.charAt(0);
-                  const isCorrect = optLetter === q.correct;
-                  return `
-                    <div class="opt-row ${isAnswerKeyVisible && isCorrect ? 'correct-highlight' : ''}">
-                      <span>${opt}</span>
-                      ${isAnswerKeyVisible && isCorrect ? '<span class="key-check">✓ Kunci</span>' : ''}
-                    </div>
-                  `;
-                }).join('')}
-              </div>
-              ${isAnswerKeyVisible ? `
-                <div class="soal-explanation-box">
-                  <strong>💡 Pembahasan Pedagogis:</strong>
-                  <p>${q.explanation}</p>
-                </div>
-              ` : ''}
-            </div>
-          `).join('')}
-        </div>
-      </div>
-    `;
-  } else if (genId === 'lkpd') {
-    viewport.innerHTML = `
-      <div class="ai-lkpd-viewer fade-in">
-        ${scenario.content}
-      </div>
-    `;
-  } else if (genId === 'bacaan') {
-    const curLevel = scenario.levels[activeReadingLevel];
-    viewport.innerHTML = `
-      <div class="ai-bacaan-viewer fade-in">
-        <div class="bacaan-level-tabs">
-          <button type="button" class="b-tab ${activeReadingLevel === 'dasar' ? 'active' : ''}" onclick="switchReadingLevel('dasar')">
-            <span>Level 1: Kesiapan Dasar</span>
-          </button>
-          <button type="button" class="b-tab ${activeReadingLevel === 'pengayaan' ? 'active' : ''}" onclick="switchReadingLevel('pengayaan')">
-            <span>Level 2: Pengayaan</span>
-          </button>
-        </div>
-        <div class="bacaan-content-wrap">
-          ${curLevel.content}
-        </div>
-      </div>
-    `;
-  } else if (genId === 'rubrik') {
-    viewport.innerHTML = `
-      <div class="ai-rubrik-viewer fade-in">
-        ${scenario.content}
-      </div>
-    `;
+  // 3. Pause & reset current video
+  if (videoEl) {
+    try {
+      videoEl.pause();
+    } catch (e) {}
   }
 
-  // Refresh Lucide icons
-  if (window.lucide) window.lucide.createIcons();
+  // 4. Update Showcase Content, Address URL & Source
+  if (addressUrl) addressUrl.textContent = feature.url;
+  if (addressBadge) addressBadge.textContent = feature.badge;
+
+  if (feature.type === 'video') {
+    if (agentStage) agentStage.style.display = 'none';
+    if (videoBox) videoBox.style.display = 'flex';
+
+    if (feature.hasChapters) {
+      if (chapterStrip) chapterStrip.style.display = 'flex';
+      activeQuizChapterIdx = 0;
+      updateQuizChapterUi(0);
+      const chapter = feature.chapters[0];
+      if (addressUrl) addressUrl.textContent = chapter.url;
+      if (videoEl) {
+        videoEl.loop = false;
+        videoEl.src = chapter.videoSrc;
+        videoEl.load();
+        playActiveVideo();
+      }
+    } else {
+      if (chapterStrip) chapterStrip.style.display = 'none';
+      if (videoEl) {
+        videoEl.loop = true;
+        videoEl.src = feature.videoSrc;
+        videoEl.load();
+        playActiveVideo();
+      }
+    }
+  } else if (feature.type === 'agent-preview') {
+    if (chapterStrip) chapterStrip.style.display = 'none';
+    if (videoBox) videoBox.style.display = 'none';
+    if (agentStage) agentStage.style.display = 'flex';
+    hidePlayOverlay();
+  }
+
+  if (window.lucide) {
+    window.lucide.createIcons();
+  }
 }
 
-function initAiContentStudio() {
-  const panel = document.getElementById('ai-studio-master-panel');
-  if (!panel) return;
-
-  // Initialize with PPT generator (Default Active)
-  selectAiGenerator('ppt');
+function updateQuizChapterUi(chapterIdx) {
+  const chapterBtns = document.querySelectorAll('.chapter-nav-pill');
+  chapterBtns.forEach((btn, i) => {
+    const isAct = i === chapterIdx;
+    btn.classList.toggle('active', isAct);
+    btn.setAttribute('aria-selected', isAct ? 'true' : 'false');
+  });
 }
 
-// Global exposure for AI Content Studio
-window.selectAiGenerator = selectAiGenerator;
-window.triggerAiOutputPreview = triggerAiOutputPreview;
-window.switchPptSlide = switchPptSlide;
-window.switchModulPage = switchModulPage;
-window.toggleAnswerKey = toggleAnswerKey;
-window.switchReadingLevel = switchReadingLevel;
-window.initAiContentStudio = initAiContentStudio;
+function switchQuizChapter(chapterIdx) {
+  const quizFeature = SPOTLIGHT_FEATURES[1];
+  if (!quizFeature || !quizFeature.chapters || !quizFeature.chapters[chapterIdx]) return;
+  activeQuizChapterIdx = chapterIdx;
 
-/* ============================================================================
-   20. KLASSA QUIZ ONLINE & CBT LIGHT ENGINE (INTERACTIVE SIMULATION)
-   ============================================================================ */
-const cbtScenesData = [
-  {
-    index: 0,
-    tag: 'SCENE 01 • PERSIAPAN GURU',
-    title: 'Siapkan Ujian Tanpa Alur yang Berbelit',
-    desc: 'Susun soal, atur durasi, aktifkan pengacakan, lalu bagikan akses ujian kepada siswa.'
-  },
-  {
-    index: 1,
-    tag: 'SCENE 02 • PENGALAMAN SISWA',
-    title: 'Siswa Mengerjakan. Fokus Tetap Terjaga.',
-    desc: 'Siswa mengakses ujian melalui tautan dan PIN, lalu mengerjakan soal dengan alur yang jelas dan mudah diikuti.'
-  },
-  {
-    index: 2,
-    tag: 'SCENE 03 • HASIL & ANALITIK',
-    title: 'Bukan Sekadar Nilai. Temukan Apa yang Perlu Diperbaiki.',
-    desc: 'Koreksi otomatis dan analitik per soal membantu guru memahami hasil evaluasi sebelum menerbitkannya ke Buku Nilai.'
+  const chapter = quizFeature.chapters[chapterIdx];
+  const videoEl = document.getElementById('spotlight-main-video');
+  const addressUrl = document.getElementById('browser-address-url');
+  const progressBar = document.getElementById('stage-video-progress');
+  const fallbackEl = document.getElementById('stage-error-fallback');
+
+  if (fallbackEl) fallbackEl.style.display = 'none';
+  if (progressBar) progressBar.style.width = '0%';
+
+  updateQuizChapterUi(chapterIdx);
+
+  if (addressUrl) {
+    addressUrl.textContent = chapter.url;
   }
-];
 
-const cbtQuestionsData = [
-  {
-    num: 1,
-    stem: 'Organ yang menjadi tempat utama pertukaran gas oksigen (O₂) dan karbon dioksida (CO₂) di dalam paru-paru adalah ...',
-    options: [
-      { id: 'A', text: 'Trakea (Batang Tenggorokan)' },
-      { id: 'B', text: 'Alveolus (Kantung Udara Paru-Paru)', isCorrect: true },
-      { id: 'C', text: 'Bronkus (Cabang Tenggorokan)' },
-      { id: 'D', text: 'Laring (Kotak Suara)' }
-    ],
-    hint: 'Bentuknya berupa gelembung-gelembung halus dengan dinding tipis dan dikelilingi kapiler darah.'
-  },
-  {
-    num: 2,
-    stem: 'Saluran pernapasan yang dilapisi oleh sel-sel bersilia dan lendir untuk menyaring debu serta partikel mikroorganisme adalah ...',
-    options: [
-      { id: 'A', text: 'Bronkiolus' },
-      { id: 'B', text: 'Trakea', isCorrect: true },
-      { id: 'C', text: 'Faring' },
-      { id: 'D', text: 'Diafragma' }
-    ],
-    hint: 'Silia berfungsi menyapu kotoran ke arah luar agar tidak masuk ke paru-paru.'
-  },
-  {
-    num: 3,
-    stem: 'Saat terjadi proses inspirasi pada mekanisme pernapasan dada, peristiwa yang dialami oleh otot antartulang rusuk dan rongga dada adalah ...',
-    options: [
-      { id: 'A', text: 'Otot antartulang rusuk relaksasi, volume rongga dada mengecil' },
-      { id: 'B', text: 'Otot antartulang rusuk berkontraksi, volume rongga dada membesar', isCorrect: true },
-      { id: 'C', text: 'Otot antartulang rusuk relaksasi, tekanan rongga dada meningkat' },
-      { id: 'D', text: 'Otot antartulang rusuk berkontraksi, udara terdorong keluar' }
-    ],
-    hint: 'Kontraksi mengangkat tulang rusuk ke atas sehingga tekanan udara di paru-paru mengecil.'
-  },
-  {
-    num: 4,
-    stem: 'Gas buang hasil metabolisme respirasi seluler yang diangkut oleh sel darah merah kembali ke paru-paru untuk dihembuskan keluar adalah ...',
-    options: [
-      { id: 'A', text: 'Karbon dioksida (CO₂) dan uap air', isCorrect: true },
-      { id: 'B', text: 'Oksigen murni (O₂)' },
-      { id: 'C', text: 'Gas nitrogen bebas (N₂)' },
-      { id: 'D', text: 'Gas karbon monoksida (CO)' }
-    ],
-    hint: 'Senyawa ini dihasilkan dari siklus perombakan glukosa di dalam mitokondria.'
+  if (videoEl) {
+    try {
+      videoEl.pause();
+    } catch (e) {}
+    videoEl.loop = false;
+    videoEl.src = chapter.videoSrc;
+    videoEl.load();
+    playActiveVideo();
   }
-];
+}
 
-let cbtState = {
-  activeScene: 0,
-  currentQuestion: 0,
-  studentAnswers: { 0: 1, 1: null, 2: null, 3: null },
-  isSubmitted: false,
-  gradebookSynced: false
-};
+// Stage Play/Pause Toggle
+function toggleStagePlayPause() {
+  const videoEl = document.getElementById('spotlight-main-video');
+  if (!videoEl) return;
 
-function switchCbtScene(sceneIdx) {
-  if (sceneIdx < 0 || sceneIdx > 2) return;
-  cbtState.activeScene = sceneIdx;
+  if (videoEl.paused) {
+    videoEl.play().then(() => {
+      hidePlayOverlay();
+      updatePlayPauseIcon();
+    }).catch(() => {
+      showPlayOverlay();
+    });
+  } else {
+    videoEl.pause();
+    updatePlayPauseIcon();
+  }
+}
 
-  // Update tabs active state
-  for (let i = 0; i <= 2; i++) {
-    const tab = document.getElementById(`cbt-tab-${i}`);
-    if (tab) {
-      const isActive = (i === sceneIdx);
-      tab.classList.toggle('active', isActive);
-      tab.setAttribute('aria-selected', isActive ? 'true' : 'false');
+// Stage Mute/Unmute Toggle
+function toggleStageMute() {
+  const videoEl = document.getElementById('spotlight-main-video');
+  if (!videoEl) return;
+
+  videoEl.muted = !videoEl.muted;
+  updateMuteIcon();
+}
+
+// Stage Fullscreen Toggle (Target the light browser frame)
+function toggleStageFullscreen() {
+  const frame = document.getElementById('spotlight-browser-frame');
+  if (!frame) return;
+
+  if (!document.fullscreenElement) {
+    if (frame.requestFullscreen) {
+      frame.requestFullscreen().catch(() => {});
+    } else if (frame.webkitRequestFullscreen) {
+      frame.webkitRequestFullscreen();
+    }
+  } else {
+    if (document.exitFullscreen) {
+      document.exitFullscreen().catch(() => {});
     }
   }
-
-  // Update header text
-  const sceneInfo = cbtScenesData[sceneIdx];
-  const tagEl = document.getElementById('cbt-scene-tag');
-  const titleEl = document.getElementById('cbt-scene-title');
-  const descEl = document.getElementById('cbt-scene-desc');
-
-  if (tagEl) tagEl.textContent = sceneInfo.tag;
-  if (titleEl) titleEl.textContent = sceneInfo.title;
-  if (descEl) descEl.textContent = sceneInfo.desc;
-
-  // Render viewport
-  renderCbtSceneViewport();
 }
 
-function renderCbtSceneViewport() {
-  const viewport = document.getElementById('cbt-canvas-viewport');
-  if (!viewport) return;
+function handleManualPlayClick() {
+  const videoEl = document.getElementById('spotlight-main-video');
+  if (!videoEl) return;
 
-  const scene = cbtState.activeScene;
+  videoEl.play().then(() => {
+    hidePlayOverlay();
+    updatePlayPauseIcon();
+  }).catch(() => {});
+}
 
-  if (scene === 0) {
-    // SCENE 01: PERSIAPAN GURU (Cinematic 3D Composition: Laptop Primary + Phone Secondary + 3D Fragments)
-    viewport.innerHTML = `
-      <div class="cbt-cinematic-stage scene-1-active fade-in">
-        
-        <!-- 3D Floating Fragment 1 (Top Left) -->
-        <div class="cbt-float-fragment frag-ai" data-depth="0.15">
-          <div class="frag-icon icon-purple">✦</div>
-          <div class="frag-text">
-            <span class="frag-label">AI Question Co-Pilot</span>
-            <strong class="frag-val">15 Soal diselaraskan dengan TP IPA BSKAP</strong>
-          </div>
-        </div>
+function handleSpotlightKey(event, featureIdx) {
+  if (event.key === 'Enter' || event.key === ' ') {
+    event.preventDefault();
+    switchSpotlightFeature(featureIdx);
+  } else if (event.key === 'ArrowDown') {
+    event.preventDefault();
+    const nextIdx = (featureIdx + 1) % SPOTLIGHT_FEATURES.length;
+    const nextEl = document.getElementById(`spotlight-tab-${nextIdx}`);
+    if (nextEl) {
+      nextEl.focus();
+      switchSpotlightFeature(nextIdx);
+    }
+  } else if (event.key === 'ArrowUp') {
+    event.preventDefault();
+    const prevIdx = (featureIdx - 1 + SPOTLIGHT_FEATURES.length) % SPOTLIGHT_FEATURES.length;
+    const prevEl = document.getElementById(`spotlight-tab-${prevIdx}`);
+    if (prevEl) {
+      prevEl.focus();
+      switchSpotlightFeature(prevIdx);
+    }
+  }
+}
 
-        <!-- 3D Floating Fragment 2 (Top Right) -->
-        <div class="cbt-float-fragment frag-integrity" data-depth="0.2">
-          <div class="frag-icon icon-emerald">🛡️</div>
-          <div class="frag-text">
-            <span class="frag-label">Integritas Asesmen</span>
-            <strong class="frag-val">⏱️ 30m • 🔀 Acak Soal • PIN: 8249</strong>
-          </div>
-        </div>
+function initFeatureSpotlight() {
+  const section = document.getElementById('fitur-spotlight');
+  if (!section) return;
 
-        <!-- Dual Device 3D Workspace -->
-        <div class="cbt-devices-workspace">
-          
-          <!-- 1. PRIMARY HERO OBJECT: Realistic Laptop Mockup -->
-          <div class="cbt-laptop-hero">
-            
-            <!-- Laptop Display Lid -->
-            <div class="laptop-lid">
-              
-              <!-- Screen Bezel & Camera -->
-              <div class="laptop-bezel">
-                <div class="laptop-camera"></div>
-                
-                <!-- Laptop Screen -->
-                <div class="laptop-screen">
-                  
-                  <!-- Browser Topbar inside Laptop -->
-                  <div class="laptop-browser-bar">
-                    <div class="mac-dots">
-                      <span class="m-dot red"></span>
-                      <span class="m-dot yellow"></span>
-                      <span class="m-dot green"></span>
-                    </div>
-                    <div class="mac-address">
-                      <i data-lucide="lock" class="lock-icon"></i>
-                      <span>app.klassa.id/ruang-evaluasi/buat-ujian-ipa8</span>
-                    </div>
-                    <div class="mac-status">
-                      <span class="dot-live"></span>
-                      <span>Draf Siap Terbit</span>
-                    </div>
-                  </div>
+  // Check reduced motion preference
+  const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+  userPrefersReducedMotion = mediaQuery.matches;
 
-                  <!-- Teacher Console Content -->
-                  <div class="laptop-inner-body">
-                    
-                    <!-- Quiz Title Header -->
-                    <div class="l-quiz-head">
-                      <div class="l-badge-row">
-                        <span class="l-badge badge-teal">IPA • Fase D</span>
-                        <span class="l-badge badge-gray">Kelas VIII-A</span>
-                        <span class="l-badge badge-purple">✦ 15 Butir Soal Berbantuan AI</span>
-                      </div>
-                      <h4 class="l-quiz-title">Ulangan Harian: Sistem Pernapasan Manusia</h4>
-                      <p class="l-quiz-sub">Evaluasi organ respirasi, mekanisme ventilasi, dan analisis gangguan pernapasan.</p>
-                    </div>
+  const videoEl = document.getElementById('spotlight-main-video');
+  const progressBar = document.getElementById('stage-video-progress');
+  const fallbackEl = document.getElementById('stage-error-fallback');
 
-                    <!-- Config Grid in Screen -->
-                    <div class="l-config-grid">
-                      
-                      <div class="l-config-item">
-                        <div class="l-item-head">
-                          <i data-lucide="clock" class="text-teal"></i>
-                          <span>Durasi Pengerjaan</span>
-                        </div>
-                        <div class="l-item-box">
-                          <strong>30 Menit</strong>
-                          <span class="l-chip chip-green">Hitung Mundur</span>
-                        </div>
-                      </div>
+  // Video Time Update for Progress Bar
+  if (videoEl && progressBar) {
+    videoEl.addEventListener('timeupdate', () => {
+      if (videoEl.duration) {
+        const pct = (videoEl.currentTime / videoEl.duration) * 100;
+        progressBar.style.width = `${pct}%`;
+      }
+    });
 
-                      <div class="l-config-item">
-                        <div class="l-item-head">
-                          <i data-lucide="shuffle" class="text-emerald"></i>
-                          <span>Pengacakan Anti-Contek</span>
-                        </div>
-                        <div class="l-item-box">
-                          <span class="l-chip chip-teal">✓ Acak Soal</span>
-                          <span class="l-chip chip-teal">✓ Acak Opsi A-D</span>
-                        </div>
-                      </div>
+    // Auto sequential advance for Quiz chapters
+    videoEl.addEventListener('ended', () => {
+      if (activeFeatureIdx === 1) {
+        const nextChapter = (activeQuizChapterIdx + 1) % 3;
+        switchQuizChapter(nextChapter);
+      }
+    });
 
-                      <div class="l-config-item l-item-full card-access-highlight">
-                        <div class="l-item-head">
-                          <i data-lucide="key-round" class="text-purple"></i>
-                          <span>Tautan &amp; PIN Akses Siswa (Tanpa Akun Rumit)</span>
-                        </div>
-                        <div class="l-access-box">
-                          <div class="l-url-pill">
-                            <span class="url">klassa.id/cbt/ipa8-nafas</span>
-                            <button type="button" class="btn-copy-mini" onclick="copyCbtLink(this)">
-                              <i data-lucide="copy"></i>
-                              <span>Salin</span>
-                            </button>
-                          </div>
-                          <div class="l-pin-pill">
-                            <span>PIN:</span>
-                            <strong>8249</strong>
-                          </div>
-                        </div>
-                      </div>
+    videoEl.addEventListener('play', () => {
+      hidePlayOverlay();
+      updatePlayPauseIcon();
+    });
 
-                    </div>
+    videoEl.addEventListener('pause', () => {
+      updatePlayPauseIcon();
+    });
 
-                    <!-- Quick Footer Bar in Laptop -->
-                    <div class="l-action-bar">
-                      <span class="l-action-hint">
-                        <i data-lucide="info"></i>
-                        <span>Siswa langsung mengerjakan dari HP mereka via tautan &amp; PIN.</span>
-                      </span>
-                      <button type="button" class="btn-sim-next" onclick="switchCbtScene(1)">
-                        <span>Lihat Ujian Siswa</span>
-                        <i data-lucide="arrow-right"></i>
-                      </button>
-                    </div>
-
-                  </div>
-
-                </div>
-              </div>
-
-            </div>
-
-            <!-- Laptop Base Deck & Hinge -->
-            <div class="laptop-base-deck">
-              <div class="laptop-hinge"></div>
-              <div class="laptop-trackpad-notch"></div>
-            </div>
-            <div class="laptop-shadow" aria-hidden="true"></div>
-
-          </div>
-
-          <!-- 2. SECONDARY HERO OBJECT: Realistic Smartphone (Overlapping right) -->
-          <div class="cbt-phone-hero phone-preview-mode" onclick="switchCbtScene(1)" title="Klik untuk mencoba simulasi ujian siswa">
-            
-            <div class="phone-frame-3d">
-              <div class="phone-dynamic-island">
-                <span class="cam-dot"></span>
-              </div>
-              
-              <div class="phone-screen-3d">
-                
-                <div class="p-status-mini">
-                  <span>08:15</span>
-                  <div class="p-net"><i data-lucide="wifi"></i><i data-lucide="battery"></i></div>
-                </div>
-
-                <div class="p-student-login-preview">
-                  <div class="p-login-icon">📝</div>
-                  <span class="p-login-tag">KLASSA CBT LIGHT</span>
-                  <h5 class="p-login-title">Ulangan Harian IPA VIII</h5>
-                  <p class="p-login-meta">Sistem Pernapasan • 15 Soal</p>
-
-                  <div class="p-pin-preview-box">
-                    <span class="pin-hint">Masukkan PIN Ujian:</span>
-                    <div class="pin-digits-row">
-                      <span class="p-digit">8</span>
-                      <span class="p-digit">2</span>
-                      <span class="p-digit">4</span>
-                      <span class="p-digit">9</span>
-                    </div>
-                  </div>
-
-                  <div class="p-btn-start-sim">
-                    <span>Mulai Ujian</span>
-                    <i data-lucide="arrow-right"></i>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-            
-            <div class="phone-shadow" aria-hidden="true"></div>
-            <div class="phone-touch-hint">✦ Klik untuk Uji Live</div>
-
-          </div>
-
-        </div>
-
-      </div>
-    `;
-  } else if (scene === 1) {
-    // SCENE 02: PENGALAMAN SISWA (Cinematic 3D: Phone Dominant in Center + Live Interactive Questions + Laptop in Depth)
-    const qIndex = cbtState.currentQuestion;
-    const curQ = cbtQuestionsData[qIndex];
-    const selectedAns = cbtState.studentAnswers[qIndex];
-
-    viewport.innerHTML = `
-      <div class="cbt-cinematic-stage scene-2-active fade-in">
-        
-        <!-- 3D Floating Fragment 1 (Top Left) -->
-        <div class="cbt-float-fragment frag-timer" data-depth="0.1">
-          <div class="frag-icon icon-amber">⏱️</div>
-          <div class="frag-text">
-            <span class="frag-label">Sisa Waktu Ujian</span>
-            <strong class="frag-val text-amber">24 Menit : 18 Detik</strong>
-          </div>
-        </div>
-
-        <!-- 3D Floating Fragment 2 (Top Right) -->
-        <div class="cbt-float-fragment frag-anti-cheat" data-depth="0.18">
-          <div class="frag-icon icon-emerald">🛡️</div>
-          <div class="frag-text">
-            <span class="frag-label">Status Pengerjaan</span>
-            <strong class="frag-val">Jawaban Tersimpan Otomatis</strong>
-          </div>
-        </div>
-
-        <!-- Dual Device 3D Workspace -->
-        <div class="cbt-devices-workspace">
-          
-          <!-- Background Receding Laptop (Teacher Monitor View) -->
-          <div class="cbt-laptop-hero laptop-receding">
-            <div class="laptop-lid">
-              <div class="laptop-bezel">
-                <div class="laptop-camera"></div>
-                <div class="laptop-screen">
-                  <div class="laptop-browser-bar">
-                    <div class="mac-dots"><span class="m-dot red"></span><span class="m-dot yellow"></span><span class="m-dot green"></span></div>
-                    <div class="mac-address"><span>app.klassa.id/ruang-evaluasi/live-monitor</span></div>
-                    <div class="mac-status"><span class="dot-live"></span><span>32 Siswa Mengerjakan</span></div>
-                  </div>
-                  <div class="laptop-monitor-body">
-                    <div class="live-monitor-header">
-                      <strong>🔴 Live Monitor: Ulangan Harian IPA VIII</strong>
-                      <span>32 / 32 Siswa Aktif Mengerjakan • Progres Rata-rata 60%</span>
-                    </div>
-                    <div class="student-mini-grid">
-                      <span class="s-dot s-done">01 ✓</span>
-                      <span class="s-dot s-active">02 ✍️ (Zaki)</span>
-                      <span class="s-dot s-done">03 ✓</span>
-                      <span class="s-dot s-active">04 ✍️</span>
-                      <span class="s-dot s-done">05 ✓</span>
-                      <span class="s-dot s-active">06 ✍️</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="laptop-base-deck">
-              <div class="laptop-hinge"></div>
-            </div>
-          </div>
-
-          <!-- PRIMARY HERO OBJECT: Dominant Interactive Smartphone -->
-          <div class="cbt-phone-hero phone-dominant-mode">
-            
-            <div class="phone-frame-3d">
-              <div class="phone-dynamic-island">
-                <span class="cam-dot"></span>
-              </div>
-              
-              <div class="phone-screen-3d">
-                
-                <!-- Status Bar -->
-                <div class="p-status-mini">
-                  <span>08:15</span>
-                  <div class="p-net"><i data-lucide="wifi"></i><i data-lucide="battery-charging"></i></div>
-                </div>
-
-                <!-- Exam Header -->
-                <div class="p-exam-head">
-                  <div class="p-head-row">
-                    <span class="p-exam-title">IPA VIII • UH Pernapasan</span>
-                    <span class="p-timer-badge"><i data-lucide="timer"></i> 24:18</span>
-                  </div>
-                  <div class="p-student-info">
-                    <span class="s-av">👦</span>
-                    <span class="s-name">Ahmad Zaki (Absen 02)</span>
-                    <span class="s-badge">Aktif</span>
-                  </div>
-                </div>
-
-                <!-- Question Navigation Pills -->
-                <div class="p-question-nav">
-                  <div class="p-nav-meta">
-                    <span class="p-q-num">Soal ${qIndex + 1} dari ${cbtQuestionsData.length}</span>
-                    <span class="p-q-type">Pilihan Ganda</span>
-                  </div>
-                  <div class="p-pills-wrap">
-                    ${cbtQuestionsData.map((q, idx) => `
-                      <button type="button" 
-                        class="p-num-btn ${idx === qIndex ? 'active' : ''} ${cbtState.studentAnswers[idx] !== null ? 'answered' : ''}" 
-                        onclick="navigateCbtQuestion(${idx})">
-                        ${idx + 1}
-                      </button>
-                    `).join('')}
-                  </div>
-                </div>
-
-                <!-- Interactive Question Body -->
-                <div class="p-question-body">
-                  <p class="p-stem">${curQ.stem}</p>
-
-                  <div class="p-options-wrap">
-                    ${curQ.options.map((opt, optIdx) => `
-                      <button type="button" 
-                        class="p-opt-btn ${selectedAns === optIdx ? 'selected' : ''}" 
-                        onclick="selectStudentAnswer(${qIndex}, ${optIdx})">
-                        <span class="opt-k">${opt.id}</span>
-                        <span class="opt-t">${opt.text}</span>
-                        <span class="opt-check">
-                          ${selectedAns === optIdx ? '<i data-lucide="check"></i>' : ''}
-                        </span>
-                      </button>
-                    `).join('')}
-                  </div>
-                </div>
-
-                <!-- Bottom Navigation Buttons -->
-                <div class="p-bottom-bar">
-                  <button type="button" class="btn-p-prev" 
-                    ${qIndex === 0 ? 'disabled' : ''} 
-                    onclick="navigateCbtQuestion(${Math.max(0, qIndex - 1)})">
-                    <i data-lucide="chevron-left"></i>
-                    <span>Sebelumnya</span>
-                  </button>
-
-                  ${qIndex < cbtQuestionsData.length - 1 ? `
-                    <button type="button" class="btn-p-next" onclick="navigateCbtQuestion(${qIndex + 1})">
-                      <span>Berikutnya</span>
-                      <i data-lucide="chevron-right"></i>
-                    </button>
-                  ` : `
-                    <button type="button" class="btn-p-submit" onclick="submitStudentExam()">
-                      <i data-lucide="send"></i>
-                      <span>Kirim Ujian</span>
-                    </button>
-                  `}
-                </div>
-
-              </div>
-            </div>
-            
-            <div class="phone-shadow" aria-hidden="true"></div>
-
-          </div>
-
-        </div>
-
-      </div>
-    `;
-  } else if (scene === 2) {
-    // SCENE 03: HASIL & ANALITIK (Cinematic 3D: Laptop Primary with Analytics + Phone Secondary with Score Receipt)
-    viewport.innerHTML = `
-      <div class="cbt-cinematic-stage scene-3-active fade-in">
-        
-        <!-- 3D Floating Fragment 1 (Top Left) -->
-        <div class="cbt-float-fragment frag-analytics" data-depth="0.15">
-          <div class="frag-icon icon-teal">📊</div>
-          <div class="frag-text">
-            <span class="frag-label">Analisis Butir Soal Real-Time</span>
-            <strong class="frag-val">Koreksi otomatis 32 siswa selesai</strong>
-          </div>
-        </div>
-
-        <!-- 3D Floating Fragment 2 (Top Right) -->
-        <div class="cbt-float-fragment frag-remedial" data-depth="0.2">
-          <div class="frag-icon icon-amber">⚠️</div>
-          <div class="frag-text">
-            <span class="frag-label">Rekomendasi Tindak Lanjut</span>
-            <strong class="frag-val text-amber">Soal 03 (42%): Butuh Penguatan Konsep</strong>
-          </div>
-        </div>
-
-        <!-- Dual Device 3D Workspace -->
-        <div class="cbt-devices-workspace">
-          
-          <!-- 1. PRIMARY HERO OBJECT: Realistic Laptop Mockup with Analytics & Gradebook -->
-          <div class="cbt-laptop-hero">
-            
-            <div class="laptop-lid">
-              <div class="laptop-bezel">
-                <div class="laptop-camera"></div>
-                
-                <div class="laptop-screen">
-                  
-                  <div class="laptop-browser-bar">
-                    <div class="mac-dots"><span class="m-dot red"></span><span class="m-dot yellow"></span><span class="m-dot green"></span></div>
-                    <div class="mac-address">
-                      <i data-lucide="lock" class="lock-icon"></i>
-                      <span>app.klassa.id/ruang-evaluasi/rekap-analitik-ipa8</span>
-                    </div>
-                    <div class="mac-status">
-                      <span class="dot-live"></span>
-                      <span>Koreksi Selesai (100%)</span>
-                    </div>
-                  </div>
-
-                  <div class="laptop-inner-body">
-                    
-                    <!-- Metrics Summary Strip -->
-                    <div class="l-metrics-strip">
-                      <div class="l-m-card">
-                        <span class="l-m-val">32 <small>/ 32</small></span>
-                        <span class="l-m-label">Total Peserta (100%)</span>
-                      </div>
-                      <div class="l-m-card">
-                        <span class="l-m-val text-teal">84 <small>/ 100</small></span>
-                        <span class="l-m-label">Rata-Rata Nilai Kelas</span>
-                      </div>
-                      <div class="l-m-card">
-                        <span class="l-m-val text-emerald">78%</span>
-                        <span class="l-m-label">25 Siswa Tuntas KKTP (75)</span>
-                      </div>
-                    </div>
-
-                    <!-- Question Analytics Breakdown Table -->
-                    <div class="l-q-table">
-                      <div class="l-table-head">
-                        <span>Analisis Daya Serap Butir Soal</span>
-                        <small>Identifikasi materi yang membutuhkan penguatan</small>
-                      </div>
-
-                      <div class="l-q-rows">
-                        
-                        <!-- Soal 1 -->
-                        <div class="l-row">
-                          <div class="l-row-left">
-                            <span class="l-q-tag">No 01</span>
-                            <span class="l-q-name">Pertukaran Gas (Alveolus)</span>
-                          </div>
-                          <div class="l-row-bar">
-                            <div class="bar-fill fill-green" style="width: 88%"></div>
-                          </div>
-                          <div class="l-row-stat">
-                            <strong>88%</strong>
-                            <span class="badge-s-green">Tuntas Tinggi</span>
-                          </div>
-                        </div>
-
-                        <!-- Soal 2 -->
-                        <div class="l-row">
-                          <div class="l-row-left">
-                            <span class="l-q-tag">No 02</span>
-                            <span class="l-q-name">Fungsi Silia Trakea</span>
-                          </div>
-                          <div class="l-row-bar">
-                            <div class="bar-fill fill-teal" style="width: 65%"></div>
-                          </div>
-                          <div class="l-row-stat">
-                            <strong>65%</strong>
-                            <span class="badge-s-teal">Cukup</span>
-                          </div>
-                        </div>
-
-                        <!-- Soal 3 (HIGHLIGHTED ATTENTION ROW!) -->
-                        <div class="l-row row-warn-attention">
-                          <div class="l-row-left">
-                            <span class="l-q-tag tag-warn">No 03</span>
-                            <span class="l-q-name">Mekanisme Inspirasi Dada</span>
-                            <span class="warn-pill">⚠️ Perlu Penguatan</span>
-                          </div>
-                          <div class="l-row-bar">
-                            <div class="bar-fill fill-amber" style="width: 42%"></div>
-                          </div>
-                          <div class="l-row-stat">
-                            <strong class="text-amber">42%</strong>
-                            <span class="badge-s-amber">Remedial</span>
-                          </div>
-                        </div>
-
-                        <!-- Soal 4 -->
-                        <div class="l-row">
-                          <div class="l-row-left">
-                            <span class="l-q-tag">No 04</span>
-                            <span class="l-q-name">Gas Buang Respirasi (CO₂)</span>
-                          </div>
-                          <div class="l-row-bar">
-                            <div class="bar-fill fill-green" style="width: 94%"></div>
-                          </div>
-                          <div class="l-row-stat">
-                            <strong>94%</strong>
-                            <span class="badge-s-green">Sangat Tinggi</span>
-                          </div>
-                        </div>
-
-                      </div>
-                    </div>
-
-                    <!-- Gradebook Integration Card -->
-                    <div class="l-gradebook-card">
-                      <div class="gb-info">
-                        <i data-lucide="book-check" class="gb-icon-svg"></i>
-                        <div>
-                          <strong>Terhubung dengan Buku Nilai (Ruang Penilaian)</strong>
-                          <p>Sinkronkan 32 nilai siswa langsung ke rekap capaian rapor.</p>
-                        </div>
-                      </div>
-                      <button type="button" 
-                        class="btn-sync-action ${cbtState.gradebookSynced ? 'synced' : ''}" 
-                        onclick="toggleGradebookPublish()">
-                        <i data-lucide="${cbtState.gradebookSynced ? 'check-circle' : 'upload-cloud'}"></i>
-                        <span>${cbtState.gradebookSynced ? '✓ Nilai Diterbitkan ke Buku Nilai' : 'Terbitkan ke Buku Nilai'}</span>
-                      </button>
-                    </div>
-
-                  </div>
-
-                </div>
-              </div>
-            </div>
-
-            <div class="laptop-base-deck">
-              <div class="laptop-hinge"></div>
-              <div class="laptop-trackpad-notch"></div>
-            </div>
-            <div class="laptop-shadow" aria-hidden="true"></div>
-
-          </div>
-
-          <!-- 2. SECONDARY HERO OBJECT: Smartphone with Student Score Receipt -->
-          <div class="cbt-phone-hero phone-receipt-mode">
-            
-            <div class="phone-frame-3d">
-              <div class="phone-dynamic-island">
-                <span class="cam-dot"></span>
-              </div>
-              
-              <div class="phone-screen-3d">
-                
-                <div class="p-status-mini">
-                  <span>08:45</span>
-                  <div class="p-net"><i data-lucide="wifi"></i><i data-lucide="battery"></i></div>
-                </div>
-
-                <div class="p-receipt-card">
-                  <div class="receipt-icon">🎉</div>
-                  <span class="receipt-tag">HASIL EVALUASI SISWA</span>
-                  <h5 class="receipt-name">Ahmad Zaki</h5>
-                  <p class="receipt-subject">Ulangan Harian IPA VIII</p>
-
-                  <div class="receipt-score-circle">
-                    <span class="score-num">85</span>
-                    <span class="score-total">/ 100</span>
-                  </div>
-
-                  <div class="receipt-status-pill">
-                    <i data-lucide="check-circle-2"></i>
-                    <span>Tuntas di Atas KKTP (75)</span>
-                  </div>
-
-                  <div class="receipt-feedback">
-                    <small>Catatan Guru:</small>
-                    <p>"Pemahaman organ sangat baik. Perlu penguatan pada mekanisme pernapasan dada."</p>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-            
-            <div class="phone-shadow" aria-hidden="true"></div>
-
-          </div>
-
-        </div>
-
-      </div>
-    `;
+    videoEl.addEventListener('error', () => {
+      if (fallbackEl) fallbackEl.style.display = 'flex';
+    });
   }
 
-  // Refresh Lucide icons in rendered viewport
-  if (window.lucide) window.lucide.createIcons();
-}
+  // Initialize with Feature 0
+  switchSpotlightFeature(0);
 
-function selectStudentAnswer(qIndex, optIndex) {
-  cbtState.studentAnswers[qIndex] = optIndex;
-  renderCbtSceneViewport();
-}
+  // IntersectionObserver for reliable viewport-triggered autoplay & pause on exit
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          isSectionInView = true;
+          playActiveVideo();
+        } else {
+          isSectionInView = false;
+          if (videoEl && !videoEl.paused) {
+            try {
+              videoEl.pause();
+            } catch (e) {}
+          }
+        }
+      });
+    }, { threshold: 0.2 });
 
-function navigateCbtQuestion(qIndex) {
-  if (qIndex < 0 || qIndex >= cbtQuestionsData.length) return;
-  cbtState.currentQuestion = qIndex;
-  renderCbtSceneViewport();
-}
-
-function submitStudentExam() {
-  cbtState.isSubmitted = true;
-  
-  const viewport = document.getElementById('cbt-canvas-viewport');
-  if (!viewport) return;
-
-  const answeredCount = Object.values(cbtState.studentAnswers).filter(val => val !== null).length;
-
-  const modalOverlay = document.createElement('div');
-  modalOverlay.className = 'cbt-submit-modal-overlay fade-in';
-  modalOverlay.innerHTML = `
-    <div class="cbt-submit-modal-card">
-      <div class="modal-success-icon">
-        <i data-lucide="check-circle-2"></i>
-      </div>
-      <h3 class="modal-title">Ujian Berhasil Dikirim!</h3>
-      <p class="modal-desc">
-        ${answeredCount} dari 4 soal telah dijawab. Sistem otomatis mengoreksi pilihan ganda dan mengirimkan data ke rekap guru.
-      </p>
-      <div class="modal-actions">
-        <button type="button" class="btn btn-primary" onclick="switchCbtScene(2)">
-          <span>Lihat Hasil &amp; Analitik Guru (Scene 03)</span>
-          <i data-lucide="arrow-right"></i>
-        </button>
-      </div>
-    </div>
-  `;
-  viewport.appendChild(modalOverlay);
-  if (window.lucide) window.lucide.createIcons();
-}
-
-function toggleGradebookPublish() {
-  cbtState.gradebookSynced = !cbtState.gradebookSynced;
-  renderCbtSceneViewport();
-}
-
-function copyCbtLink(btnEl) {
-  if (!btnEl) return;
-  const originalHtml = btnEl.innerHTML;
-  btnEl.innerHTML = '<i data-lucide="check"></i> <span>Tersalin!</span>';
-  if (window.lucide) window.lucide.createIcons();
-
-  setTimeout(() => {
-    btnEl.innerHTML = originalHtml;
-    if (window.lucide) window.lucide.createIcons();
-  }, 2200);
-}
-
-function initQuizCbtEngine() {
-  const stage = document.getElementById('cbt-showcase-stage');
-  if (!stage) return;
-
-  // Initialize with Scene 0 (Persiapan Guru)
-  switchCbtScene(0);
+    observer.observe(section);
+  }
 }
 
 // Global exposures
-window.switchCbtScene = switchCbtScene;
-window.selectStudentAnswer = selectStudentAnswer;
-window.navigateCbtQuestion = navigateCbtQuestion;
-window.submitStudentExam = submitStudentExam;
-window.toggleGradebookPublish = toggleGradebookPublish;
-window.copyCbtLink = copyCbtLink;
-window.initQuizCbtEngine = initQuizCbtEngine;
-
-
-
+window.switchSpotlightFeature = switchSpotlightFeature;
+window.switchQuizChapter = switchQuizChapter;
+window.toggleStagePlayPause = toggleStagePlayPause;
+window.toggleStageMute = toggleStageMute;
+window.toggleStageFullscreen = toggleStageFullscreen;
+window.handleManualPlayClick = handleManualPlayClick;
+window.handleSpotlightKey = handleSpotlightKey;
+window.initFeatureSpotlight = initFeatureSpotlight;

@@ -27,7 +27,7 @@
   <script src="https://unpkg.com/lucide@latest"></script>
 
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="css/style.css?v=21.0">
+  <link rel="stylesheet" href="css/style.css?v=24.0">
 </head>
 <body>
 
@@ -1377,495 +1377,265 @@
         <!-- 8. Subtle Section Transition -->
         <div class="ecosystem-section-transition">
           <div class="transition-connector-line" aria-hidden="true"></div>
-          <span class="transition-micro-tag">Eksplorasi Fitur Mandiri KLASSA</span>
-        </div>
-
-      </div>
-    </section>
-
     <!-- ====================================================================
-         10. KLASSA AI CONTENT STUDIO — INTERACTIVE GENERATOR SHOWCASE (SIMULATION)
+         10. KLASSA FEATURE SPOTLIGHT — 3 FITUR UNGGULAN (INTERACTIVE SHOWCASE)
          ==================================================================== -->
-    <section class="ai-studio-section" id="ai-studio">
-      <div class="ai-studio-ambient-glow" aria-hidden="true"></div>
-      <div class="container">
+    <section class="feature-spotlight-section" id="fitur-spotlight">
+      <div class="spotlight-ambient-glow" aria-hidden="true"></div>
+      <div class="container spotlight-container">
         
-        <!-- 1. Section Header -->
-        <div class="ai-studio-header text-center">
-          <div class="ai-studio-eyebrow">
-            <span class="ai-eyebrow-pill">
-              <span class="ai-sparkle-icon">✦</span>
-              <span>DIDUKUNG KECERDASAN BUATAN</span>
+        <!-- Section Header -->
+        <div class="spotlight-header text-center">
+          <div class="spotlight-eyebrow">
+            <span class="spotlight-eyebrow-pill">
+              <span class="eyebrow-sparkle">✦</span>
+              <span>FITUR UNGGULAN KLASSA</span>
             </span>
           </div>
-          <h3 class="ai-product-subbrand">KLASSA AI Content Studio</h3>
-          <h2 class="ai-studio-headline">
-            Satu Ide. Beragam Karya Pembelajaran.
+          <h2 class="spotlight-headline">
+            Tiga Kemampuan. Satu KLASSA.
           </h2>
-          <p class="ai-studio-lead">
-            Dari modul ajar hingga presentasi pembelajaran, jelajahi bagaimana KLASSA AI membantu menyiapkan draf perangkat ajar yang dapat Anda tinjau dan sempurnakan.
+          <p class="spotlight-description">
+            Dari menciptakan perangkat ajar, menyelenggarakan evaluasi, hingga membantu alur kerja guru dengan asisten cerdas—semuanya dalam satu ekosistem.
           </p>
         </div>
 
-        <!-- 2. Six Generator Selectors -->
-        <div class="ai-generators-grid" id="ai-generators-grid" role="tablist" aria-label="Pilih Generator AI KLASSA">
-          <!-- 1. Modul Ajar -->
-          <button type="button" class="ai-generator-card" data-gen="modul" id="gen-tab-modul" role="tab" aria-selected="false" onclick="selectAiGenerator('modul')">
-            <div class="gen-icon-circle icon-blue">
-              <i data-lucide="file-text"></i>
-            </div>
-            <div class="gen-card-text">
-              <span class="gen-name">Modul Ajar</span>
-              <span class="gen-ext">Word (.docx)</span>
-            </div>
-          </button>
-
-          <!-- 2. Bank Soal & Kisi-Kisi -->
-          <button type="button" class="ai-generator-card" data-gen="soal" id="gen-tab-soal" role="tab" aria-selected="false" onclick="selectAiGenerator('soal')">
-            <div class="gen-icon-circle icon-emerald">
-              <i data-lucide="check-square"></i>
-            </div>
-            <div class="gen-card-text">
-              <span class="gen-name">Bank Soal &amp; Kisi-Kisi</span>
-              <span class="gen-ext">HOTS / CBT</span>
-            </div>
-          </button>
-
-          <!-- 3. Adaptive PPT Generator (Default Active) -->
-          <button type="button" class="ai-generator-card active" data-gen="ppt" id="gen-tab-ppt" role="tab" aria-selected="true" onclick="selectAiGenerator('ppt')">
-            <div class="gen-icon-circle icon-rose">
-              <i data-lucide="presentation"></i>
-            </div>
-            <div class="gen-card-text">
-              <span class="gen-name">Adaptive PPT Generator</span>
-              <span class="gen-ext">PowerPoint (.pptx)</span>
-            </div>
-          </button>
-
-          <!-- 4. LKPD -->
-          <button type="button" class="ai-generator-card" data-gen="lkpd" id="gen-tab-lkpd" role="tab" aria-selected="false" onclick="selectAiGenerator('lkpd')">
-            <div class="gen-icon-circle icon-teal">
-              <i data-lucide="layout-template"></i>
-            </div>
-            <div class="gen-card-text">
-              <span class="gen-name">LKPD</span>
-              <span class="gen-ext">Lembar Kerja</span>
-            </div>
-          </button>
-
-          <!-- 5. Bahan Bacaan Diferensiasi -->
-          <button type="button" class="ai-generator-card" data-gen="bacaan" id="gen-tab-bacaan" role="tab" aria-selected="false" onclick="selectAiGenerator('bacaan')">
-            <div class="gen-icon-circle icon-indigo">
-              <i data-lucide="book-open"></i>
-            </div>
-            <div class="gen-card-text">
-              <span class="gen-name">Bahan Bacaan</span>
-              <span class="gen-ext">Diferensiasi</span>
-            </div>
-          </button>
-
-          <!-- 6. Rubrik Penilaian -->
-          <button type="button" class="ai-generator-card" data-gen="rubrik" id="gen-tab-rubrik" role="tab" aria-selected="false" onclick="selectAiGenerator('rubrik')">
-            <div class="gen-icon-circle icon-purple">
-              <i data-lucide="award"></i>
-            </div>
-            <div class="gen-card-text">
-              <span class="gen-name">Rubrik Penilaian</span>
-              <span class="gen-ext">Autentik 4 Level</span>
-            </div>
-          </button>
-        </div>
-
-        <!-- 3. Main Interactive Showcase Master Panel (Split 35% / 65%) -->
-        <div class="ai-studio-master-panel" id="ai-studio-master-panel">
+        <!-- Main Two-Column Interactive Layout (35% Timeline / 65% Floating Stage) -->
+        <div class="spotlight-layout">
           
-          <!-- LEFT PANEL (~35%): Contextual Instruction Panel -->
-          <div class="ai-context-panel">
-            <div class="ai-panel-eyebrow">
-              <span class="eyebrow-dot"></span>
-              <span>CONTOH INSTRUKSI GURU</span>
+          <!-- LEFT COLUMN (~35%): Vertical Illuminated Timeline Navigation -->
+          <div class="spotlight-timeline-col" role="tablist" aria-label="Navigasi Fitur Unggulan KLASSA">
+            <div class="spotlight-timeline-track" aria-hidden="true">
+              <div class="spotlight-progress-beam" id="spotlight-progress-beam"></div>
             </div>
 
-            <!-- Preconfigured Teaching Context Card -->
-            <div class="ai-scenario-meta-card">
-              <div class="meta-row">
-                <span class="meta-label">Mata Pelajaran:</span>
-                <strong class="meta-val" id="ai-meta-subject">IPS</strong>
+            <!-- Item 01: AI Studio -->
+            <div class="spotlight-nav-item active" data-feature="0" id="spotlight-tab-0" role="tab" aria-selected="true" tabindex="0" onclick="switchSpotlightFeature(0)" onkeydown="handleSpotlightKey(event, 0)">
+              <div class="timeline-node">
+                <span class="node-number">01</span>
+                <span class="node-pulse" aria-hidden="true"></span>
               </div>
-              <div class="meta-row">
-                <span class="meta-label">Fase / Kelas:</span>
-                <span class="meta-badge" id="ai-meta-grade">Kelas VIII</span>
+              <div class="timeline-content">
+                <div class="feature-meta-row">
+                  <span class="feature-badge">AI STUDIO</span>
+                  <span class="feature-time-tag"><i data-lucide="sparkles"></i> Generator Otomatis</span>
+                </div>
+                <h3 class="feature-nav-headline">Dari Ide Menjadi Perangkat Ajar</h3>
+                <div class="feature-expandable-details">
+                  <p class="feature-nav-desc">
+                    Ubah topik pembelajaran menjadi bahan ajar dan materi yang siap ditinjau serta disempurnakan oleh guru.
+                  </p>
+                  <div class="feature-pills">
+                    <span class="pill-tag"><i data-lucide="file-text"></i> Modul Ajar</span>
+                    <span class="pill-tag"><i data-lucide="presentation"></i> PPT Adaptif</span>
+                    <span class="pill-tag"><i data-lucide="check-square"></i> Bank Soal</span>
+                  </div>
+                </div>
               </div>
-              <div class="meta-row">
-                <span class="meta-label">Topik Pembelajaran:</span>
-                <strong class="meta-val" id="ai-meta-topic">Interaksi Sosial dan Lembaga Sosial</strong>
+            </div>
+
+            <!-- Item 02: Quiz & CBT Online -->
+            <div class="spotlight-nav-item" data-feature="1" id="spotlight-tab-1" role="tab" aria-selected="false" tabindex="0" onclick="switchSpotlightFeature(1)" onkeydown="handleSpotlightKey(event, 1)">
+              <div class="timeline-node">
+                <span class="node-number">02</span>
+                <span class="node-pulse" aria-hidden="true"></span>
+              </div>
+              <div class="timeline-content">
+                <div class="feature-meta-row">
+                  <span class="feature-badge">QUIZ &amp; CBT ONLINE</span>
+                  <span class="feature-time-tag"><i data-lucide="shield-check"></i> 3 Alur Terhubung</span>
+                </div>
+                <h3 class="feature-nav-headline">Satu Alur Evaluasi, dari Persiapan hingga Hasil</h3>
+                <div class="feature-expandable-details">
+                  <p class="feature-nav-desc">
+                    Siapkan ujian, hadirkan pengalaman pengerjaan untuk siswa, dan tinjau hasil evaluasi melalui portal guru.
+                  </p>
+                  <div class="feature-pills">
+                    <span class="pill-tag"><i data-lucide="settings"></i> Persiapan Guru</span>
+                    <span class="pill-tag"><i data-lucide="smartphone"></i> Pengerjaan Siswa</span>
+                    <span class="pill-tag"><i data-lucide="bar-chart-2"></i> Hasil &amp; Analisis</span>
+                  </div>
+                </div>
               </div>
             </div>
 
-            <!-- Example Instruction Box -->
-            <div class="ai-instruction-box">
-              <div class="inst-label-row">
-                <i data-lucide="sparkles"></i>
-                <span>Contoh Permintaan / Arah Ajar:</span>
+            <!-- Item 03: KLASSA Agent -->
+            <div class="spotlight-nav-item" data-feature="2" id="spotlight-tab-2" role="tab" aria-selected="false" tabindex="0" onclick="switchSpotlightFeature(2)" onkeydown="handleSpotlightKey(event, 2)">
+              <div class="timeline-node">
+                <span class="node-number">03</span>
+                <span class="node-pulse" aria-hidden="true"></span>
               </div>
-              <p class="inst-text" id="ai-inst-text">
-                "Buat presentasi visual 6 slide untuk materi Interaksi Sosial dan Lembaga Sosial, gunakan alur apersepsi fenomena remaja dan speaker notes guru."
-              </p>
+              <div class="timeline-content">
+                <div class="feature-meta-row">
+                  <span class="feature-badge badge-purple">KLASSA AGENT</span>
+                  <span class="feature-time-tag"><i data-lucide="bot"></i> AI Co-Pilot</span>
+                </div>
+                <h3 class="feature-nav-headline">Asisten Cerdas untuk Alur Kerja Guru</h3>
+                <div class="feature-expandable-details">
+                  <p class="feature-nav-desc">
+                    Jelajahi bagaimana asisten cerdas KLASSA membantu guru menjalankan pekerjaan dengan lebih praktis.
+                  </p>
+                  <div class="feature-pills">
+                    <span class="pill-tag"><i data-lucide="sparkles"></i> Rekomendasi Modul</span>
+                    <span class="pill-tag"><i data-lucide="workflow"></i> Otomasi Administrasi</span>
+                    <span class="pill-tag"><i data-lucide="message-square"></i> Konsultasi Mengajar</span>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <!-- Primary Action Button -->
-            <button type="button" class="btn-ai-preview-action" id="btn-ai-preview-action" onclick="triggerAiOutputPreview()">
-              <span class="btn-sparkle">✦</span>
-              <span id="btn-ai-preview-text">Lihat Contoh Hasil AI</span>
-              <i data-lucide="arrow-right" class="btn-arrow"></i>
-            </button>
-
-            <!-- Disclaimer Note -->
-            <div class="ai-disclaimer-note">
-              <i data-lucide="info"></i>
-              <span>Demo interaktif menggunakan contoh hasil yang telah disiapkan.</span>
-            </div>
-
-            <!-- Transformation Visual Connector -->
-            <div class="ai-transformation-node" aria-hidden="true">
-              <div class="beam-line"></div>
-              <span class="beam-sparkle">✦</span>
-            </div>
           </div>
 
-          <!-- RIGHT PANEL (~65%): Output Preview Stage -->
-          <div class="ai-preview-stage" id="ai-preview-stage">
+          <!-- RIGHT COLUMN (~65%): Light Premium Floating Browser Stage -->
+          <div class="spotlight-showcase-col">
+            <div class="spotlight-stage-aura" aria-hidden="true"></div>
             
-            <!-- Document Canvas Top Header -->
-            <div class="preview-stage-topbar">
-              <div class="preview-doc-type" id="ai-doc-type-badge">
-                <i data-lucide="presentation"></i>
-                <span id="ai-doc-type-text">Adaptive PPT Generator</span>
-              </div>
-              <div class="preview-format-tag" id="ai-doc-format-tag">
-                <span>Format: PPTX (PowerPoint) • 6 Slide Adaptif</span>
-              </div>
-            </div>
-
-            <!-- Dynamic Output Preview Viewport -->
-            <div class="preview-canvas-viewport" id="ai-canvas-viewport">
-              <!-- Rendered dynamically by JS -->
-            </div>
-
-          </div>
-
-        </div>
-
-        <!-- 4. Human Control Message -->
-        <div class="ai-human-control-card">
-          <div class="human-control-inner">
-            <div class="control-text-col">
-              <h4 class="control-headline">AI Membantu Menyusun. Guru Tetap Menentukan.</h4>
-              <p class="control-subtext">
-                KLASSA membantu menyiapkan draf perangkat ajar. Guru tetap dapat meninjau, menyesuaikan, dan menyempurnakan hasilnya sesuai kebutuhan pembelajaran.
-              </p>
-            </div>
-            
-            <!-- Visual Sequence -->
-            <div class="control-sequence-flow">
-              <div class="seq-step">
-                <span class="seq-icon">🤖</span>
-                <span class="seq-label">AI Draft</span>
-              </div>
-              <i data-lucide="arrow-right" class="seq-arrow"></i>
-              <div class="seq-step active-seq">
-                <span class="seq-icon">👩‍🏫</span>
-                <span class="seq-label">Review Guru</span>
-              </div>
-              <i data-lucide="arrow-right" class="seq-arrow"></i>
-              <div class="seq-step success-seq">
-                <span class="seq-icon">✅</span>
-                <span class="seq-label">Siap Digunakan</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 5. CTA Section -->
-        <div class="ai-studio-cta-wrap text-center">
-          <button type="button" class="btn btn-primary btn-ai-cta" onclick="openTrialModal()">
-            <span>Jelajahi KLASSA AI</span>
-            <span class="ai-sparkle-inline">✦</span>
-          </button>
-          <p class="ai-cta-subtext">Masuk ke KLASSA untuk membuat perangkat ajar sesuai kebutuhan Anda.</p>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ====================================================================
-         10b. KLASSA QUIZ ONLINE & CBT LIGHT ENGINE (INTERACTIVE SHOWCASE)
-         ==================================================================== -->
-    <section class="quiz-cbt-section" id="quiz-cbt">
-      <div class="quiz-cbt-ambient-glow" aria-hidden="true"></div>
-      <div class="container">
-
-        <!-- 1. Section Header -->
-        <div class="quiz-cbt-header text-center">
-          <div class="quiz-cbt-eyebrow">
-            <span class="cbt-eyebrow-pill">
-              <i data-lucide="shield-check" class="cbt-eyebrow-icon"></i>
-              <span>QUIZ ONLINE &amp; CBT LIGHT ENGINE</span>
-            </span>
-          </div>
-          <h2 class="quiz-cbt-headline">
-            Ujian Lebih Praktis.<br>
-            Hasil Lebih Bermakna.
-          </h2>
-          <p class="quiz-cbt-lead">
-            Dari membuat soal berbantuan AI, membagikan ujian lewat tautan, hingga mengoreksi dan menganalisis hasilnya—KLASSA membantu guru mengelola evaluasi pembelajaran dalam satu alur yang terhubung.
-          </p>
-          <div class="quiz-cbt-microcopy">
-            <span class="micro-badge">
-              <span class="micro-dot"></span>
-              <span>Siswa fokus mengerjakan. Guru fokus memahami hasil belajar.</span>
-            </span>
-          </div>
-        </div>
-
-        <!-- 2. Three-Step Segmented Journey Navigation -->
-        <div class="cbt-journey-nav-wrapper">
-          <div class="cbt-journey-nav" role="tablist" aria-label="Alur Evaluasi CBT KLASSA">
-            <button type="button" class="cbt-nav-tab active" id="cbt-tab-0" role="tab" aria-selected="true" onclick="switchCbtScene(0)">
-              <span class="tab-step-num">01</span>
-              <span class="tab-label-group">
-                <strong class="tab-title">Persiapan Guru</strong>
-                <span class="tab-sub">Susun &amp; Atur Akses</span>
-              </span>
-            </button>
-            <div class="cbt-nav-connector">
-              <i data-lucide="chevron-right"></i>
-            </div>
-            <button type="button" class="cbt-nav-tab" id="cbt-tab-1" role="tab" aria-selected="false" onclick="switchCbtScene(1)">
-              <span class="tab-step-num">02</span>
-              <span class="tab-label-group">
-                <strong class="tab-title">Ujian Siswa</strong>
-                <span class="tab-sub">Mengerjakan di HP</span>
-              </span>
-            </button>
-            <div class="cbt-nav-connector">
-              <i data-lucide="chevron-right"></i>
-            </div>
-            <button type="button" class="cbt-nav-tab" id="cbt-tab-2" role="tab" aria-selected="false" onclick="switchCbtScene(2)">
-              <span class="tab-step-num">03</span>
-              <span class="tab-label-group">
-                <strong class="tab-title">Hasil &amp; Analitik</strong>
-                <span class="tab-sub">Buku Nilai &amp; Remedial</span>
-              </span>
-            </button>
-          </div>
-        </div>
-
-        <!-- 3. Main Interactive Showcase Stage -->
-        <div class="cbt-showcase-stage" id="cbt-showcase-stage">
-          
-          <!-- Scene Info Header Bar -->
-          <div class="cbt-scene-header-bar">
-            <div class="scene-header-left">
-              <span class="scene-tag-badge" id="cbt-scene-tag">SCENE 01 • PERSIAPAN GURU</span>
-              <h3 class="scene-main-title" id="cbt-scene-title">Siapkan Ujian Tanpa Alur yang Berbelit</h3>
-              <p class="scene-sub-desc" id="cbt-scene-desc">Susun soal, atur durasi, aktifkan pengacakan, lalu bagikan akses ujian kepada siswa.</p>
-            </div>
-            <div class="scene-header-right">
-              <span class="demo-badge-pill">
-                <i data-lucide="sparkles"></i>
-                <span>Simulasi Interaktif Alur CBT</span>
-              </span>
-            </div>
-          </div>
-
-          <!-- Dynamic Scene Viewport Canvas with Initial Scene 01 Render -->
-          <div class="cbt-canvas-viewport" id="cbt-canvas-viewport">
-            <div class="cbt-cinematic-stage scene-1-active fade-in">
+            <!-- Light Browser Frame Container -->
+            <div class="spotlight-browser-frame" id="spotlight-browser-frame" role="tabpanel" aria-labelledby="spotlight-tab-0">
               
-              <!-- 3D Floating Fragment 1 (Top Left) -->
-              <div class="cbt-float-fragment frag-ai" data-depth="0.15">
-                <div class="frag-icon icon-purple">✦</div>
-                <div class="frag-text">
-                  <span class="frag-label">AI Question Co-Pilot</span>
-                  <strong class="frag-val">15 Soal diselaraskan dengan TP IPA BSKAP</strong>
+              <!-- Slim Elegant Light Browser Toolbar -->
+              <div class="browser-toolbar">
+                <!-- LEFT: Three Window Control Dots -->
+                <div class="browser-window-dots" aria-hidden="true">
+                  <span class="window-dot dot-red"></span>
+                  <span class="window-dot dot-amber"></span>
+                  <span class="window-dot dot-green"></span>
+                </div>
+
+                <!-- CENTER: Pill-shaped Address Field -->
+                <div class="browser-address-pill">
+                  <i data-lucide="lock" class="address-lock-icon"></i>
+                  <span class="address-url" id="browser-address-url">app.klassa.id/ai-studio</span>
+                  <span class="address-badge" id="browser-address-badge">LIVE APP</span>
+                </div>
+
+                <!-- RIGHT: Discreet Action Buttons -->
+                <div class="browser-actions">
+                  <button type="button" class="browser-action-btn" id="btn-toggle-play" onclick="toggleStagePlayPause()" aria-label="Jeda / Putar Video" title="Jeda / Putar Video">
+                    <i data-lucide="pause" id="icon-play-state"></i>
+                  </button>
+                  <button type="button" class="browser-action-btn" id="btn-toggle-mute" onclick="toggleStageMute()" aria-label="Bisukan / Nyalakan Suara" title="Bisukan / Nyalakan Suara">
+                    <i data-lucide="volume-x" id="icon-mute-state"></i>
+                  </button>
+                  <button type="button" class="browser-action-btn" id="btn-toggle-fullscreen" onclick="toggleStageFullscreen()" aria-label="Layar Penuh" title="Layar Penuh">
+                    <i data-lucide="maximize" id="icon-fullscreen-state"></i>
+                  </button>
                 </div>
               </div>
 
-              <!-- 3D Floating Fragment 2 (Top Right) -->
-              <div class="cbt-float-fragment frag-integrity" data-depth="0.2">
-                <div class="frag-icon icon-emerald">🛡️</div>
-                <div class="frag-text">
-                  <span class="frag-label">Integritas Asesmen</span>
-                  <strong class="frag-val">⏱️ 30m • 🔀 Acak Soal • PIN: 8249</strong>
+              <!-- Quiz 3-Step Chapter Sequence Strip (Visible for Feature 02) -->
+              <div class="browser-chapter-strip" id="browser-chapter-strip" style="display: none;" role="tablist" aria-label="Bab Evaluasi Quiz CBT">
+                <span class="chapter-strip-label"><i data-lucide="layers"></i> ALUR EVALUASI:</span>
+                <div class="chapter-strip-nav">
+                  <button type="button" class="chapter-nav-pill active" data-chapter="0" onclick="switchQuizChapter(0)" role="tab" aria-selected="true">
+                    <span class="c-num">1</span>
+                    <span class="c-txt">Persiapan Guru</span>
+                  </button>
+                  <button type="button" class="chapter-nav-pill" data-chapter="1" onclick="switchQuizChapter(1)" role="tab" aria-selected="false">
+                    <span class="c-num">2</span>
+                    <span class="c-txt">Pengerjaan Siswa</span>
+                  </button>
+                  <button type="button" class="chapter-nav-pill" data-chapter="2" onclick="switchQuizChapter(2)" role="tab" aria-selected="false">
+                    <span class="c-num">3</span>
+                    <span class="c-txt">Hasil di Portal Guru</span>
+                  </button>
                 </div>
               </div>
 
-              <!-- Dual Device 3D Workspace -->
-              <div class="cbt-devices-workspace">
+              <!-- 16:9 Inner Video Surface -->
+              <div class="browser-inner-viewport">
                 
-                <!-- 1. PRIMARY HERO OBJECT: Realistic Laptop Mockup -->
-                <div class="cbt-laptop-hero">
-                  
-                  <!-- Laptop Display Lid -->
-                  <div class="laptop-lid">
-                    
-                    <!-- Screen Bezel & Camera -->
-                    <div class="laptop-bezel">
-                      <div class="laptop-camera"></div>
-                      
-                      <!-- Laptop Screen -->
-                      <div class="laptop-screen">
-                        
-                        <!-- Browser Topbar inside Laptop -->
-                        <div class="laptop-browser-bar">
-                          <div class="mac-dots">
-                            <span class="m-dot red"></span>
-                            <span class="m-dot yellow"></span>
-                            <span class="m-dot green"></span>
-                          </div>
-                          <div class="mac-address">
-                            <i data-lucide="lock" class="lock-icon"></i>
-                            <span>app.klassa.id/ruang-evaluasi/buat-ujian-ipa8</span>
-                          </div>
-                          <div class="mac-status">
-                            <span class="dot-live"></span>
-                            <span>Draf Siap Terbit</span>
-                          </div>
-                        </div>
+                <!-- Video Container -->
+                <div class="browser-video-box" id="browser-video-box">
+                  <video 
+                    id="spotlight-main-video"
+                    class="browser-video-element"
+                    autoplay
+                    muted
+                    loop
+                    playsinline
+                    preload="metadata"
+                    src="Fitur KLASSA/AI Studio.mp4"
+                  >
+                    Browser Anda tidak mendukung pemutaran video HTML5.
+                  </video>
 
-                        <!-- Teacher Console Content -->
-                        <div class="laptop-inner-body">
-                          
-                          <!-- Quiz Title Header -->
-                          <div class="l-quiz-head">
-                            <div class="l-badge-row">
-                              <span class="l-badge badge-teal">IPA • Fase D</span>
-                              <span class="l-badge badge-gray">Kelas VIII-A</span>
-                              <span class="l-badge badge-purple">✦ 15 Butir Soal Berbantuan AI</span>
-                            </div>
-                            <h4 class="l-quiz-title">Ulangan Harian: Sistem Pernapasan Manusia</h4>
-                            <p class="l-quiz-sub">Evaluasi organ respirasi, mekanisme ventilasi, dan analisis gangguan pernapasan.</p>
-                          </div>
+                  <!-- Slim Bottom Progress Indicator -->
+                  <div class="browser-video-timeline" aria-hidden="true">
+                    <div class="browser-video-progress" id="stage-video-progress"></div>
+                  </div>
 
-                          <!-- Config Grid in Screen -->
-                          <div class="l-config-grid">
-                            
-                            <div class="l-config-item">
-                              <div class="l-item-head">
-                                <i data-lucide="clock" class="text-teal"></i>
-                                <span>Durasi Pengerjaan</span>
-                              </div>
-                              <div class="l-item-box">
-                                <strong>30 Menit</strong>
-                                <span class="l-chip chip-green">Hitung Mundur</span>
-                              </div>
-                            </div>
-
-                            <div class="l-config-item">
-                              <div class="l-item-head">
-                                <i data-lucide="shuffle" class="text-emerald"></i>
-                                <span>Pengacakan Anti-Contek</span>
-                              </div>
-                              <div class="l-item-box">
-                                <span class="l-chip chip-teal">✓ Acak Soal</span>
-                                <span class="l-chip chip-teal">✓ Acak Opsi A-D</span>
-                              </div>
-                            </div>
-
-                            <div class="l-config-item l-item-full card-access-highlight">
-                              <div class="l-item-head">
-                                <i data-lucide="key-round" class="text-purple"></i>
-                                <span>Tautan &amp; PIN Akses Siswa (Tanpa Akun Rumit)</span>
-                              </div>
-                              <div class="l-access-box">
-                                <div class="l-url-pill">
-                                  <span class="url">klassa.id/cbt/ipa8-nafas</span>
-                                  <button type="button" class="btn-copy-mini" onclick="copyCbtLink(this)">
-                                    <i data-lucide="copy"></i>
-                                    <span>Salin</span>
-                                  </button>
-                                </div>
-                                <div class="l-pin-pill">
-                                  <span>PIN:</span>
-                                  <strong>8249</strong>
-                                </div>
-                              </div>
-                            </div>
-
-                          </div>
-
-                          <!-- Quick Footer Bar in Laptop -->
-                          <div class="l-action-bar">
-                            <span class="l-action-hint">
-                              <i data-lucide="info"></i>
-                              <span>Siswa langsung mengerjakan dari HP mereka via tautan &amp; PIN.</span>
-                            </span>
-                            <button type="button" class="btn-sim-next" onclick="switchCbtScene(1)">
-                              <span>Lihat Ujian Siswa</span>
-                              <i data-lucide="arrow-right"></i>
-                            </button>
-                          </div>
-
-                        </div>
-
-                      </div>
+                  <!-- Autoplay Fallback Overlay -->
+                  <div class="browser-manual-play-overlay" id="stage-play-overlay" onclick="handleManualPlayClick()" style="display: none;">
+                    <div class="light-play-orb">
+                      <i data-lucide="play" class="orb-play-icon"></i>
                     </div>
-
+                    <span class="orb-hint">Putar Demonstrasi Video</span>
                   </div>
 
-                  <!-- Laptop Base Deck & Hinge -->
-                  <div class="laptop-base-deck">
-                    <div class="laptop-hinge"></div>
-                    <div class="laptop-trackpad-notch"></div>
+                  <!-- Video Error Fallback -->
+                  <div class="browser-error-fallback" id="stage-error-fallback" style="display: none;">
+                    <i data-lucide="alert-triangle"></i>
+                    <span>Video demonstrasi sedang tidak dapat dimuat. Silakan periksa koneksi Anda.</span>
                   </div>
-                  <div class="laptop-shadow" aria-hidden="true"></div>
-
                 </div>
 
-                <!-- 2. SECONDARY HERO OBJECT: Realistic Smartphone (Overlapping right) -->
-                <div class="cbt-phone-hero phone-preview-mode" onclick="switchCbtScene(1)" title="Klik untuk mencoba simulasi ujian siswa">
-                  
-                  <div class="phone-frame-3d">
-                    <div class="phone-dynamic-island">
-                      <span class="cam-dot"></span>
+                <!-- Agent Branded Placeholder (Light Theme) -->
+                <div class="agent-light-preview-stage" id="agent-preview-stage" style="display: none;">
+                  <div class="agent-light-glow" aria-hidden="true"></div>
+                  <div class="agent-light-content">
+                    <div class="agent-light-header">
+                      <div class="agent-brand-pill">
+                        <div class="agent-orb-icon">
+                          <i data-lucide="bot"></i>
+                        </div>
+                        <div class="agent-brand-info">
+                          <span class="agent-tag">AI CO-PILOT EKOSISTEM</span>
+                          <h4 class="agent-title">KLASSA Intelligent Agent</h4>
+                        </div>
+                      </div>
+                      <span class="agent-live-badge">
+                        <span class="agent-pulse-dot"></span>
+                        <span>Asisten Pintar Terintegrasi</span>
+                      </span>
                     </div>
-                    
-                    <div class="phone-screen-3d">
-                      
-                      <div class="p-status-mini">
-                        <span>08:15</span>
-                        <div class="p-net"><i data-lucide="wifi"></i><i data-lucide="battery"></i></div>
-                      </div>
 
-                      <div class="p-student-login-preview">
-                        <div class="p-login-icon">📝</div>
-                        <span class="p-login-tag">KLASSA CBT LIGHT</span>
-                        <h5 class="p-login-title">Ulangan Harian IPA VIII</h5>
-                        <p class="p-login-meta">Sistem Pernapasan • 15 Soal</p>
+                    <div class="agent-quote-card">
+                      <span class="agent-quote-sparkle">✦</span>
+                      <p class="agent-quote-p">
+                        "Membantu guru menyusun rencana pembelajaran, merefleksikan asesmen, dan menyederhanakan tugas administrasi secara terpadu langsung dari satu workspace."
+                      </p>
+                    </div>
 
-                        <div class="p-pin-preview-box">
-                          <span class="pin-hint">Masukkan PIN Ujian:</span>
-                          <div class="pin-digits-row">
-                            <span class="p-digit">8</span>
-                            <span class="p-digit">2</span>
-                            <span class="p-digit">4</span>
-                            <span class="p-digit">9</span>
-                          </div>
-                        </div>
-
-                        <div class="p-btn-start-sim">
-                          <span>Mulai Ujian</span>
-                          <i data-lucide="arrow-right"></i>
+                    <div class="agent-features-grid">
+                      <div class="agent-feat-box">
+                        <div class="feat-icon-wrap icon-teal"><i data-lucide="zap"></i></div>
+                        <div class="feat-text-wrap">
+                          <strong>Konteks Kurikulum Otomatis</strong>
+                          <span>Memahami Capaian &amp; Alur Tujuan Pembelajaran secara kontekstual.</span>
                         </div>
                       </div>
+                      <div class="agent-feat-box">
+                        <div class="feat-icon-wrap icon-indigo"><i data-lucide="layers"></i></div>
+                        <div class="feat-text-wrap">
+                          <strong>Sinkronisasi 4 Ruang</strong>
+                          <span>Menghubungkan draf materi dengan linimasa ajar dan bank soal.</span>
+                        </div>
+                      </div>
+                      <div class="agent-feat-box">
+                        <div class="feat-icon-wrap icon-purple"><i data-lucide="sparkles"></i></div>
+                        <div class="feat-text-wrap">
+                          <strong>Rekomendasi Diferensiasi</strong>
+                          <span>Membantu rancangan tindak lanjut remedial dan pengayaan siswa.</span>
+                        </div>
+                      </div>
+                    </div>
 
+                    <div class="agent-stage-footer">
+                      <i data-lucide="shield-check"></i>
+                      <span>Fitur dirancang terintegrasi dengan data internal sekolah Anda secara aman &amp; privat.</span>
                     </div>
                   </div>
-                  
-                  <div class="phone-shadow" aria-hidden="true"></div>
-                  <div class="phone-touch-hint">✦ Klik untuk Uji Live</div>
-
                 </div>
 
               </div>
@@ -1873,73 +1643,6 @@
             </div>
           </div>
 
-        </div>
-
-        <!-- 4. Supporting Benefit Strip -->
-        <div class="cbt-benefits-strip">
-          <div class="cbt-benefit-item">
-            <div class="benefit-icon-box icon-purple">
-              <i data-lucide="sparkles"></i>
-            </div>
-            <div class="benefit-text">
-              <h4 class="benefit-title">Soal Berbantuan AI</h4>
-              <p class="benefit-desc">Membantu guru menyiapkan soal dari topik pembelajaran.</p>
-            </div>
-          </div>
-
-          <div class="cbt-benefit-divider" aria-hidden="true"></div>
-
-          <div class="cbt-benefit-item">
-            <div class="benefit-icon-box icon-teal">
-              <i data-lucide="sliders"></i>
-            </div>
-            <div class="benefit-text">
-              <h4 class="benefit-title">Pengaturan Ujian</h4>
-              <p class="benefit-desc">Durasi, tenggat, dan pengacakan soal dalam kendali guru.</p>
-            </div>
-          </div>
-
-          <div class="cbt-benefit-divider" aria-hidden="true"></div>
-
-          <div class="cbt-benefit-item">
-            <div class="benefit-icon-box icon-emerald">
-              <i data-lucide="check-circle-2"></i>
-            </div>
-            <div class="benefit-text">
-              <h4 class="benefit-title">Koreksi Otomatis</h4>
-              <p class="benefit-desc">Hasil pilihan ganda dapat dinilai secara otomatis.</p>
-            </div>
-          </div>
-
-          <div class="cbt-benefit-divider" aria-hidden="true"></div>
-
-          <div class="cbt-benefit-item">
-            <div class="benefit-icon-box icon-blue">
-              <i data-lucide="book-marked"></i>
-            </div>
-            <div class="benefit-text">
-              <h4 class="benefit-title">Terhubung ke Buku Nilai</h4>
-              <p class="benefit-desc">Nilai evaluasi dapat diterbitkan ke sistem penilaian.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- 5. Section Closing & Human Control Statement -->
-        <div class="cbt-closing-card">
-          <div class="cbt-closing-inner">
-            <div class="closing-text-wrap">
-              <h3 class="closing-headline">Evaluasi Selesai. Pembelajaran Berlanjut.</h3>
-              <p class="closing-body">
-                Hasil ujian bukan akhir dari proses belajar. Dengan analitik dan integrasi penilaian, guru memiliki informasi yang lebih jelas untuk menentukan langkah berikutnya.
-              </p>
-            </div>
-            <div class="closing-action-wrap">
-              <button type="button" class="btn btn-primary btn-cbt-cta" onclick="openTrialModal()">
-                <span>Jelajahi Quiz Online KLASSA</span>
-                <i data-lucide="arrow-right" class="btn-arrow"></i>
-              </button>
-            </div>
-          </div>
         </div>
 
       </div>
@@ -3139,6 +2842,6 @@
   </div>
 
   <!-- Script -->
-  <script src="js/main.js?v=15.0"></script>
+  <script src="js/main.js?v=24.0"></script>
 </body>
 </html>
