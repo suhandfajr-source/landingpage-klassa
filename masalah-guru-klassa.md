@@ -1,6 +1,6 @@
 # Masalah Guru: 20 Masalah dan 5 Akar Masalah
 
-Dasar landing page KLASSA ("Naik Kelas Bersama"). Isi diambil dari dokumen *Stage 01 - Product Problem* (Teacher OS / Asisten Guru Terintegrasi).
+Dasar landing page KLASSA ("Naikkan Kelasmu!"). Isi diambil dari dokumen *Stage 01 - Product Problem* (Teacher OS / Asisten Guru Terintegrasi).
 
 ## Ringkasan
 

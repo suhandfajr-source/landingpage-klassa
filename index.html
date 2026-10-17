@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>KLASSA — Personal Workspace &amp; AI Co-Pilot Guru Indonesia</title>
   <meta name="description" content="Satu tempat untuk seluruh siklus mengajar Anda. Selesaikan administrasi, AI Modul Ajar, ujian anti-contek, presensi 1-tap, dan pelaporan e-rapor dari satu ekosistem terpadu.">
-  <meta name="keywords" content="Klassa, AI Guru Indonesia, Modul Ajar Kurikulum Merdeka, Presensi Guru, Ujian Anti Contek, RPP Otomatis, Naik Kelas Bersama, EdTech Indonesia">
+  <meta name="keywords" content="Klassa, AI Guru Indonesia, Modul Ajar Kurikulum Merdeka, Presensi Guru, Ujian Anti Contek, RPP Otomatis, Naikkan Kelasmu, Elevate Your Class, EdTech Indonesia">
   <meta name="author" content="KLASSA Team">
 
   <!-- Open Graph -->
@@ -27,7 +27,7 @@
   <script src="https://unpkg.com/lucide@latest"></script>
 
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="css/style.css?v=24.0">
+  <link rel="stylesheet" href="css/style.css?v=48.0">
 </head>
 <body>
 
@@ -55,7 +55,7 @@
       <nav class="navbar-container">
         <!-- Brand Logo -->
         <a href="#hero" class="navbar-brand" aria-label="KLASSA Beranda">
-          <img src="brand/klassa-logo-horizontal.svg" alt="KLASSA — Naik Kelas Bersama" class="brand-logo-img">
+          <img src="brand/Horizontal Logo New.svg" alt="KLASSA — Naikkan Kelasmu!" class="brand-logo-img">
         </a>
 
         <!-- Desktop Navigation Links -->
@@ -125,10 +125,13 @@
 
             <!-- Main Headline -->
             <h1 class="hero-headline">
-              Kembalikan <span class="text-highlight-teal">Waktu Berharga</span> Anda.<br>
-              Birokrasi Tuntas dalam Hitungan Detik,<br>
-              Mengajar <span class="text-highlight-mint">Lebih Berkelas</span>.
+              Kembalikan <span class="text-highlight-teal">Waktu Berharga</span> Anda!
             </h1>
+
+            <!-- Subheading -->
+            <h2 class="hero-subheading">
+              Birokrasi Tuntas Dalam <span class="text-highlight-mint">Hitungan Detik</span>.
+            </h2>
 
             <!-- Description / Subheadline -->
             <p class="hero-subheadline">
@@ -373,11 +376,12 @@
           <span class="badge-tag-dark">FAKTA LAPANGAN GURU INDONESIA</span>
         </div>
         <h2 class="section-headline text-center">
-          Mengapa Waktu Mengajar Anda Selalu Habis<br>
-          untuk Urusan Administrasi?
+          <span class="headline-row">Mengapa Waktu Mengajar</span>
+          <span class="headline-row">Selalu Habis untuk</span>
+          <span class="headline-row">Urusan Administrasi?</span>
         </h2>
         <p class="section-subheadline text-center">
-          Guru Indonesia berniat mendidik, memotivasi, dan mencerdaskan generasi. Namun realitanya, energi terbesar Anda justru tergerus oleh birokrasi berulang yang tersebar tanpa satu sistem pun yang saling terhubung.
+          Guru Indonesia berniat mendidik, memotivasi, dan mencerdaskan generasi. Namun realitanya, energi terbesar justru tergerus oleh birokrasi berulang yang tersebar tanpa satu sistem pun yang saling terhubung.
         </p>
 
         <!-- Synchronized 5-Point Process Connector / Navigation Bar -->
@@ -414,6 +418,11 @@
             <div class="node-circle"><i data-lucide="alert-triangle" style="width: 15px; height: 15px;"></i></div>
             <div class="node-label">Rekap Melelahkan</div>
           </button>
+        </div>
+
+        <!-- Mobile Active Topic Indicator (Synced dynamically with current step) -->
+        <div class="problem-active-topic-mobile" id="problem-active-topic-mobile" aria-live="polite">
+          Masalah 01: Data Terpecah
         </div>
 
         <!-- Cinematic Problem Agitation Carousel -->
@@ -638,8 +647,9 @@
 
           <!-- Carousel Controls: Prev, Dots, Next -->
           <div class="problem-carousel-bottom-bar">
-
-
+            <button type="button" class="carousel-bar-nav-btn" onclick="prevProblemSlide()" aria-label="Masalah Sebelumnya">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+            </button>
 
             <div class="problem-carousel-dots" id="problem-carousel-dots">
               <button type="button" class="carousel-dot-btn active" onclick="goToProblemSlide(0)" aria-label="Lihat Masalah 1"></button>
@@ -649,8 +659,9 @@
               <button type="button" class="carousel-dot-btn danger-dot" onclick="goToProblemSlide(4)" aria-label="Lihat Masalah 5"></button>
             </div>
 
-
-
+            <button type="button" class="carousel-bar-nav-btn" onclick="nextProblemSlide()" aria-label="Masalah Selanjutnya">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+            </button>
           </div>
           </div>
 
@@ -675,8 +686,9 @@
         </div>
         
         <h2 class="section-headline text-center">
-          Gelar Anda Pendidik, Tapi <span class="text-highlight-danger">60% Waktu Habis</span><br>
-          Sebagai Operator Entri Data
+          <span class="headline-row">Gelar Anda Pendidik, Tapi</span>
+          <span class="headline-row"><span class="text-highlight-danger">60% Waktu Habis</span></span>
+          <span class="headline-row">Sebagai Operator Entri Data</span>
         </h2>
         
         <p class="section-subheadline text-center">
@@ -699,19 +711,19 @@
               <ul class="annotation-checklist">
                 <li>
                   <i data-lucide="x" class="check-icon icon-danger"></i>
-                  <span>Susun Modul Ajar &amp; RPP panjang dari nol</span>
+                  <span>Susun Modul Ajar &amp; RPP panjang&nbsp;dari&nbsp;nol</span>
                 </li>
                 <li>
                   <i data-lucide="x" class="check-icon icon-danger"></i>
-                  <span>Input ganda nilai &amp; presensi ke banyak file</span>
+                  <span>Input ganda nilai &amp; presensi ke&nbsp;banyak&nbsp;file</span>
                 </li>
                 <li>
                   <i data-lucide="x" class="check-icon icon-danger"></i>
-                  <span>Koreksi manual ratusan lembar ulangan malam hari</span>
+                  <span>Koreksi manual ratusan lembar ulangan&nbsp;malam&nbsp;hari</span>
                 </li>
                 <li>
                   <i data-lucide="x" class="check-icon icon-danger"></i>
-                  <span>Panik rekap deskripsi capaian e-Rapor semester</span>
+                  <span>Panik rekap deskripsi capaian&nbsp;e-Rapor&nbsp;semester</span>
                 </li>
               </ul>
             </div>
@@ -809,15 +821,15 @@
               <ul class="annotation-checklist">
                 <li>
                   <i data-lucide="check" class="check-icon icon-teal"></i>
-                  <span>Tatap muka &amp; menerangkan materi di kelas</span>
+                  <span>Tatap muka &amp; menerangkan materi&nbsp;di&nbsp;kelas</span>
                 </li>
                 <li>
                   <i data-lucide="check" class="check-icon icon-teal"></i>
-                  <span>Bimbingan karakter &amp; diskusi personal murid</span>
+                  <span>Bimbingan karakter &amp; diskusi&nbsp;personal&nbsp;murid</span>
                 </li>
                 <li>
                   <i data-lucide="check" class="check-icon icon-teal"></i>
-                  <span>Membangun interaksi belajar yang bermakna</span>
+                  <span>Membangun interaksi belajar&nbsp;yang&nbsp;bermakna</span>
                 </li>
               </ul>
             </div>
@@ -858,17 +870,17 @@
           </div>
           
           <h2 class="section-headline text-center">
-            Bukan Jam Mengajar yang Menguras Energi Anda,<br class="hide-mobile">
-            Melainkan <span class="text-teal-gradient">1.200+ Jam</span> Rutinitas Mikro Setiap Tahun yang Tersembunyi.
+            <span class="headline-row"><span class="text-teal-gradient">1.200+ Jam</span> Rutinitas Mikro</span>
+            <span class="headline-row">yang Tersita Setiap Tahun</span>
           </h2>
           
           <p class="section-subheadline text-center">
-            Hitungan menit yang tampak sepele setiap hari—mulai dari modul hingga e-rapor—jika diakumulasikan sepanjang tahun ajaran, ternyata menyita waktu hidup paling berharga Anda.
+            Hitungan menit yang tampak sepele setiap hari—mulai dari modul hingga e-rapor—jika diakumulasikan sepanjang tahun ajaran, menyita waktu berharga guru.
           </p>
         </div>
 
-        <!-- 4 Workload Story Cards (4 Columns Desktop, 2 Tablet, 1 Mobile) -->
-        <div class="workload-cards-grid">
+        <!-- 4 Workload Story Cards (4 Columns Desktop, 2 Tablet, Touch-Snap Carousel Mobile) -->
+        <div class="workload-cards-grid" id="workload-cards-grid">
           
           <!-- CARD 01: MENYUSUN MODUL AJAR -->
           <div class="workload-card card-theme-turquoise" data-card="01">
@@ -1030,6 +1042,14 @@
 
         </div>
 
+        <!-- Mobile Workload Cards Carousel Dots (Visible only on mobile <= 768px) -->
+        <div class="workload-carousel-dots" id="workload-carousel-dots" aria-label="Navigasi Kartu Beban Kerja">
+          <button type="button" class="workload-dot active" data-index="0" aria-label="Lihat Kartu 1: Modul Ajar"></button>
+          <button type="button" class="workload-dot" data-index="1" aria-label="Lihat Kartu 2: Koreksi Formatif"></button>
+          <button type="button" class="workload-dot" data-index="2" aria-label="Lihat Kartu 3: Input Nilai"></button>
+          <button type="button" class="workload-dot" data-index="3" aria-label="Lihat Kartu 4: Beban e-Rapor"></button>
+        </div>
+
         <!-- ==================================================================
              5. INTERACTIVE WORKLOAD CALCULATOR PANEL
              ================================================================== -->
@@ -1118,8 +1138,14 @@
             <div class="calc-col-results">
               <h4 class="results-heading">Rincian Estimasi Waktu</h4>
 
+              <!-- Mobile Toggle Button (Visible only on Mobile) -->
+              <button class="calc-breakdown-toggle-btn" id="calc-breakdown-toggle" onclick="toggleWorkloadBreakdown()" type="button" aria-expanded="false">
+                <span>📊 Lihat Rincian Estimasi (4 Aktivitas)</span>
+                <i data-lucide="chevron-down" class="breakdown-toggle-icon"></i>
+              </button>
+
               <!-- 4 Mini Breakdown Result Cards -->
-              <div class="calc-breakdown-grid">
+              <div class="calc-breakdown-grid" id="calc-breakdown-grid">
                 
                 <div class="breakdown-metric-card">
                   <span class="metric-task-title">📖 Menyusun Modul Ajar</span>
@@ -1205,13 +1231,16 @@
           
           <!-- 2. Official KLASSA Logo -->
           <div class="intro-logo-brand">
-            <img src="brand/klassa-logo-horizontal.svg" alt="KLASSA — Naik Kelas Bersama" class="intro-official-logo">
+            <img src="brand/Horizontal Logo New.svg" alt="KLASSA — Naikkan Kelasmu!" class="intro-official-logo">
           </div>
           
-          <!-- 3. Main Headline -->
+          <!-- 3. Main Headline & Subheadline -->
           <h2 class="intro-headline-statement">
-            Satu Ekosistem Terpadu. Menghubungkan Seluruh Siklus Kerja Guru dari Awal hingga Rapor.
+            Satu Ekosistem Manajemen Kelas Terpadu
           </h2>
+          <p class="intro-subheadline">
+            Satu platform untuk seluruh rutinitas guru.
+          </p>
         </div>
 
         <!-- 4. Large Premium 3D Ecosystem Visualization -->
@@ -1253,11 +1282,12 @@
           </p>
         </div>
 
-        <!-- 6. Four Workspace Toggle Buttons -->
+        <!-- 6. Four Workspace Toggle Buttons (Adaptive: Desktop 4 Cards / Mobile Numbered Circles) -->
         <div class="workspace-toggles-bar" id="workspace-toggles-bar" role="tablist" aria-label="Pilih Ruang Kerja KLASSA">
-          <button type="button" class="workspace-toggle-btn active" data-workspace="0" role="tab" aria-selected="true" id="ws-tab-0" aria-controls="workspace-showcase-panel" onclick="selectWorkspace(0)">
+          <button type="button" class="workspace-toggle-btn active" data-workspace="0" role="tab" aria-selected="true" id="ws-tab-0" aria-controls="workspace-showcase-panel" onclick="selectWorkspace(0)" aria-label="Ruang 1: Ruang Mengajar">
             <div class="toggle-icon-wrap icon-blue">
               <i data-lucide="book-open"></i>
+              <span class="toggle-num-mobile">1</span>
             </div>
             <div class="toggle-text-wrap">
               <span class="toggle-tag">RUANG 01</span>
@@ -1265,9 +1295,10 @@
             </div>
           </button>
 
-          <button type="button" class="workspace-toggle-btn" data-workspace="1" role="tab" aria-selected="false" id="ws-tab-1" aria-controls="workspace-showcase-panel" onclick="selectWorkspace(1)">
+          <button type="button" class="workspace-toggle-btn" data-workspace="1" role="tab" aria-selected="false" id="ws-tab-1" aria-controls="workspace-showcase-panel" onclick="selectWorkspace(1)" aria-label="Ruang 2: Nilai & Evaluasi">
             <div class="toggle-icon-wrap icon-rose">
               <i data-lucide="bar-chart-2"></i>
+              <span class="toggle-num-mobile">2</span>
             </div>
             <div class="toggle-text-wrap">
               <span class="toggle-tag">RUANG 02</span>
@@ -1275,9 +1306,10 @@
             </div>
           </button>
 
-          <button type="button" class="workspace-toggle-btn" data-workspace="2" role="tab" aria-selected="false" id="ws-tab-2" aria-controls="workspace-showcase-panel" onclick="selectWorkspace(2)">
+          <button type="button" class="workspace-toggle-btn" data-workspace="2" role="tab" aria-selected="false" id="ws-tab-2" aria-controls="workspace-showcase-panel" onclick="selectWorkspace(2)" aria-label="Ruang 3: Ruang Siswa">
             <div class="toggle-icon-wrap icon-purple">
               <i data-lucide="users"></i>
+              <span class="toggle-num-mobile">3</span>
             </div>
             <div class="toggle-text-wrap">
               <span class="toggle-tag">RUANG 03</span>
@@ -1285,9 +1317,10 @@
             </div>
           </button>
 
-          <button type="button" class="workspace-toggle-btn" data-workspace="3" role="tab" aria-selected="false" id="ws-tab-3" aria-controls="workspace-showcase-panel" onclick="selectWorkspace(3)">
+          <button type="button" class="workspace-toggle-btn" data-workspace="3" role="tab" aria-selected="false" id="ws-tab-3" aria-controls="workspace-showcase-panel" onclick="selectWorkspace(3)" aria-label="Ruang 4: Ruang Administrasi">
             <div class="toggle-icon-wrap icon-amber">
               <i data-lucide="folder-check"></i>
+              <span class="toggle-num-mobile">4</span>
             </div>
             <div class="toggle-text-wrap">
               <span class="toggle-tag">RUANG 04</span>
@@ -1318,18 +1351,29 @@
                 Kelola perjalanan pembelajaran, presensi siswa, dan jurnal mengajar dalam satu alur yang praktis.
               </p>
 
-              <!-- LEVEL 2: Nested Three Clickable Feature Highlights -->
+              <!-- LEVEL 2: Feature Highlights (Desktop: Full Cards / Mobile: Horizontal Icons) -->
               <div class="showcase-features-list" id="showcase-features-list" role="tablist" aria-label="Fitur Unggulan">
                 <!-- Dynamically populated by JS -->
               </div>
 
-              <!-- Supporting Value Statement -->
+              <!-- LEVEL 2: Mobile-Only Active Feature Explanation (Frameless) -->
+              <div class="mobile-active-feature-detail" id="mobile-active-feature-detail" role="region" aria-live="polite">
+                <div class="feat-detail-header">
+                  <h4 class="feat-detail-title" id="act-feat-title">Linimasa Mengajar</h4>
+                  <span class="feat-detail-badge" id="act-feat-badge">Pertemuan 1 s/d 16</span>
+                </div>
+                <p class="feat-detail-desc" id="act-feat-desc">
+                  Pantau perjalanan pembelajaran dari pertemuan pertama hingga akhir.
+                </p>
+              </div>
+
+              <!-- Supporting Value Statement (Desktop Only) -->
               <div class="showcase-value-statement" id="sc-value-statement">
                 <i data-lucide="sparkles" class="val-icon"></i>
                 <span id="sc-val-text">Satu sesi mengajar, data tersusun untuk kebutuhan berikutnya.</span>
               </div>
 
-              <!-- Connected Data Flow Indicator (Input Once, Use Everywhere) -->
+              <!-- Connected Data Flow Indicator (Desktop Only) -->
               <div class="showcase-data-flow" id="sc-data-flow">
                 <div class="flow-icon-circle">
                   <i data-lucide="arrow-right-left"></i>
@@ -1374,934 +1418,6 @@
           </div>
         </div>
 
-        <!-- 8. Subtle Section Transition -->
-        <div class="ecosystem-section-transition">
-          <div class="transition-connector-line" aria-hidden="true"></div>
-    <!-- ====================================================================
-         10. KLASSA FEATURE SPOTLIGHT — 3 FITUR UNGGULAN (INTERACTIVE SHOWCASE)
-         ==================================================================== -->
-    <section class="feature-spotlight-section" id="fitur-spotlight">
-      <div class="spotlight-ambient-glow" aria-hidden="true"></div>
-      <div class="container spotlight-container">
-        
-        <!-- Section Header -->
-        <div class="spotlight-header text-center">
-          <div class="spotlight-eyebrow">
-            <span class="spotlight-eyebrow-pill">
-              <span class="eyebrow-sparkle">✦</span>
-              <span>FITUR UNGGULAN KLASSA</span>
-            </span>
-          </div>
-          <h2 class="spotlight-headline">
-            Tiga Kemampuan. Satu KLASSA.
-          </h2>
-          <p class="spotlight-description">
-            Dari menciptakan perangkat ajar, menyelenggarakan evaluasi, hingga membantu alur kerja guru dengan asisten cerdas—semuanya dalam satu ekosistem.
-          </p>
-        </div>
-
-        <!-- Main Two-Column Interactive Layout (35% Timeline / 65% Floating Stage) -->
-        <div class="spotlight-layout">
-          
-          <!-- LEFT COLUMN (~35%): Vertical Illuminated Timeline Navigation -->
-          <div class="spotlight-timeline-col" role="tablist" aria-label="Navigasi Fitur Unggulan KLASSA">
-            <div class="spotlight-timeline-track" aria-hidden="true">
-              <div class="spotlight-progress-beam" id="spotlight-progress-beam"></div>
-            </div>
-
-            <!-- Item 01: AI Studio -->
-            <div class="spotlight-nav-item active" data-feature="0" id="spotlight-tab-0" role="tab" aria-selected="true" tabindex="0" onclick="switchSpotlightFeature(0)" onkeydown="handleSpotlightKey(event, 0)">
-              <div class="timeline-node">
-                <span class="node-number">01</span>
-                <span class="node-pulse" aria-hidden="true"></span>
-              </div>
-              <div class="timeline-content">
-                <div class="feature-meta-row">
-                  <span class="feature-badge">AI STUDIO</span>
-                  <span class="feature-time-tag"><i data-lucide="sparkles"></i> Generator Otomatis</span>
-                </div>
-                <h3 class="feature-nav-headline">Dari Ide Menjadi Perangkat Ajar</h3>
-                <div class="feature-expandable-details">
-                  <p class="feature-nav-desc">
-                    Ubah topik pembelajaran menjadi bahan ajar dan materi yang siap ditinjau serta disempurnakan oleh guru.
-                  </p>
-                  <div class="feature-pills">
-                    <span class="pill-tag"><i data-lucide="file-text"></i> Modul Ajar</span>
-                    <span class="pill-tag"><i data-lucide="presentation"></i> PPT Adaptif</span>
-                    <span class="pill-tag"><i data-lucide="check-square"></i> Bank Soal</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Item 02: Quiz & CBT Online -->
-            <div class="spotlight-nav-item" data-feature="1" id="spotlight-tab-1" role="tab" aria-selected="false" tabindex="0" onclick="switchSpotlightFeature(1)" onkeydown="handleSpotlightKey(event, 1)">
-              <div class="timeline-node">
-                <span class="node-number">02</span>
-                <span class="node-pulse" aria-hidden="true"></span>
-              </div>
-              <div class="timeline-content">
-                <div class="feature-meta-row">
-                  <span class="feature-badge">QUIZ &amp; CBT ONLINE</span>
-                  <span class="feature-time-tag"><i data-lucide="shield-check"></i> 3 Alur Terhubung</span>
-                </div>
-                <h3 class="feature-nav-headline">Satu Alur Evaluasi, dari Persiapan hingga Hasil</h3>
-                <div class="feature-expandable-details">
-                  <p class="feature-nav-desc">
-                    Siapkan ujian, hadirkan pengalaman pengerjaan untuk siswa, dan tinjau hasil evaluasi melalui portal guru.
-                  </p>
-                  <div class="feature-pills">
-                    <span class="pill-tag"><i data-lucide="settings"></i> Persiapan Guru</span>
-                    <span class="pill-tag"><i data-lucide="smartphone"></i> Pengerjaan Siswa</span>
-                    <span class="pill-tag"><i data-lucide="bar-chart-2"></i> Hasil &amp; Analisis</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Item 03: KLASSA Agent -->
-            <div class="spotlight-nav-item" data-feature="2" id="spotlight-tab-2" role="tab" aria-selected="false" tabindex="0" onclick="switchSpotlightFeature(2)" onkeydown="handleSpotlightKey(event, 2)">
-              <div class="timeline-node">
-                <span class="node-number">03</span>
-                <span class="node-pulse" aria-hidden="true"></span>
-              </div>
-              <div class="timeline-content">
-                <div class="feature-meta-row">
-                  <span class="feature-badge badge-purple">KLASSA AGENT</span>
-                  <span class="feature-time-tag"><i data-lucide="bot"></i> AI Co-Pilot</span>
-                </div>
-                <h3 class="feature-nav-headline">Asisten Cerdas untuk Alur Kerja Guru</h3>
-                <div class="feature-expandable-details">
-                  <p class="feature-nav-desc">
-                    Jelajahi bagaimana asisten cerdas KLASSA membantu guru menjalankan pekerjaan dengan lebih praktis.
-                  </p>
-                  <div class="feature-pills">
-                    <span class="pill-tag"><i data-lucide="sparkles"></i> Rekomendasi Modul</span>
-                    <span class="pill-tag"><i data-lucide="workflow"></i> Otomasi Administrasi</span>
-                    <span class="pill-tag"><i data-lucide="message-square"></i> Konsultasi Mengajar</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-          <!-- RIGHT COLUMN (~65%): Light Premium Floating Browser Stage -->
-          <div class="spotlight-showcase-col">
-            <div class="spotlight-stage-aura" aria-hidden="true"></div>
-            
-            <!-- Light Browser Frame Container -->
-            <div class="spotlight-browser-frame" id="spotlight-browser-frame" role="tabpanel" aria-labelledby="spotlight-tab-0">
-              
-              <!-- Slim Elegant Light Browser Toolbar -->
-              <div class="browser-toolbar">
-                <!-- LEFT: Three Window Control Dots -->
-                <div class="browser-window-dots" aria-hidden="true">
-                  <span class="window-dot dot-red"></span>
-                  <span class="window-dot dot-amber"></span>
-                  <span class="window-dot dot-green"></span>
-                </div>
-
-                <!-- CENTER: Pill-shaped Address Field -->
-                <div class="browser-address-pill">
-                  <i data-lucide="lock" class="address-lock-icon"></i>
-                  <span class="address-url" id="browser-address-url">app.klassa.id/ai-studio</span>
-                  <span class="address-badge" id="browser-address-badge">LIVE APP</span>
-                </div>
-
-                <!-- RIGHT: Discreet Action Buttons -->
-                <div class="browser-actions">
-                  <button type="button" class="browser-action-btn" id="btn-toggle-play" onclick="toggleStagePlayPause()" aria-label="Jeda / Putar Video" title="Jeda / Putar Video">
-                    <i data-lucide="pause" id="icon-play-state"></i>
-                  </button>
-                  <button type="button" class="browser-action-btn" id="btn-toggle-mute" onclick="toggleStageMute()" aria-label="Bisukan / Nyalakan Suara" title="Bisukan / Nyalakan Suara">
-                    <i data-lucide="volume-x" id="icon-mute-state"></i>
-                  </button>
-                  <button type="button" class="browser-action-btn" id="btn-toggle-fullscreen" onclick="toggleStageFullscreen()" aria-label="Layar Penuh" title="Layar Penuh">
-                    <i data-lucide="maximize" id="icon-fullscreen-state"></i>
-                  </button>
-                </div>
-              </div>
-
-              <!-- Quiz 3-Step Chapter Sequence Strip (Visible for Feature 02) -->
-              <div class="browser-chapter-strip" id="browser-chapter-strip" style="display: none;" role="tablist" aria-label="Bab Evaluasi Quiz CBT">
-                <span class="chapter-strip-label"><i data-lucide="layers"></i> ALUR EVALUASI:</span>
-                <div class="chapter-strip-nav">
-                  <button type="button" class="chapter-nav-pill active" data-chapter="0" onclick="switchQuizChapter(0)" role="tab" aria-selected="true">
-                    <span class="c-num">1</span>
-                    <span class="c-txt">Persiapan Guru</span>
-                  </button>
-                  <button type="button" class="chapter-nav-pill" data-chapter="1" onclick="switchQuizChapter(1)" role="tab" aria-selected="false">
-                    <span class="c-num">2</span>
-                    <span class="c-txt">Pengerjaan Siswa</span>
-                  </button>
-                  <button type="button" class="chapter-nav-pill" data-chapter="2" onclick="switchQuizChapter(2)" role="tab" aria-selected="false">
-                    <span class="c-num">3</span>
-                    <span class="c-txt">Hasil di Portal Guru</span>
-                  </button>
-                </div>
-              </div>
-
-              <!-- 16:9 Inner Video Surface -->
-              <div class="browser-inner-viewport">
-                
-                <!-- Video Container -->
-                <div class="browser-video-box" id="browser-video-box">
-                  <video 
-                    id="spotlight-main-video"
-                    class="browser-video-element"
-                    autoplay
-                    muted
-                    loop
-                    playsinline
-                    preload="metadata"
-                    src="Fitur KLASSA/AI Studio.mp4"
-                  >
-                    Browser Anda tidak mendukung pemutaran video HTML5.
-                  </video>
-
-                  <!-- Slim Bottom Progress Indicator -->
-                  <div class="browser-video-timeline" aria-hidden="true">
-                    <div class="browser-video-progress" id="stage-video-progress"></div>
-                  </div>
-
-                  <!-- Autoplay Fallback Overlay -->
-                  <div class="browser-manual-play-overlay" id="stage-play-overlay" onclick="handleManualPlayClick()" style="display: none;">
-                    <div class="light-play-orb">
-                      <i data-lucide="play" class="orb-play-icon"></i>
-                    </div>
-                    <span class="orb-hint">Putar Demonstrasi Video</span>
-                  </div>
-
-                  <!-- Video Error Fallback -->
-                  <div class="browser-error-fallback" id="stage-error-fallback" style="display: none;">
-                    <i data-lucide="alert-triangle"></i>
-                    <span>Video demonstrasi sedang tidak dapat dimuat. Silakan periksa koneksi Anda.</span>
-                  </div>
-                </div>
-
-                <!-- Agent Branded Placeholder (Light Theme) -->
-                <div class="agent-light-preview-stage" id="agent-preview-stage" style="display: none;">
-                  <div class="agent-light-glow" aria-hidden="true"></div>
-                  <div class="agent-light-content">
-                    <div class="agent-light-header">
-                      <div class="agent-brand-pill">
-                        <div class="agent-orb-icon">
-                          <i data-lucide="bot"></i>
-                        </div>
-                        <div class="agent-brand-info">
-                          <span class="agent-tag">AI CO-PILOT EKOSISTEM</span>
-                          <h4 class="agent-title">KLASSA Intelligent Agent</h4>
-                        </div>
-                      </div>
-                      <span class="agent-live-badge">
-                        <span class="agent-pulse-dot"></span>
-                        <span>Asisten Pintar Terintegrasi</span>
-                      </span>
-                    </div>
-
-                    <div class="agent-quote-card">
-                      <span class="agent-quote-sparkle">✦</span>
-                      <p class="agent-quote-p">
-                        "Membantu guru menyusun rencana pembelajaran, merefleksikan asesmen, dan menyederhanakan tugas administrasi secara terpadu langsung dari satu workspace."
-                      </p>
-                    </div>
-
-                    <div class="agent-features-grid">
-                      <div class="agent-feat-box">
-                        <div class="feat-icon-wrap icon-teal"><i data-lucide="zap"></i></div>
-                        <div class="feat-text-wrap">
-                          <strong>Konteks Kurikulum Otomatis</strong>
-                          <span>Memahami Capaian &amp; Alur Tujuan Pembelajaran secara kontekstual.</span>
-                        </div>
-                      </div>
-                      <div class="agent-feat-box">
-                        <div class="feat-icon-wrap icon-indigo"><i data-lucide="layers"></i></div>
-                        <div class="feat-text-wrap">
-                          <strong>Sinkronisasi 4 Ruang</strong>
-                          <span>Menghubungkan draf materi dengan linimasa ajar dan bank soal.</span>
-                        </div>
-                      </div>
-                      <div class="agent-feat-box">
-                        <div class="feat-icon-wrap icon-purple"><i data-lucide="sparkles"></i></div>
-                        <div class="feat-text-wrap">
-                          <strong>Rekomendasi Diferensiasi</strong>
-                          <span>Membantu rancangan tindak lanjut remedial dan pengayaan siswa.</span>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="agent-stage-footer">
-                      <i data-lucide="shield-check"></i>
-                      <span>Fitur dirancang terintegrasi dengan data internal sekolah Anda secara aman &amp; privat.</span>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ====================================================================
-         11. THREE SUPERPOWERS (LARGE ALTERNATING FEATURE SECTIONS)
-         ==================================================================== -->
-    <section class="superpowers-section" id="fitur">
-      <div class="container">
-        
-        <div class="section-badge-center">
-          <span class="badge-tag">TIGA SUPERPOWER KLASSA</span>
-        </div>
-        <h2 class="section-headline text-center">
-          Pekerjaan yang Dulu Menghabiskan Jam,<br>
-          Kini Selesai dalam Hitungan Menit.
-        </h2>
-
-        <!-- SUPERPOWER 1: AI STUDIO MODUL AJAR -->
-        <div class="superpower-block">
-          <div class="superpower-content" data-parallax-depth="0.08">
-            <div class="feature-tag-pill">
-              <span class="ai-sparkle">✦</span>
-              <span>Superpower 01 • Modul Ajar</span>
-            </div>
-            <h3 class="superpower-title">Dari Ide ke Modul Ajar dalam ±40 Detik.</h3>
-            <p class="superpower-description">
-              Cukup pilih mata pelajaran dan capaian pembelajaran. AI KLASSA langsung menyusun rancangan pembelajaran lengkap yang siap Anda review, sesuaikan, dan cetak langsung.
-            </p>
-            
-            <ul class="feature-checklist">
-              <li><i data-lucide="check" class="check-icon"></i> <span>Mengikuti struktur regulasi BSKAP yang relevan</span></li>
-              <li><i data-lucide="check" class="check-icon"></i> <span>Sintaks pembelajaran aktif (PBL, Discovery, Inquiry)</span></li>
-              <li><i data-lucide="check" class="check-icon"></i> <span>Diferensiasi konten, proses, dan produk</span></li>
-              <li><i data-lucide="check" class="check-icon"></i> <span>Rubrik asesmen kualitatif &amp; kuantitatif</span></li>
-              <li><i data-lucide="check" class="check-icon"></i> <span>Export langsung Microsoft Word .docx siap cetak</span></li>
-              <li><i data-lucide="check" class="check-icon"></i> <span>Lengkap dengan kop sekolah &amp; kolom tanda tangan</span></li>
-            </ul>
-
-            <button class="btn btn-primary" onclick="triggerAISimulator()">
-              <span class="ai-sparkle">✦</span>
-              <span>Coba AI Modul Ajar Sekarang →</span>
-            </button>
-          </div>
-
-          <!-- Interactive AI Simulator UI -->
-          <div class="superpower-mockup-wrapper">
-            <div class="interactive-ai-card" id="ai-simulator-card" data-parallax-depth="-0.16">
-              <div class="card-head-strip">
-                <span class="card-head-label">KLASSA AI Studio</span>
-                <span class="badge-verified">BSKAP Format Valid</span>
-              </div>
-              <div class="simulator-inputs">
-                <div class="input-group-row">
-                  <div class="input-item">
-                    <label>Jenjang &amp; Fase</label>
-                    <select class="sim-select" id="sim-fase">
-                      <option>SMP — Fase D (Kelas VII)</option>
-                      <option>SMA — Fase E (Kelas X)</option>
-                      <option>SD — Fase B (Kelas IV)</option>
-                    </select>
-                  </div>
-                  <div class="input-item">
-                    <label>Mata Pelajaran</label>
-                    <input type="text" class="sim-input" id="sim-mapel" value="Matematika (Aljabar)">
-                  </div>
-                </div>
-                <div class="input-item">
-                  <label>Tujuan Pembelajaran</label>
-                  <input type="text" class="sim-input" id="sim-tp" value="Memodelkan masalah kontekstual ke dalam persamaan linear satu variabel">
-                </div>
-                <button class="btn btn-primary btn-generate-sim" id="btn-run-ai-sim" onclick="runAIGenerationSimulation()">
-                  <span class="ai-sparkle">✦</span>
-                  <span id="sim-btn-text">Generate dengan KLASSA AI ✦</span>
-                </button>
-              </div>
-
-              <!-- AI Dynamic Progress Steps -->
-              <div class="ai-generation-steps" id="ai-generation-steps" style="display: none;">
-                <div class="step-item" id="ai-step-1">
-                  <i data-lucide="circle-dashed" class="step-status-icon"></i>
-                  <span>Memahami konteks kelas...</span>
-                </div>
-                <div class="step-item" id="ai-step-2">
-                  <i data-lucide="circle-dashed" class="step-status-icon"></i>
-                  <span>Menyusun aktivitas berdiferensiasi...</span>
-                </div>
-                <div class="step-item" id="ai-step-3">
-                  <i data-lucide="circle-dashed" class="step-status-icon"></i>
-                  <span>Membuat rubrik asesmen...</span>
-                </div>
-                <div class="step-item" id="ai-step-4">
-                  <i data-lucide="circle-dashed" class="step-status-icon"></i>
-                  <span>Menyiapkan dokumen Word .docx siap unduh...</span>
-                </div>
-              </div>
-
-              <!-- Output Document Preview -->
-              <div class="sim-doc-preview" id="sim-doc-preview">
-                <div class="doc-icon-strip">
-                  <i data-lucide="file-text" style="color: #0F766E;"></i>
-                  <span class="preview-filename">Draft_Modul_Ajar_Terverifikasi.docx</span>
-                  <span class="download-badge">Siap Diedit</span>
-                </div>
-                <div class="doc-snippet">
-                  ✓ Alur Tujuan Pembelajaran terpetakan<br>
-                  ✓ Asesmen Formatif: 3 level kesiapan siswa<br>
-                  ✓ Lembar Kerja Peserta Didik (LKPD) terlampir
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- SUPERPOWER 2: SMART ASSESSMENT -->
-        <div class="superpower-block reverse-block">
-          <div class="superpower-content" data-parallax-depth="0.08">
-            <div class="feature-tag-pill">
-              <i data-lucide="check-square" style="width: 14px; height: 14px; color: #0F766E;"></i>
-              <span>Superpower 02 • Smart Assessment</span>
-            </div>
-            <h3 class="superpower-title">Ujian Jalan. KLASSA yang Mengoreksi.</h3>
-            <p class="superpower-description">
-              Tinggalkan tumpukan kertas ujian dan malam yang habis untuk koreksi manual. Bagikan PIN sesi, siswa mengerjakan via ponsel mereka, dan hasil analitik tersaji detik itu juga.
-            </p>
-
-            <ul class="feature-checklist">
-              <li><i data-lucide="check" class="check-icon"></i> <span>Generator bank soal HOTS otomatis dari materi ajar</span></li>
-              <li><i data-lucide="check" class="check-icon"></i> <span>Mendukung pilihan ganda kompleks &amp; esai teranalisis</span></li>
-              <li><i data-lucide="check" class="check-icon"></i> <span>Terhubung otomatis dengan Capaian Pembelajaran</span></li>
-              <li><i data-lucide="check" class="check-icon"></i> <span>PIN sesi instan tanpa perlu instalasi aplikasi siswa</span></li>
-              <li><i data-lucide="check" class="check-icon"></i> <span>Deteksi pindah tab / anti-cheat real-time</span></li>
-              <li><i data-lucide="check" class="check-icon"></i> <span>Koreksi otomatis &amp; ekspor rekap nilai ke Excel</span></li>
-            </ul>
-
-            <button class="btn btn-secondary" onclick="simulateQuizSubmit()">
-              <i data-lucide="play" style="width: 16px; height: 16px;"></i>
-              <span>Simulasikan Submit Siswa</span>
-            </button>
-          </div>
-
-          <!-- Split Screen Mockup: Teacher Dashboard + Student Smartphone -->
-          <div class="superpower-mockup-wrapper">
-            <div class="assessment-split-mockup">
-              <!-- Teacher Dashboard Portion -->
-              <div class="teacher-quiz-pane" data-parallax-depth="-0.08">
-                <div class="pane-header">
-                  <div class="live-dot-pulse"></div>
-                  <span>Dashboard Sesi Ujian Aktif: <strong>PIN 849-201</strong></span>
-                </div>
-                <div class="quiz-metrics-bar">
-                  <div class="metric-block">
-                    <span class="val" id="quiz-student-count">32/32</span>
-                    <span class="lbl">Siswa Selesai</span>
-                  </div>
-                  <div class="metric-block">
-                    <span class="val" style="color: #0F766E;">84.5</span>
-                    <span class="lbl">Rata-Rata Nilai</span>
-                  </div>
-                  <div class="metric-block">
-                    <span class="val" style="color: #10B981;" id="quiz-status-tag">Terkoreksi Otomatis</span>
-                    <span class="lbl">Status Rekap</span>
-                  </div>
-                </div>
-
-                <div class="animated-flow-indicator" id="assessment-flow-indicator">
-                  <span>32 jawaban diterima</span>
-                  <i data-lucide="arrow-right" style="width: 12px; height: 12px;"></i>
-                  <span>Koreksi otomatis</span>
-                  <i data-lucide="arrow-right" style="width: 12px; height: 12px;"></i>
-                  <span>Nilai tersimpan</span>
-                  <i data-lucide="arrow-right" style="width: 12px; height: 12px;"></i>
-                  <strong style="color: #0F766E;">Excel Siap ✓</strong>
-                </div>
-              </div>
-
-              <!-- Student Smartphone Mini Mockup -->
-              <div class="student-phone-mockup" data-parallax-depth="0.22">
-                <div class="phone-speaker"></div>
-                <div class="phone-screen">
-                  <div class="phone-exam-header">
-                    <span>Soal 5 dari 10</span>
-                    <span class="exam-timer">⏱ 14:20</span>
-                  </div>
-                  <div class="phone-question">
-                    Sebuah persegi panjang memiliki panjang (2x + 3) cm dan lebar 5 cm. Jika luasnya 45 cm², nilai x adalah...
-                  </div>
-                  <div class="phone-options">
-                    <div class="opt-item selected">A. 3 cm</div>
-                    <div class="opt-item">B. 4 cm</div>
-                    <div class="opt-item">C. 5 cm</div>
-                  </div>
-                  <div class="tab-warning-bubble" id="tab-warning-bubble">
-                    <i data-lucide="shield-alert" style="width: 12px; height: 12px;"></i>
-                    <span>Radar: Siswa tetap di layar ujian</span>
-                  </div>
-                  <button class="btn-phone-submit" id="btn-phone-submit" onclick="simulateQuizSubmit()">
-                    <span>Kirim Jawaban (SUBMIT)</span>
-                  </button>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-
-        <!-- SUPERPOWER 3: PRESENSI & JURNAL -->
-        <div class="superpower-block">
-          <div class="superpower-content" data-parallax-depth="0.08">
-            <div class="feature-tag-pill">
-              <i data-lucide="calendar" style="width: 14px; height: 14px; color: #0F766E;"></i>
-              <span>Superpower 03 • Presensi &amp; Jurnal</span>
-            </div>
-            <h3 class="superpower-title">Presensi 32 Siswa. Selesai Sebelum Anda Menaruh HP.</h3>
-            <p class="superpower-description">
-              Cukup buka smartphone di awal jam pelajaran. Satu tap untuk konfirmasi kehadiran kelas, dan jurnal mengajar harian langsung terisi sesuai materi yang telah direncanakan di Modul Ajar.
-            </p>
-
-            <ul class="feature-checklist">
-              <li><i data-lucide="check" class="check-icon"></i> <span>Presensi per jam pelajaran atau per hari fleksibel</span></li>
-              <li><i data-lucide="check" class="check-icon"></i> <span>Desain mobile-first super responsif dan ringan</span></li>
-              <li><i data-lucide="check" class="check-icon"></i> <span>Jurnal mengajar digital otomatis terbuat</span></li>
-              <li><i data-lucide="check" class="check-icon"></i> <span>Materi dan topik ajar otomatis tersinkron</span></li>
-              <li><i data-lucide="check" class="check-icon"></i> <span>Rekap kehadiran bulanan siap cetak dalam 1-klik</span></li>
-            </ul>
-
-            <button class="btn btn-primary" onclick="simulateAttendanceAll()">
-              <i data-lucide="user-check" style="width: 16px; height: 16px;"></i>
-              <span>Coba Tap: Hadirkan Semua Siswa</span>
-            </button>
-          </div>
-
-          <!-- Smartphone Mockup Attendance -->
-          <div class="superpower-mockup-wrapper">
-            <div class="attendance-phone-frame" data-parallax-depth="-0.14">
-              <div class="phone-screen-container">
-                <div class="att-header">
-                  <div class="att-title">Presensi Kelas VII-B</div>
-                  <div class="att-sub">Senin, Jam Ke-3 (Matematika)</div>
-                </div>
-
-                <!-- Quick Action Buttons -->
-                <div class="quick-status-buttons">
-                  <button class="status-btn active" id="btn-quick-hadir" onclick="simulateAttendanceAll()">Hadirkan Semua</button>
-                  <button class="status-btn" onclick="toggleStudentAttendance(0)">Atur Cepat</button>
-                </div>
-
-                <!-- Student List Mockup -->
-                <div class="students-mini-list" id="students-attendance-list">
-                  <div class="student-row">
-                    <span class="student-avatar">AN</span>
-                    <span class="student-name">Ahmad Naufal</span>
-                    <span class="status-pill status-hadir">Hadir</span>
-                  </div>
-                  <div class="student-row">
-                    <span class="student-avatar">BL</span>
-                    <span class="student-name">Bella Lestari</span>
-                    <span class="status-pill status-hadir">Hadir</span>
-                  </div>
-                  <div class="student-row">
-                    <span class="student-avatar">DS</span>
-                    <span class="student-name">Dimas Setiawan</span>
-                    <span class="status-pill status-sakit" id="student-dimas-status">Sakit</span>
-                  </div>
-                  <div class="student-row">
-                    <span class="student-avatar">FA</span>
-                    <span class="student-name">Farhan Alamsyah</span>
-                    <span class="status-pill status-hadir">Hadir</span>
-                  </div>
-                </div>
-
-                <!-- Toast Notification for Journal Updated -->
-                <div class="journal-toast-card" id="journal-toast">
-                  <i data-lucide="check-circle" style="width: 16px; height: 16px; color: #0F766E;"></i>
-                  <span>Jurnal hari ini telah diperbarui otomatis ✓</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ====================================================================
-         10. COMPLETE TOOLKIT — BENTO GRID
-         ==================================================================== -->
-    <section class="toolkit-section" id="toolkit">
-      <div class="container">
-        
-        <div class="section-badge-center">
-          <span class="badge-tag">TOOLKIT LENGKAP GURU</span>
-        </div>
-        <h2 class="section-headline text-center">
-          Bukan Sekadar AI.<br>
-          Ini Toolkit Lengkap Guru.
-        </h2>
-        <p class="section-subheadline text-center">
-          Setiap instrumen dirancang khusus untuk memotong jam kerja non-esensial dan mengembalikan fokus utama Anda: mengajar.
-        </p>
-
-        <!-- Bento Grid -->
-        <div class="bento-toolkit-grid">
-          
-          <!-- Card 1: Prota & Prosem -->
-          <div class="bento-card card-prota reveal-on-scroll" data-parallax-depth="-0.12">
-            <div class="bento-badge">Otomatisasi Semester</div>
-            <h3 class="bento-card-title">Prota &amp; Prosem Otomatis</h3>
-            <p class="bento-card-desc">
-              Peta alur waktu, alokasi minggu efektif, dan pembagian bab ajar semester ganjil-genap terhitung rapi tanpa kalkulator manual.
-            </p>
-            <div class="bento-visual-prota">
-              <div class="prota-row">
-                <span>Bab 1: Bilangan Bulat</span>
-                <span class="prota-weeks">4 Minggu Efektif</span>
-              </div>
-              <div class="prota-row">
-                <span>Bab 2: Bentuk Aljabar</span>
-                <span class="prota-weeks">5 Minggu Efektif</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Card 2: Generator Media Ajar -->
-          <div class="bento-card card-media reveal-on-scroll" data-parallax-depth="0.14">
-            <div class="bento-badge">Media Kreatif</div>
-            <h3 class="bento-card-title">Generator Media Ajar</h3>
-            <p class="bento-card-desc">
-              Hasilkan rancangan materi slide presentasi (PPT), Lembar Kerja Peserta Didik (LKPD), dan worksheet interaktif dalam hitungan detik.
-            </p>
-            <div class="media-pills-row">
-              <span class="media-pill"><i data-lucide="file-text"></i> PPT Terstruktur</span>
-              <span class="media-pill"><i data-lucide="clipboard"></i> LKPD Berdiferensiasi</span>
-              <span class="media-pill"><i data-lucide="layers"></i> Worksheet</span>
-            </div>
-          </div>
-
-          <!-- Card 3: 360 Student Monitoring -->
-          <div class="bento-card card-analytics reveal-on-scroll" data-parallax-depth="-0.12">
-            <div class="bento-badge">Analitik Siswa</div>
-            <h3 class="bento-card-title">360° Student Monitoring</h3>
-            <p class="bento-card-desc">
-              Pantau perkembangan menyeluruh tiap siswa: riwayat kehadiran, penguasaan kompetensi kognitif, keaktifan kelas, hingga catatan sikap.
-            </p>
-            <div class="student-mini-chart">
-              <div class="chart-col"><span class="chart-bar" style="height: 60%;"></span><span class="col-lbl">C1</span></div>
-              <div class="chart-col"><span class="chart-bar" style="height: 75%;"></span><span class="col-lbl">C2</span></div>
-              <div class="chart-col"><span class="chart-bar" style="height: 90%;"></span><span class="col-lbl">C3</span></div>
-              <div class="chart-col"><span class="chart-bar" style="height: 85%;"></span><span class="col-lbl">C4</span></div>
-              <div class="chart-col"><span class="chart-bar" style="height: 70%;"></span><span class="col-lbl">C5</span></div>
-            </div>
-          </div>
-
-          <!-- Card 4: Tracking Remedial Otomatis -->
-          <div class="bento-card card-remedial reveal-on-scroll" data-parallax-depth="0.14">
-            <div class="bento-badge badge-remedial">Tindakan Preventif</div>
-            <h3 class="bento-card-title">Tracking Remedial Otomatis</h3>
-            <p class="bento-card-desc">
-              Sistem langsung menandai siswa yang berada di bawah Kriteria Ketercapaian Tujuan Pembelajaran (KKTP) dan menyiapkan materi remedial terfokus.
-            </p>
-            <div class="remedial-alert-box">
-              <i data-lucide="alert-circle" style="color: #F59E0B; width: 18px; height: 18px;"></i>
-              <div>
-                <strong>6 siswa membutuhkan remedial</strong>
-                <div class="remedial-sub">Rekomendasi bank soal latihan terkirim ke portal siswa</div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ====================================================================
-         11. TEACHER + STUDENT ECOSYSTEM — SPLIT SCREEN
-         ==================================================================== -->
-    <section class="ecosystem-section" id="ekosistem">
-      <div class="container">
-        
-        <div class="section-badge-center">
-          <span class="badge-tag">SATU EKOSISTEM UTUH</span>
-        </div>
-        <h2 class="section-headline text-center">
-          Satu Ekosistem.<br>
-          Dua Pengalaman yang Sangat Sederhana.
-        </h2>
-        <p class="section-subheadline text-center">
-          Bukan sekadar aplikasi untuk guru. KLASSA menjembatani komunikasi kelas dengan portal siswa yang ringan dan ramah diakses dari ponsel apa pun.
-        </p>
-
-        <!-- 3-Column Ecosystem Stage: Left (Siswa) - Center (3D Mockup Stage) - Right (Guru) -->
-        <div class="ecosystem-stage-layout">
-          
-          <!-- LEFT COLUMN: PORTAL SISWA (Sebaris dengan Smartphone) -->
-          <div class="eco-column eco-column-left reveal-on-scroll" data-parallax-depth="-0.08">
-            <div class="eco-badge-pill student-badge">
-              <i data-lucide="smartphone" class="badge-icon-mini"></i>
-              <span>PORTAL SISWA (Mobile Ringan)</span>
-            </div>
-            <h3 class="eco-col-title">Akses Mandiri Tanpa Ribet</h3>
-            <p class="eco-col-desc">
-              Siswa tidak perlu repot membuat email Google baru atau mengunduh aplikasi berat dari Play Store. Cukup gunakan NIS dan PIN sederhana untuk langsung masuk ke ruang belajar dari ponsel apa pun.
-            </p>
-            <ul class="eco-features-list">
-              <li>
-                <div class="check-circle-icon"><i data-lucide="check"></i></div>
-                <div>
-                  <strong>Kuis &amp; Ulangan Anti-Cheat</strong>
-                  <span>Mengerjakan ujian di HP dengan radar deteksi fokus layar otomatis.</span>
-                </div>
-              </li>
-              <li>
-                <div class="check-circle-icon"><i data-lucide="check"></i></div>
-                <div>
-                  <strong>Kirim Tugas Foto 1-Klik</strong>
-                  <span>Foto lembar kerja di buku catatan dan unggah instan tanpa scanner.</span>
-                </div>
-              </li>
-              <li>
-                <div class="check-circle-icon"><i data-lucide="check"></i></div>
-                <div>
-                  <strong>Hasil Nilai &amp; Pembahasan Detik Itu</strong>
-                  <span>Nilai objektif langsung tampil begitu selesai dikerjakan.</span>
-                </div>
-              </li>
-            </ul>
-
-            <div class="eco-interaction-hint hint-left" onclick="simulateStudentQuizInteraction()">
-              <i data-lucide="mouse-pointer-click" class="hint-icon"></i>
-              <span>Klik smartphone di samping untuk coba kirim jawaban ➔</span>
-            </div>
-          </div>
-
-          <!-- CENTER COLUMN: STATIC & CLEAN DEVICE MOCKUP STAGE -->
-          <div class="eco-stage-center" id="eco-stage-viewport">
-            
-            <!-- Floating Sync Status Pill (Positioned cleanly above mockup) -->
-            <div class="eco-sync-pill" id="eco-sync-indicator" onclick="triggerEcosystemLiveSync()">
-              <span class="sync-dot"></span>
-              <span class="sync-text" id="sync-pill-text">⚡ Sinkron Real-Time Otomatis</span>
-            </div>
-
-            <!-- Static, Non-Colliding Ecosystem Stage -->
-            <div class="eco-static-stage" id="eco-static-stage">
-              
-              <!-- Soft Floor Glow / Ambient Shadow -->
-              <div class="eco-ambient-floor-shadow"></div>
-
-              <!-- 1. MACBOOK PRO LAPTOP (LARGE & PROMINENT) -->
-              <div class="macbook-static-frame" id="macbook-device" onclick="simulateLaptopWorkspaceClick()">
-                
-                <!-- Display Lid & Bezel -->
-                <div class="macbook-screen-lid">
-                  <!-- Camera Notch -->
-                  <div class="macbook-camera-notch">
-                    <span class="camera-lens"></span>
-                  </div>
-
-                  <!-- Live Teacher Cockpit UI (Vector Sharp) -->
-                  <div class="macbook-display-screen">
-                    <!-- Cockpit Topbar -->
-                    <div class="mac-app-topbar">
-                      <div class="mac-brand">
-                        <span class="mac-logo-dot">K</span>
-                        <span class="mac-brand-name">KLASSA Cockpit</span>
-                      </div>
-                      <div class="mac-user-info">
-                        <span class="mac-status-live">● Sesi Aktif</span>
-                        <span class="mac-teacher-name">Ibu Siti Rahmawati, S.Pd.</span>
-                      </div>
-                    </div>
-
-                    <!-- Cockpit Grid: Sidebar + Main Content -->
-                    <div class="mac-cockpit-grid">
-                      <aside class="mac-sidebar">
-                        <div class="mac-nav-item active"><i data-lucide="layout-dashboard"></i><span>Beranda</span></div>
-                        <div class="mac-nav-item"><i data-lucide="file-text"></i><span>Modul Ajar</span></div>
-                        <div class="mac-nav-item"><i data-lucide="help-circle"></i><span>Assessment</span></div>
-                        <div class="mac-nav-item"><i data-lucide="users"></i><span>Presensi</span></div>
-                        <div class="mac-nav-item"><i data-lucide="bar-chart-2"></i><span>Buku Nilai</span></div>
-                      </aside>
-
-                      <div class="mac-main-panel">
-                        <div class="mac-panel-header">
-                          <div>
-                            <h4 class="mac-class-title">Matematika • Kelas VII-B</h4>
-                            <span class="mac-topic">Topik: Persamaan Linear Satu Variabel (Fase D)</span>
-                          </div>
-                          <div class="mac-ai-badge">
-                            <span class="ai-sparkle">✦</span>
-                            <span>AI Koreksi Aktif</span>
-                          </div>
-                        </div>
-
-                        <!-- 3 KPI Metric Cards -->
-                        <div class="mac-metrics-row">
-                          <div class="mac-card-stat">
-                            <span class="stat-lbl">Terkoneksi</span>
-                            <span class="stat-num" id="mac-connected-count">32/32 Siswa</span>
-                            <div class="stat-progress"><div class="stat-fill" style="width: 100%;"></div></div>
-                          </div>
-                          <div class="mac-card-stat">
-                            <span class="stat-lbl">Rata-rata Kelas</span>
-                            <span class="stat-num" style="color: #0F766E;">86.4</span>
-                            <span class="stat-sub">↑ +4.2 poin</span>
-                          </div>
-                          <div class="mac-card-stat">
-                            <span class="stat-lbl">Status Ulangan</span>
-                            <span class="stat-num" style="color: #10B981;">Terkoreksi</span>
-                            <span class="stat-sub">Rekap Excel Siap ✓</span>
-                          </div>
-                        </div>
-
-                        <!-- Live Student Activity Stream -->
-                        <div class="mac-submission-stream">
-                          <div class="stream-header">
-                            <span>Aktivitas Siswa Terkini</span>
-                            <span class="stream-badge-pulse">Live Sync</span>
-                          </div>
-                          <div class="stream-items-row">
-                            <div class="stream-pill done">
-                              <span class="student-mini-avatar">AN</span>
-                              <span class="student-pill-name">Ahmad N.</span>
-                              <span class="pill-score">100</span>
-                            </div>
-                            <div class="stream-pill done">
-                              <span class="student-mini-avatar">BL</span>
-                              <span class="student-pill-name">Bella L.</span>
-                              <span class="pill-score">90</span>
-                            </div>
-                            <div class="stream-pill done">
-                              <span class="student-mini-avatar">FA</span>
-                              <span class="student-pill-name">Farhan A.</span>
-                              <span class="pill-score">95</span>
-                            </div>
-                            <div class="stream-pill in-progress" id="stream-pill-dimas">
-                              <span class="student-mini-avatar">DS</span>
-                              <span class="student-pill-name">Dimas S.</span>
-                              <span class="pill-score score-wait" id="dimas-score-text">Menjawab...</span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Sleek Unibody MacBook Base Chin -->
-                <div class="macbook-chassis-base">
-                  <div class="macbook-thumb-notch"></div>
-                </div>
-              </div>
-
-              <!-- 2. SMARTPHONE (IPHONE) - PROPORTIONATE & CLEANLY LAYERED IN FRONT (NO PENETRATION) -->
-              <div class="iphone-static-device" id="iphone-device" onclick="simulateStudentQuizInteraction(event)">
-                <!-- Dynamic Island Notch -->
-                <div class="iphone-notch-pill">
-                  <span class="notch-camera"></span>
-                </div>
-
-                <!-- Live Student Quiz Screen -->
-                <div class="iphone-screen-content">
-                  <div class="phone-status-strip">
-                    <span>09:41</span>
-                    <div class="phone-icons-pack">
-                      <i data-lucide="wifi" style="width: 10px; height: 10px;"></i>
-                      <i data-lucide="battery-charging" style="width: 11px; height: 11px;"></i>
-                    </div>
-                  </div>
-
-                  <div class="phone-quiz-card">
-                    <div class="phone-quiz-meta">
-                      <span class="quiz-badge">Kuis Aljabar</span>
-                      <span class="quiz-timer">⏱ 12:45</span>
-                    </div>
-                    <div class="phone-q-num">Soal 3 dari 10</div>
-                    <div class="phone-question-text">
-                      Nilai <strong>x</strong> jika 2x + 6 = 14:
-                    </div>
-                    <div class="phone-options-group">
-                      <div class="phone-opt-btn"><span class="opt-bullet">A</span> <span>x = 2</span></div>
-                      <div class="phone-opt-btn active" id="phone-opt-b"><span class="opt-bullet">B</span> <span>x = 4</span> <span class="opt-check">✓</span></div>
-                      <div class="phone-opt-btn"><span class="opt-bullet">C</span> <span>x = 6</span></div>
-                    </div>
-                    <button class="phone-submit-btn" id="phone-quiz-submit" onclick="simulateStudentQuizInteraction(event)">
-                      <span id="phone-btn-text">Kirim Jawaban ➔</span>
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Real-Time Sync Pulse Beam (Connecting Phone to Laptop) -->
-              <div class="eco-data-beam" id="eco-data-beam"></div>
-            </div>
-
-            <!-- Interactive Click Trigger Hint Below Mockup -->
-            <div class="mockup-action-badge" onclick="triggerEcosystemLiveSync()">
-              <i data-lucide="play" style="width: 12px; height: 12px; fill: currentColor;"></i>
-              <span>Klik mockup untuk simulasikan sinkronisasi instan ⚡</span>
-            </div>
-
-          </div>
-
-          <!-- RIGHT COLUMN: PORTAL GURU (Sebaris dengan Laptop) -->
-          <div class="eco-column eco-column-right reveal-on-scroll" data-parallax-depth="0.10">
-            <div class="eco-badge-pill teacher-badge">
-              <i data-lucide="laptop" class="badge-icon-mini"></i>
-              <span>PORTAL GURU (Workspace Laptop &amp; Tablet)</span>
-            </div>
-            <h3 class="eco-col-title">Cockpit Lengkap Mengajar</h3>
-            <p class="eco-col-desc">
-              Pusat komando guru untuk mengelola seluruh siklus kelas dengan kenyamanan layar lebar, kalkulasi otomatis, dan asisten AI cerdas yang memahami konteks kurikulum.
-            </p>
-            <ul class="eco-features-list">
-              <li>
-                <div class="check-circle-icon ai-circle-icon"><span>✦</span></div>
-                <div>
-                  <strong>AI Modul Ajar Terstruktur (BSKAP)</strong>
-                  <span>Dari ide ke dokumen RPP/Modul lengkap siap ekspor Word (.docx) dalam hitungan detik.</span>
-                </div>
-              </li>
-              <li>
-                <div class="check-circle-icon"><i data-lucide="check"></i></div>
-                <div>
-                  <strong>Presensi 1-Tap &amp; Jurnal Digital</strong>
-                  <span>Kehadiran siswa terekam seketika dan langsung mengisi deskripsi jurnal mengajar.</span>
-                </div>
-              </li>
-              <li>
-                <div class="check-circle-icon"><i data-lucide="check"></i></div>
-                <div>
-                  <strong>Rekap Nilai Otomatis ke Excel &amp; e-Rapor</strong>
-                  <span>Koreksi instan langsung membentuk buku nilai tanpa mengetik rumus manual.</span>
-                </div>
-              </li>
-            </ul>
-
-            <div class="eco-interaction-hint hint-right" onclick="simulateLaptopWorkspaceClick()">
-              <i data-lucide="sparkles" class="hint-icon" style="color: #6366F1;"></i>
-              <span>Klik laptop guru untuk melihat simulasi rekap nilai otomatis ➔</span>
-            </div>
-          </div>
-
-        </div>
-
-        <!-- Mode Pantau Keluarga -->
-        <div class="family-monitoring-box" data-parallax-depth="-0.08">
-          <div class="family-icon-box">
-            <i data-lucide="heart-handshake" style="color: #0F766E;"></i>
-          </div>
-          <div class="family-text">
-            <h4 class="family-title">MODE PANTAU KELUARGA</h4>
-            <p class="family-desc">
-              Orang tua dapat mengikuti perkembangan kehadiran dan capaian belajar anak secara transparan tanpa birokrasi grup chat yang riuh dan menumpuk.
-            </p>
-          </div>
-        </div>
 
       </div>
     </section>
@@ -2319,7 +1435,7 @@
           Cara Lama vs Cara Kerja yang Naik Kelas.
         </h2>
         <p class="section-subheadline text-center">
-          Lihat perbedaan nyata pada jam kerja, tingkat stres, dan kualitas mengajar Anda.
+          Kuantifikasi perbedaan nyata pada jam kerja mingguan, tingkat stres, dan kualitas mengajar Anda bersama KLASSA.
         </p>
 
         <!-- Elegant Comparison Table -->
@@ -2327,85 +1443,336 @@
           <table class="comparison-table">
             <thead>
               <tr>
-                <th class="col-aspect">Aktivitas Mengajar</th>
-                <th class="col-before">CARA LAMA (Manual &amp; Terpecah)</th>
-                <th class="col-after">BERSAMA KLASSA (Terintegrasi)</th>
+                <th class="col-aspect">Aktivitas Guru</th>
+                <th class="col-before">CARA LAMA (Manual &amp; Tersebar)</th>
+                <th class="col-after">BERSAMA KLASSA (Teacher OS Terpadu)</th>
               </tr>
             </thead>
             <tbody>
               
+              <!-- 1. Presensi -->
               <tr class="table-row-item">
                 <td class="aspect-cell">
-                  <strong>Penyusunan RPP &amp; Modul</strong>
+                  <strong>1. Presensi Siswa Harian</strong><br>
+                  <small style="color: var(--text-muted);">Per Sesi Kelas</small>
                 </td>
                 <td class="before-cell">
-                  <div class="cell-status-tag tag-old">4–6 Jam</div>
-                  <span>Mengetik manual dari halaman kosong setiap pekan, mencocokkan kode Capaian Pembelajaran satu demi satu.</span>
+                  <div class="cell-status-tag tag-old">10–15 Menit</div>
+                  <span>Memanggil nama 36 siswa satu per satu dari kertas absen fisik, mencatat di buku, lalu merekap manual ke spreadsheet di akhir pekan.</span>
                 </td>
                 <td class="after-cell">
-                  <div class="cell-status-tag tag-new">±40 Detik ✦</div>
-                  <span>Draft lengkap tersusun sesuai sintaks regulasi BSKAP dan langsung siap diekspor ke Microsoft Word .docx.</span>
+                  <div class="cell-status-tag tag-new">1–2 Menit</div>
+                  <div class="cell-status-tag tag-eff">⚡ 85% Lebih Cepat</div>
+                  <span>Buka sesi <em>Live Teaching</em>, klik <strong>"Tandai Semua Hadir"</strong>, lalu toggle cepat <em>[S/I/A/T]</em> bagi siswa yang berhalangan. Rekap kumulatif otomatis terupdate seketika.</span>
                 </td>
               </tr>
 
+              <!-- 2. Jurnal -->
               <tr class="table-row-item">
                 <td class="aspect-cell">
-                  <strong>Koreksi Kuis &amp; Ulangan</strong>
+                  <strong>2. Jurnal Mengajar Harian</strong><br>
+                  <small style="color: var(--text-muted);">Administrasi Sesi</small>
                 </td>
                 <td class="before-cell">
-                  <div class="cell-status-tag tag-old">Lembur Berjam-jam</div>
-                  <span>Ratusan lembar kertas diperiksa satu per satu di rumah, rawan salah hitung saat input ke spreadsheet.</span>
+                  <div class="cell-status-tag tag-old">15–20 Menit</div>
+                  <span>Menulis tangan di buku agenda guru atau mengetik ulang judul materi, jam ajar, dan refleksi harian yang formatnya repetitif.</span>
                 </td>
                 <td class="after-cell">
-                  <div class="cell-status-tag tag-new">Detik Itu Juga</div>
-                  <span>Jawaban terkoreksi otomatis saat siswa submit kuis, nilai langsung tersimpan dan rekap Excel siap diunduh.</span>
+                  <div class="cell-status-tag tag-new">2–3 Menit</div>
+                  <div class="cell-status-tag tag-eff">⚡ 85% Lebih Cepat</div>
+                  <span>Topik otomatis terisi sinkron dari jadwal pelajaran mingguan, dilengkapi tombol <strong>"✨ Buat Catatan Otomatis via AI"</strong> untuk draf refleksi kelas instan.</span>
                 </td>
               </tr>
 
+              <!-- 3. Buku Nilai -->
               <tr class="table-row-item">
                 <td class="aspect-cell">
-                  <strong>Jurnal &amp; Absensi Harian</strong>
+                  <strong>3. Input Nilai &amp; Pembobotan</strong><br>
+                  <small style="color: var(--text-muted);">Kalkulasi Hasil Belajar</small>
                 </td>
                 <td class="before-cell">
-                  <div class="cell-status-tag tag-old">Buku Fisik &amp; Form</div>
-                  <span>Mencatat di buku kertas, lalu mengetik ulang ke buku agenda mengajar dan form online sekolah.</span>
+                  <div class="cell-status-tag tag-old">30–45 Menit</div>
+                  <span>Memasukkan nilai satu per satu dari kertas ulangan ke Excel, membuat formula perkalian bobot manual, menghitung rerata tugas dan asesmen.</span>
                 </td>
                 <td class="after-cell">
-                  <div class="cell-status-tag tag-new">1-Tap dari Smartphone</div>
-                  <span>Satu ketukan di HP, kehadiran terekam dan deskripsi jurnal harian otomatis sinkron dengan topik Modul Ajar.</span>
+                  <div class="cell-status-tag tag-new">5–10 Menit / 1-Klik</div>
+                  <div class="cell-status-tag tag-eff">⚡ 80% Lebih Cepat</div>
+                  <span>Matriks Buku Nilai responsif dengan formula bobot dinamis (Tugas/Formatif/Sumatif). Nilai akhir dan status kelulusan terhitung otomatis secara real-time.</span>
                 </td>
               </tr>
 
+              <!-- 4. Modul Ajar -->
               <tr class="table-row-item">
                 <td class="aspect-cell">
-                  <strong>Tracking Remedial Siswa</strong>
+                  <strong>4. Penyusunan Modul Ajar / RPP</strong><br>
+                  <small style="color: var(--text-muted);">Kurikulum Merdeka</small>
                 </td>
                 <td class="before-cell">
-                  <div class="cell-status-tag tag-old">Mencari Manual</div>
-                  <span>Menyisir puluhan baris nilai secara manual untuk mencari siswa yang belum memenuhi kriteria ketuntasan (KKTP).</span>
+                  <div class="cell-status-tag tag-old">3–6 Jam</div>
+                  <span>Mencari referensi, menyalin CP/TP, merancang apersepsi, kegiatan inti (PBL/PjBL), langkah asesmen, rubrik, dan penutup dari dokumen kosong.</span>
                 </td>
                 <td class="after-cell">
-                  <div class="cell-status-tag tag-new">Radar Otomatis</div>
-                  <span>Siswa yang butuh remedial langsung terdeteksi beserta topik kelemahannya, siap dengan rekomendasi latihan.</span>
+                  <div class="cell-status-tag tag-new">5–10 Menit</div>
+                  <div class="cell-status-tag tag-eff">⚡ 95% Lebih Cepat</div>
+                  <span>Generator AI menyusun draf lengkap berstandar regulasi Kemendikbudristek dalam hitungan detik, langsung siap diunduh format Microsoft Word (.docx).</span>
                 </td>
               </tr>
 
+              <!-- 5. PPT Presentasi -->
               <tr class="table-row-item">
                 <td class="aspect-cell">
-                  <strong>Laporan &amp; Pengisian e-Rapor</strong>
+                  <strong>5. Pembuatan Slide PPTX</strong><br>
+                  <small style="color: var(--text-muted);">Media Presentasi Visual</small>
                 </td>
                 <td class="before-cell">
-                  <div class="cell-status-tag tag-old">Panik Akhir Semester</div>
-                  <span>Mengumpulkan data tercecer berbulan-bulan lalu dan mengetik ulang deskripsi capaian rapor hingga larut malam.</span>
+                  <div class="cell-status-tag tag-old">2–4 Jam</div>
+                  <span>Membuka PowerPoint kosong, mencari template visual, copy-paste materi teks panjang, mengatur font layout, dan menyiapkan naskah bicara manual.</span>
                 </td>
                 <td class="after-cell">
-                  <div class="cell-status-tag tag-new">Tersusun dari Aktivitas Harian</div>
-                  <span>Nilai akhir dan narasi deskripsi capaian terbentuk otomatis tanpa perlu mengetik ulang data dari awal.</span>
+                  <div class="cell-status-tag tag-new">3–5 Menit</div>
+                  <div class="cell-status-tag tag-eff">⚡ 95% Lebih Cepat</div>
+                  <span>Adaptive PPT Engine menghasilkan slide visual modern berstruktur non-monoton, poin materi ringkas, dan <em>Speaker Notes</em> narasi guru siap tayang.</span>
+                </td>
+              </tr>
+
+              <!-- 6. LKPD -->
+              <tr class="table-row-item">
+                <td class="aspect-cell">
+                  <strong>6. Penyusunan LKPD Siswa</strong><br>
+                  <small style="color: var(--text-muted);">Lembar Aktivitas Belajar</small>
+                </td>
+                <td class="before-cell">
+                  <div class="cell-status-tag tag-old">1.5–3 Jam</div>
+                  <span>Merancang skenario masalah kontekstual, instruksi praktikum/studi kasus, tabel observasi, dan kolom isian jawaban murid secara manual.</span>
+                </td>
+                <td class="after-cell">
+                  <div class="cell-status-tag tag-new">3–5 Menit</div>
+                  <div class="cell-status-tag tag-eff">⚡ 95% Lebih Cepat</div>
+                  <span>AI Studio menghasilkan LKPD berbasis aktivitas nyata dan fenomena kontekstual lengkap dengan instruksi terstruktur dan ruang isian siswa siap cetak.</span>
+                </td>
+              </tr>
+
+              <!-- 7. Kisi-Kisi & Soal -->
+              <tr class="table-row-item">
+                <td class="aspect-cell">
+                  <strong>7. Kisi-Kisi &amp; Bank Soal HOTS</strong><br>
+                  <small style="color: var(--text-muted);">Instrumen Asesmen</small>
+                </td>
+                <td class="before-cell">
+                  <div class="cell-status-tag tag-old">2–4 Jam</div>
+                  <span>Menyusun tabel matriks taksonomi Bloom, merumuskan stimulus kontekstual, membuat 4–5 opsi pengecoh, serta kunci jawaban dan rubrik essay.</span>
+                </td>
+                <td class="after-cell">
+                  <div class="cell-status-tag tag-new">5–8 Menit</div>
+                  <div class="cell-status-tag tag-eff">⚡ 90% Lebih Cepat</div>
+                  <span>AI menyusun kisi-kisi lengkap dengan sebaran level kognitif C1–C6, butir soal PG/Essay bermutu tinggi, kunci jawaban, dan pembahasan mendalam.</span>
+                </td>
+              </tr>
+
+              <!-- 8. Kuis Online -->
+              <tr class="table-row-item">
+                <td class="aspect-cell">
+                  <strong>8. Pelaksanaan &amp; Koreksi Kuis</strong><br>
+                  <small style="color: var(--text-muted);">Evaluasi 36 Siswa</small>
+                </td>
+                <td class="before-cell">
+                  <div class="cell-status-tag tag-old">60–90 Menit</div>
+                  <span>Mencetak kertas ujian, membagikan, mengawasi fisik, mengumpulkan, dan memeriksa satu per satu lembar jawaban murid dengan bolpoin merah.</span>
+                </td>
+                <td class="after-cell">
+                  <div class="cell-status-tag tag-new">0–5 Menit</div>
+                  <div class="cell-status-tag tag-eff">⚡ 95% Lebih Cepat</div>
+                  <span>Bagikan tautan kuis digital web + PIN kelas. Jawaban PG terkoreksi 100% otomatis saat siswa submit, nilai langsung masuk ke Buku Nilai.</span>
+                </td>
+              </tr>
+
+              <!-- 9. Remedial -->
+              <tr class="table-row-item">
+                <td class="aspect-cell">
+                  <strong>9. Pelacakan Remedial (KKTP)</strong><br>
+                  <small style="color: var(--text-muted);">Intervensi Ketuntasan</small>
+                </td>
+                <td class="before-cell">
+                  <div class="cell-status-tag tag-old">20–30 Menit</div>
+                  <span>Mencari manual nama-nama murid yang nilainya di bawah KKM/KKTP, membuat rekap remedial terpisah, lalu memperbarui nilai pengganti.</span>
+                </td>
+                <td class="after-cell">
+                  <div class="cell-status-tag tag-new">Radar Instan</div>
+                  <div class="cell-status-tag tag-eff">⚡ 100% Otomatis</div>
+                  <span>Sistem otomatis menandai badge <em>"Butuh Remedial"</em> pada siswa di bawah ambang KKTP beserta histori pencatatan ujian perbaikan.</span>
+                </td>
+              </tr>
+
+              <!-- 10. Rapor -->
+              <tr class="table-row-item">
+                <td class="aspect-cell">
+                  <strong>10. Pelaporan Rapor Semester</strong><br>
+                  <small style="color: var(--text-muted);">Rekap Capaian Akhir</small>
+                </td>
+                <td class="before-cell">
+                  <div class="cell-status-tag tag-old">3–5 Hari Kerja</div>
+                  <span>Menggabungkan puluhan sheet Excel tercecer, menghitung nilai akhir, menyusun kalimat deskripsi capaian rapor satu per satu hingga lembur malam.</span>
+                </td>
+                <td class="after-cell">
+                  <div class="cell-status-tag tag-new">10–15 Menit</div>
+                  <div class="cell-status-tag tag-eff">⚡ 95% Lebih Cepat</div>
+                  <span>Sistem mengagregasi data semester otomatis, menghasilkan rekap nilai terformat rapi dan deskripsi naratif siap ekspor ke Excel / PDF e-Rapor.</span>
+                </td>
+              </tr>
+
+              <!-- 11. Komunikasi Ortu -->
+              <tr class="table-row-item">
+                <td class="aspect-cell">
+                  <strong>11. Komunikasi ke Orang Tua</strong><br>
+                  <small style="color: var(--text-muted);">Update Perkembangan Murid</small>
+                </td>
+                <td class="before-cell">
+                  <div class="cell-status-tag tag-old">2–3 Jam / Minggu</div>
+                  <span>Membalas chat WhatsApp orang tua satu per satu secara repetitif menanyakan kehadiran, kepatuhan tugas, dan nilai ulangan anak.</span>
+                </td>
+                <td class="after-cell">
+                  <div class="cell-status-tag tag-new">0 Jam (Self-Service)</div>
+                  <div class="cell-status-tag tag-eff">⚡ 100% Tereliminasi</div>
+                  <span>Orang tua memantau kehadiran dan capaian nilai resmi anak mereka secara mandiri dan transparan melalui Portal Orang Tua kapan saja.</span>
                 </td>
               </tr>
 
             </tbody>
           </table>
+        </div>
+
+        <!-- Highlight Summary: Konsep 3 - Floating Minimalist Capsule -->
+        <style>
+          .minimal-capsule-wrapper {
+            margin-top: 36px !important;
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            justify-content: center !important;
+            text-align: center !important;
+          }
+          .minimal-capsule {
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 14px !important;
+            background: #FFFFFF !important;
+            border: 1px solid #E2E8F0 !important;
+            padding: 10px 18px !important;
+            border-radius: 999px !important;
+            box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.08), 0 4px 6px -2px rgba(15, 23, 42, 0.03) !important;
+            max-width: 100% !important;
+            flex-wrap: wrap !important;
+            justify-content: center !important;
+          }
+          .capsule-pill {
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 8px !important;
+            padding: 8px 16px !important;
+            border-radius: 999px !important;
+            font-size: 0.92rem !important;
+            font-weight: 700 !important;
+            line-height: 1 !important;
+          }
+          .pill-old {
+            background-color: #F8FAFC !important;
+            color: #64748B !important;
+            border: 1px solid #E2E8F0 !important;
+          }
+          .pill-old .pill-val {
+            color: #EF4444 !important;
+            text-decoration: line-through !important;
+            font-weight: 800 !important;
+          }
+          .capsule-arrow {
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 8px !important;
+            color: #0F766E !important;
+            font-weight: 800 !important;
+            font-size: 0.85rem !important;
+          }
+          .capsule-arrow-icon {
+            font-size: 1.1rem !important;
+            color: #14B8A6 !important;
+          }
+          .capsule-savings-badge {
+            background: linear-gradient(135deg, #10B981 0%, #059669 100%) !important;
+            color: #FFFFFF !important;
+            font-size: 0.76rem !important;
+            font-weight: 800 !important;
+            padding: 5px 12px !important;
+            border-radius: 999px !important;
+            letter-spacing: 0.02em !important;
+            box-shadow: 0 2px 6px rgba(16, 185, 129, 0.3) !important;
+          }
+          .pill-new {
+            background: linear-gradient(135deg, rgba(204, 251, 241, 0.6) 0%, rgba(153, 246, 228, 0.6) 100%) !important;
+            color: #0F766E !important;
+            border: 1px solid #99F6E4 !important;
+          }
+          .pill-new .pill-val {
+            color: #0D9488 !important;
+            font-weight: 800 !important;
+            font-size: 1rem !important;
+          }
+          .minimal-capsule-subtext {
+            margin-top: 14px !important;
+            font-size: 0.92rem !important;
+            color: #64748B !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: 8px !important;
+            justify-content: center !important;
+            flex-wrap: wrap !important;
+          }
+          .subtext-strong {
+            color: #0F172A !important;
+            font-weight: 700 !important;
+          }
+          .subtext-dot {
+            color: #CBD5E1 !important;
+          }
+          @media (max-width: 640px) {
+            .minimal-capsule {
+              border-radius: 20px !important;
+              padding: 14px 16px !important;
+              gap: 10px !important;
+            }
+            .capsule-pill {
+              font-size: 0.85rem !important;
+              padding: 6px 12px !important;
+            }
+          }
+        </style>
+
+        <div class="minimal-capsule-wrapper">
+          <div class="minimal-capsule">
+            <!-- Old Mode -->
+            <div class="capsule-pill pill-old">
+              <span>⏱️ Cara Lama:</span>
+              <span class="pill-val">25–35 jam / minggu</span>
+            </div>
+
+            <!-- Arrow & Efficiency -->
+            <div class="capsule-arrow">
+              <span class="capsule-arrow-icon">➔</span>
+              <span class="capsule-savings-badge">⚡ Hemat ±85%</span>
+            </div>
+
+            <!-- New Mode (KLASSA) -->
+            <div class="capsule-pill pill-new">
+              <span>✦ Bersama KLASSA:</span>
+              <span class="pill-val">4–6 jam / minggu</span>
+            </div>
+          </div>
+
+          <!-- Micro Subtext -->
+          <div class="minimal-capsule-subtext">
+            <span>Menyelamatkan <span class="subtext-strong">20–29 jam istirahat guru</span> setiap minggu.</span>
+            <span class="subtext-dot">•</span>
+            <span>Bebas lembur koreksi tugas &amp; ketik RPP.</span>
+          </div>
         </div>
 
       </div>
@@ -2425,22 +1792,22 @@
           <div class="mid-cta-content" data-parallax-depth="-0.08">
             <div class="mid-badge">
               <span class="ai-sparkle">✦</span>
-              <span>Waktunya Mengubah Cara Kerja</span>
+              <span>Kembalikan Waktu Berharga Anda</span>
             </div>
             <h2 class="mid-headline">
-              Ingin Merasakan Akhir Pekan yang Tenang<br>
-              Tanpa Beban Mengetik RPP?
+              Birokrasi Tuntas dalam Detik.<br>
+              Hemat Hingga 29 Jam Setiap Pekan.
             </h2>
             <p class="mid-subheadline">
-              Buktikan sendiri bagaimana KLASSA mengembalikan jam istirahat dan keceriaan mengajar Anda.
+              Asisten AI pribadi yang mengurus Modul Ajar, koreksi ujian otomatis, dan rekapan nilai Kurikulum Merdeka Anda dalam satu ruang kerja cerdas.
             </p>
 
             <div class="mid-cta-actions">
               <button class="btn btn-primary btn-mid-primary" onclick="openTrialModal()">
-                <span>⚡ Mulai Uji Coba Gratis 7 Hari</span>
+                <span>⚡ Coba Gratis Sekarang — Tanpa Syarat</span>
               </button>
               <div class="mid-guarantee-note">
-                Tidak perlu kartu kredit • Setup akun ±1 menit
+                Tidak perlu kartu kredit • Setup akun ±1 menit • Akses fitur lengkap
               </div>
             </div>
           </div>
@@ -2571,7 +1938,7 @@
           </svg>
 
           <div class="final-cta-inner" data-parallax-depth="-0.08">
-            <div class="badge-tag">SAATNYA NAIK KELAS BERSAMA</div>
+            <div class="badge-tag">SAATNYA NAIKKAN KELASMU • ELEVATE YOUR CLASS</div>
             
             <h2 class="final-headline">
               Tidur Lebih Tenang Malam Ini.<br>
@@ -2612,15 +1979,9 @@
     <section class="faq-section" id="faq">
       <div class="container faq-container">
         
-        <div class="section-badge-center">
-          <span class="badge-tag">PERTANYAAN UMUM</span>
-        </div>
-        <h2 class="section-headline text-center">
-          Masih Ada yang Ingin Ditanyakan?
+        <h2 class="faq-simple-title text-center" style="font-size: 1.85rem; font-weight: 800; color: #0F172A; margin-bottom: 32px; letter-spacing: -0.02em;">
+          FAQ
         </h2>
-        <p class="section-subheadline text-center">
-          Berikut adalah jawaban transparan atas pertanyaan yang paling sering diajukan oleh para guru.
-        </p>
 
         <!-- Accordion List -->
         <div class="faq-accordion" id="faq-accordion">
@@ -2628,12 +1989,12 @@
           <!-- Item 1 -->
           <div class="accordion-item active" data-parallax-depth="-0.06">
             <button class="accordion-header" aria-expanded="true">
-              <span>Apakah saya yang kurang terbiasa dengan teknologi bisa menggunakan KLASSA?</span>
+              <span>Apa itu KLASSA dan bagaimana cara kerjanya?</span>
               <i data-lucide="chevron-down" class="accordion-arrow"></i>
             </button>
             <div class="accordion-body">
               <p>
-                <strong>Bisa.</strong> KLASSA dirancang khusus dengan antarmuka yang sangat sederhana, berbahasa Indonesia, mobile-friendly dari smartphone, dan tidak membutuhkan instalasi yang rumit. Jika Anda bisa menggunakan WhatsApp, Anda pasti bisa mengoperasikan KLASSA dengan mudah.
+                KLASSA adalah platform terpadu yang membantu guru mengelola kegiatan mengajar, mulai dari perencanaan pembelajaran, presensi, materi ajar, tugas, kuis dan ujian, penilaian, hingga pelaporan hasil belajar. Semuanya dirancang dalam satu ekosistem agar pekerjaan guru lebih terorganisir dan tidak perlu berpindah-pindah aplikasi.
               </p>
             </div>
           </div>
@@ -2641,12 +2002,12 @@
           <!-- Item 2 -->
           <div class="accordion-item" data-parallax-depth="0.06">
             <button class="accordion-header" aria-expanded="false">
-              <span>Apakah dokumen KLASSA mengikuti kebutuhan administrasi pendidikan?</span>
+              <span>Apakah KLASSA sulit digunakan oleh guru yang tidak terbiasa dengan teknologi?</span>
               <i data-lucide="chevron-down" class="accordion-arrow"></i>
             </button>
             <div class="accordion-body">
               <p>
-                <strong>Ya.</strong> KLASSA dirancang mengikuti struktur dan kebutuhan administrasi pembelajaran yang relevan dengan regulasi Kurikulum Merdeka (termasuk acuan pedoman BSKAP terkini), mencakup Capaian Pembelajaran (CP), Tujuan Pembelajaran (TP), sintaks berdiferensiasi, dan rubrik asesmen lengkap.
+                KLASSA dirancang dengan alur kerja yang sederhana dan tampilan yang mudah dipahami. Guru dapat mengakses fitur melalui Portal Guru yang terstruktur, tanpa harus menguasai keterampilan teknis atau pemrograman.
               </p>
             </div>
           </div>
@@ -2654,12 +2015,12 @@
           <!-- Item 3 -->
           <div class="accordion-item" data-parallax-depth="-0.06">
             <button class="accordion-header" aria-expanded="false">
-              <span>Apakah hasil Word (.docx) bisa diedit kembali?</span>
+              <span>Bagaimana KLASSA membantu pelaksanaan kuis dan ujian?</span>
               <i data-lucide="chevron-down" class="accordion-arrow"></i>
             </button>
             <div class="accordion-body">
               <p>
-                <strong>Bisa 100%.</strong> File hasil ekspor adalah dokumen Microsoft Word (.docx) asli yang rapi, bukan gambar atau PDF terkunci. Anda bebas mengedit tulisan, mengubah nama kepala sekolah, menambahkan logo sekolah, atau menyunting tabel di komputer Anda kapan saja.
+                Guru dapat menyiapkan kuis dan evaluasi melalui Portal Guru, sementara siswa mengerjakannya melalui Portal Siswa. KLASSA dirancang untuk membantu pengelolaan pengerjaan, jawaban, dan hasil evaluasi dalam satu alur. Fitur pengawasan ujian membantu mendeteksi aktivitas tertentu, tetapi tidak menjamin seluruh bentuk kecurangan dapat dicegah.
               </p>
             </div>
           </div>
@@ -2667,25 +2028,12 @@
           <!-- Item 4 -->
           <div class="accordion-item" data-parallax-depth="0.06">
             <button class="accordion-header" aria-expanded="false">
-              <span>Apakah siswa membutuhkan akun email untuk masuk ujian?</span>
+              <span>Apakah KLASSA bisa digunakan melalui HP dan laptop?</span>
               <i data-lucide="chevron-down" class="accordion-arrow"></i>
             </button>
             <div class="accordion-body">
               <p>
-                <strong>Tidak perlu.</strong> Siswa cukup membuka tautan kelas atau memasukkan Nomor Induk Siswa (NIS) dan PIN sesi yang diberikan guru. Tidak perlu mendaftarkan email Google, tidak perlu kata sandi rumit, dan tidak ada biaya bagi siswa.
-              </p>
-            </div>
-          </div>
-
-          <!-- Item 5 -->
-          <div class="accordion-item" data-parallax-depth="-0.06">
-            <button class="accordion-header" aria-expanded="false">
-              <span>Bagaimana dengan keamanan data siswa dan sekolah?</span>
-              <i data-lucide="chevron-down" class="accordion-arrow"></i>
-            </button>
-            <div class="accordion-body">
-              <p>
-                Data Anda sepenuhnya adalah milik Anda dan sekolah Anda. KLASSA menerapkan enkripsi data pada jaringan transmisi, penyimpanan server berbasis cloud yang aman, serta tidak memperjualbelikan data guru maupun siswa kepada pihak ketiga mana pun.
+                Portal Guru dirancang untuk ruang kerja yang lebih luas, sedangkan Portal Siswa dioptimalkan untuk penggunaan melalui ponsel.
               </p>
             </div>
           </div>
@@ -2706,9 +2054,9 @@
       <!-- Brand & Tagline Col -->
       <div class="footer-brand-col">
         <a href="#hero" class="footer-brand-link">
-          <img src="brand/klassa-logo-horizontal.svg" alt="KLASSA" class="footer-logo">
+          <img src="brand/Horizontal Logo New.svg" alt="KLASSA — Naikkan Kelasmu!" class="footer-logo">
         </a>
-        <div class="footer-tagline">NAIK KELAS BERSAMA</div>
+        <div class="footer-tagline">NAIKKAN KELASMU!</div>
         <p class="footer-statement">
           Ruang kerja terpadu agar proses ajar-mengajar berlangsung lebih berkelas, teratur, dan membahagiakan bagi pendidik Indonesia.
         </p>
@@ -2842,6 +2190,6 @@
   </div>
 
   <!-- Script -->
-  <script src="js/main.js?v=24.0"></script>
+  <script src="js/main.js?v=26.0"></script>
 </body>
 </html>

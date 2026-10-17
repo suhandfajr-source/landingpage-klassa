@@ -1,0 +1,1279 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Preview Komparasi 3 Rekomendasi Mobile — Kalkulator Beban Guru KLASSA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --primary: #0F766E;
+      --primary-dark: #073B3A;
+      --primary-light: #CCFBF1;
+      --mint-glow: #14B8A6;
+      --slate-900: #0F172A;
+      --slate-800: #1E293B;
+      --slate-600: #475569;
+      --slate-500: #64748B;
+      --slate-200: #E2E8F0;
+      --slate-100: #F1F5F9;
+      --slate-50: #F8FAFC;
+      --white: #FFFFFF;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: #F1F5F9;
+      color: var(--slate-800);
+      line-height: 1.5;
+      padding-bottom: 60px;
+    }
+
+    /* TOP NAVIGATION TOOLBAR */
+    .preview-header {
+      background: #0F172A;
+      color: #FFFFFF;
+      padding: 18px 24px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+    }
+
+    .preview-header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .preview-brand-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .preview-badge {
+      background: rgba(20, 184, 166, 0.2);
+      border: 1px solid rgba(20, 184, 166, 0.5);
+      color: #5EEAD4;
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .preview-title {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: #FFFFFF;
+    }
+
+    /* REKOMENDASI TABS SWITCHER */
+    .recommendation-switcher {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.08);
+      padding: 4px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      flex-wrap: wrap;
+    }
+
+    .switch-btn {
+      background: transparent;
+      border: none;
+      color: #94A3B8;
+      font-family: inherit;
+      font-size: 0.82rem;
+      font-weight: 700;
+      padding: 8px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .switch-btn:hover {
+      color: #FFFFFF;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .switch-btn.active {
+      background: #0F766E;
+      color: #FFFFFF;
+      box-shadow: 0 2px 8px rgba(15, 118, 110, 0.4);
+    }
+
+    .switch-btn .recom-tag {
+      font-size: 0.65rem;
+      background: #10B981;
+      color: #FFFFFF;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    /* VIEW SIMULATOR TOGGLE */
+    .view-mode-toggle {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      color: #CBD5E1;
+    }
+
+    .toggle-pill-btn {
+      background: #334155;
+      color: #E2E8F0;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 0.76rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .toggle-pill-btn.active {
+      background: #38BDF8;
+      color: #0F172A;
+    }
+
+    /* MAIN CONTAINER */
+    .preview-body-container {
+      max-width: 1200px;
+      margin: 28px auto 0 auto;
+      padding: 0 20px;
+    }
+
+    .explainer-banner {
+      background: #FFFFFF;
+      border-radius: 16px;
+      padding: 18px 24px;
+      border: 1px solid #CBD5E1;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .explainer-title {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--slate-900);
+      margin-bottom: 4px;
+    }
+
+    .explainer-desc {
+      font-size: 0.88rem;
+      color: var(--slate-600);
+    }
+
+    .explainer-chips {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .e-chip {
+      font-size: 0.74rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 99px;
+      background: #F0FDFA;
+      color: #0F766E;
+      border: 1px solid #CCFBF1;
+    }
+
+    /* DEVICE FRAME CONTAINER */
+    .device-stage {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      margin-top: 10px;
+    }
+
+    /* PHONE FRAME */
+    .phone-mockup {
+      width: 410px;
+      max-width: 100%;
+      background: #FFFFFF;
+      border-radius: 36px;
+      box-shadow: 0 25px 60px -15px rgba(15, 23, 42, 0.35), 0 0 0 10px #1E293B, 0 0 0 12px #334155;
+      overflow: hidden;
+      border: 1px solid #CBD5E1;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .phone-mockup.mode-expanded {
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      border: 1px solid #CBD5E1;
+    }
+
+    .phone-notch {
+      background: #1E293B;
+      height: 24px;
+      width: 150px;
+      margin: 0 auto 12px auto;
+      border-bottom-left-radius: 14px;
+      border-bottom-right-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .phone-mockup.mode-expanded .phone-notch {
+      display: none;
+    }
+
+    .phone-speaker {
+      width: 45px;
+      height: 4px;
+      background: #475569;
+      border-radius: 2px;
+    }
+
+    .phone-screen {
+      padding: 16px 18px 30px 18px;
+      background: #F8FAFC;
+      max-height: 820px;
+      overflow-y: auto;
+    }
+
+    .phone-mockup.mode-expanded .phone-screen {
+      max-height: none;
+      padding: 30px;
+    }
+
+    /* =====================================================================
+       COMMON CALCULATOR ELEMENTS (Sliders, Bubbles, Inputs)
+       ===================================================================== */
+    .calc-card-panel {
+      background: #FFFFFF;
+      border: 1.5px solid #E2E8F0;
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.05);
+    }
+
+    .sim-badge-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: #F0FDFA;
+      color: #0F766E;
+      border: 1px solid #CCFBF1;
+      padding: 3px 10px;
+      border-radius: 99px;
+      font-size: 0.7rem;
+      font-weight: 800;
+      width: fit-content;
+      margin-bottom: 8px;
+    }
+
+    .sim-title {
+      font-size: 1.28rem;
+      font-weight: 800;
+      color: #0F172A;
+      margin-bottom: 6px;
+    }
+
+    .sim-desc {
+      font-size: 0.84rem;
+      color: #64748B;
+      line-height: 1.45;
+      margin-bottom: 16px;
+    }
+
+    .slider-item-block {
+      margin-bottom: 16px;
+    }
+
+    .slider-head-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+
+    .slider-item-label {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #1E293B;
+    }
+
+    .slider-val-badge {
+      background: #0F766E;
+      color: #FFFFFF;
+      font-size: 0.74rem;
+      font-weight: 800;
+      padding: 3px 10px;
+      border-radius: 99px;
+    }
+
+    input[type=range].sim-slider {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 7px;
+      border-radius: 99px;
+      background: #E2E8F0;
+      outline: none;
+      margin: 6px 0;
+    }
+
+    input[type=range].sim-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #FFFFFF;
+      border: 3px solid #0F766E;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+    }
+
+    .slider-scale-text {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.68rem;
+      color: #94A3B8;
+      font-weight: 600;
+    }
+
+    /* =====================================================================
+       REKOMENDASI 1 SPECIFIC STYLES:
+       Compact Live-Total Card + Collapsible Rincian
+       ===================================================================== */
+    .r1-total-hero {
+      background: linear-gradient(135deg, #073B3A 0%, #0F766E 100%);
+      border-radius: 16px;
+      padding: 18px 20px;
+      color: #FFFFFF;
+      margin: 18px 0 14px 0;
+      box-shadow: 0 8px 20px -4px rgba(7, 59, 58, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .r1-total-hero-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.7rem;
+      font-weight: 800;
+      color: #5EEAD4;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 6px;
+    }
+
+    .r1-total-main-flex {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+    }
+
+    .r1-total-number {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 900;
+      line-height: 1;
+      color: #FFFFFF;
+    }
+
+    .r1-total-unit {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: #5EEAD4;
+    }
+
+    .r1-students-note {
+      font-size: 0.8rem;
+      color: #E2E8F0;
+      margin-top: 4px;
+    }
+
+    .r1-students-highlight {
+      color: #FDE047;
+      font-weight: 700;
+    }
+
+    /* COLLAPSIBLE ACCORDION BUTTON FOR RINCIAN */
+    .r1-collapsible-btn {
+      width: 100%;
+      background: #F8FAFC;
+      border: 1px solid #CBD5E1;
+      padding: 12px 16px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 0.84rem;
+      font-weight: 700;
+      color: #1E293B;
+      transition: all 0.2s ease;
+    }
+
+    .r1-collapsible-btn:hover {
+      background: #F1F5F9;
+      border-color: #0F766E;
+    }
+
+    .r1-collapsible-btn.open {
+      background: #F0FDFA;
+      border-color: #99F6E4;
+      color: #0F766E;
+    }
+
+    .r1-arrow-icon {
+      font-size: 0.9rem;
+      transition: transform 0.25s ease;
+    }
+
+    .r1-collapsible-btn.open .r1-arrow-icon {
+      transform: rotate(180deg);
+    }
+
+    .r1-collapsible-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease;
+    }
+
+    .r1-collapsible-body.open {
+      max-height: 500px;
+    }
+
+    .r1-breakdown-grid-2x2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .r1-mini-card {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 10px;
+      padding: 10px 12px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    }
+
+    .r1-mini-title {
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: #64748B;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .r1-mini-val {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: #0F766E;
+      line-height: 1.1;
+    }
+
+    .r1-mini-sub {
+      font-size: 0.65rem;
+      color: #94A3B8;
+      display: block;
+      margin-top: 2px;
+    }
+
+    /* =====================================================================
+       REKOMENDASI 2 SPECIFIC STYLES:
+       Segmented Tabs (Atur Slider vs Lihat Hasil)
+       ===================================================================== */
+    .r2-segmented-control {
+      display: flex;
+      background: #E2E8F0;
+      border-radius: 12px;
+      padding: 4px;
+      margin-bottom: 16px;
+      gap: 4px;
+    }
+
+    .r2-segment-btn {
+      flex: 1;
+      border: none;
+      background: transparent;
+      padding: 10px 12px;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #475569;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: center;
+    }
+
+    .r2-segment-btn.active {
+      background: #FFFFFF;
+      color: #0F766E;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    }
+
+    .r2-tab-content {
+      display: none;
+    }
+
+    .r2-tab-content.active {
+      display: block;
+      animation: fadeIn 0.25s ease;
+    }
+
+    .r2-floating-next-btn {
+      margin-top: 14px;
+      width: 100%;
+      background: #0F766E;
+      color: #FFFFFF;
+      border: none;
+      padding: 12px 16px;
+      border-radius: 12px;
+      font-family: inherit;
+      font-size: 0.86rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 4px 12px rgba(15, 118, 110, 0.3);
+    }
+
+    .r2-floating-next-btn:hover {
+      background: #0d5f58;
+    }
+
+    .r2-back-btn {
+      background: transparent;
+      border: 1px solid #CBD5E1;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #475569;
+      cursor: pointer;
+      margin-bottom: 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* =====================================================================
+       REKOMENDASI 3 SPECIFIC STYLES:
+       Compact 2x2 Grid + Micro Summary Bar
+       ===================================================================== */
+    .r3-grid-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .r3-micro-hero-bar {
+      background: linear-gradient(135deg, #073B3A 0%, #0F766E 100%);
+      color: #FFFFFF;
+      padding: 14px 18px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 4px 14px rgba(7, 59, 58, 0.25);
+    }
+
+    .r3-micro-left-label {
+      font-size: 0.72rem;
+      color: #5EEAD4;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .r3-micro-left-sub {
+      font-size: 0.78rem;
+      color: #E2E8F0;
+    }
+
+    .r3-micro-right-val {
+      font-size: 1.85rem;
+      font-weight: 900;
+      color: #FFFFFF;
+      text-align: right;
+      line-height: 1;
+    }
+
+    .r3-micro-right-unit {
+      font-size: 0.72rem;
+      color: #5EEAD4;
+      font-weight: 700;
+      display: block;
+    }
+
+    .r3-breakdown-2x2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    /* REKOMENDASI 4: DESKTOP ORIGINAL PREVIEW */
+    .r4-desktop-simulation {
+      display: grid;
+      grid-template-columns: 260px 1fr 300px;
+      gap: 20px;
+      padding: 24px;
+      background: #FFFFFF;
+      border-radius: 20px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* COMPARISON PROS & CONS TABLE */
+    .comparison-summary-table {
+      margin-top: 36px;
+      background: #FFFFFF;
+      border-radius: 16px;
+      border: 1px solid #CBD5E1;
+      padding: 24px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .comp-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+      margin-top: 14px;
+    }
+
+    .comp-table th {
+      background: #F8FAFC;
+      padding: 12px 16px;
+      text-align: left;
+      font-weight: 800;
+      color: #0F172A;
+      border-bottom: 2px solid #E2E8F0;
+    }
+
+    .comp-table td {
+      padding: 14px 16px;
+      border-bottom: 1px solid #F1F5F9;
+      vertical-align: top;
+    }
+
+    .badge-winner {
+      background: #ECFDF5;
+      color: #059669;
+      border: 1px solid #A7F3D0;
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 99px;
+      display: inline-block;
+      margin-bottom: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <header class="preview-header">
+    <div class="preview-header-inner">
+      <div class="preview-brand-info">
+        <span class="preview-badge">LIVE LAB PREVIEW</span>
+        <div class="preview-title">Komparasi 3 Solusi Mobile — Kalkulator Beban Guru</div>
+      </div>
+
+      <!-- TABS SELECTOR -->
+      <div class="recommendation-switcher">
+        <button class="switch-btn active" onclick="switchRecommendation('recom-1')">
+          <span>Rekomendasi 1</span>
+          <span class="recom-tag">⭐ Terfavorit</span>
+        </button>
+        <button class="switch-btn" onclick="switchRecommendation('recom-2')">
+          <span>Rekomendasi 2</span>
+        </button>
+        <button class="switch-btn" onclick="switchRecommendation('recom-3')">
+          <span>Rekomendasi 3</span>
+        </button>
+        <button class="switch-btn" onclick="switchRecommendation('recom-desktop')">
+          <span>💻 Asli Desktop</span>
+        </button>
+      </div>
+
+      <!-- TOGGLE SIMULASI HP vs LEBAR -->
+      <div class="view-mode-toggle">
+        <span>Tampilan:</span>
+        <button class="toggle-pill-btn active" id="btn-phone-frame" onclick="setFrameMode('phone')">📱 Frame HP</button>
+        <button class="toggle-pill-btn" id="btn-wide-frame" onclick="setFrameMode('wide')">🖥️ Lebar Penuh</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- BODY CONTENT -->
+  <main class="preview-body-container">
+
+    <!-- EXPLAINER BANNER (Dynamic per tab) -->
+    <div class="explainer-banner" id="explainer-box">
+      <div>
+        <h2 class="explainer-title" id="exp-title">🌟 Rekomendasi 1: Live-Total Bar + Collapsible Rincian</h2>
+        <p class="explainer-desc" id="exp-desc">
+          Total waktu (19.9 Jam) ditaruh tepat di bawah slider sehingga angkanya langsung berganti saat digeser. Rincian 4 aktivitas disembunyikan di balik tombol dropdown rapi.
+        </p>
+      </div>
+      <div class="explainer-chips" id="exp-chips">
+        <span class="e-chip">⚡ Hemat 65% Scroll</span>
+        <span class="e-chip">🎯 Live Feedback Visual</span>
+        <span class="e-chip">📱 Jempol Friendly</span>
+      </div>
+    </div>
+
+    <!-- DEVICE STAGE SIMULATOR -->
+    <div class="device-stage">
+      
+      <div class="phone-mockup" id="phone-container">
+        <div class="phone-notch"><div class="phone-speaker"></div></div>
+        
+        <div class="phone-screen">
+
+          <!-- ==============================================================
+               1. REKOMENDASI 1 CONTENT (Active by default)
+               ============================================================== -->
+          <div id="recom-1" class="recom-view">
+            
+            <div class="calc-card-panel">
+              <div class="sim-badge-row">
+                <span>⚡ SIMULASI BEBAN GURU</span>
+              </div>
+              <h3 class="sim-title">Coba Hitung Bebanmu</h3>
+              <p class="sim-desc">
+                Geser nilai di bawah sesuai jam mengajar Anda dan saksikan estimasi waktu kerja yang tersita.
+              </p>
+
+              <!-- SLIDERS -->
+              <div class="slider-item-block">
+                <div class="slider-head-row">
+                  <span class="slider-item-label">Jumlah kelas diampu</span>
+                  <span class="slider-val-badge" id="r1-classes-disp">5 Kelas</span>
+                </div>
+                <input type="range" class="sim-slider" min="1" max="10" step="1" value="5" oninput="runCalculation(this.value, 'classes')">
+                <div class="slider-scale-text">
+                  <span>1</span>
+                  <span>5 Kelas (Rata-rata)</span>
+                  <span>10</span>
+                </div>
+              </div>
+
+              <div class="slider-item-block">
+                <div class="slider-head-row">
+                  <span class="slider-item-label">Siswa per kelas</span>
+                  <span class="slider-val-badge" id="r1-students-disp">32 Siswa</span>
+                </div>
+                <input type="range" class="sim-slider" min="15" max="45" step="1" value="32" oninput="runCalculation(this.value, 'students')">
+                <div class="slider-scale-text">
+                  <span>15</span>
+                  <span>32 Siswa</span>
+                  <span>45</span>
+                </div>
+              </div>
+
+              <div class="slider-item-block">
+                <div class="slider-head-row">
+                  <span class="slider-item-label">Topik modul ajar</span>
+                  <span class="slider-val-badge" id="r1-topics-disp">4 Topik</span>
+                </div>
+                <input type="range" class="sim-slider" min="1" max="12" step="1" value="4" oninput="runCalculation(this.value, 'topics')">
+                <div class="slider-scale-text">
+                  <span>1</span>
+                  <span>4 Topik</span>
+                  <span>12</span>
+                </div>
+              </div>
+
+              <div class="slider-item-block" style="margin-bottom: 0;">
+                <div class="slider-head-row">
+                  <span class="slider-item-label">Durasi koreksi ujian</span>
+                  <span class="slider-val-badge" id="r1-grading-disp">45 Detik</span>
+                </div>
+                <input type="range" class="sim-slider" min="30" max="120" step="5" value="45" oninput="runCalculation(this.value, 'grading')">
+                <div class="slider-scale-text">
+                  <span>30 dtk</span>
+                  <span>45 dtk</span>
+                  <span>120 dtk</span>
+                </div>
+              </div>
+
+              <!-- LIVE TOTAL HERO (RIGHT BELOW SLIDERS!) -->
+              <div class="r1-total-hero">
+                <div class="r1-total-hero-header">
+                  <span>⚡ Total Estimasi Beban</span>
+                  <span style="background: rgba(255,255,255,0.15); padding: 2px 6px; border-radius: 4px;">Per Topik &amp; Ujian</span>
+                </div>
+                <div class="r1-total-main-flex">
+                  <span class="r1-total-number" id="r1-total-hours">19.9</span>
+                  <span class="r1-total-unit">JAM KERJA</span>
+                </div>
+                <div class="r1-students-note">
+                  Untuk <span class="r1-students-highlight" id="r1-total-students">160 Siswa Total</span> (Kombinasi administrasi rutin)
+                </div>
+              </div>
+
+              <!-- COLLAPSIBLE ACCORDION FOR 4 BREAKDOWN CARDS -->
+              <button class="r1-collapsible-btn" id="r1-toggle-btn" onclick="toggleR1Accordion()">
+                <span>📊 Lihat Rincian Estimasi (4 Aktivitas)</span>
+                <span class="r1-arrow-icon">▼</span>
+              </button>
+
+              <div class="r1-collapsible-body" id="r1-collapse-body">
+                <div class="r1-breakdown-grid-2x2">
+                  <div class="r1-mini-card">
+                    <span class="r1-mini-title">📖 Modul Ajar</span>
+                    <span class="r1-mini-val" id="r1-mod-hours">14.0 Jam</span>
+                    <span class="r1-mini-sub" id="r1-mod-sub">4 Topik × 3.5 jam</span>
+                  </div>
+
+                  <div class="r1-mini-card">
+                    <span class="r1-mini-title">✍️ Koreksi Ujian</span>
+                    <span class="r1-mini-val" id="r1-grad-hours">2.0 Jam</span>
+                    <span class="r1-mini-sub" id="r1-grad-sub">160 Siswa × 45 dtk</span>
+                  </div>
+
+                  <div class="r1-mini-card">
+                    <span class="r1-mini-title">📊 Spreadsheet</span>
+                    <span class="r1-mini-val" id="r1-sheet-hours">1.2 Jam</span>
+                    <span class="r1-mini-sub">640 Sel Nilai</span>
+                  </div>
+
+                  <div class="r1-mini-card">
+                    <span class="r1-mini-title">📑 Narasi Rapor</span>
+                    <span class="r1-mini-val" id="r1-rap-hours">2.7 Jam</span>
+                    <span class="r1-mini-sub">320 Kalimat</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <!-- ==============================================================
+               2. REKOMENDASI 2 CONTENT (Segmented Tabs)
+               ============================================================== -->
+          <div id="recom-2" class="recom-view" style="display: none;">
+            
+            <div class="calc-card-panel">
+              <div class="sim-badge-row">
+                <span>⚡ MODE TABS INTERAKTIF</span>
+              </div>
+              <h3 class="sim-title">Coba Hitung Bebanmu</h3>
+
+              <!-- 2 Segmented Tabs -->
+              <div class="r2-segmented-control">
+                <button class="r2-segment-btn active" id="r2-tab-btn-1" onclick="switchR2Tab('input')">⚙️ Atur Data Anda</button>
+                <button class="r2-segment-btn" id="r2-tab-btn-2" onclick="switchR2Tab('result')">📊 Hasil Beban (<span id="r2-tab-pill-val">19.9 Jam</span>)</button>
+              </div>
+
+              <!-- TAB 1: SLIDERS ONLY -->
+              <div id="r2-tab-input" class="r2-tab-content active">
+                <div class="slider-item-block">
+                  <div class="slider-head-row">
+                    <span class="slider-item-label">Jumlah kelas diampu</span>
+                    <span class="slider-val-badge" id="r2-classes-disp">5 Kelas</span>
+                  </div>
+                  <input type="range" class="sim-slider" min="1" max="10" step="1" value="5" oninput="runCalculation(this.value, 'classes')">
+                </div>
+
+                <div class="slider-item-block">
+                  <div class="slider-head-row">
+                    <span class="slider-item-label">Siswa per kelas</span>
+                    <span class="slider-val-badge" id="r2-students-disp">32 Siswa</span>
+                  </div>
+                  <input type="range" class="sim-slider" min="15" max="45" step="1" value="32" oninput="runCalculation(this.value, 'students')">
+                </div>
+
+                <div class="slider-item-block">
+                  <div class="slider-head-row">
+                    <span class="slider-item-label">Topik modul ajar</span>
+                    <span class="slider-val-badge" id="r2-topics-disp">4 Topik</span>
+                  </div>
+                  <input type="range" class="sim-slider" min="1" max="12" step="1" value="4" oninput="runCalculation(this.value, 'topics')">
+                </div>
+
+                <div class="slider-item-block">
+                  <div class="slider-head-row">
+                    <span class="slider-item-label">Durasi koreksi per lembar</span>
+                    <span class="slider-val-badge" id="r2-grading-disp">45 Detik</span>
+                  </div>
+                  <input type="range" class="sim-slider" min="30" max="120" step="5" value="45" oninput="runCalculation(this.value, 'grading')">
+                </div>
+
+                <!-- Floating next button with live preview -->
+                <button class="r2-floating-next-btn" onclick="switchR2Tab('result')">
+                  <span>Lihat Kalkulasi Beban</span>
+                  <span id="r2-btn-total-preview">19.9 Jam ➔</span>
+                </button>
+              </div>
+
+              <!-- TAB 2: RESULT ONLY -->
+              <div id="r2-tab-result" class="r2-tab-content">
+                <button class="r2-back-btn" onclick="switchR2Tab('input')">
+                  <span>← Ubah Parameter Slider</span>
+                </button>
+
+                <div class="r1-total-hero" style="margin-top: 0;">
+                  <div class="r1-total-hero-header">
+                    <span>TOTAL ESTIMASI WAKTU</span>
+                    <span style="color: #FDE047;" id="r2-res-students-tag">160 Siswa</span>
+                  </div>
+                  <div class="r1-total-main-flex">
+                    <span class="r1-total-number" id="r2-total-hours">19.9</span>
+                    <span class="r1-total-unit">JAM KERJA</span>
+                  </div>
+                </div>
+
+                <h4 style="font-size: 0.85rem; font-weight: 800; color: #1E293B; margin: 12px 0 8px 0;">Rincian 4 Aktivitas:</h4>
+                <div class="r1-breakdown-grid-2x2">
+                  <div class="r1-mini-card">
+                    <span class="r1-mini-title">📖 Modul Ajar</span>
+                    <span class="r1-mini-val" id="r2-mod-hours">14.0 Jam</span>
+                  </div>
+                  <div class="r1-mini-card">
+                    <span class="r1-mini-title">✍️ Koreksi Ujian</span>
+                    <span class="r1-mini-val" id="r2-grad-hours">2.0 Jam</span>
+                  </div>
+                  <div class="r1-mini-card">
+                    <span class="r1-mini-title">📊 Spreadsheet</span>
+                    <span class="r1-mini-val" id="r2-sheet-hours">1.2 Jam</span>
+                  </div>
+                  <div class="r1-mini-card">
+                    <span class="r1-mini-title">📑 Narasi Rapor</span>
+                    <span class="r1-mini-val" id="r2-rap-hours">2.7 Jam</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <!-- ==============================================================
+               3. REKOMENDASI 3 CONTENT (2x2 Grid + Micro Summary)
+               ============================================================== -->
+          <div id="recom-3" class="recom-view" style="display: none;">
+            
+            <div class="calc-card-panel">
+              <div class="sim-badge-row">
+                <span>⚡ 2x2 COMPACT GRID</span>
+              </div>
+              <h3 class="sim-title">Coba Hitung Bebanmu</h3>
+
+              <!-- SLIDERS COMPACT -->
+              <div class="slider-item-block">
+                <div class="slider-head-row">
+                  <span class="slider-item-label">Jumlah kelas</span>
+                  <span class="slider-val-badge" id="r3-classes-disp">5 Kelas</span>
+                </div>
+                <input type="range" class="sim-slider" min="1" max="10" step="1" value="5" oninput="runCalculation(this.value, 'classes')">
+              </div>
+
+              <div class="slider-item-block">
+                <div class="slider-head-row">
+                  <span class="slider-item-label">Siswa per kelas</span>
+                  <span class="slider-val-badge" id="r3-students-disp">32 Siswa</span>
+                </div>
+                <input type="range" class="sim-slider" min="15" max="45" step="1" value="32" oninput="runCalculation(this.value, 'students')">
+              </div>
+
+              <div class="slider-item-block">
+                <div class="slider-head-row">
+                  <span class="slider-item-label">Topik modul ajar</span>
+                  <span class="slider-val-badge" id="r3-topics-disp">4 Topik</span>
+                </div>
+                <input type="range" class="sim-slider" min="1" max="12" step="1" value="4" oninput="runCalculation(this.value, 'topics')">
+              </div>
+
+              <div class="slider-item-block">
+                <div class="slider-head-row">
+                  <span class="slider-item-label">Durasi koreksi ujian</span>
+                  <span class="slider-val-badge" id="r3-grading-disp">45 Detik</span>
+                </div>
+                <input type="range" class="sim-slider" min="30" max="120" step="5" value="45" oninput="runCalculation(this.value, 'grading')">
+              </div>
+
+              <!-- MICRO SUMMARY STRIP BAR -->
+              <div class="r3-micro-hero-bar" style="margin: 16px 0 12px 0;">
+                <div>
+                  <div class="r3-micro-left-label">⚡ ESTIMASI TOTAL BEBAN</div>
+                  <div class="r3-micro-left-sub">Kombinasi <strong id="r3-total-students">160 Siswa</strong></div>
+                </div>
+                <div>
+                  <div class="r3-micro-right-val" id="r3-total-hours">19.9</div>
+                  <span class="r3-micro-right-unit">JAM KERJA</span>
+                </div>
+              </div>
+
+              <!-- 2x2 GRID ALWAYS VISIBLE (COMPACT) -->
+              <div class="r3-breakdown-2x2">
+                <div class="r1-mini-card">
+                  <span class="r1-mini-title">📖 Modul Ajar</span>
+                  <span class="r1-mini-val" id="r3-mod-hours">14.0 Jam</span>
+                </div>
+                <div class="r1-mini-card">
+                  <span class="r1-mini-title">✍️ Koreksi Ujian</span>
+                  <span class="r1-mini-val" id="r3-grad-hours">2.0 Jam</span>
+                </div>
+                <div class="r1-mini-card">
+                  <span class="r1-mini-title">📊 Spreadsheet</span>
+                  <span class="r1-mini-val" id="r3-sheet-hours">1.2 Jam</span>
+                </div>
+                <div class="r1-mini-card">
+                  <span class="r1-mini-title">📑 Narasi Rapor</span>
+                  <span class="r1-mini-val" id="r3-rap-hours">2.7 Jam</span>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <!-- ==============================================================
+               4. ASLI DESKTOP PREVIEW (Untuk pembanding)
+               ============================================================== -->
+          <div id="recom-desktop" class="recom-view" style="display: none;">
+            
+            <div style="background: #FFFFFF; border-radius: 16px; padding: 20px; border: 1.5px solid #E2E8F0;">
+              <span class="badge-winner" style="margin-bottom: 8px;">REFERENSI TAMPILAN LAPTOP</span>
+              <p style="font-size: 0.85rem; color: #64748B; margin-bottom: 16px;">
+                Di layar laptop (layar lebar), ketiga opsi di atas akan otomatis kembali ke layout 3-kolom berdampingan yang lengkap seperti ini:
+              </p>
+
+              <div style="background: #F8FAFC; border: 1px dashed #CBD5E1; border-radius: 12px; padding: 16px; font-size: 0.82rem;">
+                <strong>Kolom 1:</strong> Intro, judul &amp; tips matematis<br>
+                <strong>Kolom 2:</strong> 4 Slider interaktif<br>
+                <strong>Kolom 3:</strong> 4 Kartu rincian vertikal + Hero card total jam
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- COMPARISON TABLE OF 3 RECOMMENDATIONS -->
+    <div class="comparison-summary-table">
+      <h3 style="font-size: 1.15rem; font-weight: 800; color: #0F172A;">Perbandingan Singkat Ketiga Rekomendasi</h3>
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th style="width: 28%;">Fitur &amp; Karakter</th>
+            <th style="width: 24%;">⭐ Rekomendasi 1 (Live Total + Collapsible)</th>
+            <th style="width: 24%;">Rekomendasi 2 (Segmented Tabs)</th>
+            <th style="width: 24%;">Rekomendasi 3 (2x2 Grid + Micro Bar)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Panjang Halaman di HP</strong></td>
+            <td><span class="badge-winner">⚡ Sangat Ramping (-65%)</span></td>
+            <td><span class="badge-winner">⚡ Paling Singkat (1 Layar)</span></td>
+            <td>Sedang (-40%)</td>
+          </tr>
+          <tr>
+            <td><strong>Respon Visual saat Slider Digeser</strong></td>
+            <td><strong>Langsung terlihat</strong> di bawah slider</td>
+            <td>Terlihat di tombol / pindah tab</td>
+            <td><strong>Langsung terlihat</strong> di micro bar</td>
+          </tr>
+          <tr>
+            <td><strong>Rincian 4 Aktivitas</strong></td>
+            <td>Dropdown 1-klik (rapi &amp; opsional)</td>
+            <td>Tersedia di Tab 2</td>
+            <td>Selalu tampil langsung (grid 2x2)</td>
+          </tr>
+          <tr>
+            <td><strong>Rekomendasi Untuk</strong></td>
+            <td><strong>Pilihan Terbaik</strong> untuk fleksibilitas &amp; kecepatan</td>
+            <td>Pengguna yang suka rasa aplikasi mobile (*app-like*)</td>
+            <td>Pengguna yang ingin semua data langsung terlihat</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </main>
+
+  <script>
+    // Calculator State
+    let state = {
+      classes: 5,
+      students: 32,
+      topics: 4,
+      grading: 45
+    };
+
+    function runCalculation(val, type) {
+      if (type) state[type] = parseInt(val, 10);
+
+      const totalStudents = state.classes * state.students;
+      const moduleHours = state.topics * 3.5;
+      const gradingHours = (totalStudents * state.grading) / 3600;
+      const spreadsheetCells = totalStudents * 4;
+      const spreadsheetHours = (spreadsheetCells * 7) / 3600;
+      const reportHours = (totalStudents * 1) / 60;
+      const totalHours = moduleHours + gradingHours + spreadsheetHours + reportHours;
+
+      // Update All Previews
+      ['r1', 'r2', 'r3'].forEach(prefix => {
+        // Displays
+        const dClasses = document.getElementById(prefix + '-classes-disp');
+        const dStudents = document.getElementById(prefix + '-students-disp');
+        const dTopics = document.getElementById(prefix + '-topics-disp');
+        const dGrading = document.getElementById(prefix + '-grading-disp');
+
+        if (dClasses) dClasses.textContent = state.classes + ' Kelas';
+        if (dStudents) dStudents.textContent = state.students + ' Siswa';
+        if (dTopics) dTopics.textContent = state.topics + ' Topik';
+        if (dGrading) dGrading.textContent = state.grading + ' Detik';
+
+        // Hours
+        const dTotal = document.getElementById(prefix + '-total-hours');
+        const dStudentsTotal = document.getElementById(prefix + '-total-students');
+        const dMod = document.getElementById(prefix + '-mod-hours');
+        const dGrad = document.getElementById(prefix + '-grad-hours');
+        const dSheet = document.getElementById(prefix + '-sheet-hours');
+        const dRap = document.getElementById(prefix + '-rap-hours');
+
+        if (dTotal) dTotal.textContent = totalHours.toFixed(1);
+        if (dStudentsTotal) dStudentsTotal.textContent = totalStudents + ' Siswa Total';
+        if (dMod) dMod.textContent = moduleHours.toFixed(1) + ' Jam';
+        if (dGrad) dGrad.textContent = gradingHours.toFixed(1) + ' Jam';
+        if (dSheet) dSheet.textContent = spreadsheetHours.toFixed(1) + ' Jam';
+        if (dRap) dRap.textContent = reportHours.toFixed(1) + ' Jam';
+      });
+
+      // Special for R2
+      const r2Pill = document.getElementById('r2-tab-pill-val');
+      const r2BtnTotal = document.getElementById('r2-btn-total-preview');
+      const r2Tag = document.getElementById('r2-res-students-tag');
+      if (r2Pill) r2Pill.textContent = totalHours.toFixed(1) + ' Jam';
+      if (r2BtnTotal) r2BtnTotal.textContent = totalHours.toFixed(1) + ' Jam ➔';
+      if (r2Tag) r2Tag.textContent = totalStudents + ' Siswa';
+    }
+
+    // Toggle R1 Accordion
+    function toggleR1Accordion() {
+      const btn = document.getElementById('r1-toggle-btn');
+      const body = document.getElementById('r1-collapse-body');
+      btn.classList.toggle('open');
+      body.classList.toggle('open');
+    }
+
+    // Switch R2 Tabs
+    function switchR2Tab(tab) {
+      const btn1 = document.getElementById('r2-tab-btn-1');
+      const btn2 = document.getElementById('r2-tab-btn-2');
+      const c1 = document.getElementById('r2-tab-input');
+      const c2 = document.getElementById('r2-tab-result');
+
+      if (tab === 'input') {
+        btn1.classList.add('active');
+        btn2.classList.remove('active');
+        c1.classList.add('active');
+        c2.classList.remove('active');
+      } else {
+        btn2.classList.add('active');
+        btn1.classList.remove('active');
+        c2.classList.add('active');
+        c1.classList.remove('active');
+      }
+    }
+
+    // Switch Main Recommendation
+    function switchRecommendation(id) {
+      document.querySelectorAll('.recom-view').forEach(el => el.style.display = 'none');
+      const target = document.getElementById(id);
+      if (target) target.style.display = 'block';
+
+      // Update Switcher Button UI
+      document.querySelectorAll('.switch-btn').forEach(btn => btn.classList.remove('active'));
+      event.currentTarget.classList.add('active');
+
+      // Update Explainer Banner
+      const title = document.getElementById('exp-title');
+      const desc = document.getElementById('exp-desc');
+      const chips = document.getElementById('exp-chips');
+
+      if (id === 'recom-1') {
+        title.textContent = '🌟 Rekomendasi 1: Live-Total Bar + Collapsible Rincian';
+        desc.textContent = 'Total waktu (19.9 Jam) ditaruh tepat di bawah slider sehingga angkanya langsung berganti saat digeser. Rincian 4 aktivitas disembunyikan di balik tombol dropdown rapi.';
+        chips.innerHTML = '<span class="e-chip">⚡ Hemat 65% Scroll</span><span class="e-chip">🎯 Live Feedback Visual</span><span class="e-chip">📱 Jempol Friendly</span>';
+      } else if (id === 'recom-2') {
+        title.textContent = '📱 Rekomendasi 2: Segmented Tabs (Atur Slider vs Lihat Hasil)';
+        desc.textContent = 'Memecah kalkulator jadi 2 tab geser: Tab 1 untuk 4 slider, Tab 2 untuk hasil total dan rincian. Sangat ringkas mirip aplikasi smartphone native.';
+        chips.innerHTML = '<span class="e-chip">📱 100% Bebas Scroll</span><span class="e-chip">✨ Rasa Aplikasi Mobile</span><span class="e-chip">👌 Sangat Rapi</span>';
+      } else if (id === 'recom-3') {
+        title.textContent = '📊 Rekomendasi 3: Compact 2x2 Grid + Micro Summary Bar';
+        desc.textContent = 'Semua slider dan rincian tetap tampil langsung tanpa perlu klik dropdown, namun 4 kartu rincian dipadatkan menjadi grid 2x2 mini dan total waktu berupa strip ramping.';
+        chips.innerHTML = '<span class="e-chip">👀 Semua Data Terlihat</span><span class="e-chip">📐 Grid 2x2 Mini</span><span class="e-chip">⚡ Hemat 40% Scroll</span>';
+      } else {
+        title.textContent = '💻 Referensi: Tampilan Asli Mode Desktop (Layar Lebar)';
+        desc.textContent = 'Di layar komputer / laptop, ketiga opsi di atas akan tetap tampil dalam format 3-kolom horizontal penuh seperti aslinya.';
+        chips.innerHTML = '<span class="e-chip">🖥️ 3 Kolom Penuh</span><span class="e-chip">🎨 Visual Kaya</span>';
+      }
+    }
+
+    // Toggle Phone Frame vs Wide Screen
+    function setFrameMode(mode) {
+      const phone = document.getElementById('phone-container');
+      const btnPhone = document.getElementById('btn-phone-frame');
+      const btnWide = document.getElementById('btn-wide-frame');
+
+      if (mode === 'wide') {
+        phone.classList.add('mode-expanded');
+        btnWide.classList.add('active');
+        btnPhone.classList.remove('active');
+      } else {
+        phone.classList.remove('mode-expanded');
+        btnPhone.classList.add('active');
+        btnWide.classList.remove('active');
+      }
+    }
+
+    // Initial run
+    runCalculation();
+  </script>
+</body>
+</html>

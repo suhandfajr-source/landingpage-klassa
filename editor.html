@@ -1,0 +1,2690 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KLASSA — Personal Workspace &amp; AI Co-Pilot Guru Indonesia</title>
+  <meta name="description" content="Satu tempat untuk seluruh siklus mengajar Anda. Selesaikan administrasi, AI Modul Ajar, ujian anti-contek, presensi 1-tap, dan pelaporan e-rapor dari satu ekosistem terpadu.">
+  <meta name="keywords" content="Klassa, AI Guru Indonesia, Modul Ajar Kurikulum Merdeka, Presensi Guru, Ujian Anti Contek, RPP Otomatis, Naikkan Kelasmu, Elevate Your Class, EdTech Indonesia">
+  <meta name="author" content="KLASSA Team">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="KLASSA — Kembalikan Waktu Berharga Anda">
+  <meta property="og:description" content="Birokrasi Tuntas dalam Hitungan Detik, Mengajar Lebih Berkelas.">
+  <meta property="og:image" content="brand/klassa-logo-horizontal.png">
+  <meta property="og:type" content="website">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="brand/klassa-mark.svg">
+  <link rel="alternate icon" href="brand/klassa-app-icon-primary.png">
+
+  <!-- Google Fonts: Plus Jakarta Sans, Figtree, JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css?v=48.0">
+
+  <!-- KLASSA Visual Inline Editor Styles -->
+  <style id="klassa-editor-styles">
+    /* Top Sticky Editing Bar */
+    #klassa-editor-topbar {
+      position: sticky;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: #0F172A;
+      color: #FFFFFF;
+      border-bottom: 2px solid #14B8A6;
+      z-index: 100000;
+      padding: 10px 24px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    .editor-topbar-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .editor-status-col {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .editor-live-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #10B981;
+      box-shadow: 0 0 10px #10B981;
+      animation: editorPulse 1.8s infinite;
+      flex-shrink: 0;
+    }
+    @keyframes editorPulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.2); }
+    }
+    .editor-badge-title {
+      font-weight: 800;
+      font-size: 0.95rem;
+      color: #FFFFFF;
+      letter-spacing: -0.01em;
+    }
+    .editor-hint {
+      font-size: 0.78rem;
+      color: #94A3B8;
+      background: rgba(255, 255, 255, 0.08);
+      padding: 3px 10px;
+      border-radius: 6px;
+    }
+    .editor-actions-col {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .btn-editor-save {
+      background: linear-gradient(135deg, #0F766E 0%, #14B8A6 100%);
+      color: #FFFFFF;
+      border: none;
+      border-radius: 8px;
+      padding: 8px 16px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 2px 10px rgba(20, 184, 166, 0.4);
+      transition: all 0.2s ease;
+    }
+    .btn-editor-save:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(20, 184, 166, 0.6);
+    }
+    .btn-editor-preview {
+      background: rgba(255, 255, 255, 0.12);
+      color: #E2E8F0;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 8px;
+      padding: 8px 14px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .btn-editor-preview:hover {
+      background: rgba(255, 255, 255, 0.2);
+      color: #FFFFFF;
+    }
+    .btn-editor-reset {
+      background: transparent;
+      color: #94A3B8;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 8px;
+      padding: 8px 12px;
+      font-size: 0.82rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .btn-editor-reset:hover {
+      color: #F87171;
+      border-color: rgba(239, 68, 68, 0.3);
+    }
+
+    /* Editable Text Highlight */
+    .klassa-editable {
+      outline: 1.5px dashed transparent !important;
+      border-radius: 4px;
+      transition: outline-color 0.2s ease, background-color 0.2s ease;
+      cursor: text !important;
+      position: relative;
+    }
+    .klassa-editable:hover {
+      outline: 1.5px dashed rgba(20, 184, 166, 0.6) !important;
+      background-color: rgba(20, 184, 166, 0.05);
+    }
+    .klassa-editable:focus {
+      outline: 2px solid #0F766E !important;
+      background-color: rgba(20, 184, 166, 0.08);
+    }
+
+    /* Floating Font Size Bubble */
+    #klassa-font-bubble {
+      position: absolute;
+      display: none;
+      background: #0F172A;
+      color: #FFFFFF;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 20px;
+      padding: 4px 10px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+      z-index: 10000;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.75rem;
+      align-items: center;
+      gap: 6px;
+      transform: translateY(-100%);
+      margin-top: -8px;
+      pointer-events: auto;
+    }
+    #klassa-font-bubble button {
+      background: rgba(255, 255, 255, 0.15);
+      border: none;
+      color: #FFFFFF;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #klassa-font-bubble button:hover {
+      background: #14B8A6;
+    }
+    #klassa-font-bubble span {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 600;
+      color: #2DD4BF;
+    }
+
+    /* Spacer Controls (between elements) */
+    .klassa-spacer-control {
+      width: 100%;
+      margin: 4px 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      height: 24px;
+      z-index: 20;
+    }
+    .spacer-line {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      border-top: 1px dashed rgba(20, 184, 166, 0.35);
+      z-index: 1;
+    }
+    .spacer-pill {
+      position: relative;
+      z-index: 2;
+      background: #0F172A;
+      color: #E2E8F0;
+      border: 1px solid rgba(20, 184, 166, 0.5);
+      padding: 2px 10px;
+      border-radius: 9999px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.72rem;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      opacity: 0.75;
+      transition: all 0.2s ease;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+    .klassa-spacer-control:hover .spacer-pill {
+      opacity: 1;
+      border-color: #2DD4BF;
+      box-shadow: 0 4px 12px rgba(20, 184, 166, 0.3);
+    }
+    .spacer-pill button {
+      background: rgba(255, 255, 255, 0.15);
+      border: none;
+      color: #FFFFFF;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      font-size: 0.75rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .spacer-pill button:hover {
+      background: #14B8A6;
+    }
+    .spacer-pill strong {
+      font-family: 'JetBrains Mono', monospace;
+      color: #2DD4BF;
+    }
+
+    /* Toast */
+    #editor-toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #064E3B;
+      color: #ECFDF5;
+      border: 1px solid #10B981;
+      padding: 14px 22px;
+      border-radius: 10px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      z-index: 1000000;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transform: translateY(150%);
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      pointer-events: none;
+    }
+    #editor-toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  </style>
+
+</head>
+<body>
+
+  <!-- KLASSA Visual Inline Editor Sticky Topbar -->
+  <div id="klassa-editor-topbar">
+    <div class="editor-topbar-inner">
+      <div class="editor-status-col">
+        <span class="editor-live-dot"></span>
+        <span class="editor-badge-title">KLASSA Visual Editor</span>
+        <span class="editor-hint">💡 Klik langsung teks apa saja di halaman untuk mengetik • Klik tombol jarak [ + / − ] untuk atur spasi</span>
+      </div>
+      <div class="editor-actions-col">
+        <button class="btn-editor-save" id="btn-editor-save" onclick="saveEditorChanges()">
+          <span>💾 Simpan ke Landing Page (index.html)</span>
+        </button>
+        <a href="index.html" target="_blank" class="btn-editor-preview">
+          <span>👁️ Buka index.html ↗</span>
+        </a>
+        <button class="btn-editor-reset" onclick="resetEditorPage()">
+          <span>🔄 Reset</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating Font Bubble for Live Font Sizing -->
+  <div id="klassa-font-bubble">
+    <span>Ukuran Font:</span>
+    <button onclick="adjustCurrentFontSize(-0.05)" title="Perkecil font">A−</button>
+    <strong id="font-bubble-val">2.85rem</strong>
+    <button onclick="adjustCurrentFontSize(+0.05)" title="Perbesar font">A+</button>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="editor-toast">✅ Perubahan berhasil disimpan langsung ke index.html!</div>
+
+
+  <!-- Abstract K-Wing Background Aura Motifs -->
+  <div class="k-wing-background-decorations" aria-hidden="true">
+    <svg class="k-wing-svg k-wing-hero" data-parallax-depth="0.32" viewBox="0 0 400 500" fill="none">
+      <path d="M40 50 L180 250 L40 450 L120 450 L260 250 L120 50 Z" fill="url(#tealMintGrad)" opacity="0.035"/>
+      <path d="M160 50 L340 250 L160 450 L240 450 L420 250 L240 50 Z" fill="url(#tealMintGrad)" opacity="0.025"/>
+      <defs>
+        <linearGradient id="tealMintGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#0F766E"/>
+          <stop offset="100%" stop-color="#14B8A6"/>
+        </linearGradient>
+      </defs>
+    </svg>
+    <div class="ambient-glow ambient-glow-top" data-parallax-depth="0.2"></div>
+    <div class="ambient-glow ambient-glow-mid" data-parallax-depth="0.15"></div>
+  </div>
+
+  <!-- ====================================================================
+       4. FLOATING / STICKY NAVIGATION
+       ==================================================================== -->
+  <header class="navbar-wrapper" id="site-navbar">
+    <div class="container">
+      <nav class="navbar-container">
+        <!-- Brand Logo -->
+        <a href="#hero" class="navbar-brand" aria-label="KLASSA Beranda">
+          <img src="brand/Horizontal Logo New.svg" alt="KLASSA — Naikkan Kelasmu!" class="brand-logo-img">
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <ul class="nav-links">
+          <li><a href="#fitur" class="nav-item">Fitur</a></li>
+          <li><a href="#cara-kerja" class="nav-item">Cara Kerja</a></li>
+          <li><a href="#ekosistem" class="nav-item">Untuk Guru</a></li>
+          <li><a href="#harga" class="nav-item">Harga</a></li>
+          <li><a href="#faq" class="nav-item">FAQ</a></li>
+        </ul>
+
+        <!-- Right Action Buttons -->
+        <div class="nav-actions">
+          <button class="btn btn-ghost" onclick="openLoginModal()">Masuk</button>
+          <a href="#harga" class="btn btn-primary btn-nav-cta">
+            <span>Coba Gratis</span>
+            <i data-lucide="arrow-right" class="btn-icon"></i>
+          </a>
+          <!-- Mobile Menu Toggle -->
+          <button class="mobile-toggle-btn" id="mobile-toggle-btn" aria-label="Buka Menu">
+            <i data-lucide="menu" class="menu-icon"></i>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-menu-drawer" id="mobile-drawer">
+    <div class="drawer-header">
+      <img src="brand/klassa-logo-horizontal.svg" alt="KLASSA" class="drawer-logo">
+      <button class="drawer-close-btn" id="drawer-close-btn" aria-label="Tutup Menu">
+        <i data-lucide="x"></i>
+      </button>
+    </div>
+    <ul class="drawer-links">
+      <li><a href="#fitur" class="drawer-item" onclick="closeMobileDrawer()">Fitur</a></li>
+      <li><a href="#cara-kerja" class="drawer-item" onclick="closeMobileDrawer()">Cara Kerja</a></li>
+      <li><a href="#ekosistem" class="drawer-item" onclick="closeMobileDrawer()">Untuk Guru</a></li>
+      <li><a href="#harga" class="drawer-item" onclick="closeMobileDrawer()">Harga</a></li>
+      <li><a href="#faq" class="drawer-item" onclick="closeMobileDrawer()">FAQ</a></li>
+    </ul>
+    <div class="drawer-footer">
+      <button class="btn btn-outline" style="width: 100%;" onclick="closeMobileDrawer(); openLoginModal();">Masuk ke Akun</button>
+      <a href="#harga" class="btn btn-primary" style="width: 100%; text-align: center;" onclick="closeMobileDrawer()">Mulai Coba Gratis 7 Hari</a>
+    </div>
+  </div>
+
+  <main>
+                    <!-- ====================================================================
+         5. HERO SECTION — 3D ATOMIC ECOSYSTEM (HERO) & LAPTOP FOUNDATION
+         ==================================================================== -->
+    <section class="hero-section" id="hero">
+      <div class="hero-ambient-glow" aria-hidden="true"></div>
+
+      <div class="container hero-container">
+        <div class="hero-split-grid">
+          
+          <!-- LEFT SIDE: Content, Headline & CTA (100% Preserved) -->
+          <div class="hero-content-col">
+            <!-- Top Pill Badge -->
+            <div class="hero-badge">
+              <span class="badge-icon-sparkle">✦</span>
+              <span>Personal Workspace &amp; AI Co-Pilot Guru Indonesia</span>
+              <span class="badge-tag-verified">Resmi Terverifikasi</span>
+            </div>
+
+            <!-- Main Headline -->
+            <h1 class="hero-headline">
+              Kembalikan <span class="text-highlight-teal">Waktu Berharga</span> Anda!
+            </h1>
+
+            <!-- Subheading -->
+            <h2 class="hero-subheading">
+              Birokrasi Tuntas Dalam <span class="text-highlight-mint">Hitungan Detik</span>.
+            </h2>
+
+            <!-- Description / Subheadline -->
+            <p class="hero-subheadline">
+              Hentikan lingkaran setan input data berulang di spreadsheet, chat, dan dokumen yang terpecah. KLASSA menyatukan administrasi, AI Modul Ajar, ujian anti-contek, dan pelaporan rapor ke dalam satu ekosistem terpadu.
+            </p>
+
+            <!-- CTA Buttons Group -->
+            <div class="hero-cta-group">
+              <div class="cta-primary-wrap">
+                <button class="btn btn-primary btn-hero-primary" onclick="openTrialModal()">
+                  <span>Mulai Coba Gratis</span>
+                  <span class="ai-sparkle-inline">✦</span>
+                </button>
+                <span class="cta-micro-guarantee">7 hari gratis • Tanpa kartu kredit</span>
+              </div>
+
+              <button class="btn btn-secondary btn-hero-secondary" onclick="openDemoVideoModal()">
+                <div class="play-icon-circle">
+                  <i data-lucide="play" style="width: 14px; height: 14px; margin-left: 2px;"></i>
+                </div>
+                <span>Lihat Demo 40 Detik</span>
+              </button>
+            </div>
+
+            <!-- Social Proof / Verified Trust Rating -->
+            <div class="hero-social-proof">
+              <div class="stars-row">
+                <i data-lucide="star" class="star-filled"></i>
+                <i data-lucide="star" class="star-filled"></i>
+                <i data-lucide="star" class="star-filled"></i>
+                <i data-lucide="star" class="star-filled"></i>
+                <i data-lucide="star" class="star-filled"></i>
+              </div>
+              <p class="social-proof-text">
+                <strong>Dipercaya oleh 3.400+ Guru &amp; Sekolah Penggerak</strong> di seluruh Indonesia.
+                <span class="social-proof-note">(Estimasi data aktif terverifikasi)</span>
+              </p>
+            </div>
+          </div>
+
+          <!-- RIGHT SIDE: KLASSA Atomic Ecosystem Hero Visualization -->
+          <div class="hero-ecosystem-col" id="hero-ecosystem-col">
+            <div class="atomic-ecosystem-stage" id="atomic-ecosystem-stage" aria-label="Visualisasi Ekosistem Cerdas KLASSA" role="region">
+              
+              <!-- Subtle Clean Ambient Radial Glow -->
+              <div class="atomic-ambient-glow" aria-hidden="true"></div>
+
+              <!-- Main Atom Stage -->
+              <div class="klassa-atom-container">
+                
+                <!-- 1. Center Nucleus: KLASSA K Logo -->
+                <div class="atom-nucleus" id="atom-nucleus">
+                  <div class="nucleus-radial-aura"></div>
+                  <div class="nucleus-inner-glow"></div>
+                  <div class="nucleus-k-box">
+                    <img src="brand/klassa-mark.svg" alt="KLASSA K Logo" class="nucleus-k-img">
+                  </div>
+                </div>
+
+                <!-- 2. Exactly Three Thin Elegant Orbit Rings with Traveling Electrons -->
+                <div class="atom-orbits-system" aria-hidden="true">
+                  <!-- Orbit 1: Wide Horizontal Ellipse -->
+                  <div class="atom-orbit-ring orbit-ring-horizontal">
+                    <div class="orbit-glow-track"></div>
+                    <span class="electron-glider glider-h1"></span>
+                    <span class="electron-glider glider-h2"></span>
+                  </div>
+
+                  <!-- Orbit 2: Diagonal Tilted Ellipse (Direction A) -->
+                  <div class="atom-orbit-ring orbit-ring-diag-1">
+                    <div class="orbit-glow-track"></div>
+                    <span class="electron-glider glider-d1-a"></span>
+                    <span class="electron-glider glider-d1-b"></span>
+                  </div>
+
+                  <!-- Orbit 3: Diagonal Tilted Ellipse (Direction B) -->
+                  <div class="atom-orbit-ring orbit-ring-diag-2">
+                    <div class="orbit-glow-track"></div>
+                    <span class="electron-glider glider-d2-a"></span>
+                    <span class="electron-glider glider-d2-b"></span>
+                  </div>
+                </div>
+
+                <!-- 3. Six Balanced Feature Cards Surrounding the K Nucleus -->
+
+                <!-- Card 1: TOP CENTER - AI Modul Ajar -->
+                <div class="atomic-card card-pos-top card-modul-ajar" id="node-modul">
+                  <div class="card-face-front">
+                    <span class="card-orbit-node-dot dot-bottom"></span>
+                    <div class="card-head-row">
+                      <div class="card-icon-box icon-purple">
+                        <span class="icon-spark">✦</span>
+                      </div>
+                      <div class="card-meta">
+                        <span class="card-title">AI Modul Ajar</span>
+                        <span class="card-status-sub">Sedang membuat modul...</span>
+                      </div>
+                    </div>
+                    <div class="card-progress-bar-wrap">
+                      <div class="card-progress-fill" style="width: 82%;"></div>
+                      <span class="progress-pct">82%</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Card 2: UPPER LEFT - Nilai -->
+                <div class="atomic-card card-pos-upper-left card-nilai-stats" id="node-nilai">
+                  <div class="card-face-front">
+                    <span class="card-orbit-node-dot dot-right"></span>
+                    <div class="card-head-row">
+                      <div class="card-icon-box icon-teal-green">
+                        <i data-lucide="bar-chart-2"></i>
+                      </div>
+                      <span class="card-title">Nilai</span>
+                    </div>
+                    <div class="card-metric-row">
+                      <div class="metric-left">
+                        <span class="big-score">88</span>
+                        <span class="score-trend">↑ 12%</span>
+                      </div>
+                      <!-- Mini Bar Chart Graphic -->
+                      <div class="mini-bar-bars">
+                        <span style="height: 10px;"></span>
+                        <span style="height: 16px;"></span>
+                        <span style="height: 14px;"></span>
+                        <span style="height: 22px;"></span>
+                        <span style="height: 26px;" class="bar-active"></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Card 3: UPPER RIGHT - Presensi -->
+                <div class="atomic-card card-pos-upper-right card-presensi-live" id="node-presensi">
+                  <div class="card-face-front">
+                    <span class="card-orbit-node-dot dot-left"></span>
+                    <div class="card-head-row">
+                      <div class="card-icon-box icon-mint">
+                        <i data-lucide="check-circle-2"></i>
+                      </div>
+                      <div class="card-meta">
+                        <span class="card-title">Presensi</span>
+                        <span class="card-status-sub highlight-teal">34 / 36 hadir</span>
+                      </div>
+                    </div>
+                    <!-- Mini Avatars Row -->
+                    <div class="mini-avatar-cluster">
+                      <span class="av-circle av-1">👨‍🎓</span>
+                      <span class="av-circle av-2">👩‍🎓</span>
+                      <span class="av-circle av-3">👧</span>
+                      <span class="av-more">+32</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Card 4: LOWER LEFT - Analisis Siswa -->
+                <div class="atomic-card card-pos-lower-left card-analisis-radar" id="node-analisis">
+                  <div class="card-face-front">
+                    <span class="card-orbit-node-dot dot-right"></span>
+                    <div class="card-head-row">
+                      <div class="card-icon-box icon-indigo">
+                        <i data-lucide="trending-up"></i>
+                      </div>
+                      <div class="card-meta">
+                        <span class="card-title">Analisis Siswa</span>
+                        <span class="card-status-sub alert-sub">4 siswa perlu perhatian</span>
+                      </div>
+                    </div>
+                    <div class="analisis-avatars-row">
+                      <div class="av-warning-group">
+                        <span class="av-circle av-warn-1">👦</span>
+                        <span class="av-circle av-warn-2">👧</span>
+                        <span class="av-circle av-warn-3">🧑</span>
+                      </div>
+                      <span class="btn-mini-arrow"><i data-lucide="chevron-right"></i></span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Card 5: LOWER RIGHT - Ujian Anti-Contek -->
+                <div class="atomic-card card-pos-lower-right card-ujian-guard" id="node-ujian">
+                  <div class="card-face-front">
+                    <span class="card-orbit-node-dot dot-left"></span>
+                    <div class="card-head-row">
+                      <div class="card-icon-box icon-blue">
+                        <i data-lucide="shield-check"></i>
+                      </div>
+                      <div class="card-meta">
+                        <span class="card-title">Ujian Anti-Contek</span>
+                        <span class="card-status-sub">Sedang aktif</span>
+                      </div>
+                    </div>
+                    <div class="ujian-live-status">
+                      <!-- Mini wave graphic -->
+                      <svg class="mini-wave-svg" viewBox="0 0 70 18" fill="none">
+                        <path d="M0 10 Q 15 2, 30 11 T 55 7 T 70 10" stroke="#38BDF8" stroke-width="2" stroke-linecap="round"/>
+                      </svg>
+                      <span class="badge-aman-dot"><span class="dot-green"></span> Aman</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Card 6: BOTTOM CENTER - Rapor -->
+                <div class="atomic-card card-pos-bottom card-rapor-doc" id="node-rapor">
+                  <div class="card-face-front">
+                    <span class="card-orbit-node-dot dot-top"></span>
+                    <div class="card-head-row">
+                      <div class="card-icon-box icon-amber">
+                        <i data-lucide="file-text"></i>
+                      </div>
+                      <div class="card-meta">
+                        <span class="card-title">Rapor</span>
+                        <span class="card-status-sub">Siap diproses</span>
+                      </div>
+                      <!-- Mini document preview graphic -->
+                      <div class="mini-report-preview">
+                        <span class="rpt-line w-full"></span>
+                        <span class="rpt-line w-half"></span>
+                        <div class="rpt-bars"><span style="height:5px"></span><span style="height:9px"></span><span style="height:7px"></span></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+        <!-- ====================================================================
+         6. PROBLEM SECTION — "FAKTA LAPANGAN GURU INDONESIA"
+         ==================================================================== -->
+    <section class="problems-section" id="masalah">
+      <div class="container">
+        
+        <!-- Section Header -->
+        <div class="section-badge-center">
+          <span class="badge-tag-dark">FAKTA LAPANGAN GURU INDONESIA</span>
+        </div>
+        <h2 class="section-headline text-center">
+          <span class="headline-row">Mengapa Waktu Mengajar</span>
+          <span class="headline-row">Selalu Habis untuk</span>
+          <span class="headline-row">Urusan Administrasi?</span>
+        </h2>
+        <p class="section-subheadline text-center">
+          Guru Indonesia berniat mendidik, memotivasi, dan mencerdaskan generasi. Namun realitanya, energi terbesar justru tergerus oleh birokrasi berulang yang tersebar tanpa satu sistem pun yang saling terhubung.
+        </p>
+
+        <!-- Synchronized 5-Point Process Connector / Navigation Bar -->
+        <div class="problem-timeline-nav" id="problem-timeline-nav" data-parallax-depth="0.06">
+          <button type="button" class="problem-nav-node active" data-index="0" onclick="goToProblemSlide(0)">
+            <div class="node-circle">01</div>
+            <div class="node-label">Data Terpecah</div>
+          </button>
+          <div class="timeline-bar-track">
+            <div class="timeline-bar-fill" id="timeline-fill-0"></div>
+          </div>
+          <button type="button" class="problem-nav-node" data-index="1" onclick="goToProblemSlide(1)">
+            <div class="node-circle">02</div>
+            <div class="node-label">Kerja Berulang</div>
+          </button>
+          <div class="timeline-bar-track">
+            <div class="timeline-bar-fill" id="timeline-fill-1"></div>
+          </div>
+          <button type="button" class="problem-nav-node" data-index="2" onclick="goToProblemSlide(2)">
+            <div class="node-circle">03</div>
+            <div class="node-label">Bikin dari Nol</div>
+          </button>
+          <div class="timeline-bar-track">
+            <div class="timeline-bar-fill" id="timeline-fill-2"></div>
+          </div>
+          <button type="button" class="problem-nav-node" data-index="3" onclick="goToProblemSlide(3)">
+            <div class="node-circle">04</div>
+            <div class="node-label">Data Tanpa Arah</div>
+          </button>
+          <div class="timeline-bar-track">
+            <div class="timeline-bar-fill" id="timeline-fill-3"></div>
+          </div>
+          <button type="button" class="problem-nav-node danger-node" data-index="4" onclick="goToProblemSlide(4)">
+            <div class="node-circle"><i data-lucide="alert-triangle" style="width: 15px; height: 15px;"></i></div>
+            <div class="node-label">Rekap Melelahkan</div>
+          </button>
+        </div>
+
+        <!-- Mobile Active Topic Indicator (Synced dynamically with current step) -->
+        <div class="problem-active-topic-mobile" id="problem-active-topic-mobile" aria-live="polite">
+          Masalah 01: Data Terpecah
+        </div>
+
+        <!-- Cinematic Problem Agitation Carousel -->
+        <div class="problem-carousel-container" id="problem-carousel-container">
+          <!-- Side Floating Nav: Previous (Left) -->
+          <button type="button" class="carousel-side-btn side-prev" id="problem-prev-btn" onclick="prevProblemSlide()" aria-label="Slide Masalah Sebelumnya">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+          </button>
+          <!-- Side Floating Nav: Next (Right) -->
+          <button type="button" class="carousel-side-btn side-next" id="problem-next-btn" onclick="nextProblemSlide()" aria-label="Slide Masalah Selanjutnya">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+          </button>
+          <div class="problem-carousel-viewport">
+          <div class="problem-carousel-track" id="problem-carousel-track">
+            
+            <!-- SLIDE 01: DATA TERPECAH -->
+            <div class="problem-slide active" data-slide="0">
+              <div class="slide-content-split">
+                
+                <!-- Left: Narrative & Pain Metric -->
+                <div class="slide-narrative">
+                  <div class="slide-step-badge">
+                    <span class="badge-num">MASALAH #01</span>
+                    <span class="badge-dot">•</span>
+                    <span>FRAGMENTASI DATA</span>
+                  </div>
+                  <h3 class="slide-title">Data Terserak Tanpa Satu Sumber Kebenaran</h3>
+                  <p class="slide-desc">
+                    Nilai dan absensi siswa tersebar di Excel, Word, Google Drive, pesan WhatsApp orang tua, hingga buku catatan fisik. Ketika versi dokumen berbeda, revisi hilang dan data lama tertimpa tanpa disengaja.
+                  </p>
+                  
+                  <div class="slide-quote-box">
+                    <div class="quote-mark">“</div>
+                    <p class="quote-text">
+                      Pernah seharian menyusun kisi-kisi dan silabus, ternyata yang terpakai adalah file versi lama di flashdisk yang belum direvisi. Terpaksa mengetik ulang dari awal.
+                    </p>
+                  </div>
+
+                  <div class="slide-stat-pill">
+                    <i data-lucide="clock" class="stat-icon"></i>
+                    <span><strong>3.5 Jam / Minggu</strong> terbuang sia-sia hanya untuk mencari file &amp; sinkronisasi manual</span>
+                  </div>
+                </div>
+
+                <!-- Right: Frameless Edge-to-Edge Artwork -->
+                <div class="slide-visual-stage">
+                  <div class="visual-canvas illustration-canvas frameless-canvas">
+                    <div class="stage-artwork-wrapper">
+                      <img src="assets/images/problems/01-data-berserakan.png" alt="Visualisasi Masalah 01: Data Silo & File Tercecer" class="stage-artwork-img" loading="lazy">
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- SLIDE 02: KERJA BERULANG -->
+            <div class="problem-slide" data-slide="1">
+              <div class="slide-content-split">
+                
+                <!-- Left: Narrative & Pain Metric -->
+                <div class="slide-narrative">
+                  <div class="slide-step-badge">
+                    <span class="badge-num">MASALAH #02</span>
+                    <span class="badge-dot">•</span>
+                    <span>REDUNDANSI KERJA</span>
+                  </div>
+                  <h3 class="slide-title">Mengetik Nama yang Sama Berulang-ulang Tiap Hari</h3>
+                  <p class="slide-desc">
+                    Nama siswa, NIS, nilai harian, dan kehadiran harus diinput berkali-kali ke formulir yang berbeda: buku presensi kelas, Google Form sekolah, lembar kerja kurikulum, dan template rapor akhir semester.
+                  </p>
+                  
+                  <div class="slide-quote-box">
+                    <div class="quote-mark">“</div>
+                    <p class="quote-text">
+                      Jari sampai kaku mengetik 36 nama siswa yang sama di 4 aplikasi berbeda hanya untuk satu kompetensi dasar. Rasanya energi habis untuk hal administratif sepele.
+                    </p>
+                  </div>
+
+                  <div class="slide-stat-pill">
+                    <i data-lucide="repeat" class="stat-icon"></i>
+                    <span><strong>1.200+ Kali Input</strong> berulang untuk data siswa yang sama dalam satu semester</span>
+                  </div>
+                </div>
+
+                <!-- Right: Frameless Edge-to-Edge Artwork -->
+                <div class="slide-visual-stage">
+                  <div class="visual-canvas illustration-canvas frameless-canvas">
+                    <div class="stage-artwork-wrapper">
+                      <img src="assets/images/problems/02-input-data-berulang.png" alt="Visualisasi Masalah 02: Redundansi Kerja & Mengetik Berulang" class="stage-artwork-img" loading="lazy">
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- SLIDE 03: BIKIN PERANGKAT DARI NOL -->
+            <div class="problem-slide" data-slide="2">
+              <div class="slide-content-split">
+                
+                <!-- Left: Narrative & Pain Metric -->
+                <div class="slide-narrative">
+                  <div class="slide-step-badge">
+                    <span class="badge-num">MASALAH #03</span>
+                    <span class="badge-dot">•</span>
+                    <span>BEBAN PERANGKAT AJAR</span>
+                  </div>
+                  <h3 class="slide-title">Minggu Malam yang Dirampas Halaman Kosong</h3>
+                  <p class="slide-desc">
+                    Akhir pekan habis di depan layar laptop menyusun Modul Ajar, asesmen diagnostik, dan rubrik berdiferensiasi dari dokumen kosong berjam-jam, padahal format tujuan dan alur kompetensinya sudah memiliki pola tetap.
+                  </p>
+                  
+                  <div class="slide-quote-box">
+                    <div class="quote-mark">“</div>
+                    <p class="quote-text">
+                      Niatnya akhir pekan bersama anak dan keluarga. Namun malam kembali habis di depan layar yang menyilaukan, menyiapkan perangkat ajar untuk supervisi Senin pagi.
+                    </p>
+                  </div>
+
+                  <div class="slide-stat-pill danger">
+                    <i data-lucide="moon" class="stat-icon"></i>
+                    <span><strong>Pukul 23:45 WIB</strong> rata-rata jam tidur guru pada malam menjelang supervisi</span>
+                  </div>
+                </div>
+
+                <!-- Right: Frameless Edge-to-Edge Artwork -->
+                <div class="slide-visual-stage">
+                  <div class="visual-canvas illustration-canvas frameless-canvas">
+                    <div class="stage-artwork-wrapper">
+                      <img src="assets/images/problems/03-malam-minggu.png" alt="Visualisasi Masalah 03: Minggu Malam Menyiapkan Perangkat Ajar" class="stage-artwork-img" loading="lazy">
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- SLIDE 04: DATA TANPA ARAH -->
+            <div class="problem-slide" data-slide="3">
+              <div class="slide-content-split">
+                
+                <!-- Left: Narrative & Pain Metric -->
+                <div class="slide-narrative">
+                  <div class="slide-step-badge">
+                    <span class="badge-num">MASALAH #04</span>
+                    <span class="badge-dot">•</span>
+                    <span>DATA MATI TANPA INSIGHT</span>
+                  </div>
+                  <h3 class="slide-title">Nilai Menumpuk di Sheet, tapi Siswa Remedial Terlewat</h3>
+                  <p class="slide-desc">
+                    Ratusan baris nilai tersimpan rapi di spreadsheet, namun guru tetap kesulitan mengetahui siapa siswa yang tertinggal dan butuh bimbingan segera. Data hanya menjadi tumpukan angka mati tanpa panduan tindakan.
+                  </p>
+                  
+                  <div class="slide-quote-box">
+                    <div class="quote-mark">“</div>
+                    <p class="quote-text">
+                      Baru sadar ada siswa yang belum tuntas 4 indikator saat mencetak e-Rapor akhir semester. Sudah terlambat sekali untuk memberikan pendampingan remedial.
+                    </p>
+                  </div>
+
+                  <div class="slide-stat-pill">
+                    <i data-lucide="bar-chart" class="stat-icon"></i>
+                    <span><strong>80% Data Nilai</strong> hanya berakhir sebagai arsip administratif tanpa tindak lanjut belajar</span>
+                  </div>
+                </div>
+
+                <!-- Right: Frameless Edge-to-Edge Artwork -->
+                <div class="slide-visual-stage">
+                  <div class="visual-canvas illustration-canvas frameless-canvas">
+                    <div class="stage-artwork-wrapper">
+                      <img src="assets/images/problems/04-data-remed-terlewat.png" alt="Visualisasi Masalah 04: Data Mati Tanpa Insight & Siswa Terlewat" class="stage-artwork-img" loading="lazy">
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- SLIDE 05: REKAP MELELAHKAN -->
+            <div class="problem-slide" data-slide="4">
+              <div class="slide-content-split">
+                
+                <!-- Left: Narrative & Pain Metric -->
+                <div class="slide-narrative">
+                  <div class="slide-step-badge danger">
+                    <span class="badge-num">MASALAH #05</span>
+                    <span class="badge-dot">•</span>
+                    <span>PANIK DEADLINE E-RAPOR</span>
+                  </div>
+                  <h3 class="slide-title">Koreksi 150+ Lembar &amp; Panik Rumus Excel Error</h3>
+                  <p class="slide-desc">
+                    Setelah lelah mengajar seharian, malam masih diisi memeriksa ratusan lembar jawaban dengan pena merah. Saat merekap nilai akhir, spreadsheet mendadak rusak dan format kolom kurikulum berubah tiba-tiba.
+                  </p>
+                  
+                  <div class="slide-quote-box">
+                    <div class="quote-mark">“</div>
+                    <p class="quote-text">
+                      Paling membuat panik saat rumus formula rapor muncul #REF! padahal pihak kurikulum sekolah meminta file dikirim dalam 2 jam. Rasanya ingin menyerah.
+                    </p>
+                  </div>
+
+                  <div class="slide-stat-pill danger">
+                    <i data-lucide="alert-triangle" class="stat-icon"></i>
+                    <span><strong>150+ Lembar Kuis</strong> diperiksa manual satu per satu dengan pena merah setiap ujian</span>
+                  </div>
+                </div>
+
+                <!-- Right: Frameless Edge-to-Edge Artwork -->
+                <div class="slide-visual-stage">
+                  <div class="visual-canvas illustration-canvas frameless-canvas">
+                    <div class="stage-artwork-wrapper">
+                      <img src="assets/images/problems/05-terlalu-banyak-koreksi.png" alt="Visualisasi Masalah 05: Panik Deadline e-Rapor & Koreksi 150+ Lembar" class="stage-artwork-img" loading="lazy">
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Carousel Controls: Prev, Dots, Next -->
+          <div class="problem-carousel-bottom-bar">
+            <button type="button" class="carousel-bar-nav-btn" onclick="prevProblemSlide()" aria-label="Masalah Sebelumnya">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+            </button>
+
+            <div class="problem-carousel-dots" id="problem-carousel-dots">
+              <button type="button" class="carousel-dot-btn active" onclick="goToProblemSlide(0)" aria-label="Lihat Masalah 1"></button>
+              <button type="button" class="carousel-dot-btn" onclick="goToProblemSlide(1)" aria-label="Lihat Masalah 2"></button>
+              <button type="button" class="carousel-dot-btn" onclick="goToProblemSlide(2)" aria-label="Lihat Masalah 3"></button>
+              <button type="button" class="carousel-dot-btn" onclick="goToProblemSlide(3)" aria-label="Lihat Masalah 4"></button>
+              <button type="button" class="carousel-dot-btn danger-dot" onclick="goToProblemSlide(4)" aria-label="Lihat Masalah 5"></button>
+            </div>
+
+            <button type="button" class="carousel-bar-nav-btn" onclick="nextProblemSlide()" aria-label="Masalah Selanjutnya">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+            </button>
+          </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         7. PARADOKS WAKTU GURU — 40% MENGAJAR VS 60% ADMINISTRASI
+         ==================================================================== -->
+    <section class="time-paradox-section" id="paradoks-waktu">
+      <div class="time-paradox-ambient-glow" aria-hidden="true"></div>
+      <div class="container">
+        
+        <!-- Section Header -->
+        <div class="section-badge-center">
+          <span class="badge-tag-dark badge-tag-alert">
+            <span class="pulse-dot-red"></span>
+            REALITA WAKTU GURU INDONESIA
+          </span>
+        </div>
+        
+        <h2 class="section-headline text-center">
+          <span class="headline-row">Gelar Anda Pendidik, Tapi</span>
+          <span class="headline-row"><span class="text-highlight-danger">60% Waktu Habis</span></span>
+          <span class="headline-row">Sebagai Operator Entri Data</span>
+        </h2>
+        
+        <p class="section-subheadline text-center">
+          Guru berniat mendidik dan mencerdaskan generasi. Namun kenyataannya, energi terbesar Anda justru tergerus di depan spreadsheet, format dokumen berulang, dan tumpukan administrasi.
+        </p>
+
+        <!-- Main Stepped Infographic Showcase (Dominant Pie + Pointer Lines) -->
+        <div class="infographic-showcase-wrap">
+          
+          <!-- LEFT POINTER COLUMN: 60% Tugas Administrasi (Points to 60% Red Slice on Left) -->
+          <div class="infographic-side-col col-left">
+            <div class="side-annotation-content">
+              <div class="annotation-badge badge-admin">
+                <span class="dot-indicator dot-red"></span>
+                <span>60% WAKTU TERSITA</span>
+              </div>
+              <h3 class="annotation-title text-danger">Tugas Administrasi &amp; Birokrasi</h3>
+              <p class="annotation-time">±24 - 30 Jam / Minggu</p>
+              
+              <ul class="annotation-checklist">
+                <li>
+                  <i data-lucide="x" class="check-icon icon-danger"></i>
+                  <span>Susun Modul Ajar &amp; RPP panjang&nbsp;dari&nbsp;nol</span>
+                </li>
+                <li>
+                  <i data-lucide="x" class="check-icon icon-danger"></i>
+                  <span>Input ganda nilai &amp; presensi ke&nbsp;banyak&nbsp;file</span>
+                </li>
+                <li>
+                  <i data-lucide="x" class="check-icon icon-danger"></i>
+                  <span>Koreksi manual ratusan lembar ulangan&nbsp;malam&nbsp;hari</span>
+                </li>
+                <li>
+                  <i data-lucide="x" class="check-icon icon-danger"></i>
+                  <span>Panik rekap deskripsi capaian&nbsp;e-Rapor&nbsp;semester</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Pointer Line Left (Connects to 60% Red Slice) -->
+            <div class="pointer-line pointer-left" aria-hidden="true">
+              <span class="pointer-bar"></span>
+              <span class="pointer-beacon beacon-red"></span>
+            </div>
+          </div>
+
+          <!-- CENTER DOMINANT PIE INFOGRAPHIC (420px, 60% on Left, 40% on Right) -->
+          <div class="infographic-center-stage">
+            <div class="stepped-pie-wrapper">
+              <svg class="stepped-pie-svg" viewBox="0 0 420 420" width="420" height="420" fill="none" aria-label="Infografis: 60% Administrasi vs 40% Mengajar">
+                <defs>
+                  <!-- Gradient 60% Administrasi (Coral Red to Vibrant Sunset Orange) -->
+                  <linearGradient id="gradAdminStepped" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#EF4444" />
+                    <stop offset="50%" stop-color="#F43F5E" />
+                    <stop offset="100%" stop-color="#FB923C" />
+                  </linearGradient>
+
+                  <!-- Gradient 40% Mengajar (Deep Pine Teal to Soft Mint) -->
+                  <linearGradient id="gradTeachStepped" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#0F766E" />
+                    <stop offset="60%" stop-color="#0D9488" />
+                    <stop offset="100%" stop-color="#14B8A6" />
+                  </linearGradient>
+
+                  <!-- Outer Drop Shadow -->
+                  <filter id="pieElevatedShadow" x="-15%" y="-15%" width="130%" height="130%">
+                    <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="rgba(15, 23, 42, 0.12)"/>
+                  </filter>
+
+                  <!-- Center Hub Shadow -->
+                  <filter id="centerHubShadow" x="-20%" y="-20%" width="140%" height="140%">
+                    <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="rgba(15, 23, 42, 0.1)"/>
+                  </filter>
+                </defs>
+
+                <!-- 60% Administrasi Stepped Arc ON THE LEFT (Outer Radius 190px) -->
+                <path class="pie-slice-path slice-admin"
+                      d="M 321.68 363.71 A 190 190 0 1 1 210 20 L 210 130 A 80 80 0 1 0 257.02 274.72 Z"
+                      fill="url(#gradAdminStepped)"
+                      filter="url(#pieElevatedShadow)" />
+
+                <!-- 40% Mengajar Stepped Arc ON THE RIGHT (Outer Radius 172px) -->
+                <path class="pie-slice-path slice-teach"
+                      d="M 210 38 A 172 172 0 0 1 311.10 349.15 L 257.02 274.72 A 80 80 0 0 0 210 130 Z"
+                      fill="url(#gradTeachStepped)"
+                      filter="url(#pieElevatedShadow)" />
+
+                <!-- Slice 60% Embedded Labels (Placed on Left Arc, No Overlap) -->
+                <g class="slice-label-group label-60">
+                  <text x="95" y="200" text-anchor="middle" fill="#FFFFFF" font-size="32" font-weight="900" font-family="'Plus Jakarta Sans', sans-serif">60%</text>
+                  <text x="95" y="222" text-anchor="middle" fill="#FFE4E6" font-size="11" font-weight="800" letter-spacing="1.2" font-family="'Plus Jakarta Sans', sans-serif">ADMINISTRASI</text>
+                </g>
+
+                <!-- Slice 40% Embedded Labels (Placed on Right Arc, No Overlap) -->
+                <g class="slice-label-group label-40">
+                  <text x="315" y="180" text-anchor="middle" fill="#FFFFFF" font-size="28" font-weight="900" font-family="'Plus Jakarta Sans', sans-serif">40%</text>
+                  <text x="315" y="201" text-anchor="middle" fill="#CCFBF1" font-size="11" font-weight="800" letter-spacing="1.2" font-family="'Plus Jakarta Sans', sans-serif">MENGAJAR</text>
+                </g>
+
+                <!-- Center Circular Hub -->
+                <circle cx="210" cy="210" r="70" fill="#FFFFFF" stroke="#F1F5F9" stroke-width="4" filter="url(#centerHubShadow)" />
+                <circle cx="210" cy="210" r="62" fill="none" stroke="rgba(15, 118, 110, 0.1)" stroke-width="1.5" stroke-dasharray="4 4" />
+
+                <!-- Center Hub Text: Simply ADMIN VS GURU -->
+                <g class="center-hub-content">
+                  <text x="210" y="205" text-anchor="middle" fill="#0F172A" font-size="15" font-weight="900" letter-spacing="1.5" font-family="'Plus Jakarta Sans', sans-serif">ADMIN</text>
+                  <text x="210" y="223" text-anchor="middle" fill="#0F766E" font-size="11" font-weight="800" letter-spacing="1.8" font-family="'Plus Jakarta Sans', sans-serif">VS GURU</text>
+                </g>
+              </svg>
+            </div>
+          </div>
+
+          <!-- RIGHT POINTER COLUMN: 40% Porsi Mengajar (Points to 40% Teal Slice on Right) -->
+          <div class="infographic-side-col col-right">
+            <!-- Pointer Line Right (Connects to 40% Teal Slice) -->
+            <div class="pointer-line pointer-right" aria-hidden="true">
+              <span class="pointer-beacon beacon-teal"></span>
+              <span class="pointer-bar"></span>
+            </div>
+
+            <div class="side-annotation-content">
+              <div class="annotation-badge badge-teaching">
+                <span class="dot-indicator dot-teal"></span>
+                <span>HANYA 40% SISA WAKTU</span>
+              </div>
+              <h3 class="annotation-title text-teal">Waktu Mengajar &amp; Bimbingan</h3>
+              <p class="annotation-time">±16 Jam / Minggu</p>
+              
+              <ul class="annotation-checklist">
+                <li>
+                  <i data-lucide="check" class="check-icon icon-teal"></i>
+                  <span>Tatap muka &amp; menerangkan materi&nbsp;di&nbsp;kelas</span>
+                </li>
+                <li>
+                  <i data-lucide="check" class="check-icon icon-teal"></i>
+                  <span>Bimbingan karakter &amp; diskusi&nbsp;personal&nbsp;murid</span>
+                </li>
+                <li>
+                  <i data-lucide="check" class="check-icon icon-teal"></i>
+                  <span>Membangun interaksi belajar&nbsp;yang&nbsp;bermakna</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Bottom Stat Callout Quote (Centered & Sleek) -->
+        <div class="infographic-bottom-callout">
+          <div class="callout-pill-box">
+            <div class="callout-icon-circle">
+              <i data-lucide="clock" class="callout-icon"></i>
+            </div>
+            <p class="callout-text">
+              “Hampir <strong>30 jam waktu Anda setiap minggu hilang</strong> hanya untuk melakukan hal yang sama secara berulang.”
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ====================================================================
+    <!-- ====================================================================
+         8. DRAMATISIR BEBAN KERJA GURU — 4 DIORAMA & KALKULATOR INTERAKTIF
+         ==================================================================== -->
+<section class="teacher-workload-section" id="beban-guru">
+      <div class="workload-ambient-glow" aria-hidden="true"></div>
+      <div class="container workload-container">
+        
+        <!-- Section Header -->
+        <div class="section-header-centered">
+          <div class="section-badge-center">
+            <span class="badge-tag-turquoise">
+              <span class="pulse-dot-teal"></span>
+              REALITA DI BALIK RUANG KELAS
+            </span>
+          </div>
+          
+          <h2 class="section-headline text-center">
+            <span class="headline-row"><span class="text-teal-gradient">1.200+ Jam</span> Rutinitas Mikro</span>
+            <span class="headline-row">yang Tersita Setiap Tahun</span>
+          </h2>
+          
+          <p class="section-subheadline text-center">
+            Hitungan menit yang tampak sepele setiap hari—mulai dari modul hingga e-rapor—jika diakumulasikan sepanjang tahun ajaran, menyita waktu berharga guru.
+          </p>
+        </div>
+
+        <!-- 4 Workload Story Cards (4 Columns Desktop, 2 Tablet, Touch-Snap Carousel Mobile) -->
+        <div class="workload-cards-grid" id="workload-cards-grid">
+          
+          <!-- CARD 01: MENYUSUN MODUL AJAR -->
+          <div class="workload-card card-theme-turquoise" data-card="01">
+            <div class="workload-card-top">
+              <span class="card-num-indicator">01</span>
+              <div class="card-metric-badge badge-turquoise">
+                <i data-lucide="clock" class="metric-icon"></i>
+                <span>±3–4 Jam / Topik</span>
+              </div>
+            </div>
+
+            <div class="card-heading-group">
+              <h3 class="workload-card-title">Menyusun Modul Ajar</h3>
+              <p class="workload-card-subtitle">“Bukan sekadar mengetik dokumen.”</p>
+            </div>
+
+            <!-- 3D Diorama Miniature Illustration 01 -->
+            <div class="workload-illustration-stage stage-turquoise">
+              <div class="diorama-image-wrapper">
+                <img 
+                  src="assets/images/workload/diorama-modul-ajar.jpg" 
+                  alt="3D Diorama Penyusunan Modul Ajar dan Dokumen Kurikulum" 
+                  class="workload-diorama-img"
+                  loading="lazy"
+                  width="400"
+                  height="350"
+                />
+              </div>
+            </div><div class="workload-card-bottom">
+              <div class="calculation-context-box">
+                <span class="calc-label">Aktivitas Nyata:</span>
+                <p class="calc-desc">Menyelaraskan Capaian Pembelajaran (CP), alur tujuan (ATP), modul ajar, lembar kerja murid (LKPD), hingga rubrik asesmen dari dokumen kosong.</p>
+              </div>
+              <p class="workload-small-copy">
+                Satu topik pembelajaran membutuhkan penyusunan berbagai komponen perangkat ajar.
+              </p>
+            </div>
+          </div>
+
+          <!-- CARD 02: KOREKSI ULANGAN FORMATIF -->
+          <div class="workload-card card-theme-peach" data-card="02">
+            <div class="workload-card-top">
+              <span class="card-num-indicator">02</span>
+              <div class="card-metric-badge badge-peach">
+                <i data-lucide="check-circle-2" class="metric-icon"></i>
+                <span>±2 Jam / Ujian</span>
+              </div>
+            </div>
+
+            <div class="card-heading-group">
+              <h3 class="workload-card-title">Koreksi Ulangan Formatif</h3>
+              <p class="workload-card-subtitle">“Ratusan lembar jawaban di tangan.”</p>
+            </div>
+
+            <!-- 3D Diorama Miniature Illustration 02 -->
+            <div class="workload-illustration-stage stage-peach">
+              <div class="diorama-image-wrapper">
+                <img 
+                  src="assets/images/workload/diorama-koreksi-formatif.jpg" 
+                  alt="3D Diorama Tumpukan Lembar Koreksi Ulangan Formatif" 
+                  class="workload-diorama-img"
+                  loading="lazy"
+                  width="400"
+                  height="350"
+                />
+              </div>
+            </div><div class="workload-card-bottom">
+              <div class="calculation-context-box">
+                <div class="calc-math-row">
+                  <span class="math-item">5 kelas × 32 siswa = <strong>160 lembar</strong></span>
+                  <span class="math-item">160 lembar × 45 detik = <strong>120 menit</strong></span>
+                </div>
+              </div>
+              <p class="workload-small-copy">
+                Baru satu kali ujian, belum termasuk rekapitulasi nilai.
+              </p>
+            </div>
+          </div>
+
+          <!-- CARD 03: INPUT NILAI & PRESENSI -->
+          <div class="workload-card card-theme-blue" data-card="03">
+            <div class="workload-card-top">
+              <span class="card-num-indicator">03</span>
+              <div class="card-metric-badge badge-blue">
+                <i data-lucide="table" class="metric-icon"></i>
+                <span>640 Sel Data</span>
+              </div>
+            </div>
+
+            <div class="card-heading-group">
+              <h3 class="workload-card-title">Input Nilai &amp; Presensi</h3>
+              <p class="workload-card-subtitle">“Ratusan sel spreadsheet yang harus diisi.”</p>
+            </div>
+
+            <!-- 3D Diorama Miniature Illustration 03 -->
+            <div class="workload-illustration-stage stage-blue">
+              <div class="diorama-image-wrapper">
+                <img 
+                  src="assets/images/workload/diorama-input-nilai.jpg" 
+                  alt="3D Diorama Grid Spreadsheet Nilai dan Presensi" 
+                  class="workload-diorama-img"
+                  loading="lazy"
+                  width="400"
+                  height="350"
+                />
+              </div>
+            </div><div class="workload-card-bottom">
+              <div class="calculation-context-box">
+                <div class="calc-math-row">
+                  <span class="math-item">160 siswa × 4 kolom = <strong>640 sel data</strong></span>
+                  <span class="math-estimate">±1–1,5 jam/minggu, tergantung proses input dan validasi.</span>
+                </div>
+              </div>
+              <p class="workload-small-copy">
+                Belum termasuk pengecekan rumus, presensi, dan pembaruan data.
+              </p>
+            </div>
+          </div>
+
+          <!-- CARD 04: BEBAN DESKRIPSI E-RAPOR -->
+          <div class="workload-card card-theme-lavender" data-card="04">
+            <div class="workload-card-top">
+              <span class="card-num-indicator">04</span>
+              <div class="card-metric-badge badge-lavender">
+                <i data-lucide="file-signature" class="metric-icon"></i>
+                <span>320 Kalimat Deskripsi</span>
+              </div>
+            </div>
+
+            <div class="card-heading-group">
+              <h3 class="workload-card-title">Beban Deskripsi e-Rapor</h3>
+              <p class="workload-card-subtitle">“Ratusan narasi unik setiap semester.”</p>
+            </div>
+
+            <!-- 3D Diorama Miniature Illustration 04 -->
+            <div class="workload-illustration-stage stage-lavender">
+              <div class="diorama-image-wrapper">
+                <img 
+                  src="assets/images/workload/diorama-erapor-malam.jpg" 
+                  alt="3D Diorama Guru Menyusun Narasi e-Rapor Malam Hari" 
+                  class="workload-diorama-img"
+                  loading="lazy"
+                  width="400"
+                  height="350"
+                />
+              </div>
+            </div><div class="workload-card-bottom">
+              <div class="calculation-context-box">
+                <div class="calc-math-row">
+                  <span class="math-item">160 siswa × 2 kalimat = <strong>320 kalimat</strong></span>
+                  <span class="math-estimate">Jika butuh 1 menit/siswa, waktu penulisan dasar adalah <strong>5 jam 20 menit</strong>.</span>
+                </div>
+              </div>
+              <p class="workload-small-copy">
+                Belum termasuk verifikasi nilai akhir, revisi narasi, dan sinkronisasi data e-Rapor.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Mobile Workload Cards Carousel Dots (Visible only on mobile <= 768px) -->
+        <div class="workload-carousel-dots" id="workload-carousel-dots" aria-label="Navigasi Kartu Beban Kerja">
+          <button type="button" class="workload-dot active" data-index="0" aria-label="Lihat Kartu 1: Modul Ajar"></button>
+          <button type="button" class="workload-dot" data-index="1" aria-label="Lihat Kartu 2: Koreksi Formatif"></button>
+          <button type="button" class="workload-dot" data-index="2" aria-label="Lihat Kartu 3: Input Nilai"></button>
+          <button type="button" class="workload-dot" data-index="3" aria-label="Lihat Kartu 4: Beban e-Rapor"></button>
+        </div>
+
+        <!-- ==================================================================
+             5. INTERACTIVE WORKLOAD CALCULATOR PANEL
+             ================================================================== -->
+        <div class="workload-calculator-panel" id="kalkulator-beban">
+          <div class="calculator-panel-inner">
+            
+            <!-- LEFT: Calculator Introduction -->
+            <div class="calc-col-intro">
+              <div class="calc-badge-tag">
+                <i data-lucide="calculator" class="calc-badge-icon"></i>
+                <span>SIMULASI BEBAN GURU</span>
+              </div>
+              <h3 class="calc-intro-title">Coba Hitung Bebanmu</h3>
+              <p class="calc-intro-desc">
+                Setiap sekolah dan guru punya kondisi berbeda. Atur sesuai situasi Anda, dan lihat berapa banyak waktu yang berpotensi tersita.
+              </p>
+              
+              <div class="calc-formula-tip">
+                <i data-lucide="sparkles" class="tip-icon"></i>
+                <span>Kalkulasi matematis instan berdasarkan input data riil mengajar Anda.</span>
+              </div>
+            </div>
+
+            <!-- CENTER: Interactive Sliders -->
+            <div class="calc-col-sliders">
+              
+              <!-- Slider 1: Jumlah Kelas -->
+              <div class="slider-group">
+                <div class="slider-header">
+                  <label for="input-classes" class="slider-label">Jumlah kelas diampu</label>
+                  <span class="slider-val-bubble" id="val-classes-display">5 Kelas</span>
+                </div>
+                <input type="range" id="input-classes" class="workload-range-slider" min="1" max="10" step="1" value="5" oninput="window.calculateTeacherWorkload && window.calculateTeacherWorkload()" aria-label="Jumlah kelas diampu">
+                <div class="slider-scale-row">
+                  <span>1 Kelas</span>
+                  <span>5 Kelas (Rata-rata)</span>
+                  <span>10 Kelas</span>
+                </div>
+              </div>
+
+              <!-- Slider 2: Siswa per Kelas -->
+              <div class="slider-group">
+                <div class="slider-header">
+                  <label for="input-students" class="slider-label">Siswa per kelas</label>
+                  <span class="slider-val-bubble" id="val-students-display">32 Siswa</span>
+                </div>
+                <input type="range" id="input-students" class="workload-range-slider" min="15" max="45" step="1" value="32" oninput="window.calculateTeacherWorkload && window.calculateTeacherWorkload()" aria-label="Jumlah siswa per kelas">
+                <div class="slider-scale-row">
+                  <span>15 Siswa</span>
+                  <span>32 Siswa (Standar)</span>
+                  <span>45 Siswa</span>
+                </div>
+              </div>
+
+              <!-- Slider 3: Topik Modul Ajar -->
+              <div class="slider-group">
+                <div class="slider-header">
+                  <label for="input-topics" class="slider-label">Topik modul ajar</label>
+                  <span class="slider-val-bubble" id="val-topics-display">4 Topik</span>
+                </div>
+                <input type="range" id="input-topics" class="workload-range-slider" min="1" max="12" step="1" value="4" oninput="window.calculateTeacherWorkload && window.calculateTeacherWorkload()" aria-label="Jumlah topik modul ajar">
+                <div class="slider-scale-row">
+                  <span>1 Topik</span>
+                  <span>4 Topik</span>
+                  <span>12 Topik</span>
+                </div>
+              </div>
+
+              <!-- Slider 4: Durasi Koreksi per Lembar -->
+              <div class="slider-group">
+                <div class="slider-header">
+                  <label for="input-grading-time" class="slider-label">Durasi koreksi per lembar</label>
+                  <span class="slider-val-bubble" id="val-grading-display">45 Detik</span>
+                </div>
+                <input type="range" id="input-grading-time" class="workload-range-slider" min="30" max="120" step="5" value="45" oninput="window.calculateTeacherWorkload && window.calculateTeacherWorkload()" aria-label="Durasi koreksi per lembar dalam detik">
+                <div class="slider-scale-row">
+                  <span>30 Detik</span>
+                  <span>45 Detik</span>
+                  <span>120 Detik</span>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- RIGHT: Calculated Workload Breakdown and Total Panel -->
+            <div class="calc-col-results">
+              <h4 class="results-heading">Rincian Estimasi Waktu</h4>
+
+              <!-- Mobile Toggle Button (Visible only on Mobile) -->
+              <button class="calc-breakdown-toggle-btn" id="calc-breakdown-toggle" onclick="toggleWorkloadBreakdown()" type="button" aria-expanded="false">
+                <span>📊 Lihat Rincian Estimasi (4 Aktivitas)</span>
+                <i data-lucide="chevron-down" class="breakdown-toggle-icon"></i>
+              </button>
+
+              <!-- 4 Mini Breakdown Result Cards -->
+              <div class="calc-breakdown-grid" id="calc-breakdown-grid">
+                
+                <div class="breakdown-metric-card">
+                  <span class="metric-task-title">📖 Menyusun Modul Ajar</span>
+                  <span class="metric-task-val" id="res-module-hours">14.0 Jam</span>
+                  <span class="metric-task-sub" id="res-module-sub">4 Topik × 3.5 Jam</span>
+                </div>
+
+                <div class="breakdown-metric-card">
+                  <span class="metric-task-title">✍️ Koreksi Satu Ujian</span>
+                  <span class="metric-task-val" id="res-grading-hours">2.0 Jam</span>
+                  <span class="metric-task-sub" id="res-grading-sub">160 Siswa × 45 dtk</span>
+                </div>
+
+                <div class="breakdown-metric-card">
+                  <span class="metric-task-title">📊 Input Nilai Spreadsheet</span>
+                  <span class="metric-task-val" id="res-spreadsheet-hours">1.2 Jam</span>
+                  <span class="metric-task-sub" id="res-spreadsheet-sub">640 Sel Data</span>
+                </div>
+
+                <div class="breakdown-metric-card">
+                  <span class="metric-task-title">📑 Narasi e-Rapor</span>
+                  <span class="metric-task-val" id="res-report-hours">2.7 Jam</span>
+                  <span class="metric-task-sub" id="res-report-sub">320 Kalimat Deskripsi</span>
+                </div>
+
+              </div>
+
+              <!-- Prominent Total Result Panel -->
+              <div class="calc-total-hero-panel">
+                <div class="total-hero-top">
+                  <span class="total-hero-label">TOTAL ESTIMASI WAKTU ADMINISTRATIF</span>
+                </div>
+                <div class="total-hero-number-wrap">
+                  <span class="total-hero-number" id="res-total-hours">19.9</span>
+                  <span class="total-hero-unit">JAM KERJA</span>
+                </div>
+                <p class="total-hero-students-tag">
+                  Kombinasi beban administratif untuk <strong><span id="res-total-students">160</span> Siswa Total</strong>
+                </p>
+                <div class="total-hero-disclaimer">
+                  <i data-lucide="info" class="disc-icon"></i>
+                  <span>Simulasi ilustratif berdasarkan asumsi waktu per aktivitas. Aktivitas memiliki periode berbeda dan belum mencakup seluruh pekerjaan, validasi, atau revisi.</span>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ==================================================================
+             7. TRANSITION TO KLASSA SOLUTION
+             ================================================================== -->
+        <div class="workload-solution-transition">
+          <div class="transition-card-inner">
+            <div class="transition-mark-glow">
+              <span class="klassa-k-mark">✦</span>
+            </div>
+            <h3 class="transition-headline">
+              Waktu Anda Terlalu Berharga untuk Habis di Depan Spreadsheet.
+            </h3>
+            <p class="transition-subtext">
+              Bayangkan jika administrasi lebih sederhana, perangkat ajar lebih cepat disiapkan, dan data pembelajaran tersusun rapi dalam satu tempat.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         9. MEMPERKENALKAN KLASSA — 4 RUANG EKOSISTEM TERPADU
+         ==================================================================== -->
+    <section class="introducing-section" id="ekosistem">
+      <div class="container">
+        
+        <!-- 1. Intro Header Area -->
+        <div class="intro-header-wrapper text-center">
+          <!-- 1. Eyebrow -->
+          <div class="intro-eyebrow">
+            <span class="intro-eyebrow-pill">MEMPERKENALKAN</span>
+          </div>
+          
+          <!-- 2. Official KLASSA Logo -->
+          <div class="intro-logo-brand">
+            <img src="brand/Horizontal Logo New.svg" alt="KLASSA — Naikkan Kelasmu!" class="intro-official-logo">
+          </div>
+          
+          <!-- 3. Main Headline & Subheadline -->
+          <h2 class="intro-headline-statement">
+            Satu Ekosistem Manajemen Kelas Terpadu
+          </h2>
+          <p class="intro-subheadline">
+            Satu platform untuk seluruh rutinitas guru.
+          </p>
+        </div>
+
+        <!-- 4. Large Premium 3D Ecosystem Visualization -->
+        <div class="ecosystem-3d-visual-container">
+          <div class="ecosystem-3d-glow-aura" aria-hidden="true"></div>
+          <div class="ecosystem-3d-stage">
+            <img 
+              src="brand/klassa-4ruang-ecosystem-3d.jpg" 
+              alt="KLASSA 3D Integrated Ecosystem — 4 Ruang Kerja Terpadu Guru" 
+              class="ecosystem-3d-hero-img"
+              loading="lazy"
+              width="1200"
+              height="675"
+            />
+            <!-- Subtle floating workspace labels -->
+            <div class="eco-floating-badge badge-room1">
+              <span class="eco-badge-dot dot-blue"></span>
+              <span>Ruang Mengajar</span>
+            </div>
+            <div class="eco-floating-badge badge-room2">
+              <span class="eco-badge-dot dot-rose"></span>
+              <span>Nilai &amp; Evaluasi</span>
+            </div>
+            <div class="eco-floating-badge badge-room3">
+              <span class="eco-badge-dot dot-purple"></span>
+              <span>Ruang Siswa</span>
+            </div>
+            <div class="eco-floating-badge badge-room4">
+              <span class="eco-badge-dot dot-amber"></span>
+              <span>Ruang Administrasi</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Supporting Explanation -->
+        <div class="intro-supporting-box text-center">
+          <p class="intro-lead-in">
+            Hentikan lingkaran setan membuka banyak aplikasi dan spreadsheet terpisah. KLASSA menstrukturkan pekerjaan Anda ke dalam 4 ruang kerja terintegrasi dengan prinsip: <span class="badge-input-once-highlight">Input Once, Use Everywhere</span>.
+          </p>
+        </div>
+
+        <!-- 6. Four Workspace Toggle Buttons (Adaptive: Desktop 4 Cards / Mobile Numbered Circles) -->
+        <div class="workspace-toggles-bar" id="workspace-toggles-bar" role="tablist" aria-label="Pilih Ruang Kerja KLASSA">
+          <button type="button" class="workspace-toggle-btn active" data-workspace="0" role="tab" aria-selected="true" id="ws-tab-0" aria-controls="workspace-showcase-panel" onclick="selectWorkspace(0)" aria-label="Ruang 1: Ruang Mengajar">
+            <div class="toggle-icon-wrap icon-blue">
+              <i data-lucide="book-open"></i>
+              <span class="toggle-num-mobile">1</span>
+            </div>
+            <div class="toggle-text-wrap">
+              <span class="toggle-tag">RUANG 01</span>
+              <span class="toggle-name">Ruang Mengajar</span>
+            </div>
+          </button>
+
+          <button type="button" class="workspace-toggle-btn" data-workspace="1" role="tab" aria-selected="false" id="ws-tab-1" aria-controls="workspace-showcase-panel" onclick="selectWorkspace(1)" aria-label="Ruang 2: Nilai & Evaluasi">
+            <div class="toggle-icon-wrap icon-rose">
+              <i data-lucide="bar-chart-2"></i>
+              <span class="toggle-num-mobile">2</span>
+            </div>
+            <div class="toggle-text-wrap">
+              <span class="toggle-tag">RUANG 02</span>
+              <span class="toggle-name">Nilai &amp; Evaluasi</span>
+            </div>
+          </button>
+
+          <button type="button" class="workspace-toggle-btn" data-workspace="2" role="tab" aria-selected="false" id="ws-tab-2" aria-controls="workspace-showcase-panel" onclick="selectWorkspace(2)" aria-label="Ruang 3: Ruang Siswa">
+            <div class="toggle-icon-wrap icon-purple">
+              <i data-lucide="users"></i>
+              <span class="toggle-num-mobile">3</span>
+            </div>
+            <div class="toggle-text-wrap">
+              <span class="toggle-tag">RUANG 03</span>
+              <span class="toggle-name">Ruang Siswa</span>
+            </div>
+          </button>
+
+          <button type="button" class="workspace-toggle-btn" data-workspace="3" role="tab" aria-selected="false" id="ws-tab-3" aria-controls="workspace-showcase-panel" onclick="selectWorkspace(3)" aria-label="Ruang 4: Ruang Administrasi">
+            <div class="toggle-icon-wrap icon-amber">
+              <i data-lucide="folder-check"></i>
+              <span class="toggle-num-mobile">4</span>
+            </div>
+            <div class="toggle-text-wrap">
+              <span class="toggle-tag">RUANG 04</span>
+              <span class="toggle-name">Ruang Administrasi</span>
+            </div>
+          </button>
+        </div>
+
+        <!-- 7. One Large Dynamic Product Showcase Card -->
+        <div class="product-showcase-master-card" id="workspace-showcase-panel" role="tabpanel" aria-labelledby="ws-tab-0">
+          <div class="showcase-card-inner">
+            
+            <!-- LEFT (~40%): Workspace Info, Benefit & Interactive Feature Selectors -->
+            <div class="showcase-left-col">
+              
+              <!-- Workspace category badge -->
+              <div class="showcase-room-badge" id="showcase-room-badge">
+                <span class="badge-num" id="sc-badge-num">01 / RUANG MENGAJAR</span>
+              </div>
+
+              <!-- Benefit-Driven Headline -->
+              <h3 class="showcase-headline" id="sc-headline">
+                Mengajar Lebih Fokus, Administrasi Tetap Tercatat.
+              </h3>
+
+              <!-- Short Description -->
+              <p class="showcase-desc" id="sc-desc">
+                Kelola perjalanan pembelajaran, presensi siswa, dan jurnal mengajar dalam satu alur yang praktis.
+              </p>
+
+              <!-- LEVEL 2: Feature Highlights (Desktop: Full Cards / Mobile: Horizontal Icons) -->
+              <div class="showcase-features-list" id="showcase-features-list" role="tablist" aria-label="Fitur Unggulan">
+                <!-- Dynamically populated by JS -->
+              </div>
+
+              <!-- LEVEL 2: Mobile-Only Active Feature Explanation (Frameless) -->
+              <div class="mobile-active-feature-detail" id="mobile-active-feature-detail" role="region" aria-live="polite">
+                <div class="feat-detail-header">
+                  <h4 class="feat-detail-title" id="act-feat-title">Linimasa Mengajar</h4>
+                  <span class="feat-detail-badge" id="act-feat-badge">Pertemuan 1 s/d 16</span>
+                </div>
+                <p class="feat-detail-desc" id="act-feat-desc">
+                  Pantau perjalanan pembelajaran dari pertemuan pertama hingga akhir.
+                </p>
+              </div>
+
+              <!-- Supporting Value Statement (Desktop Only) -->
+              <div class="showcase-value-statement" id="sc-value-statement">
+                <i data-lucide="sparkles" class="val-icon"></i>
+                <span id="sc-val-text">Satu sesi mengajar, data tersusun untuk kebutuhan berikutnya.</span>
+              </div>
+
+              <!-- Connected Data Flow Indicator (Desktop Only) -->
+              <div class="showcase-data-flow" id="sc-data-flow">
+                <div class="flow-icon-circle">
+                  <i data-lucide="arrow-right-left"></i>
+                </div>
+                <div class="flow-text-wrap">
+                  <span class="flow-label">ALUR DATA TERHUBUNG:</span>
+                  <span class="flow-statement" id="sc-flow-text">Dicatat di Ruang Mengajar → Otomatis mengisi Jurnal &amp; Roster Siswa</span>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- RIGHT (~60%): Large Authentic KLASSA Application Screenshot & Contextual Mockup Frame -->
+            <div class="showcase-right-col">
+              <div class="authentic-app-browser-frame">
+                
+                <!-- Browser Window Top Bar -->
+                <div class="app-browser-topbar">
+                  <div class="browser-traffic-lights">
+                    <span class="traffic-dot red"></span>
+                    <span class="traffic-dot yellow"></span>
+                    <span class="traffic-dot green"></span>
+                  </div>
+                  <div class="browser-url-pill">
+                    <i data-lucide="lock" class="url-lock-icon"></i>
+                    <span class="url-text" id="sc-url-text">app.klassa.id/ruang-mengajar/linimasa</span>
+                  </div>
+                  <div class="browser-live-badge">
+                    <span class="live-pulse-dot"></span>
+                    <span>LIVE SYSTEM</span>
+                  </div>
+                </div>
+
+                <!-- Browser Viewport / Screen Stage -->
+                <div class="app-browser-viewport" id="sc-browser-viewport">
+                  <!-- Dynamic Authenticated Screen Viewport Content populated by JS -->
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         12. BEFORE VS AFTER COMPARISON TABLE
+         ==================================================================== -->
+    <section class="comparison-section" id="komparasi">
+      <div class="container">
+        
+        <div class="section-badge-center">
+          <span class="badge-tag">BEFORE VS AFTER</span>
+        </div>
+        <h2 class="section-headline text-center">
+          Cara Lama vs Cara Kerja yang Naik Kelas.
+        </h2>
+        <p class="section-subheadline text-center">
+          Kuantifikasi perbedaan nyata pada jam kerja mingguan, tingkat stres, dan kualitas mengajar Anda bersama KLASSA.
+        </p>
+
+        <!-- Elegant Comparison Table -->
+        <div class="comparison-table-wrapper" data-parallax-depth="-0.06">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th class="col-aspect">Aktivitas Guru</th>
+                <th class="col-before">CARA LAMA (Manual &amp; Tersebar)</th>
+                <th class="col-after">BERSAMA KLASSA (Teacher OS Terpadu)</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+              <!-- 1. Presensi -->
+              <tr class="table-row-item">
+                <td class="aspect-cell">
+                  <strong>1. Presensi Siswa Harian</strong><br>
+                  <small style="color: var(--text-muted);">Per Sesi Kelas</small>
+                </td>
+                <td class="before-cell">
+                  <div class="cell-status-tag tag-old">10–15 Menit</div>
+                  <span>Memanggil nama 36 siswa satu per satu dari kertas absen fisik, mencatat di buku, lalu merekap manual ke spreadsheet di akhir pekan.</span>
+                </td>
+                <td class="after-cell">
+                  <div class="cell-status-tag tag-new">1–2 Menit</div>
+                  <div class="cell-status-tag tag-eff">⚡ 85% Lebih Cepat</div>
+                  <span>Buka sesi <em>Live Teaching</em>, klik <strong>"Tandai Semua Hadir"</strong>, lalu toggle cepat <em>[S/I/A/T]</em> bagi siswa yang berhalangan. Rekap kumulatif otomatis terupdate seketika.</span>
+                </td>
+              </tr>
+
+              <!-- 2. Jurnal -->
+              <tr class="table-row-item">
+                <td class="aspect-cell">
+                  <strong>2. Jurnal Mengajar Harian</strong><br>
+                  <small style="color: var(--text-muted);">Administrasi Sesi</small>
+                </td>
+                <td class="before-cell">
+                  <div class="cell-status-tag tag-old">15–20 Menit</div>
+                  <span>Menulis tangan di buku agenda guru atau mengetik ulang judul materi, jam ajar, dan refleksi harian yang formatnya repetitif.</span>
+                </td>
+                <td class="after-cell">
+                  <div class="cell-status-tag tag-new">2–3 Menit</div>
+                  <div class="cell-status-tag tag-eff">⚡ 85% Lebih Cepat</div>
+                  <span>Topik otomatis terisi sinkron dari jadwal pelajaran mingguan, dilengkapi tombol <strong>"✨ Buat Catatan Otomatis via AI"</strong> untuk draf refleksi kelas instan.</span>
+                </td>
+              </tr>
+
+              <!-- 3. Buku Nilai -->
+              <tr class="table-row-item">
+                <td class="aspect-cell">
+                  <strong>3. Input Nilai &amp; Pembobotan</strong><br>
+                  <small style="color: var(--text-muted);">Kalkulasi Hasil Belajar</small>
+                </td>
+                <td class="before-cell">
+                  <div class="cell-status-tag tag-old">30–45 Menit</div>
+                  <span>Memasukkan nilai satu per satu dari kertas ulangan ke Excel, membuat formula perkalian bobot manual, menghitung rerata tugas dan asesmen.</span>
+                </td>
+                <td class="after-cell">
+                  <div class="cell-status-tag tag-new">5–10 Menit / 1-Klik</div>
+                  <div class="cell-status-tag tag-eff">⚡ 80% Lebih Cepat</div>
+                  <span>Matriks Buku Nilai responsif dengan formula bobot dinamis (Tugas/Formatif/Sumatif). Nilai akhir dan status kelulusan terhitung otomatis secara real-time.</span>
+                </td>
+              </tr>
+
+              <!-- 4. Modul Ajar -->
+              <tr class="table-row-item">
+                <td class="aspect-cell">
+                  <strong>4. Penyusunan Modul Ajar / RPP</strong><br>
+                  <small style="color: var(--text-muted);">Kurikulum Merdeka</small>
+                </td>
+                <td class="before-cell">
+                  <div class="cell-status-tag tag-old">3–6 Jam</div>
+                  <span>Mencari referensi, menyalin CP/TP, merancang apersepsi, kegiatan inti (PBL/PjBL), langkah asesmen, rubrik, dan penutup dari dokumen kosong.</span>
+                </td>
+                <td class="after-cell">
+                  <div class="cell-status-tag tag-new">5–10 Menit</div>
+                  <div class="cell-status-tag tag-eff">⚡ 95% Lebih Cepat</div>
+                  <span>Generator AI menyusun draf lengkap berstandar regulasi Kemendikbudristek dalam hitungan detik, langsung siap diunduh format Microsoft Word (.docx).</span>
+                </td>
+              </tr>
+
+              <!-- 5. PPT Presentasi -->
+              <tr class="table-row-item">
+                <td class="aspect-cell">
+                  <strong>5. Pembuatan Slide PPTX</strong><br>
+                  <small style="color: var(--text-muted);">Media Presentasi Visual</small>
+                </td>
+                <td class="before-cell">
+                  <div class="cell-status-tag tag-old">2–4 Jam</div>
+                  <span>Membuka PowerPoint kosong, mencari template visual, copy-paste materi teks panjang, mengatur font layout, dan menyiapkan naskah bicara manual.</span>
+                </td>
+                <td class="after-cell">
+                  <div class="cell-status-tag tag-new">3–5 Menit</div>
+                  <div class="cell-status-tag tag-eff">⚡ 95% Lebih Cepat</div>
+                  <span>Adaptive PPT Engine menghasilkan slide visual modern berstruktur non-monoton, poin materi ringkas, dan <em>Speaker Notes</em> narasi guru siap tayang.</span>
+                </td>
+              </tr>
+
+              <!-- 6. LKPD -->
+              <tr class="table-row-item">
+                <td class="aspect-cell">
+                  <strong>6. Penyusunan LKPD Siswa</strong><br>
+                  <small style="color: var(--text-muted);">Lembar Aktivitas Belajar</small>
+                </td>
+                <td class="before-cell">
+                  <div class="cell-status-tag tag-old">1.5–3 Jam</div>
+                  <span>Merancang skenario masalah kontekstual, instruksi praktikum/studi kasus, tabel observasi, dan kolom isian jawaban murid secara manual.</span>
+                </td>
+                <td class="after-cell">
+                  <div class="cell-status-tag tag-new">3–5 Menit</div>
+                  <div class="cell-status-tag tag-eff">⚡ 95% Lebih Cepat</div>
+                  <span>AI Studio menghasilkan LKPD berbasis aktivitas nyata dan fenomena kontekstual lengkap dengan instruksi terstruktur dan ruang isian siswa siap cetak.</span>
+                </td>
+              </tr>
+
+              <!-- 7. Kisi-Kisi & Soal -->
+              <tr class="table-row-item">
+                <td class="aspect-cell">
+                  <strong>7. Kisi-Kisi &amp; Bank Soal HOTS</strong><br>
+                  <small style="color: var(--text-muted);">Instrumen Asesmen</small>
+                </td>
+                <td class="before-cell">
+                  <div class="cell-status-tag tag-old">2–4 Jam</div>
+                  <span>Menyusun tabel matriks taksonomi Bloom, merumuskan stimulus kontekstual, membuat 4–5 opsi pengecoh, serta kunci jawaban dan rubrik essay.</span>
+                </td>
+                <td class="after-cell">
+                  <div class="cell-status-tag tag-new">5–8 Menit</div>
+                  <div class="cell-status-tag tag-eff">⚡ 90% Lebih Cepat</div>
+                  <span>AI menyusun kisi-kisi lengkap dengan sebaran level kognitif C1–C6, butir soal PG/Essay bermutu tinggi, kunci jawaban, dan pembahasan mendalam.</span>
+                </td>
+              </tr>
+
+              <!-- 8. Kuis Online -->
+              <tr class="table-row-item">
+                <td class="aspect-cell">
+                  <strong>8. Pelaksanaan &amp; Koreksi Kuis</strong><br>
+                  <small style="color: var(--text-muted);">Evaluasi 36 Siswa</small>
+                </td>
+                <td class="before-cell">
+                  <div class="cell-status-tag tag-old">60–90 Menit</div>
+                  <span>Mencetak kertas ujian, membagikan, mengawasi fisik, mengumpulkan, dan memeriksa satu per satu lembar jawaban murid dengan bolpoin merah.</span>
+                </td>
+                <td class="after-cell">
+                  <div class="cell-status-tag tag-new">0–5 Menit</div>
+                  <div class="cell-status-tag tag-eff">⚡ 95% Lebih Cepat</div>
+                  <span>Bagikan tautan kuis digital web + PIN kelas. Jawaban PG terkoreksi 100% otomatis saat siswa submit, nilai langsung masuk ke Buku Nilai.</span>
+                </td>
+              </tr>
+
+              <!-- 9. Remedial -->
+              <tr class="table-row-item">
+                <td class="aspect-cell">
+                  <strong>9. Pelacakan Remedial (KKTP)</strong><br>
+                  <small style="color: var(--text-muted);">Intervensi Ketuntasan</small>
+                </td>
+                <td class="before-cell">
+                  <div class="cell-status-tag tag-old">20–30 Menit</div>
+                  <span>Mencari manual nama-nama murid yang nilainya di bawah KKM/KKTP, membuat rekap remedial terpisah, lalu memperbarui nilai pengganti.</span>
+                </td>
+                <td class="after-cell">
+                  <div class="cell-status-tag tag-new">Radar Instan</div>
+                  <div class="cell-status-tag tag-eff">⚡ 100% Otomatis</div>
+                  <span>Sistem otomatis menandai badge <em>"Butuh Remedial"</em> pada siswa di bawah ambang KKTP beserta histori pencatatan ujian perbaikan.</span>
+                </td>
+              </tr>
+
+              <!-- 10. Rapor -->
+              <tr class="table-row-item">
+                <td class="aspect-cell">
+                  <strong>10. Pelaporan Rapor Semester</strong><br>
+                  <small style="color: var(--text-muted);">Rekap Capaian Akhir</small>
+                </td>
+                <td class="before-cell">
+                  <div class="cell-status-tag tag-old">3–5 Hari Kerja</div>
+                  <span>Menggabungkan puluhan sheet Excel tercecer, menghitung nilai akhir, menyusun kalimat deskripsi capaian rapor satu per satu hingga lembur malam.</span>
+                </td>
+                <td class="after-cell">
+                  <div class="cell-status-tag tag-new">10–15 Menit</div>
+                  <div class="cell-status-tag tag-eff">⚡ 95% Lebih Cepat</div>
+                  <span>Sistem mengagregasi data semester otomatis, menghasilkan rekap nilai terformat rapi dan deskripsi naratif siap ekspor ke Excel / PDF e-Rapor.</span>
+                </td>
+              </tr>
+
+              <!-- 11. Komunikasi Ortu -->
+              <tr class="table-row-item">
+                <td class="aspect-cell">
+                  <strong>11. Komunikasi ke Orang Tua</strong><br>
+                  <small style="color: var(--text-muted);">Update Perkembangan Murid</small>
+                </td>
+                <td class="before-cell">
+                  <div class="cell-status-tag tag-old">2–3 Jam / Minggu</div>
+                  <span>Membalas chat WhatsApp orang tua satu per satu secara repetitif menanyakan kehadiran, kepatuhan tugas, dan nilai ulangan anak.</span>
+                </td>
+                <td class="after-cell">
+                  <div class="cell-status-tag tag-new">0 Jam (Self-Service)</div>
+                  <div class="cell-status-tag tag-eff">⚡ 100% Tereliminasi</div>
+                  <span>Orang tua memantau kehadiran dan capaian nilai resmi anak mereka secara mandiri dan transparan melalui Portal Orang Tua kapan saja.</span>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Highlight Summary: Konsep 3 - Floating Minimalist Capsule -->
+        <style>
+          .minimal-capsule-wrapper {
+            margin-top: 36px !important;
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            justify-content: center !important;
+            text-align: center !important;
+          }
+          .minimal-capsule {
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 14px !important;
+            background: #FFFFFF !important;
+            border: 1px solid #E2E8F0 !important;
+            padding: 10px 18px !important;
+            border-radius: 999px !important;
+            box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.08), 0 4px 6px -2px rgba(15, 23, 42, 0.03) !important;
+            max-width: 100% !important;
+            flex-wrap: wrap !important;
+            justify-content: center !important;
+          }
+          .capsule-pill {
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 8px !important;
+            padding: 8px 16px !important;
+            border-radius: 999px !important;
+            font-size: 0.92rem !important;
+            font-weight: 700 !important;
+            line-height: 1 !important;
+          }
+          .pill-old {
+            background-color: #F8FAFC !important;
+            color: #64748B !important;
+            border: 1px solid #E2E8F0 !important;
+          }
+          .pill-old .pill-val {
+            color: #EF4444 !important;
+            text-decoration: line-through !important;
+            font-weight: 800 !important;
+          }
+          .capsule-arrow {
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 8px !important;
+            color: #0F766E !important;
+            font-weight: 800 !important;
+            font-size: 0.85rem !important;
+          }
+          .capsule-arrow-icon {
+            font-size: 1.1rem !important;
+            color: #14B8A6 !important;
+          }
+          .capsule-savings-badge {
+            background: linear-gradient(135deg, #10B981 0%, #059669 100%) !important;
+            color: #FFFFFF !important;
+            font-size: 0.76rem !important;
+            font-weight: 800 !important;
+            padding: 5px 12px !important;
+            border-radius: 999px !important;
+            letter-spacing: 0.02em !important;
+            box-shadow: 0 2px 6px rgba(16, 185, 129, 0.3) !important;
+          }
+          .pill-new {
+            background: linear-gradient(135deg, rgba(204, 251, 241, 0.6) 0%, rgba(153, 246, 228, 0.6) 100%) !important;
+            color: #0F766E !important;
+            border: 1px solid #99F6E4 !important;
+          }
+          .pill-new .pill-val {
+            color: #0D9488 !important;
+            font-weight: 800 !important;
+            font-size: 1rem !important;
+          }
+          .minimal-capsule-subtext {
+            margin-top: 14px !important;
+            font-size: 0.92rem !important;
+            color: #64748B !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: 8px !important;
+            justify-content: center !important;
+            flex-wrap: wrap !important;
+          }
+          .subtext-strong {
+            color: #0F172A !important;
+            font-weight: 700 !important;
+          }
+          .subtext-dot {
+            color: #CBD5E1 !important;
+          }
+          @media (max-width: 640px) {
+            .minimal-capsule {
+              border-radius: 20px !important;
+              padding: 14px 16px !important;
+              gap: 10px !important;
+            }
+            .capsule-pill {
+              font-size: 0.85rem !important;
+              padding: 6px 12px !important;
+            }
+          }
+        </style>
+
+        <div class="minimal-capsule-wrapper">
+          <div class="minimal-capsule">
+            <!-- Old Mode -->
+            <div class="capsule-pill pill-old">
+              <span>⏱️ Cara Lama:</span>
+              <span class="pill-val">25–35 jam / minggu</span>
+            </div>
+
+            <!-- Arrow & Efficiency -->
+            <div class="capsule-arrow">
+              <span class="capsule-arrow-icon">➔</span>
+              <span class="capsule-savings-badge">⚡ Hemat ±85%</span>
+            </div>
+
+            <!-- New Mode (KLASSA) -->
+            <div class="capsule-pill pill-new">
+              <span>✦ Bersama KLASSA:</span>
+              <span class="pill-val">4–6 jam / minggu</span>
+            </div>
+          </div>
+
+          <!-- Micro Subtext -->
+          <div class="minimal-capsule-subtext">
+            <span>Menyelamatkan <span class="subtext-strong">20–29 jam istirahat guru</span> setiap minggu.</span>
+            <span class="subtext-dot">•</span>
+            <span>Bebas lembur koreksi tugas &amp; ketik RPP.</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         13. MID-PAGE CTA SECTION — DEEP PINE TEAL GLOW
+         ==================================================================== -->
+    <section class="mid-cta-section" id="cta-awal">
+      <div class="container">
+        <div class="mid-cta-box">
+          <!-- Abstract K-Wing in Background -->
+          <svg class="mid-cta-kwing" data-parallax-depth="0.35" data-parallax-rot="0.04" viewBox="0 0 400 400" fill="none" aria-hidden="true">
+            <path d="M50 50 L200 200 L50 350 L120 350 L270 200 L120 50 Z" fill="#14B8A6" opacity="0.08"/>
+          </svg>
+
+          <div class="mid-cta-content" data-parallax-depth="-0.08">
+            <div class="mid-badge">
+              <span class="ai-sparkle">✦</span>
+              <span>Kembalikan Waktu Berharga Anda</span>
+            </div>
+            <h2 class="mid-headline">
+              Birokrasi Tuntas dalam Detik.<br>
+              Hemat Hingga 29 Jam Setiap Pekan.
+            </h2>
+            <p class="mid-subheadline">
+              Asisten AI pribadi yang mengurus Modul Ajar, koreksi ujian otomatis, dan rekapan nilai Kurikulum Merdeka Anda dalam satu ruang kerja cerdas.
+            </p>
+
+            <div class="mid-cta-actions">
+              <button class="btn btn-primary btn-mid-primary" onclick="openTrialModal()">
+                <span>⚡ Coba Gratis Sekarang — Tanpa Syarat</span>
+              </button>
+              <div class="mid-guarantee-note">
+                Tidak perlu kartu kredit • Setup akun ±1 menit • Akses fitur lengkap
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         14. PRICING SECTION — VALUE TICKETS
+         ==================================================================== -->
+    <section class="pricing-section" id="harga">
+      <div class="container">
+        
+        <div class="section-badge-center">
+          <span class="badge-tag">INVESTASI CERDAS GURU</span>
+        </div>
+        <h2 class="section-headline text-center">
+          Investasi Kecil untuk Mengembalikan<br>
+          Berjam-jam Waktu Anda.
+        </h2>
+        <p class="section-subheadline text-center">
+          Pilih paket yang paling sesuai dengan kebutuhan ruang kerja Anda. Transparan tanpa biaya tersembunyi.
+        </p>
+
+        <!-- Pricing Cards Grid (Monthly vs Annual) -->
+        <div class="pricing-cards-grid">
+          
+          <!-- Card 1: Monthly -->
+          <div class="pricing-card reveal-on-scroll" data-parallax-depth="0.1">
+            <div class="plan-header">
+              <h3 class="plan-title">Paket Bulanan</h3>
+              <p class="plan-subtitle">Fleksibilitas penuh untuk guru individu yang ingin mencoba ekosistem terpadu.</p>
+            </div>
+
+            <div class="price-box">
+              <div class="price-val">
+                <span class="currency">Rp</span>
+                <span class="amount">49.000</span>
+                <span class="period">/bulan</span>
+              </div>
+              <div class="daily-equivalent">≈ Rp1.600 / hari (setara secangkir teh)</div>
+            </div>
+
+            <ul class="plan-features-list">
+              <li><i data-lucide="check" class="p-check"></i> <span>AI Modul Ajar Kurikulum Merdeka</span></li>
+              <li><i data-lucide="check" class="p-check"></i> <span>Smart Assessment &amp; Kuis Anti-Contek</span></li>
+              <li><i data-lucide="check" class="p-check"></i> <span>Presensi 1-Tap &amp; Jurnal Digital</span></li>
+              <li><i data-lucide="check" class="p-check"></i> <span>Student Monitoring &amp; Tracking Remedial</span></li>
+              <li><i data-lucide="check" class="p-check"></i> <span>Ekspor Dokumen Microsoft Word (.docx)</span></li>
+              <li><i data-lucide="check" class="p-check"></i> <span>Ekspor Rekap Nilai ke Excel (.xlsx)</span></li>
+              <li><i data-lucide="check" class="p-check"></i> <span>Portal Siswa Ringan (Akses via NIS &amp; PIN)</span></li>
+            </ul>
+
+            <button class="btn btn-outline-pricing" onclick="openTrialModal()">Mulai Gratis 7 Hari</button>
+          </div>
+
+          <!-- Card 2: Annual (Paling Populer) -->
+          <div class="pricing-card featured-annual-card reveal-on-scroll" data-parallax-depth="-0.16">
+            <div class="featured-badge-pill">
+              <span>✦ PALING POPULER &amp; HEMAT</span>
+            </div>
+
+            <div class="plan-header">
+              <h3 class="plan-title">Paket Tahunan</h3>
+              <p class="plan-subtitle">Pilihan favorit ribuan guru untuk ketenangan mengajar sepanjang tahun ajaran.</p>
+            </div>
+
+            <div class="price-box">
+              <div class="old-price">Rp588.000 / tahun</div>
+              <div class="price-val">
+                <span class="currency">Rp</span>
+                <span class="amount">299.000</span>
+                <span class="period">/tahun</span>
+              </div>
+              <div class="savings-tag">Hemat Rp289.000 dibanding pembayaran bulanan</div>
+            </div>
+
+            <div class="exclusive-bonus-box">
+              <i data-lucide="gift" style="color: #0F766E; width: 18px; height: 18px;"></i>
+              <div>
+                <strong>Bonus Spesial Paket Tahunan:</strong>
+                <p>50+ Template Presentasi Interaktif Kurikulum Merdeka siap pakai</p>
+              </div>
+            </div>
+
+            <ul class="plan-features-list">
+              <li><i data-lucide="check" class="p-check"></i> <span><strong>Seluruh fitur Paket Bulanan lengkap</strong></span></li>
+              <li><i data-lucide="check" class="p-check"></i> <span>Prioritas antrean server AI tercepat</span></li>
+              <li><i data-lucide="check" class="p-check"></i> <span>Penyimpanan arsip perangkat ajar tanpa batas</span></li>
+              <li><i data-lucide="check" class="p-check"></i> <span>Akses modul Prota &amp; Prosem otomatis</span></li>
+              <li><i data-lucide="check" class="p-check"></i> <span>Dukungan prioritas tim edukasi KLASSA via WhatsApp</span></li>
+            </ul>
+
+            <button class="btn btn-primary btn-annual-select" onclick="openTrialModal()">
+              <span>Pilih Paket Tahunan</span>
+              <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
+            </button>
+          </div>
+
+        </div>
+
+        <!-- Garansi Kepuasan 14 Hari -->
+        <div class="satisfaction-guarantee-card" data-parallax-depth="0.08">
+          <div class="guarantee-shield-box">
+            <i data-lucide="shield-check" style="color: #0F766E; width: 28px; height: 28px;"></i>
+          </div>
+          <div class="guarantee-text">
+            <h4 class="guarantee-title">GARANSI KEPUASAN 14 HARI</h4>
+            <p class="guarantee-desc">
+              Coba KLASSA selama 14 hari. Jika tidak membantu menghemat waktu administrasi Anda, hubungi kami sesuai ketentuan garansi untuk pengembalian pembayaran secara transparan.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         15. FINAL CTA SECTION — "THE HEROIC DAWN HORIZON"
+         ==================================================================== -->
+    <section class="final-cta-section" id="daftar">
+      <div class="container">
+        
+        <!-- Large Abstract K-Wing Visual Backdrop -->
+        <div class="final-cta-container">
+          <svg class="final-cta-bg-kwing" data-parallax-depth="0.32" viewBox="0 0 600 600" fill="none" aria-hidden="true">
+            <path d="M100 100 L350 300 L100 500 L220 500 L470 300 L220 100 Z" fill="#14B8A6" opacity="0.06"/>
+          </svg>
+
+          <div class="final-cta-inner" data-parallax-depth="-0.08">
+            <div class="badge-tag">SAATNYA NAIKKAN KELASMU • ELEVATE YOUR CLASS</div>
+            
+            <h2 class="final-headline">
+              Tidur Lebih Tenang Malam Ini.<br>
+              Mengajar Lebih Berkelas Esok Pagi.
+            </h2>
+
+            <p class="final-subheadline">
+              Bergabunglah dengan pendidik Indonesia yang mulai meninggalkan pekerjaan administrasi manual dan beralih ke cara kerja yang lebih terintegrasi.
+            </p>
+
+            <div class="final-buttons-row">
+              <button class="btn btn-primary btn-final-primary" onclick="openTrialModal()">
+                <span>🚀 Daftar Akun KLASSA Sekarang</span>
+              </button>
+
+              <a href="https://wa.me/6281234567890?text=Halo%20KLASSA,%20saya%20tertarik%20untuk%20mencoba%20demo%20ekosistem%20KLASSA" target="_blank" rel="noopener" class="btn btn-whatsapp">
+                <i data-lucide="message-circle" style="width: 18px; height: 18px;"></i>
+                <span>Konsultasi via WhatsApp</span>
+              </a>
+            </div>
+
+            <div class="final-guarantee-strip">
+              <span>✓ 7 hari gratis</span>
+              <span>•</span>
+              <span>Tanpa kartu kredit</span>
+              <span>•</span>
+              <span>Setup ±1 menit</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         16. FAQ SECTION — ACCORDION
+         ==================================================================== -->
+    <section class="faq-section" id="faq">
+      <div class="container faq-container">
+        
+        <h2 class="faq-simple-title text-center" style="font-size: 1.85rem; font-weight: 800; color: #0F172A; margin-bottom: 32px; letter-spacing: -0.02em;">
+          FAQ
+        </h2>
+
+        <!-- Accordion List -->
+        <div class="faq-accordion" id="faq-accordion">
+          
+          <!-- Item 1 -->
+          <div class="accordion-item active" data-parallax-depth="-0.06">
+            <button class="accordion-header" aria-expanded="true">
+              <span>Apa itu KLASSA dan bagaimana cara kerjanya?</span>
+              <i data-lucide="chevron-down" class="accordion-arrow"></i>
+            </button>
+            <div class="accordion-body">
+              <p>
+                KLASSA adalah platform terpadu yang membantu guru mengelola kegiatan mengajar, mulai dari perencanaan pembelajaran, presensi, materi ajar, tugas, kuis dan ujian, penilaian, hingga pelaporan hasil belajar. Semuanya dirancang dalam satu ekosistem agar pekerjaan guru lebih terorganisir dan tidak perlu berpindah-pindah aplikasi.
+              </p>
+            </div>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="accordion-item" data-parallax-depth="0.06">
+            <button class="accordion-header" aria-expanded="false">
+              <span>Apakah KLASSA sulit digunakan oleh guru yang tidak terbiasa dengan teknologi?</span>
+              <i data-lucide="chevron-down" class="accordion-arrow"></i>
+            </button>
+            <div class="accordion-body">
+              <p>
+                KLASSA dirancang dengan alur kerja yang sederhana dan tampilan yang mudah dipahami. Guru dapat mengakses fitur melalui Portal Guru yang terstruktur, tanpa harus menguasai keterampilan teknis atau pemrograman.
+              </p>
+            </div>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="accordion-item" data-parallax-depth="-0.06">
+            <button class="accordion-header" aria-expanded="false">
+              <span>Bagaimana KLASSA membantu pelaksanaan kuis dan ujian?</span>
+              <i data-lucide="chevron-down" class="accordion-arrow"></i>
+            </button>
+            <div class="accordion-body">
+              <p>
+                Guru dapat menyiapkan kuis dan evaluasi melalui Portal Guru, sementara siswa mengerjakannya melalui Portal Siswa. KLASSA dirancang untuk membantu pengelolaan pengerjaan, jawaban, dan hasil evaluasi dalam satu alur. Fitur pengawasan ujian membantu mendeteksi aktivitas tertentu, tetapi tidak menjamin seluruh bentuk kecurangan dapat dicegah.
+              </p>
+            </div>
+          </div>
+
+          <!-- Item 4 -->
+          <div class="accordion-item" data-parallax-depth="0.06">
+            <button class="accordion-header" aria-expanded="false">
+              <span>Apakah KLASSA bisa digunakan melalui HP dan laptop?</span>
+              <i data-lucide="chevron-down" class="accordion-arrow"></i>
+            </button>
+            <div class="accordion-body">
+              <p>
+                Portal Guru dirancang untuk ruang kerja yang lebih luas, sedangkan Portal Siswa dioptimalkan untuk penggunaan melalui ponsel.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ====================================================================
+       17. FOOTER
+       ==================================================================== -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      
+      <!-- Brand & Tagline Col -->
+      <div class="footer-brand-col">
+        <a href="#hero" class="footer-brand-link">
+          <img src="brand/Horizontal Logo New.svg" alt="KLASSA — Naikkan Kelasmu!" class="footer-logo">
+        </a>
+        <div class="footer-tagline">NAIKKAN KELASMU!</div>
+        <p class="footer-statement">
+          Ruang kerja terpadu agar proses ajar-mengajar berlangsung lebih berkelas, teratur, dan membahagiakan bagi pendidik Indonesia.
+        </p>
+        <div class="copyright-text">
+          &copy; 2026 KLASSA Indonesia. Seluruh hak cipta dilindungi.
+        </div>
+      </div>
+
+      <!-- Links Columns -->
+      <div class="footer-links-grid">
+        <div class="footer-col">
+          <h4 class="footer-col-title">Produk</h4>
+          <ul class="footer-menu">
+            <li><a href="#hero">Cockpit Workspace</a></li>
+            <li><a href="#fitur">AI Modul Ajar</a></li>
+            <li><a href="#fitur">Smart Assessment</a></li>
+            <li><a href="#fitur">Presensi &amp; Jurnal</a></li>
+            <li><a href="#toolkit">Toolkit Lengkap</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col-title">Navigasi</h4>
+          <ul class="footer-menu">
+            <li><a href="#fitur">Fitur Unggulan</a></li>
+            <li><a href="#cara-kerja">Cara Kerja</a></li>
+            <li><a href="#harga">Biaya &amp; Paket</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#ekosistem">Portal Siswa</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col-title">Legalitas &amp; Bantuan</h4>
+          <ul class="footer-menu">
+            <li><a href="#faq">Kebijakan Privasi</a></li>
+            <li><a href="#faq">Syarat &amp; Ketentuan</a></li>
+            <li><a href="https://wa.me/6281234567890" target="_blank" rel="noopener">Bantuan WhatsApp</a></li>
+            <li><a href="#faq">Garansi Kepuasan</a></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ====================================================================
+       19. STICKY BOTTOM MOBILE CTA (Triggered on Scroll)
+       ==================================================================== -->
+  <div class="sticky-bottom-mobile-cta" id="sticky-mobile-cta">
+    <div class="mobile-cta-content">
+      <div class="mobile-cta-text">
+        <strong>KLASSA Guru</strong>
+        <span>7 hari coba gratis</span>
+      </div>
+      <button class="btn btn-sm btn-primary" onclick="openTrialModal()">
+        <span>Coba KLASSA Gratis</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- ====================================================================
+       INTERACTIVE MODALS
+       ==================================================================== -->
+  
+  <!-- 1. Trial Registration Modal -->
+  <div class="modal-backdrop" id="trial-modal" onclick="closeTrialModal(event)">
+    <div class="modal-card">
+      <button class="modal-close-btn" onclick="closeTrialModal()">&times;</button>
+      <div class="modal-badge">
+        <span class="ai-sparkle">✦</span>
+        <span>Akses Gratis 7 Hari</span>
+      </div>
+      <h3 class="modal-title">Mulai Gunakan KLASSA</h3>
+      <p class="modal-sub">Tidak perlu kartu kredit. Akun Anda langsung aktif dalam 60 detik.</p>
+
+      <form class="modal-form" onsubmit="handleTrialSubmit(event)">
+        <div class="form-group">
+          <label>Nama Lengkap &amp; Gelar</label>
+          <input type="text" class="modal-input" placeholder="contoh: Siti Rahmawati, S.Pd." required>
+        </div>
+        <div class="form-group">
+          <label>Nomor WhatsApp (Untuk kirim akses login)</label>
+          <input type="tel" class="modal-input" placeholder="contoh: 081234567890" required>
+        </div>
+        <div class="form-group">
+          <label>Jenjang Sekolah</label>
+          <select class="modal-select">
+            <option>SMP / MTs</option>
+            <option>SMA / SMK / MA</option>
+            <option>SD / MI</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary btn-modal-submit">
+          <span>Buka Workspace Saya Sekarang ➔</span>
+        </button>
+      </form>
+      <div class="modal-footer-note">
+        🔒 Data Anda aman &amp; dilindungi sesuai standar privasi pendidik.
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Demo 40 Detik Video/Walkthrough Modal -->
+  <div class="modal-backdrop" id="demo-video-modal" onclick="closeDemoVideoModal(event)">
+    <div class="modal-card modal-video-card">
+      <button class="modal-close-btn" onclick="closeDemoVideoModal()">&times;</button>
+      <div class="demo-interactive-player">
+        <div class="player-topbar">
+          <span class="player-title">Simulasi Cepat 40 Detik: Alur Kerja KLASSA</span>
+          <span class="badge-tag">Interactive Walkthrough</span>
+        </div>
+        <div class="demo-screen-content">
+          <div class="demo-step-view active" id="demo-step-view">
+            <div class="demo-flow-card">
+              <div class="flow-icon-circle">
+                <i data-lucide="sparkles" style="color: #6366F1;"></i>
+              </div>
+              <h4 id="demo-step-title">Langkah 1: Pilih Capaian Pembelajaran</h4>
+              <p id="demo-step-desc">AI KLASSA secara otomatis membaca pedoman BSKAP dan menyusun sintaks aktivitas berdiferensiasi.</p>
+              <div class="demo-timer-bar"><div class="demo-timer-progress" id="demo-progress-bar"></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="demo-player-actions">
+          <button class="btn btn-secondary btn-sm" onclick="advanceDemoStep()">Langkah Berikutnya ➔</button>
+          <button class="btn btn-primary btn-sm" onclick="closeDemoVideoModal(); openTrialModal();">Coba Sendiri Sekarang</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Script -->
+  <script src="js/main.js?v=26.0"></script>
+
+  <!-- KLASSA Visual Inline Editor Script -->
+  <script id="klassa-editor-script">
+    let activeElementForFont = null;
+
+    // Initialize all editable text elements
+    document.addEventListener('DOMContentLoaded', () => {
+      initInlineEditing();
+      initSpacingControls();
+      initFontBubble();
+    });
+
+    function initInlineEditing() {
+      // Find all text elements to make editable
+      const targets = [
+        '.hero-headline',
+        '.hero-subheading',
+        '.hero-subheadline',
+        '.hero-badge span:nth-child(2)',
+        '.badge-tag-verified',
+        '.btn-hero-primary span:first-child',
+        '.btn-hero-secondary span:last-child',
+        '.cta-micro-guarantee',
+        '.social-proof-text',
+        '.card-title',
+        '.card-status-sub',
+        '.big-score',
+        '.problem-card h3',
+        '.problem-card p',
+        '.faq-question h4',
+        '.faq-answer p'
+      ];
+
+      targets.forEach(selector => {
+        document.querySelectorAll(selector).forEach(el => {
+          el.setAttribute('contenteditable', 'true');
+          el.setAttribute('spellcheck', 'false');
+          el.classList.add('klassa-editable');
+          el.title = 'Klik untuk langsung ketik & ganti teks';
+        });
+      });
+    }
+
+    function initSpacingControls() {
+      const spacers = [
+        { selector: '.hero-badge', defaultVal: 20 },
+        { selector: '.hero-headline', defaultVal: 12 },
+        { selector: '.hero-subheading', defaultVal: 20 },
+        { selector: '.hero-ecosystem-col', defaultVal: 18 },
+        { selector: '.hero-subheadline', defaultVal: 22 }
+      ];
+
+      spacers.forEach(item => {
+        const target = document.querySelector(item.selector);
+        if (target && !target.nextElementSibling?.classList.contains('klassa-spacer-control')) {
+          const spacerDiv = document.createElement('div');
+          spacerDiv.className = 'klassa-spacer-control';
+          spacerDiv.setAttribute('data-target', item.selector);
+
+          // Get computed margin
+          const currentMargin = parseInt(window.getComputedStyle(target).marginBottom) || item.defaultVal;
+
+          spacerDiv.innerHTML = `
+            <div class="spacer-line"></div>
+            <div class="spacer-pill">
+              <span>↕ Jarak:</span>
+              <button onclick="adjustMargin('${item.selector}', -2, this)">−</button>
+              <strong class="spacer-val">${currentMargin}px</strong>
+              <button onclick="adjustMargin('${item.selector}', +2, this)">+</button>
+            </div>
+            <div class="spacer-line"></div>
+          `;
+
+          target.parentNode.insertBefore(spacerDiv, target.nextSibling);
+        }
+      });
+    }
+
+    function adjustMargin(selector, delta, btn) {
+      const target = document.querySelector(selector);
+      if (!target) return;
+      const current = parseInt(target.style.marginBottom || window.getComputedStyle(target).marginBottom) || 16;
+      const newVal = Math.max(0, current + delta);
+      target.style.marginBottom = newVal + 'px';
+      
+      const valEl = btn.parentNode.querySelector('.spacer-val');
+      if (valEl) valEl.textContent = newVal + 'px';
+    }
+
+    function initFontBubble() {
+      const bubble = document.getElementById('klassa-font-bubble');
+      const bubbleVal = document.getElementById('font-bubble-val');
+
+      document.addEventListener('focusin', (e) => {
+        if (e.target.classList.contains('klassa-editable')) {
+          activeElementForFont = e.target;
+          const rect = activeElementForFont.getBoundingClientRect();
+          const currentFontSize = window.getComputedStyle(activeElementForFont).fontSize;
+          bubbleVal.textContent = currentFontSize;
+          
+          bubble.style.display = 'flex';
+          bubble.style.top = (rect.top + window.scrollY - 8) + 'px';
+          bubble.style.left = Math.max(10, rect.left + window.scrollX) + 'px';
+        }
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!bubble.contains(e.target) && !e.target.classList.contains('klassa-editable')) {
+          bubble.style.display = 'none';
+        }
+      });
+    }
+
+    function adjustCurrentFontSize(deltaRem) {
+      if (!activeElementForFont) return;
+      const currentPx = parseFloat(window.getComputedStyle(activeElementForFont).fontSize);
+      const newPx = Math.max(10, Math.round(currentPx + (deltaRem * 16)));
+      activeElementForFont.style.fontSize = (newPx / 16).toFixed(2) + 'rem';
+      
+      const bubbleVal = document.getElementById('font-bubble-val');
+      if (bubbleVal) bubbleVal.textContent = (newPx / 16).toFixed(2) + 'rem';
+
+      // Reposition bubble
+      const rect = activeElementForFont.getBoundingClientRect();
+      const bubble = document.getElementById('klassa-font-bubble');
+      bubble.style.top = (rect.top + window.scrollY - 8) + 'px';
+      bubble.style.left = Math.max(10, rect.left + window.scrollX) + 'px';
+    }
+
+    // Save changes to index.html on disk!
+    async function saveEditorChanges() {
+      const saveBtn = document.getElementById('btn-editor-save');
+      saveBtn.innerHTML = '<span>⏳ Menyimpan...</span>';
+
+      try {
+        // Clone document to clean it
+        const cleanDoc = document.documentElement.cloneNode(true);
+
+        // Remove editor UI elements from clone
+        const topbar = cleanDoc.querySelector('#klassa-editor-topbar');
+        if (topbar) topbar.remove();
+
+        const fontBubble = cleanDoc.querySelector('#klassa-font-bubble');
+        if (fontBubble) fontBubble.remove();
+
+        const toast = cleanDoc.querySelector('#editor-toast');
+        if (toast) toast.remove();
+
+        cleanDoc.querySelectorAll('.klassa-spacer-control').forEach(el => el.remove());
+
+        const editorStyles = cleanDoc.querySelector('#klassa-editor-styles');
+        if (editorStyles) editorStyles.remove();
+
+        const editorScript = cleanDoc.querySelector('#klassa-editor-script');
+        if (editorScript) editorScript.remove();
+
+        // Clean attributes
+        cleanDoc.querySelectorAll('.klassa-editable').forEach(el => {
+          el.removeAttribute('contenteditable');
+          el.removeAttribute('spellcheck');
+          el.removeAttribute('title');
+          el.classList.remove('klassa-editable');
+          if (el.classList.length === 0) el.removeAttribute('class');
+        });
+
+        const cleanHtml = '<!DOCTYPE html>\n' + cleanDoc.outerHTML;
+
+        // Send to server
+        const res = await fetch('/api/save-editor', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ html: cleanHtml })
+        });
+
+        const data = await res.json();
+        showEditorToast(data.message || 'Perubahan berhasil disimpan langsung ke index.html!');
+      } catch (err) {
+        showEditorToast('⚠️ Gagal menyimpan ke server: ' + err.message);
+      } finally {
+        saveBtn.innerHTML = '<span>💾 Simpan ke Landing Page (index.html)</span>';
+      }
+    }
+
+    function resetEditorPage() {
+      if (confirm('Kembalikan tampilan editor ini ke isi awal index.html?')) {
+        window.location.reload();
+      }
+    }
+
+    function showEditorToast(msg) {
+      const toast = document.getElementById('editor-toast');
+      if (toast) {
+        toast.textContent = msg;
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 3500);
+      }
+    }
+  </script>
+
+</body>
+</html>

@@ -57,6 +57,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 12. Teacher Workload Calculator Engine
   initSafe(initWorkloadCalculator, 'WorkloadCalculator');
+
+  // 12b. Teacher Workload Mobile Touch-Snap Carousel
+  initSafe(initWorkloadMobileCarousel, 'WorkloadMobileCarousel');
 });
 
 /* ============================================================================
@@ -772,7 +775,25 @@ function updateProblemCarouselUI(index) {
     dot.classList.toggle('active', idx === index);
   });
 
-  // 5. Re-render Lucide icons
+  // 5. Update mobile active topic label
+  const topicMobile = document.getElementById('problem-active-topic-mobile');
+  const topicNames = [
+    'Masalah 01: Data Terpecah',
+    'Masalah 02: Kerja Berulang',
+    'Masalah 03: Bikin dari Nol',
+    'Masalah 04: Data Tanpa Arah',
+    'Masalah 05: Rekap Melelahkan'
+  ];
+  if (topicMobile && topicNames[index]) {
+    topicMobile.textContent = topicNames[index];
+    if (index === 4) {
+      topicMobile.style.color = '#EF4444';
+    } else {
+      topicMobile.style.color = 'var(--teal-primary)';
+    }
+  }
+
+  // 6. Re-render Lucide icons
   if (window.lucide) {
     window.lucide.createIcons();
   }
@@ -1034,52 +1055,57 @@ const klassaWorkspacesData = [
                 <h4 class="mock-heading">Matriks Nilai Matematika • X IPA 1</h4>
               </div>
               <div class="mock-avg-pill">
-                <span>Rata-Rata Kelas: <strong>86.4</strong></span>
+                <span>Rata-Rata: <strong>86.4</strong></span>
               </div>
             </div>
 
-            <div class="mock-grade-table highlight-focus">
-              <div class="grade-table-header">
-                <span class="col-name">Nama Siswa</span>
-                <span class="col-sc">TP 1</span>
-                <span class="col-sc">TP 2</span>
-                <span class="col-sc">Formatif</span>
-                <span class="col-sc">Sumatif</span>
-                <span class="col-final">Nilai Akhir</span>
-                <span class="col-status">Status</span>
+            <div class="mock-grade-table-wrap">
+              <div class="mock-grade-table highlight-focus">
+                <div class="grade-table-header">
+                  <span class="col-name">Nama Siswa</span>
+                  <span class="col-sc">TP 1</span>
+                  <span class="col-sc">TP 2</span>
+                  <span class="col-sc">Formatif</span>
+                  <span class="col-sc">Sumatif</span>
+                  <span class="col-final">Nilai Akhir</span>
+                  <span class="col-status">Status</span>
+                </div>
+                <div class="grade-table-row">
+                  <span class="col-name">Ahmad Fauzan</span>
+                  <span class="col-sc">88</span>
+                  <span class="col-sc">92</span>
+                  <span class="col-sc">85</span>
+                  <span class="col-sc">90</span>
+                  <span class="col-final font-bold text-teal">88.8</span>
+                  <span class="col-status"><span class="badge-tuntas">Tuntas</span></span>
+                </div>
+                <div class="grade-table-row">
+                  <span class="col-name">Bella Safitri</span>
+                  <span class="col-sc">90</span>
+                  <span class="col-sc">94</span>
+                  <span class="col-sc">88</span>
+                  <span class="col-sc">92</span>
+                  <span class="col-final font-bold text-teal">91.0</span>
+                  <span class="col-status"><span class="badge-tuntas">Tuntas</span></span>
+                </div>
+                <div class="grade-table-row remedi-row">
+                  <span class="col-name">Chandra Wijaya</span>
+                  <span class="col-sc">70</span>
+                  <span class="col-sc">68</span>
+                  <span class="col-sc">72</span>
+                  <span class="col-sc">65</span>
+                  <span class="col-final font-bold text-rose">68.8</span>
+                  <span class="col-status"><span class="badge-remed">Remedial</span></span>
+                </div>
               </div>
-              <div class="grade-table-row">
-                <span class="col-name">Ahmad Fauzan</span>
-                <span class="col-sc">88</span>
-                <span class="col-sc">92</span>
-                <span class="col-sc">85</span>
-                <span class="col-sc">90</span>
-                <span class="col-final font-bold text-teal">88.8</span>
-                <span class="col-status"><span class="badge-tuntas">Tuntas</span></span>
-              </div>
-              <div class="grade-table-row">
-                <span class="col-name">Bella Safitri</span>
-                <span class="col-sc">90</span>
-                <span class="col-sc">94</span>
-                <span class="col-sc">88</span>
-                <span class="col-sc">92</span>
-                <span class="col-final font-bold text-teal">91.0</span>
-                <span class="col-status"><span class="badge-tuntas">Tuntas</span></span>
-              </div>
-              <div class="grade-table-row remedi-row">
-                <span class="col-name">Chandra Wijaya</span>
-                <span class="col-sc">70</span>
-                <span class="col-sc">68</span>
-                <span class="col-sc">72</span>
-                <span class="col-sc">65</span>
-                <span class="col-final font-bold text-rose">68.8</span>
-                <span class="col-status"><span class="badge-remed">Remedial</span></span>
+              <div class="table-scroll-hint">
+                <span>⇄ Geser tabel untuk nilai lengkap</span>
               </div>
             </div>
 
             <div class="mock-focus-callout rose">
               <i data-lucide="table"></i>
-              <span><strong>Sticky Headers & Formula Otomatis:</strong> Tidak ada rumus rusak (#REF!), kolom terhitung dinamis saat nilai masuk.</span>
+              <span><strong>Formula Otomatis:</strong> Tidak ada rumus rusak (#REF!), nilai akhir terhitung dinamis saat entri masuk.</span>
             </div>
           </div>
         `
@@ -1488,11 +1514,45 @@ function selectFeature(featureIndex) {
   // 1. Update feature buttons active state
   const featBtns = document.querySelectorAll('.feature-highlight-btn');
   featBtns.forEach((btn, idx) => {
-    btn.classList.toggle('active', idx === featureIndex);
+    const isActive = idx === featureIndex;
+    btn.classList.toggle('active', isActive);
+    btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
   });
 
-  // 2. Update right browser mockup viewport
+  // 2. Update mobile active feature detail explanation
+  updateActiveFeatureDetail();
+
+  // 3. Update right browser mockup viewport
   renderMockupViewport();
+
+  // Refresh Lucide Icons
+  if (window.lucide) {
+    window.lucide.createIcons();
+  }
+}
+
+function updateActiveFeatureDetail() {
+  const ws = klassaWorkspacesData[activeWorkspaceIndex];
+  if (!ws) return;
+  const currentFeat = ws.features[activeFeatureIndex];
+  if (!currentFeat) return;
+
+  const titleEl = document.getElementById('act-feat-title');
+  if (titleEl) titleEl.textContent = currentFeat.title;
+
+  const badgeEl = document.getElementById('act-feat-badge');
+  if (badgeEl) badgeEl.textContent = currentFeat.badge;
+
+  const descEl = document.getElementById('act-feat-desc');
+  if (descEl) descEl.textContent = currentFeat.explanation;
+
+  // Add subtle pulse/fade animation on card change for mobile
+  const cardEl = document.getElementById('mobile-active-feature-detail');
+  if (cardEl) {
+    cardEl.classList.remove('detail-card-pulse');
+    void cardEl.offsetWidth; // trigger reflow
+    cardEl.classList.add('detail-card-pulse');
+  }
 }
 
 function renderShowcaseContent() {
@@ -1516,15 +1576,15 @@ function renderShowcaseContent() {
   const descEl = document.getElementById('sc-desc');
   if (descEl) descEl.textContent = ws.description;
 
-  // Update value statement
+  // Update value statement (Desktop)
   const valTextEl = document.getElementById('sc-val-text');
   if (valTextEl) valTextEl.textContent = ws.valueStatement;
 
-  // Update data flow indicator
+  // Update data flow indicator (Desktop)
   const flowTextEl = document.getElementById('sc-flow-text');
   if (flowTextEl) flowTextEl.textContent = ws.dataFlow;
 
-  // Render 3 clickable feature highlights (Level 2)
+  // Render 3 clickable feature highlights
   const featuresList = document.getElementById('showcase-features-list');
   if (featuresList) {
     featuresList.innerHTML = ws.features.map((f, idx) => `
@@ -1532,6 +1592,8 @@ function renderShowcaseContent() {
               data-feature-idx="${idx}" 
               onclick="selectFeature(${idx})" 
               role="tab" 
+              title="${f.title}" 
+              aria-label="${f.title}" 
               aria-selected="${idx === activeFeatureIndex ? 'true' : 'false'}">
         <div class="feat-icon-bubble">
           <i data-lucide="${f.icon}"></i>
@@ -1546,6 +1608,9 @@ function renderShowcaseContent() {
       </button>
     `).join('');
   }
+
+  // Update mobile active feature detail explanation
+  updateActiveFeatureDetail();
 
   // Render right mockup viewport
   renderMockupViewport();
@@ -2217,3 +2282,92 @@ window.toggleStageFullscreen = toggleStageFullscreen;
 window.handleManualPlayClick = handleManualPlayClick;
 window.handleSpotlightKey = handleSpotlightKey;
 window.initFeatureSpotlight = initFeatureSpotlight;
+
+/* Mobile Workload Breakdown Accordion Toggle */
+function toggleWorkloadBreakdown() {
+  const btn = document.getElementById('calc-breakdown-toggle');
+  const grid = document.getElementById('calc-breakdown-grid');
+  if (!btn || !grid) return;
+
+  const isOpen = grid.classList.toggle('open');
+  btn.classList.toggle('open', isOpen);
+  btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  const span = btn.querySelector('span');
+  if (span) {
+    span.textContent = isOpen ? 'Tutup Rincian Estimasi (4 Aktivitas)' : '📊 Lihat Rincian Estimasi (4 Aktivitas)';
+  }
+  if (typeof updateParallaxMetrics === 'function') {
+    setTimeout(updateParallaxMetrics, 300);
+  }
+}
+window.toggleWorkloadBreakdown = toggleWorkloadBreakdown;
+
+/* ============================================================================
+   12b. TEACHER WORKLOAD MOBILE TOUCH-SNAP CAROUSEL
+   ============================================================================ */
+function initWorkloadMobileCarousel() {
+  const grid = document.getElementById('workload-cards-grid');
+  const dotsContainer = document.getElementById('workload-carousel-dots');
+  if (!grid || !dotsContainer) return;
+
+  const cards = grid.querySelectorAll('.workload-card');
+  const dots = dotsContainer.querySelectorAll('.workload-dot');
+  if (cards.length === 0 || dots.length === 0) return;
+
+  let isTicking = false;
+
+  const updateActiveDot = () => {
+    const gridRect = grid.getBoundingClientRect();
+    const gridCenter = gridRect.left + gridRect.width / 2;
+
+    let closestIdx = 0;
+    let minDistance = Infinity;
+
+    cards.forEach((card, idx) => {
+      const cardRect = card.getBoundingClientRect();
+      const cardCenter = cardRect.left + cardRect.width / 2;
+      const distance = Math.abs(gridCenter - cardCenter);
+      if (distance < minDistance) {
+        minDistance = distance;
+        closestIdx = idx;
+      }
+    });
+
+    dots.forEach((dot, idx) => {
+      if (idx === closestIdx) {
+        dot.classList.add('active');
+        dot.setAttribute('aria-current', 'true');
+      } else {
+        dot.classList.remove('active');
+        dot.removeAttribute('aria-current');
+      }
+    });
+
+    isTicking = false;
+  };
+
+  grid.addEventListener('scroll', () => {
+    if (!isTicking) {
+      window.requestAnimationFrame(updateActiveDot);
+      isTicking = true;
+    }
+  }, { passive: true });
+
+  dots.forEach((dot, idx) => {
+    dot.addEventListener('click', () => {
+      if (cards[idx]) {
+        const card = cards[idx];
+        const targetLeft = card.offsetLeft - (grid.clientWidth - card.clientWidth) / 2;
+        grid.scrollTo({
+          left: Math.max(0, targetLeft),
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+
+  // Initial check
+  updateActiveDot();
+}
+window.initWorkloadMobileCarousel = initWorkloadMobileCarousel;
+
