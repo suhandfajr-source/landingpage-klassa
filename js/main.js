@@ -1876,210 +1876,123 @@ function initStickyMobileCta() {
 }
 
 /* ============================================================================
-   19. KLASSA FEATURE SPOTLIGHT — LIGHT PREMIUM BROWSER FRAME & AUTOPLAY ENGINE
+   19. KLASSA FEATURE SPOTLIGHT — INTERACTIVE YOUTUBE VIDEO SHOWCASE ENGINE
    ============================================================================ */
 const SPOTLIGHT_FEATURES = [
   {
-    id: 0,
-    title: 'AI Studio',
-    url: 'app.klassa.id/ai-studio',
-    badge: 'LIVE APP',
-    indicator: 'AI Studio • Generator Perangkat Ajar',
-    status: 'VIDEO DEMO',
-    type: 'video',
-    videoSrc: 'Fitur KLASSA/AI Studio.mp4',
-    loop: true,
-    hasChapters: false
+    id: 'ai-studio',
+    title: 'AI Studio — Modul Ajar',
+    desc: 'Susun modul ajar dengan bantuan AI, lalu sesuaikan hasilnya dengan kebutuhan pembelajaran.',
+    videoId: 'MHoTutSwbQs',
+    browserUrl: 'app.klassa.id/ai-studio',
+    badge: 'LIVE DEMO',
+    tag: 'AI COPILOT'
   },
   {
-    id: 1,
+    id: 'quiz-cbt',
     title: 'Quiz & CBT Online',
-    url: 'app.klassa.id/quiz-cbt',
-    badge: 'LIVE CBT',
-    indicator: 'Quiz & CBT Online • Alur Evaluasi Terpadu',
-    status: '3 CHAPTER SEQUENCE',
-    type: 'video',
-    loop: false,
-    hasChapters: true,
-    chapters: [
-      {
-        id: 0,
-        title: '1. Persiapan Guru',
-        url: 'app.klassa.id/quiz-cbt/persiapan-guru',
-        indicator: 'Quiz CBT (1/3) • Persiapan Ujian Guru',
-        videoSrc: 'Fitur KLASSA/Quiz 1.mp4'
-      },
-      {
-        id: 1,
-        title: '2. Pengerjaan Siswa',
-        url: 'app.klassa.id/quiz-cbt/pengerjaan-siswa',
-        indicator: 'Quiz CBT (2/3) • Tampilan Ujian Siswa di HP',
-        videoSrc: 'Fitur KLASSA/Quiz 2 - Jawaban Siswa.mp4'
-      },
-      {
-        id: 2,
-        title: '3. Hasil di Portal Guru',
-        url: 'app.klassa.id/quiz-cbt/portal-hasil',
-        indicator: 'Quiz CBT (3/3) • Hasil & Rekap Nilai Portal Guru',
-        videoSrc: 'Fitur KLASSA/Quiz 3 - Hasil di Portal guru.mp4'
-      }
-    ]
+    desc: 'Kelola kuis dan ujian online, mulai dari persiapan soal, pengerjaan siswa, hingga penilaian dan hasil evaluasi.',
+    videoId: 'Yi5KV-KhnKQ',
+    browserUrl: 'app.klassa.id/quiz-cbt',
+    badge: 'LIVE DEMO',
+    tag: 'ASSESSMENT'
   },
   {
-    id: 2,
+    id: 'klassa-agent',
     title: 'KLASSA Agent',
-    url: 'app.klassa.id/ai-agent',
-    badge: 'CO-PILOT',
-    indicator: 'KLASSA Agent • Asisten Cerdas Alur Kerja Guru',
-    status: 'PREVIEW FITUR',
-    type: 'agent-preview',
-    loop: false,
-    videoSrc: null,
-    hasChapters: false
+    desc: 'Asisten AI yang dirancang untuk membantu guru menyelesaikan berbagai pekerjaan melalui instruksi sederhana.',
+    videoId: null, // Struktur data siap diisi: ganti null dengan "ACTUAL_YOUTUBE_ID" ketika video siap
+    browserUrl: 'app.klassa.id/agent',
+    badge: 'SEGERA HADIR',
+    tag: 'AI AGENT'
   }
 ];
 
-let activeFeatureIdx = 0;
-let activeQuizChapterIdx = 0;
-let isSectionInView = false;
+let activeSpotlightIdx = 0;
 let userPrefersReducedMotion = false;
+let isSpotlightVideoPlaying = false;
+let ytPlayer = null;
 
-function updateProgressBeam(idx) {
-  const beam = document.getElementById('spotlight-progress-beam');
-  const items = document.querySelectorAll('.spotlight-nav-item');
-  if (!beam || !items || items.length === 0) return;
-  
-  const total = items.length;
-  const percentage = 100 / total;
-  beam.style.top = `${idx * percentage}%`;
-  beam.style.height = `${percentage}%`;
-}
-
-function updatePlayPauseIcon() {
-  const videoEl = document.getElementById('spotlight-main-video');
-  const iconEl = document.getElementById('icon-play-state');
-  if (!iconEl) return;
-
-  const isPaused = !videoEl || videoEl.paused;
-  iconEl.setAttribute('data-lucide', isPaused ? 'play' : 'pause');
-  if (window.lucide) window.lucide.createIcons();
-}
-
-function updateMuteIcon() {
-  const videoEl = document.getElementById('spotlight-main-video');
-  const iconEl = document.getElementById('icon-mute-state');
-  if (!iconEl) return;
-
-  const isMuted = !videoEl || videoEl.muted;
-  iconEl.setAttribute('data-lucide', isMuted ? 'volume-x' : 'volume-2');
-  if (window.lucide) window.lucide.createIcons();
-}
-
-function showPlayOverlay() {
-  const overlay = document.getElementById('stage-play-overlay');
-  if (overlay) overlay.style.display = 'flex';
-  if (window.lucide) window.lucide.createIcons();
-}
-
-function hidePlayOverlay() {
-  const overlay = document.getElementById('stage-play-overlay');
-  if (overlay) overlay.style.display = 'none';
-}
-
-function playActiveVideo() {
-  const videoEl = document.getElementById('spotlight-main-video');
-  const currentFeature = SPOTLIGHT_FEATURES[activeFeatureIdx];
-  if (!videoEl || !currentFeature || currentFeature.type !== 'video' || !isSectionInView) return;
-
-  if (userPrefersReducedMotion) {
-    showPlayOverlay();
-    return;
+// Send direct postMessage command to YouTube iframe (works both with & without YT.Player)
+function sendYouTubeCommand(funcName) {
+  const iframe = document.getElementById('spotlight-active-iframe');
+  if (!iframe || !iframe.contentWindow) return;
+  try {
+    iframe.contentWindow.postMessage('{"event":"listening","id":1}', '*');
+    iframe.contentWindow.postMessage(JSON.stringify({
+      event: 'command',
+      func: funcName,
+      args: ''
+    }), '*');
+    iframe.contentWindow.postMessage(JSON.stringify({
+      event: 'command',
+      func: funcName,
+      args: []
+    }), '*');
+  } catch (err) {
+    console.warn('[KLASSA] sendYouTubeCommand error:', err);
   }
+}
 
-  videoEl.muted = true;
-  const playPromise = videoEl.play();
-  if (playPromise !== undefined) {
-    playPromise.then(() => {
-      hidePlayOverlay();
-      updatePlayPauseIcon();
-      updateMuteIcon();
-    }).catch(err => {
-      console.warn('[KLASSA] Autoplay blocked by browser policy:', err);
-      showPlayOverlay();
-      updatePlayPauseIcon();
+// Initialize YouTube Player API instance
+window.onYouTubeIframeAPIReady = function() {
+  initYTPlayer();
+};
+
+function initYTPlayer() {
+  const iframe = document.getElementById('spotlight-active-iframe');
+  if (!iframe || !window.YT || !window.YT.Player || ytPlayer) return;
+
+  try {
+    ytPlayer = new YT.Player('spotlight-active-iframe', {
+      events: {
+        'onReady': () => {
+          sendYouTubeCommand('listening');
+        },
+        'onStateChange': (event) => {
+          // 1 = PLAYING, 2 = PAUSED, 0 = ENDED
+          if (event.data === 1) {
+            updatePlayPauseBtnState(true);
+          } else if (event.data === 2 || event.data === 0) {
+            updatePlayPauseBtnState(false);
+          }
+        }
+      }
     });
+  } catch (e) {
+    console.warn('[KLASSA] YT Player Init:', e);
   }
 }
 
-function switchSpotlightFeature(featureIdx) {
-  if (featureIdx < 0 || featureIdx >= SPOTLIGHT_FEATURES.length) return;
-  activeFeatureIdx = featureIdx;
-  
-  const feature = SPOTLIGHT_FEATURES[featureIdx];
-  const videoEl = document.getElementById('spotlight-main-video');
-  const videoBox = document.getElementById('browser-video-box');
-  const agentStage = document.getElementById('agent-preview-stage');
-  const chapterStrip = document.getElementById('browser-chapter-strip');
-  const addressUrl = document.getElementById('browser-address-url');
-  const addressBadge = document.getElementById('browser-address-badge');
-  const progressBar = document.getElementById('stage-video-progress');
-  const fallbackEl = document.getElementById('stage-error-fallback');
-
-  if (fallbackEl) fallbackEl.style.display = 'none';
-  if (progressBar) progressBar.style.width = '0%';
-
-  // 1. Update Timeline Navigation Items
-  const navItems = document.querySelectorAll('.spotlight-nav-item');
-  navItems.forEach((item, i) => {
-    const isAct = i === featureIdx;
-    item.classList.toggle('active', isAct);
-    item.setAttribute('aria-selected', isAct ? 'true' : 'false');
-  });
-
-  // 2. Update Progress Beam
-  updateProgressBeam(featureIdx);
-
-  // 3. Pause & reset current video
-  if (videoEl) {
-    try {
-      videoEl.pause();
-    } catch (e) {}
+function scrollToSpotlightVideoOnMobile() {
+  if (window.innerWidth <= 1024) {
+    const frame = document.getElementById('spotlight-browser-frame');
+    if (!frame) return;
+    setTimeout(() => {
+      const navbar = document.getElementById('site-navbar');
+      const navHeight = navbar ? navbar.offsetHeight : 70;
+      const rect = frame.getBoundingClientRect();
+      const targetY = window.pageYOffset + rect.top - navHeight - 12;
+      window.scrollTo({ top: Math.max(0, targetY), behavior: 'smooth' });
+    }, 80);
   }
+}
 
-  // 4. Update Showcase Content, Address URL & Source
-  if (addressUrl) addressUrl.textContent = feature.url;
-  if (addressBadge) addressBadge.textContent = feature.badge;
+function updatePlayPauseBtnState(isPlaying) {
+  isSpotlightVideoPlaying = isPlaying;
+  const btn = document.getElementById('spotlight-play-pause-btn');
+  const icon = document.getElementById('spotlight-play-icon');
+  const text = document.getElementById('spotlight-play-text');
+  if (!btn) return;
 
-  if (feature.type === 'video') {
-    if (agentStage) agentStage.style.display = 'none';
-    if (videoBox) videoBox.style.display = 'flex';
-
-    if (feature.hasChapters) {
-      if (chapterStrip) chapterStrip.style.display = 'flex';
-      activeQuizChapterIdx = 0;
-      updateQuizChapterUi(0);
-      const chapter = feature.chapters[0];
-      if (addressUrl) addressUrl.textContent = chapter.url;
-      if (videoEl) {
-        videoEl.loop = false;
-        videoEl.src = chapter.videoSrc;
-        videoEl.load();
-        playActiveVideo();
-      }
-    } else {
-      if (chapterStrip) chapterStrip.style.display = 'none';
-      if (videoEl) {
-        videoEl.loop = true;
-        videoEl.src = feature.videoSrc;
-        videoEl.load();
-        playActiveVideo();
-      }
-    }
-  } else if (feature.type === 'agent-preview') {
-    if (chapterStrip) chapterStrip.style.display = 'none';
-    if (videoBox) videoBox.style.display = 'none';
-    if (agentStage) agentStage.style.display = 'flex';
-    hidePlayOverlay();
+  if (isPlaying) {
+    btn.classList.add('is-playing');
+    if (text) text.textContent = 'Jeda';
+    if (icon) icon.setAttribute('data-lucide', 'pause');
+  } else {
+    btn.classList.remove('is-playing');
+    if (text) text.textContent = 'Putar';
+    if (icon) icon.setAttribute('data-lucide', 'play');
   }
 
   if (window.lucide) {
@@ -2087,121 +2000,133 @@ function switchSpotlightFeature(featureIdx) {
   }
 }
 
-function updateQuizChapterUi(chapterIdx) {
-  const chapterBtns = document.querySelectorAll('.chapter-nav-pill');
-  chapterBtns.forEach((btn, i) => {
-    const isAct = i === chapterIdx;
-    btn.classList.toggle('active', isAct);
-    btn.setAttribute('aria-selected', isAct ? 'true' : 'false');
+function toggleSpotlightPlayPause() {
+  const btn = document.getElementById('spotlight-play-pause-btn');
+  // Check both our tracking variable and the button's visual state
+  const isPlaying = isSpotlightVideoPlaying || (btn && btn.classList.contains('is-playing'));
+
+  if (isPlaying) {
+    // Action: Pause
+    if (ytPlayer && typeof ytPlayer.pauseVideo === 'function') {
+      try { ytPlayer.pauseVideo(); } catch (e) { console.warn(e); }
+    }
+    sendYouTubeCommand('pauseVideo');
+    updatePlayPauseBtnState(false);
+  } else {
+    // Action: Play
+    if (ytPlayer && typeof ytPlayer.playVideo === 'function') {
+      try { ytPlayer.playVideo(); } catch (e) { console.warn(e); }
+    }
+    sendYouTubeCommand('playVideo');
+    updatePlayPauseBtnState(true);
+  }
+}
+
+function mountSpotlightShowcase(idx, shouldAutoplay = true) {
+  const iframe = document.getElementById('spotlight-active-iframe');
+  const comingSoonCard = document.getElementById('spotlight-coming-soon-card');
+  const urlEl = document.getElementById('spotlight-browser-url');
+  const badgeEl = document.getElementById('spotlight-browser-badge');
+  const statusEl = document.getElementById('spotlight-status-label');
+  const playBtn = document.getElementById('spotlight-play-pause-btn');
+  if (idx < 0 || idx >= SPOTLIGHT_FEATURES.length) return;
+
+  const feature = SPOTLIGHT_FEATURES[idx];
+
+  // Update browser mockup address and badges
+  if (urlEl) urlEl.textContent = feature.browserUrl;
+  if (badgeEl) badgeEl.textContent = feature.badge;
+  if (statusEl) statusEl.textContent = feature.videoId ? 'Video 16:9' : 'Segera Hadir';
+
+  if (feature.videoId) {
+    if (playBtn) playBtn.style.display = 'inline-flex';
+    if (comingSoonCard) comingSoonCard.style.display = 'none';
+    if (iframe) iframe.style.display = 'block';
+
+    // If ytPlayer API is bound, loadVideoById switches smoothly without destroying the player
+    if (ytPlayer && typeof ytPlayer.loadVideoById === 'function') {
+      try {
+        ytPlayer.loadVideoById({
+          videoId: feature.videoId,
+          startSeconds: 0
+        });
+        if (shouldAutoplay && !userPrefersReducedMotion) {
+          ytPlayer.playVideo();
+          updatePlayPauseBtnState(true);
+        } else {
+          updatePlayPauseBtnState(false);
+        }
+        return;
+      } catch (e) {
+        console.warn('[KLASSA] loadVideoById error:', e);
+      }
+    }
+
+    // Direct iframe src update fallback
+    if (iframe) {
+      const autoplayParam = (shouldAutoplay && !userPrefersReducedMotion) ? 1 : 0;
+      const originParam = window.location.origin ? `&origin=${encodeURIComponent(window.location.origin)}` : '';
+      iframe.src = `https://www.youtube.com/embed/${encodeURIComponent(feature.videoId)}?autoplay=${autoplayParam}&enablejsapi=1&version=3&rel=0${originParam}`;
+      updatePlayPauseBtnState(autoplayParam === 1);
+    }
+  } else {
+    // Feature without video: KLASSA Agent (Coming Soon)
+    if (playBtn) playBtn.style.display = 'none';
+    if (iframe) {
+      if (ytPlayer && typeof ytPlayer.pauseVideo === 'function') {
+        try { ytPlayer.pauseVideo(); } catch (e) {}
+      }
+      sendYouTubeCommand('pauseVideo');
+      iframe.style.display = 'none';
+    }
+    if (comingSoonCard) comingSoonCard.style.display = 'flex';
+    updatePlayPauseBtnState(false);
+    if (window.lucide) {
+      window.lucide.createIcons();
+    }
+  }
+}
+
+function selectSpotlightFeature(idx) {
+  if (idx < 0 || idx >= SPOTLIGHT_FEATURES.length) return;
+  activeSpotlightIdx = idx;
+
+  // Update tabs visual state & accessibility attributes
+  const navItems = document.querySelectorAll('.spotlight-nav-item');
+  navItems.forEach((item, i) => {
+    const isActive = (i === idx);
+    item.classList.toggle('active', isActive);
+    item.setAttribute('aria-selected', isActive ? 'true' : 'false');
   });
+
+  // Mount showcase with autoplay enabled on user click
+  mountSpotlightShowcase(idx, true);
+
+  // Auto-smooth scroll to video on mobile (Option A)
+  scrollToSpotlightVideoOnMobile();
 }
 
-function switchQuizChapter(chapterIdx) {
-  const quizFeature = SPOTLIGHT_FEATURES[1];
-  if (!quizFeature || !quizFeature.chapters || !quizFeature.chapters[chapterIdx]) return;
-  activeQuizChapterIdx = chapterIdx;
-
-  const chapter = quizFeature.chapters[chapterIdx];
-  const videoEl = document.getElementById('spotlight-main-video');
-  const addressUrl = document.getElementById('browser-address-url');
-  const progressBar = document.getElementById('stage-video-progress');
-  const fallbackEl = document.getElementById('stage-error-fallback');
-
-  if (fallbackEl) fallbackEl.style.display = 'none';
-  if (progressBar) progressBar.style.width = '0%';
-
-  updateQuizChapterUi(chapterIdx);
-
-  if (addressUrl) {
-    addressUrl.textContent = chapter.url;
-  }
-
-  if (videoEl) {
-    try {
-      videoEl.pause();
-    } catch (e) {}
-    videoEl.loop = false;
-    videoEl.src = chapter.videoSrc;
-    videoEl.load();
-    playActiveVideo();
-  }
-}
-
-// Stage Play/Pause Toggle
-function toggleStagePlayPause() {
-  const videoEl = document.getElementById('spotlight-main-video');
-  if (!videoEl) return;
-
-  if (videoEl.paused) {
-    videoEl.play().then(() => {
-      hidePlayOverlay();
-      updatePlayPauseIcon();
-    }).catch(() => {
-      showPlayOverlay();
-    });
-  } else {
-    videoEl.pause();
-    updatePlayPauseIcon();
-  }
-}
-
-// Stage Mute/Unmute Toggle
-function toggleStageMute() {
-  const videoEl = document.getElementById('spotlight-main-video');
-  if (!videoEl) return;
-
-  videoEl.muted = !videoEl.muted;
-  updateMuteIcon();
-}
-
-// Stage Fullscreen Toggle (Target the light browser frame)
-function toggleStageFullscreen() {
-  const frame = document.getElementById('spotlight-browser-frame');
-  if (!frame) return;
-
-  if (!document.fullscreenElement) {
-    if (frame.requestFullscreen) {
-      frame.requestFullscreen().catch(() => {});
-    } else if (frame.webkitRequestFullscreen) {
-      frame.webkitRequestFullscreen();
-    }
-  } else {
-    if (document.exitFullscreen) {
-      document.exitFullscreen().catch(() => {});
-    }
-  }
-}
-
-function handleManualPlayClick() {
-  const videoEl = document.getElementById('spotlight-main-video');
-  if (!videoEl) return;
-
-  videoEl.play().then(() => {
-    hidePlayOverlay();
-    updatePlayPauseIcon();
-  }).catch(() => {});
-}
-
-function handleSpotlightKey(event, featureIdx) {
-  if (event.key === 'Enter' || event.key === ' ') {
+function handleSpotlightKey(event, currentIdx) {
+  const key = event.key;
+  if (key === 'ArrowDown' || key === 'ArrowRight') {
     event.preventDefault();
-    switchSpotlightFeature(featureIdx);
-  } else if (event.key === 'ArrowDown') {
-    event.preventDefault();
-    const nextIdx = (featureIdx + 1) % SPOTLIGHT_FEATURES.length;
+    const nextIdx = (currentIdx + 1) % SPOTLIGHT_FEATURES.length;
     const nextEl = document.getElementById(`spotlight-tab-${nextIdx}`);
     if (nextEl) {
       nextEl.focus();
-      switchSpotlightFeature(nextIdx);
+      selectSpotlightFeature(nextIdx);
     }
-  } else if (event.key === 'ArrowUp') {
+  } else if (key === 'ArrowUp' || key === 'ArrowLeft') {
     event.preventDefault();
-    const prevIdx = (featureIdx - 1 + SPOTLIGHT_FEATURES.length) % SPOTLIGHT_FEATURES.length;
+    const prevIdx = (currentIdx - 1 + SPOTLIGHT_FEATURES.length) % SPOTLIGHT_FEATURES.length;
     const prevEl = document.getElementById(`spotlight-tab-${prevIdx}`);
     if (prevEl) {
       prevEl.focus();
-      switchSpotlightFeature(prevIdx);
+      selectSpotlightFeature(prevIdx);
     }
+  } else if (key === 'Enter' || key === ' ') {
+    event.preventDefault();
+    selectSpotlightFeature(currentIdx);
   }
 }
 
@@ -2209,77 +2134,60 @@ function initFeatureSpotlight() {
   const section = document.getElementById('fitur-spotlight');
   if (!section) return;
 
-  // Check reduced motion preference
+  // Reduced motion preference
   const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
   userPrefersReducedMotion = mediaQuery.matches;
-
-  const videoEl = document.getElementById('spotlight-main-video');
-  const progressBar = document.getElementById('stage-video-progress');
-  const fallbackEl = document.getElementById('stage-error-fallback');
-
-  // Video Time Update for Progress Bar
-  if (videoEl && progressBar) {
-    videoEl.addEventListener('timeupdate', () => {
-      if (videoEl.duration) {
-        const pct = (videoEl.currentTime / videoEl.duration) * 100;
-        progressBar.style.width = `${pct}%`;
-      }
-    });
-
-    // Auto sequential advance for Quiz chapters
-    videoEl.addEventListener('ended', () => {
-      if (activeFeatureIdx === 1) {
-        const nextChapter = (activeQuizChapterIdx + 1) % 3;
-        switchQuizChapter(nextChapter);
-      }
-    });
-
-    videoEl.addEventListener('play', () => {
-      hidePlayOverlay();
-      updatePlayPauseIcon();
-    });
-
-    videoEl.addEventListener('pause', () => {
-      updatePlayPauseIcon();
-    });
-
-    videoEl.addEventListener('error', () => {
-      if (fallbackEl) fallbackEl.style.display = 'flex';
+  if (mediaQuery.addEventListener) {
+    mediaQuery.addEventListener('change', (e) => {
+      userPrefersReducedMotion = e.matches;
     });
   }
 
-  // Initialize with Feature 0
-  switchSpotlightFeature(0);
+  // Ensure initial active tab state is set
+  const navItems = document.querySelectorAll('.spotlight-nav-item');
+  navItems.forEach((item, i) => {
+    item.classList.toggle('active', i === 0);
+    item.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
+  });
 
-  // IntersectionObserver for reliable viewport-triggered autoplay & pause on exit
-  if ('IntersectionObserver' in window) {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          isSectionInView = true;
-          playActiveVideo();
-        } else {
-          isSectionInView = false;
-          if (videoEl && !videoEl.paused) {
-            try {
-              videoEl.pause();
-            } catch (e) {}
+  // Initialize YT Player on startup or poll if API script still downloading
+  if (window.YT && window.YT.Player) {
+    initYTPlayer();
+  } else {
+    let ytPollAttempts = 0;
+    const ytPollTimer = setInterval(() => {
+      ytPollAttempts++;
+      if (window.YT && window.YT.Player) {
+        clearInterval(ytPollTimer);
+        initYTPlayer();
+      } else if (ytPollAttempts >= 25) {
+        clearInterval(ytPollTimer);
+      }
+    }, 250);
+  }
+
+  // Listen to YouTube player state changes to keep Play/Pause button in sync
+  window.addEventListener('message', (event) => {
+    try {
+      if (typeof event.data === 'string') {
+        const data = JSON.parse(event.data);
+        if (data.event === 'onStateChange') {
+          const state = data.info;
+          if (state === 1) { // Playing
+            updatePlayPauseBtnState(true);
+          } else if (state === 2 || state === 0) { // Paused or Ended
+            updatePlayPauseBtnState(false);
           }
         }
-      });
-    }, { threshold: 0.2 });
-
-    observer.observe(section);
-  }
+      }
+    } catch (e) {}
+  });
 }
 
 // Global exposures
-window.switchSpotlightFeature = switchSpotlightFeature;
-window.switchQuizChapter = switchQuizChapter;
-window.toggleStagePlayPause = toggleStagePlayPause;
-window.toggleStageMute = toggleStageMute;
-window.toggleStageFullscreen = toggleStageFullscreen;
-window.handleManualPlayClick = handleManualPlayClick;
+window.selectSpotlightFeature = selectSpotlightFeature;
+window.switchSpotlightFeature = selectSpotlightFeature;
+window.toggleSpotlightPlayPause = toggleSpotlightPlayPause;
 window.handleSpotlightKey = handleSpotlightKey;
 window.initFeatureSpotlight = initFeatureSpotlight;
 

@@ -26,8 +26,11 @@
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
 
+  <!-- YouTube IFrame API -->
+  <script src="https://www.youtube.com/iframe_api"></script>
+
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="css/style.css?v=48.0">
+  <link rel="stylesheet" href="css/style.css?v=55.0">
 </head>
 <body>
 
@@ -1423,6 +1426,207 @@
     </section>
 
     <!-- ====================================================================
+         11B. KLASSA FEATURE SPOTLIGHT — INTERACTIVE VIDEO SHOWCASE
+         ==================================================================== -->
+    <section class="feature-spotlight-section" id="fitur-spotlight">
+      <div class="spotlight-ambient-glow" aria-hidden="true"></div>
+      <div class="container spotlight-container">
+        <div class="spotlight-layout">
+          
+          <!-- Left Column: Heading, Descriptions & Interactive Navigation -->
+          <div class="spotlight-left-col">
+            <div class="spotlight-header-block">
+              <div class="spotlight-eyebrow-pill">
+                <i data-lucide="sparkles" class="eyebrow-sparkle"></i>
+                <span>THE KLASSA EXPERIENCE</span>
+              </div>
+              <h2 class="spotlight-headline">Cara Baru Menjalani Hari sebagai Guru.</h2>
+              <p class="spotlight-description">
+                Jelajahi pengalaman menyusun perangkat ajar, mengelola evaluasi, dan memanfaatkan teknologi dalam satu platform.
+              </p>
+            </div>
+
+            <!-- Feature Navigation Items -->
+            <div class="spotlight-nav-wrapper">
+              <div class="spotlight-nav-list" role="tablist" aria-label="Pilihan Fitur KLASSA">
+                
+                <!-- Feature 1: AI Studio — Modul Ajar -->
+                <button 
+                  type="button" 
+                  class="spotlight-nav-item active" 
+                  id="spotlight-tab-0"
+                  role="tab" 
+                  aria-selected="true" 
+                  aria-controls="spotlight-video-viewport"
+                  tabindex="0"
+                  onclick="selectSpotlightFeature(0)"
+                  onkeydown="handleSpotlightKey(event, 0)"
+                >
+                  <div class="timeline-node">
+                    <span>01</span>
+                    <div class="node-pulse" aria-hidden="true"></div>
+                  </div>
+                  <div class="timeline-content">
+                    <div class="feature-meta-row">
+                      <span class="feature-badge">AI COPILOT</span>
+                      <span class="feature-time-tag"><i data-lucide="play-circle"></i> Video Demo</span>
+                    </div>
+                    <h3 class="feature-nav-headline">AI Studio — Modul Ajar</h3>
+                    <div class="feature-expandable-details">
+                      <p class="feature-nav-desc">
+                        Susun modul ajar dengan bantuan AI, lalu sesuaikan hasilnya dengan kebutuhan pembelajaran.
+                      </p>
+                    </div>
+                  </div>
+                </button>
+
+                <!-- Feature 2: Quiz & CBT Online -->
+                <button 
+                  type="button" 
+                  class="spotlight-nav-item" 
+                  id="spotlight-tab-1"
+                  role="tab" 
+                  aria-selected="false" 
+                  aria-controls="spotlight-video-viewport"
+                  tabindex="0"
+                  onclick="selectSpotlightFeature(1)"
+                  onkeydown="handleSpotlightKey(event, 1)"
+                >
+                  <div class="timeline-node">
+                    <span>02</span>
+                    <div class="node-pulse" aria-hidden="true"></div>
+                  </div>
+                  <div class="timeline-content">
+                    <div class="feature-meta-row">
+                      <span class="feature-badge">ASSESSMENT</span>
+                      <span class="feature-time-tag"><i data-lucide="play-circle"></i> Video Demo</span>
+                    </div>
+                    <h3 class="feature-nav-headline">Quiz &amp; CBT Online</h3>
+                    <div class="feature-expandable-details">
+                      <p class="feature-nav-desc">
+                        Kelola kuis dan ujian online, mulai dari persiapan soal, pengerjaan siswa, hingga penilaian dan hasil evaluasi.
+                      </p>
+                    </div>
+                  </div>
+                </button>
+
+                <!-- Feature 3: KLASSA Agent -->
+                <button 
+                  type="button" 
+                  class="spotlight-nav-item" 
+                  id="spotlight-tab-2"
+                  role="tab" 
+                  aria-selected="false" 
+                  aria-controls="spotlight-video-viewport"
+                  tabindex="0"
+                  onclick="selectSpotlightFeature(2)"
+                  onkeydown="handleSpotlightKey(event, 2)"
+                >
+                  <div class="timeline-node">
+                    <span>03</span>
+                    <div class="node-pulse" aria-hidden="true"></div>
+                  </div>
+                  <div class="timeline-content">
+                    <div class="feature-meta-row">
+                      <span class="feature-badge badge-purple">AI AGENT</span>
+                      <span class="feature-badge-soon">Coming Soon</span>
+                    </div>
+                    <h3 class="feature-nav-headline">KLASSA Agent</h3>
+                    <div class="feature-expandable-details">
+                      <p class="feature-nav-desc">
+                        Asisten AI yang dirancang untuk membantu guru menyelesaikan berbagai pekerjaan melalui instruksi sederhana.
+                      </p>
+                    </div>
+                  </div>
+                </button>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Premium Browser-Style Video Showcase Frame -->
+          <div class="spotlight-showcase-col">
+            <div class="spotlight-stage-aura" aria-hidden="true"></div>
+            
+            <div class="spotlight-browser-frame" id="spotlight-browser-frame">
+              <!-- Browser Toolbar -->
+              <div class="browser-toolbar">
+                <div class="browser-window-dots" aria-hidden="true">
+                  <span class="window-dot dot-red"></span>
+                  <span class="window-dot dot-amber"></span>
+                  <span class="window-dot dot-green"></span>
+                </div>
+                <div class="browser-address-pill">
+                  <i data-lucide="lock" class="address-lock-icon"></i>
+                  <span class="address-url" id="spotlight-browser-url">app.klassa.id/ai-studio</span>
+                  <span class="address-badge" id="spotlight-browser-badge">DEMO</span>
+                </div>
+                <div class="browser-actions">
+                  <button 
+                    type="button" 
+                    class="browser-play-toggle-btn" 
+                    id="spotlight-play-pause-btn"
+                    onclick="toggleSpotlightPlayPause()"
+                    aria-label="Putar atau Jeda Video"
+                    title="Putar / Jeda Video"
+                  >
+                    <i data-lucide="play" id="spotlight-play-icon"></i>
+                    <span id="spotlight-play-text">Putar</span>
+                  </button>
+                  <span class="browser-status-chip">
+                    <span class="status-pulse-dot"></span>
+                    <span id="spotlight-status-label">16:9 Showcase</span>
+                  </span>
+                </div>
+              </div>
+
+              <!-- 16:9 Inner Video Viewport with Persistent YouTube Player & Branded State -->
+              <div class="browser-inner-viewport" id="spotlight-video-viewport" role="region" aria-label="Showcase Video Demo KLASSA">
+                <iframe 
+                  id="spotlight-active-iframe"
+                  class="spotlight-youtube-iframe"
+                  src="https://www.youtube.com/embed/MHoTutSwbQs?enablejsapi=1&version=3&rel=0"
+                  title="Demo AI Studio — Modul Ajar"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen
+                ></iframe>
+
+                <!-- Branded Preview Card for KLASSA Agent (Coming Soon) -->
+                <div class="spotlight-coming-soon-card" id="spotlight-coming-soon-card" style="display: none;">
+                  <div class="coming-soon-glow" aria-hidden="true"></div>
+                  <div class="coming-soon-content">
+                    <div class="coming-soon-badge-pill">
+                      <i data-lucide="bot" class="cs-badge-icon"></i>
+                      <span>KLASSA Agent</span>
+                    </div>
+                    <h3 class="coming-soon-headline">KLASSA Agent — Segera Hadir</h3>
+                    <p class="coming-soon-desc">Video demonstrasi fitur ini sedang dipersiapkan.</p>
+                    <div class="coming-soon-highlights">
+                      <div class="cs-hl-item">
+                        <i data-lucide="sparkles"></i>
+                        <span>Otomatisasi Administrasi</span>
+                      </div>
+                      <div class="cs-hl-item">
+                        <i data-lucide="message-square"></i>
+                        <span>Instruksi Sederhana</span>
+                      </div>
+                      <div class="cs-hl-item">
+                        <i data-lucide="shield-check"></i>
+                        <span>Selaras Kurikulum Merdeka</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
          12. BEFORE VS AFTER COMPARISON TABLE
          ==================================================================== -->
     <section class="comparison-section" id="komparasi">
@@ -2190,6 +2394,6 @@
   </div>
 
   <!-- Script -->
-  <script src="js/main.js?v=26.0"></script>
+  <script src="js/main.js?v=31.0"></script>
 </body>
 </html>
