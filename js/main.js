@@ -1901,9 +1901,9 @@ const SPOTLIGHT_FEATURES = [
     id: 'klassa-agent',
     title: 'KLASSA Agent',
     desc: 'Asisten AI yang dirancang untuk membantu guru menyelesaikan berbagai pekerjaan melalui instruksi sederhana.',
-    videoId: null, // Struktur data siap diisi: ganti null dengan "ACTUAL_YOUTUBE_ID" ketika video siap
+    videoId: 'WtiZht9Zz8E',
     browserUrl: 'app.klassa.id/agent',
-    badge: 'SEGERA HADIR',
+    badge: 'LIVE DEMO',
     tag: 'AI AGENT'
   }
 ];
