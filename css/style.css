@@ -11365,3 +11365,128 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 1.25rem !important;
   }
 }
+
+/* ====================================================================
+   DESKTOP VS MOBILE COMPARISON TABLE RESPONSIVENESS
+   ==================================================================== */
+.desktop-only-comparison {
+  display: block;
+}
+.mobile-only-comparison {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .desktop-only-comparison {
+    display: none !important;
+  }
+  .mobile-only-comparison {
+    display: block !important;
+  }
+
+  .mobile-comparison-wrapper {
+    background-color: var(--white);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    margin: 0 auto;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .mobile-comparison-table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+  }
+
+  .mobile-comparison-table th {
+    padding: 12px 8px;
+    font-family: var(--font-heading);
+    font-size: 0.8rem;
+    font-weight: 800;
+    text-align: center;
+    border-bottom: 1px solid var(--border-subtle);
+    line-height: 1.25;
+  }
+
+  .col-mobile-before {
+    width: 50%;
+    color: #64748B;
+    background-color: #F8FAFC;
+    border-right: 1px solid var(--border-subtle);
+  }
+
+  .col-mobile-after {
+    width: 50%;
+    color: #0F766E;
+    background-color: #F0FDF4;
+  }
+
+  .mobile-category-row td {
+    padding: 12px 8px 4px 8px;
+    background-color: #FFFFFF;
+    border-top: 1px solid var(--border-subtle);
+    text-align: center;
+  }
+
+  .m-cat-badge {
+    display: inline-block;
+    font-size: 0.74rem;
+    font-weight: 800;
+    color: #0F766E;
+    background-color: #F0FDFA;
+    border: 1px solid #CCFBF1;
+    padding: 3px 10px;
+    border-radius: var(--radius-full);
+    letter-spacing: -0.01em;
+  }
+
+  .mobile-data-row td {
+    padding: 8px 10px 14px 10px;
+    vertical-align: top;
+    font-size: 0.76rem;
+    line-height: 1.35;
+  }
+
+  .m-cell-before {
+    background-color: #FAFAFA;
+    border-right: 1px solid var(--border-subtle);
+    color: var(--text-muted);
+  }
+
+  .m-cell-before p {
+    margin: 6px 0 0 0;
+    color: #64748B;
+    font-size: 0.74rem;
+    line-height: 1.3;
+  }
+
+  .m-cell-after {
+    background-color: #F8FCFA;
+    color: var(--text-dark);
+  }
+
+  .m-cell-after p {
+    margin: 6px 0 0 0;
+    color: #1E293B;
+    font-size: 0.74rem;
+    line-height: 1.3;
+    font-weight: 500;
+  }
+
+  .m-tag-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    align-items: center;
+  }
+
+  .mobile-data-row .cell-status-tag {
+    font-size: 0.68rem !important;
+    padding: 2px 6px !important;
+    border-radius: 4px !important;
+    margin-bottom: 0 !important;
+  }
+}
