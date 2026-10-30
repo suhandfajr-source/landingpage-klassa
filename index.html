@@ -72,9 +72,8 @@
 
         <!-- Right Action Buttons -->
         <div class="nav-actions">
-          <button class="btn btn-ghost" onclick="openLoginModal()">Masuk</button>
           <a href="#harga" class="btn btn-primary btn-nav-cta">
-            <span>Coba Gratis</span>
+            <span>Pilih Paket Guru</span>
             <i data-lucide="arrow-right" class="btn-icon"></i>
           </a>
           <!-- Mobile Menu Toggle -->
@@ -102,8 +101,7 @@
       <li><a href="#faq" class="drawer-item" onclick="closeMobileDrawer()">FAQ</a></li>
     </ul>
     <div class="drawer-footer">
-      <button class="btn btn-outline" style="width: 100%;" onclick="closeMobileDrawer(); openLoginModal();">Masuk ke Akun</button>
-      <a href="#harga" class="btn btn-primary" style="width: 100%; text-align: center;" onclick="closeMobileDrawer()">Mulai Coba Gratis 7 Hari</a>
+      <a href="#harga" class="btn btn-primary" style="width: 100%; text-align: center;" onclick="closeMobileDrawer()">Pilih Paket Guru</a>
     </div>
   </div>
 
@@ -119,12 +117,6 @@
           
           <!-- LEFT SIDE: Content, Headline & CTA (100% Preserved) -->
           <div class="hero-content-col">
-            <!-- Top Pill Badge -->
-            <div class="hero-badge">
-              <span class="badge-icon-sparkle">✦</span>
-              <span>Personal Workspace &amp; AI Co-Pilot Guru Indonesia</span>
-              <span class="badge-tag-verified">Resmi Terverifikasi</span>
-            </div>
 
             <!-- Main Headline -->
             <h1 class="hero-headline">
@@ -144,11 +136,11 @@
             <!-- CTA Buttons Group -->
             <div class="hero-cta-group">
               <div class="cta-primary-wrap">
-                <button class="btn btn-primary btn-hero-primary" onclick="openTrialModal()">
-                  <span>Mulai Coba Gratis</span>
+                <a href="#harga" class="btn btn-primary btn-hero-primary">
+                  <span>Ambil Akses Guru</span>
                   <span class="ai-sparkle-inline">✦</span>
-                </button>
-                <span class="cta-micro-guarantee">7 hari gratis • Tanpa kartu kredit</span>
+                </a>
+                <span class="cta-micro-guarantee">Akses Instan • Garansi Kepuasan 14 Hari</span>
               </div>
 
               <button class="btn btn-secondary btn-hero-secondary" onclick="openDemoVideoModal()">
@@ -2007,11 +1999,11 @@
             </p>
 
             <div class="mid-cta-actions">
-              <button class="btn btn-primary btn-mid-primary" onclick="openTrialModal()">
-                <span>⚡ Coba Gratis Sekarang — Tanpa Syarat</span>
-              </button>
+              <a href="#harga" class="btn btn-primary btn-mid-primary">
+                <span>⚡ Pilih Paket Berlangganan</span>
+              </a>
               <div class="mid-guarantee-note">
-                Tidak perlu kartu kredit • Setup akun ±1 menit • Akses fitur lengkap
+                Garansi 14 Hari Uang Kembali • Setup akun ±1 menit • Akses fitur lengkap
               </div>
             </div>
           </div>
@@ -2036,92 +2028,158 @@
           Pilih paket yang paling sesuai dengan kebutuhan ruang kerja Anda. Transparan tanpa biaya tersembunyi.
         </p>
 
-        <!-- Pricing Cards Grid (Monthly vs Annual) -->
+        <!-- Pricing Cards Grid (3 Tiers: Bulanan, Semester, Tahunan) -->
         <div class="pricing-cards-grid">
           
-          <!-- Card 1: Monthly -->
+          <!-- Card 1: Bulanan -->
           <div class="pricing-card reveal-on-scroll" data-parallax-depth="0.1">
             <div class="plan-header">
               <h3 class="plan-title">Paket Bulanan</h3>
-              <p class="plan-subtitle">Fleksibilitas penuh untuk guru individu yang ingin mencoba ekosistem terpadu.</p>
+              <p class="plan-subtitle">Fleksibilitas penuh untuk guru yang ingin mencoba ekosistem terpadu secara bulanan.</p>
             </div>
 
             <div class="price-box">
               <div class="price-val">
                 <span class="currency">Rp</span>
-                <span class="amount">49.000</span>
+                <span class="amount">69.000</span>
                 <span class="period">/bulan</span>
               </div>
-              <div class="daily-equivalent">≈ Rp1.600 / hari (setara secangkir teh)</div>
+              <div class="daily-equivalent">≈ Rp2.300 / hari (setara 1 set modul)</div>
             </div>
 
             <ul class="plan-features-list">
               <li><i data-lucide="check" class="p-check"></i> <span>AI Modul Ajar Kurikulum Merdeka</span></li>
               <li><i data-lucide="check" class="p-check"></i> <span>Smart Assessment &amp; Kuis Anti-Contek</span></li>
               <li><i data-lucide="check" class="p-check"></i> <span>Presensi 1-Tap &amp; Jurnal Digital</span></li>
-              <li><i data-lucide="check" class="p-check"></i> <span>Student Monitoring &amp; Tracking Remedial</span></li>
-              <li><i data-lucide="check" class="p-check"></i> <span>Ekspor Dokumen Microsoft Word (.docx)</span></li>
-              <li><i data-lucide="check" class="p-check"></i> <span>Ekspor Rekap Nilai ke Excel (.xlsx)</span></li>
-              <li><i data-lucide="check" class="p-check"></i> <span>Portal Siswa Ringan (Akses via NIS &amp; PIN)</span></li>
+              <li><i data-lucide="check" class="p-check"></i> <span>Student Monitoring &amp; Remedial</span></li>
+              <li><i data-lucide="check" class="p-check"></i> <span>Ekspor Word (.docx) &amp; Excel (.xlsx)</span></li>
+              <li><i data-lucide="check" class="p-check"></i> <span>Portal Siswa Ringan (NIS &amp; PIN)</span></li>
             </ul>
 
-            <button class="btn btn-outline-pricing" onclick="openTrialModal()">Mulai Gratis 7 Hari</button>
+            <button class="btn btn-outline-pricing" onclick="openOrderModal('bulanan', 'Paket Bulanan', '69.000')">
+              <span>Pilih Paket Bulanan</span>
+            </button>
           </div>
 
-          <!-- Card 2: Annual (Paling Populer) -->
+          <!-- Card 2: Semester (Pilihan Favorit Guru) -->
           <div class="pricing-card featured-annual-card reveal-on-scroll" data-parallax-depth="-0.16">
             <div class="featured-badge-pill">
-              <span>✦ PALING POPULER &amp; HEMAT</span>
+              <i data-lucide="star" style="width: 12px; height: 12px; fill: #FFFFFF;"></i>
+              <span>PILIHAN FAVORIT GURU</span>
             </div>
 
             <div class="plan-header">
-              <h3 class="plan-title">Paket Tahunan</h3>
-              <p class="plan-subtitle">Pilihan favorit ribuan guru untuk ketenangan mengajar sepanjang tahun ajaran.</p>
+              <h3 class="plan-title">Paket Semester</h3>
+              <p class="plan-subtitle">Pilihan paling ideal &amp; hemat untuk 1 semester tahun ajaran penuh.</p>
             </div>
 
             <div class="price-box">
-              <div class="old-price">Rp588.000 / tahun</div>
+              <div class="old-price">Rp414.000 / 6 bln</div>
               <div class="price-val">
                 <span class="currency">Rp</span>
-                <span class="amount">299.000</span>
-                <span class="period">/tahun</span>
+                <span class="amount">199.000</span>
+                <span class="period">/semester</span>
               </div>
-              <div class="savings-tag">Hemat Rp289.000 dibanding pembayaran bulanan</div>
-            </div>
-
-            <div class="exclusive-bonus-box">
-              <i data-lucide="gift" style="color: #0F766E; width: 18px; height: 18px;"></i>
-              <div>
-                <strong>Bonus Spesial Paket Tahunan:</strong>
-                <p>50+ Template Presentasi Interaktif Kurikulum Merdeka siap pakai</p>
-              </div>
+              <div class="savings-tag">Hemat 52% (setara Rp33.000 / bln)</div>
             </div>
 
             <ul class="plan-features-list">
               <li><i data-lucide="check" class="p-check"></i> <span><strong>Seluruh fitur Paket Bulanan lengkap</strong></span></li>
-              <li><i data-lucide="check" class="p-check"></i> <span>Prioritas antrean server AI tercepat</span></li>
-              <li><i data-lucide="check" class="p-check"></i> <span>Penyimpanan arsip perangkat ajar tanpa batas</span></li>
+              <li><i data-lucide="check" class="p-check"></i> <span>Penyimpanan arsip 1 semester</span></li>
+              <li><i data-lucide="check" class="p-check"></i> <span>Generator Soal UTS &amp; UAS</span></li>
               <li><i data-lucide="check" class="p-check"></i> <span>Akses modul Prota &amp; Prosem otomatis</span></li>
-              <li><i data-lucide="check" class="p-check"></i> <span>Dukungan prioritas tim edukasi KLASSA via WhatsApp</span></li>
+              <li><i data-lucide="check" class="p-check"></i> <span>Dukungan prioritas via WhatsApp</span></li>
             </ul>
 
-            <button class="btn btn-primary btn-annual-select" onclick="openTrialModal()">
+            <button class="btn btn-primary btn-annual-select" onclick="openOrderModal('semester', 'Paket Semester', '199.000')">
+              <span>Pilih Paket Semester</span>
+              <i data-lucide="arrow-right" style="width: 14px; height: 14px;"></i>
+            </button>
+          </div>
+
+          <!-- Card 3: Tahunan (Paling Hemat) -->
+          <div class="pricing-card reveal-on-scroll" data-parallax-depth="0.1">
+            <div class="plan-header">
+              <h3 class="plan-title">Paket Tahunan</h3>
+              <p class="plan-subtitle">Nilai terbaik &amp; terlengkap untuk ketenangan mengajar 1 tahun ajaran.</p>
+            </div>
+
+            <div class="price-box">
+              <div class="old-price">Rp828.000 / thn</div>
+              <div class="price-val">
+                <span class="currency">Rp</span>
+                <span class="amount">349.000</span>
+                <span class="period">/tahun</span>
+              </div>
+              <div class="savings-tag">Hemat 58% (setara Rp29.000 / bln)</div>
+            </div>
+
+            <ul class="plan-features-list">
+              <li><i data-lucide="check" class="p-check"></i> <span><strong>Seluruh fitur tanpa batas kuota</strong></span></li>
+              <li><i data-lucide="check" class="p-check"></i> <span>Prioritas antrean server AI tercepat</span></li>
+              <li><i data-lucide="check" class="p-check"></i> <span>Penyimpanan arsip tanpa batas</span></li>
+              <li><i data-lucide="check" class="p-check"></i> <span>Akses modul Prota &amp; Prosem 1 tahun</span></li>
+              <li><i data-lucide="check" class="p-check"></i> <span>Dukungan VIP via WhatsApp</span></li>
+            </ul>
+
+            <button class="btn btn-outline-pricing" onclick="openOrderModal('tahunan', 'Paket Tahunan', '349.000')">
               <span>Pilih Paket Tahunan</span>
-              <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
             </button>
           </div>
 
         </div>
 
-        <!-- Garansi Kepuasan 14 Hari -->
+<!-- Card / Banner Integrasi Sistem Sekolah (Konsep 3: Live Integration Chips) -->
+        <div class="school-request-card reveal-on-scroll" data-parallax-depth="0.05">
+          <div class="school-request-content">
+            <h3 class="school-request-title">Ingin Menyatukan Seluruh Sistem Digital Sekolah dalam Satu Tempat?</h3>
+            <p class="school-request-desc">
+              Hentikan repotnya mengelola vendor berbeda untuk administrasi guru, tagihan SPP siswa, dan laporan yayasan. Kami bantu bangun dan integrasikan fitur-fitur yang sekolah Anda butuhkan ke dalam satu ekosistem terpusat.
+            </p>
+
+            <!-- Integration Feature Chips (Konsep 3) -->
+            <div class="school-integration-chips">
+              <div class="school-chip">
+                <i data-lucide="credit-card"></i>
+                <span>Sistem Pembayaran SPP (QRIS &amp; VA)</span>
+              </div>
+              <div class="school-chip">
+                <i data-lucide="graduation-cap"></i>
+                <span>PPDB &amp; Data Siswa Online</span>
+              </div>
+              <div class="school-chip">
+                <i data-lucide="bar-chart-3"></i>
+                <span>Pembukuan Kas Yayasan</span>
+              </div>
+              <div class="school-chip">
+                <i data-lucide="smartphone"></i>
+                <span>Portal Siswa &amp; Wali Murid</span>
+              </div>
+              <div class="school-chip highlight-chip">
+                <i data-lucide="sparkles"></i>
+                <span>Request Modul Kustom Lainnya</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="school-request-action">
+            <a href="https://wa.me/6281234567890?text=Halo%20Tim%20KLASSA,%20kami%20dari%20pihak%20sekolah/yayasan%20tertarik%20konsultasi%20integrasi%20sistem%20sekolah%20(seperti%20pembayaran%20SPP/PPDB/fitur%20kustom%20lainnya).%20Mohon%20informasi%20selengkapnya" target="_blank" rel="noopener" class="btn btn-whatsapp-school">
+              <i data-lucide="message-circle" style="width: 20px; height: 20px;"></i>
+              <span>Konsultasi Sekarang</span>
+            </a>
+            <span class="school-action-sub">Dapatkan skema rancangan &amp; estimasi pengembangan gratis</span>
+          </div>
+        </div>
+
+        <!-- Garansi 100% Uang Kembali 14 Hari -->
         <div class="satisfaction-guarantee-card" data-parallax-depth="0.08">
           <div class="guarantee-shield-box">
-            <i data-lucide="shield-check" style="color: #0F766E; width: 28px; height: 28px;"></i>
+            <i data-lucide="shield-check" style="color: #0F766E; width: 30px; height: 30px;"></i>
           </div>
           <div class="guarantee-text">
-            <h4 class="guarantee-title">GARANSI KEPUASAN 14 HARI</h4>
+            <h4 class="guarantee-title">GARANSI 100% UANG KEMBALI (14 HARI)</h4>
             <p class="guarantee-desc">
-              Coba KLASSA selama 14 hari. Jika tidak membantu menghemat waktu administrasi Anda, hubungi kami sesuai ketentuan garansi untuk pengembalian pembayaran secara transparan.
+              Gunakan KLASSA selama 14 hari. Jika sistem ini terbukti tidak membantu meringankan beban administrasi Anda, hubungi kami dan uang Anda kami kembalikan 100% penuh tanpa potongan.
             </p>
           </div>
         </div>
@@ -2154,9 +2212,9 @@
             </p>
 
             <div class="final-buttons-row">
-              <button class="btn btn-primary btn-final-primary" onclick="openTrialModal()">
-                <span>🚀 Daftar Akun KLASSA Sekarang</span>
-              </button>
+              <a href="#harga" class="btn btn-primary btn-final-primary">
+                <span>🚀 Dapatkan Akses KLASSA Sekarang</span>
+              </a>
 
               <a href="https://wa.me/6281234567890?text=Halo%20KLASSA,%20saya%20tertarik%20untuk%20mencoba%20demo%20ekosistem%20KLASSA" target="_blank" rel="noopener" class="btn btn-whatsapp">
                 <i data-lucide="message-circle" style="width: 18px; height: 18px;"></i>
@@ -2165,9 +2223,9 @@
             </div>
 
             <div class="final-guarantee-strip">
-              <span>✓ 7 hari gratis</span>
+              <span>✓ Akun Langsung Aktif</span>
               <span>•</span>
-              <span>Tanpa kartu kredit</span>
+              <span>Garansi 14 Hari Uang Kembali</span>
               <span>•</span>
               <span>Setup ±1 menit</span>
             </div>
@@ -2314,11 +2372,11 @@
     <div class="mobile-cta-content">
       <div class="mobile-cta-text">
         <strong>KLASSA Guru</strong>
-        <span>7 hari coba gratis</span>
+        <span>Mulai Rp2.300/hari</span>
       </div>
-      <button class="btn btn-sm btn-primary" onclick="openTrialModal()">
-        <span>Coba KLASSA Gratis</span>
-      </button>
+      <a href="#harga" class="btn btn-sm btn-primary">
+        <span>Lihat Paket Harga</span>
+      </a>
     </div>
   </div>
 
@@ -2326,43 +2384,7 @@
        INTERACTIVE MODALS
        ==================================================================== -->
   
-  <!-- 1. Trial Registration Modal -->
-  <div class="modal-backdrop" id="trial-modal" onclick="closeTrialModal(event)">
-    <div class="modal-card">
-      <button class="modal-close-btn" onclick="closeTrialModal()">&times;</button>
-      <div class="modal-badge">
-        <span class="ai-sparkle">✦</span>
-        <span>Akses Gratis 7 Hari</span>
-      </div>
-      <h3 class="modal-title">Mulai Gunakan KLASSA</h3>
-      <p class="modal-sub">Tidak perlu kartu kredit. Akun Anda langsung aktif dalam 60 detik.</p>
 
-      <form class="modal-form" onsubmit="handleTrialSubmit(event)">
-        <div class="form-group">
-          <label>Nama Lengkap &amp; Gelar</label>
-          <input type="text" class="modal-input" placeholder="contoh: Siti Rahmawati, S.Pd." required>
-        </div>
-        <div class="form-group">
-          <label>Nomor WhatsApp (Untuk kirim akses login)</label>
-          <input type="tel" class="modal-input" placeholder="contoh: 081234567890" required>
-        </div>
-        <div class="form-group">
-          <label>Jenjang Sekolah</label>
-          <select class="modal-select">
-            <option>SMP / MTs</option>
-            <option>SMA / SMK / MA</option>
-            <option>SD / MI</option>
-          </select>
-        </div>
-        <button type="submit" class="btn btn-primary btn-modal-submit">
-          <span>Buka Workspace Saya Sekarang ➔</span>
-        </button>
-      </form>
-      <div class="modal-footer-note">
-        🔒 Data Anda aman &amp; dilindungi sesuai standar privasi pendidik.
-      </div>
-    </div>
-  </div>
 
   <!-- 2. Demo 40 Detik Video/Walkthrough Modal -->
   <div class="modal-backdrop" id="demo-video-modal" onclick="closeDemoVideoModal(event)">
@@ -2387,8 +2409,68 @@
         </div>
         <div class="demo-player-actions">
           <button class="btn btn-secondary btn-sm" onclick="advanceDemoStep()">Langkah Berikutnya ➔</button>
-          <button class="btn btn-primary btn-sm" onclick="closeDemoVideoModal(); openTrialModal();">Coba Sendiri Sekarang</button>
+          <a href="#harga" class="btn btn-primary btn-sm" onclick="closeDemoVideoModal();">Pilih Paket Sekarang</a>
         </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- 3. Order / DOKU Payment Modal -->
+  <div class="modal-backdrop" id="order-modal" onclick="closeOrderModal(event)">
+    <div class="modal-card modal-order-card">
+      <button class="modal-close-btn" onclick="closeOrderModal()">&times;</button>
+      
+      <div class="modal-badge">
+        <i data-lucide="shopping-bag" style="width: 14px; height: 14px; color: #0F766E;"></i>
+        <span>Pemesanan Paket KLASSA</span>
+      </div>
+
+      <h3 class="modal-title">Selesaikan Pemesanan</h3>
+      <p class="modal-sub">Lengkapi data untuk invoice resmi &amp; aktivasi akses akun Anda.</p>
+
+      <!-- Selected Package Banner -->
+      <div class="selected-package-box">
+        <div class="selected-package-info">
+          <span class="selected-pkg-label">Paket Dipilih:</span>
+          <strong id="modal-selected-pkg-name">Paket Semester</strong>
+        </div>
+        <div class="selected-package-price">
+          <span class="currency">Rp</span>
+          <strong id="modal-selected-pkg-price">199.000</strong>
+        </div>
+      </div>
+
+      <form class="modal-form" id="order-form" onsubmit="handleOrderSubmit(event)">
+        <input type="hidden" id="order-package-id" value="semester">
+        <input type="hidden" id="order-package-name" value="Paket Semester">
+        <input type="hidden" id="order-package-price" value="199.000">
+
+        <div class="form-group">
+          <label for="order-name">Nama Lengkap &amp; Gelar <span class="required-star">*</span></label>
+          <input type="text" id="order-name" class="modal-input" placeholder="contoh: Siti Rahmawati, S.Pd." required>
+        </div>
+
+        <div class="form-group">
+          <label for="order-phone">Nomor WhatsApp Aktif <span class="required-star">*</span></label>
+          <input type="tel" id="order-phone" class="modal-input" placeholder="contoh: 081234567890" required>
+          <span class="input-hint">Akses akun &amp; bukti aktivasi akan dikirimkan ke nomor ini.</span>
+        </div>
+
+        <div class="form-group">
+          <label for="order-email">Alamat Email <span class="required-star">*</span></label>
+          <input type="email" id="order-email" class="modal-input" placeholder="contoh: siti.rahmawati@gmail.com" required>
+          <span class="input-hint">Digunakan untuk login ke ekosistem KLASSA &amp; invoice resmi.</span>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-modal-submit" id="btn-submit-order">
+          <span>Aktifkan Sekarang</span>
+          <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
+        </button>
+      </form>
+
+      <div class="doku-secure-badge">
+        <i data-lucide="shield-check" style="width: 16px; height: 16px; color: #0F766E; flex-shrink: 0;"></i>
+        <span>Pembayaran aman via QRIS, Virtual Account &amp; E-Wallet · Akun langsung aktif begitu pembayaran dilakukan</span>
       </div>
     </div>
   </div>

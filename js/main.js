@@ -535,28 +535,138 @@ function _unusedOldAtomicEngine() {
 
 
 /* ============================================================================
-   6. MODAL HANDLERS & INTERACTIONS
+   6. MODAL HANDLERS & FALLBACKS
    ============================================================================ */
-function openTrialModal() {
-  const modal = document.getElementById('trial-modal');
-  if (modal) modal.classList.add('open');
-}
-
-function closeTrialModal(e) {
-  if (e && e.target !== e.currentTarget && !e.target.classList.contains('modal-close-btn')) return;
-  const modal = document.getElementById('trial-modal');
-  if (modal) modal.classList.remove('open');
-}
-
 function openLoginModal() {
-  openTrialModal();
+  const hargaEl = document.getElementById('harga');
+  if (hargaEl) {
+    hargaEl.scrollIntoView({ behavior: 'smooth' });
+  }
+}
+function closeLoginModal() {}
+function handleLoginSubmit(e) { if (e) e.preventDefault(); }
+function openTrialModal() { openLoginModal(); }
+function closeTrialModal() {}
+function handleTrialSubmit(e) { if (e) e.preventDefault(); }
+
+/* ============================================================================
+   ORDER & DOKU PAYMENT MODAL HANDLERS
+   ============================================================================ */
+
+// Placeholder URL Payment Link DOKU per paket (dapat diganti dengan URL DOKU Payment Link asli Anda)
+const DOKU_PAYMENT_CONFIG = {
+  'bulanan': {
+    name: 'Paket Bulanan',
+    price: '69.000',
+    dokuUrl: 'https://checkout.doku.com/payment-link-bulanan-placeholder'
+  },
+  'semester': {
+    name: 'Paket Semester',
+    price: '199.000',
+    dokuUrl: 'https://checkout.doku.com/payment-link-semester-placeholder'
+  },
+  'tahunan': {
+    name: 'Paket Tahunan',
+    price: '349.000',
+    dokuUrl: 'https://checkout.doku.com/payment-link-tahunan-placeholder'
+  }
+};
+
+function openOrderModal(pkgId, pkgName, pkgPrice) {
+  const modal = document.getElementById('order-modal');
+  if (!modal) return;
+
+  const config = DOKU_PAYMENT_CONFIG[pkgId] || { name: pkgName, price: pkgPrice };
+  const finalName = config.name || pkgName;
+  const finalPrice = config.price || pkgPrice;
+
+  const nameEl = document.getElementById('modal-selected-pkg-name');
+  const priceEl = document.getElementById('modal-selected-pkg-price');
+  const idInput = document.getElementById('order-package-id');
+  const nameInput = document.getElementById('order-package-name');
+  const priceInput = document.getElementById('order-package-price');
+
+  if (nameEl) nameEl.textContent = finalName;
+  if (priceEl) priceEl.textContent = finalPrice;
+  if (idInput) idInput.value = pkgId;
+  if (nameInput) nameInput.value = finalName;
+  if (priceInput) priceInput.value = finalPrice;
+
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+
+  if (window.lucide) {
+    window.lucide.createIcons();
+  }
 }
 
-function handleTrialSubmit(e) {
-  e.preventDefault();
-  alert('🎉 Terima kasih! Tautan aktivasi akun uji coba gratis 7 hari KLASSA telah disiapkan dan dikirimkan.');
-  closeTrialModal();
+function closeOrderModal(e) {
+  if (e && e.target !== e.currentTarget && !e.target.classList.contains('modal-close-btn')) return;
+  const modal = document.getElementById('order-modal');
+  if (modal) {
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
 }
+
+function handleOrderSubmit(e) {
+  e.preventDefault();
+
+  const name = document.getElementById('order-name').value.trim();
+  const phone = document.getElementById('order-phone').value.trim();
+  const email = document.getElementById('order-email').value.trim();
+  const pkgId = document.getElementById('order-package-id').value;
+  const pkgName = document.getElementById('order-package-name').value;
+  const pkgPrice = document.getElementById('order-package-price').value;
+
+  if (!name || !phone || !email) {
+    alert('Mohon lengkapi seluruh formulir data diri Anda.');
+    return;
+  }
+
+  const submitBtn = document.getElementById('btn-submit-order');
+  if (submitBtn) {
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<span>Menyiapkan Pembayaran DOKU...</span>';
+  }
+
+  const config = DOKU_PAYMENT_CONFIG[pkgId] || DOKU_PAYMENT_CONFIG['semester'];
+  const dokuTargetUrl = config.dokuUrl;
+
+  console.log('[KLASSA Order]', {
+    nama: name,
+    whatsapp: phone,
+    email: email,
+    paket: pkgName,
+    harga: pkgPrice,
+    dokuUrl: dokuTargetUrl,
+    timestamp: new Date().toISOString()
+  });
+
+  setTimeout(() => {
+    alert(`Terima kasih Bapak/Ibu ${name}!
+
+Pesanan Anda untuk ${pkgName} (Rp ${pkgPrice}) telah diproses.
+
+Sistem akan mengarahkan Anda ke portal pembayaran resmi DOKU.
+(Saat URL Payment Link DOKU riil sudah dipasang, browser otomatis membuka halaman pembayaran).`);
+    
+    // Uncomment bila link DOKU sudah aktif:
+    // window.location.href = dokuTargetUrl;
+
+    if (submitBtn) {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = '<span>Aktifkan Sekarang</span> <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>';
+      if (window.lucide) window.lucide.createIcons();
+    }
+    closeOrderModal();
+  }, 600);
+}
+
+// Expose to window for global access
+window.openOrderModal = openOrderModal;
+window.closeOrderModal = closeOrderModal;
+window.handleOrderSubmit = handleOrderSubmit;
 
 /* Demo Video Walkthrough Modal */
 const demoSteps = [
