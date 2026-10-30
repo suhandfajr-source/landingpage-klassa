@@ -11490,3 +11490,38 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: 0 !important;
   }
 }
+
+/* Mid CTA Subheadline & Description Split Styling */
+.mid-subheadline {
+  font-size: 1.25rem !important;
+  font-weight: 700 !important;
+  color: #5EEAD4 !important;
+  margin-bottom: 10px !important;
+  opacity: 1 !important;
+}
+
+.mid-desc {
+  font-size: 1rem;
+  color: var(--mint-soft);
+  margin-bottom: 32px;
+  opacity: 0.9;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .mid-headline {
+    font-size: 1.65rem !important;
+    line-height: 1.25 !important;
+    margin-bottom: 8px !important;
+  }
+  .mid-subheadline {
+    font-size: 1.05rem !important;
+    margin-bottom: 10px !important;
+    line-height: 1.35 !important;
+  }
+  .mid-desc {
+    font-size: 0.84rem !important;
+    margin-bottom: 24px !important;
+    line-height: 1.45 !important;
+  }
+}
