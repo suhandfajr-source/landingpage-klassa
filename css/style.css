@@ -11525,3 +11525,73 @@ h1, h2, h3, h4, h5, h6 {
     line-height: 1.45 !important;
   }
 }
+
+/* ====================================================================
+   FINAL CTA MOBILE SINGLE-LINE RULES (Elevate Your Class)
+   ==================================================================== */
+@media (max-width: 768px) {
+  .final-headline {
+    font-size: clamp(1.45rem, 6.5vw, 1.85rem) !important;
+    white-space: nowrap !important;
+    line-height: 1.2 !important;
+    margin: 10px 0 6px 0 !important;
+    text-align: center !important;
+  }
+  .final-subheadline {
+    font-size: clamp(0.9rem, 4vw, 1.05rem) !important;
+    white-space: nowrap !important;
+    margin-bottom: 22px !important;
+    text-align: center !important;
+  }
+  .btn-final-primary {
+    padding: 14px 20px !important;
+    font-size: 0.95rem !important;
+    white-space: nowrap !important;
+    text-align: center !important;
+    justify-content: center !important;
+  }
+}
+
+/* ====================================================================
+   GUARANTEE STRIP 2-LINE MOBILE RESPONSIVENESS
+   ==================================================================== */
+.final-guarantee-strip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-size: 0.85rem;
+  color: var(--text-subtle);
+}
+
+.guarantee-row-mobile {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.guarantee-desktop-dot {
+  display: inline-block;
+  color: var(--text-subtle);
+}
+
+@media (max-width: 768px) {
+  .final-guarantee-strip {
+    flex-direction: column !important;
+    gap: 4px !important;
+    font-size: 0.78rem !important;
+    line-height: 1.35 !important;
+    margin-top: 4px !important;
+    text-align: center !important;
+  }
+  .guarantee-row-mobile {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    white-space: nowrap !important;
+  }
+  .guarantee-desktop-dot {
+    display: none !important;
+  }
+}

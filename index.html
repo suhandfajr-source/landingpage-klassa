@@ -30,7 +30,7 @@
   <script src="https://www.youtube.com/iframe_api"></script>
 
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="css/style.css?v=55.0">
+  <link rel="stylesheet" href="css/style.css?v=57.0">
 </head>
 <body>
 
@@ -1634,7 +1634,105 @@
           Kuantifikasi perbedaan nyata pada jam kerja mingguan, tingkat stres, dan kualitas mengajar Anda bersama KLASSA.
         </p>
 
-        <!-- Elegant Comparison Table -->
+        <!-- Elegant Comparison Table Responsiveness -->
+        <style>
+          .desktop-only-comparison { display: block; }
+          .mobile-only-comparison { display: none; }
+          @media (max-width: 768px) {
+            .desktop-only-comparison { display: none !important; }
+            .mobile-only-comparison { display: block !important; }
+            .mobile-comparison-wrapper {
+              background-color: #FFFFFF !important;
+              border: 1px solid #E2E8F0 !important;
+              border-radius: 14px !important;
+              overflow: hidden !important;
+              box-shadow: 0 4px 16px rgba(15, 23, 42, 0.05) !important;
+              margin: 0 auto !important;
+              width: 100% !important;
+            }
+            .mobile-comparison-table {
+              width: 100% !important;
+              table-layout: fixed !important;
+              border-collapse: collapse !important;
+            }
+            .mobile-comparison-table th {
+              padding: 12px 6px !important;
+              font-family: var(--font-heading) !important;
+              font-size: 0.76rem !important;
+              font-weight: 800 !important;
+              text-align: center !important;
+              border-bottom: 1px solid #E2E8F0 !important;
+              line-height: 1.25 !important;
+            }
+            .col-mobile-before {
+              width: 50% !important;
+              color: #64748B !important;
+              background-color: #F8FAFC !important;
+              border-right: 1px solid #E2E8F0 !important;
+            }
+            .col-mobile-after {
+              width: 50% !important;
+              color: #0F766E !important;
+              background-color: #F0FDF4 !important;
+            }
+            .mobile-category-row td {
+              padding: 10px 10px 4px 10px !important;
+              background-color: #FFFFFF !important;
+              border-top: 1px solid #E2E8F0 !important;
+              text-align: center !important;
+            }
+            .m-cat-badge {
+              display: inline-block !important;
+              font-size: 0.74rem !important;
+              font-weight: 800 !important;
+              color: #0F766E !important;
+              background-color: #F0FDFA !important;
+              border: 1px solid #CCFBF1 !important;
+              padding: 3px 10px !important;
+              border-radius: 999px !important;
+            }
+            .mobile-data-row td {
+              padding: 8px 10px 14px 10px !important;
+              vertical-align: top !important;
+              font-size: 0.76rem !important;
+              line-height: 1.35 !important;
+            }
+            .m-cell-before {
+              background-color: #FAFAFA !important;
+              border-right: 1px solid #E2E8F0 !important;
+              color: #64748B !important;
+            }
+            .m-cell-before p {
+              margin: 6px 0 0 0 !important;
+              color: #64748B !important;
+              font-size: 0.73rem !important;
+              line-height: 1.3 !important;
+            }
+            .m-cell-after {
+              background-color: #F8FCFA !important;
+              color: #0F172A !important;
+            }
+            .m-cell-after p {
+              margin: 6px 0 0 0 !important;
+              color: #0F172A !important;
+              font-size: 0.73rem !important;
+              line-height: 1.3 !important;
+              font-weight: 500 !important;
+            }
+            .m-tag-group {
+              display: flex !important;
+              flex-wrap: wrap !important;
+              gap: 4px !important;
+              align-items: center !important;
+            }
+            .mobile-data-row .cell-status-tag {
+              font-size: 0.68rem !important;
+              padding: 2px 6px !important;
+              border-radius: 4px !important;
+              margin-bottom: 0 !important;
+            }
+          }
+        </style>
         <div class="comparison-table-wrapper desktop-only-comparison" data-parallax-depth="-0.06">
           <table class="comparison-table">
             <thead>
@@ -2316,20 +2414,17 @@
           </svg>
 
           <div class="final-cta-inner" data-parallax-depth="-0.08">
-            <div class="badge-tag">SAATNYA NAIKKAN KELASMU • ELEVATE YOUR CLASS</div>
-            
             <h2 class="final-headline">
-              Tidur Lebih Tenang Malam Ini.<br>
-              Mengajar Lebih Berkelas Esok Pagi.
+              Elevate Your Class
             </h2>
 
             <p class="final-subheadline">
-              Bergabunglah dengan pendidik Indonesia yang mulai meninggalkan pekerjaan administrasi manual dan beralih ke cara kerja yang lebih terintegrasi.
+              Saatnya Naikkan Kelasmu!
             </p>
 
             <div class="final-buttons-row">
               <a href="#harga" class="btn btn-primary btn-final-primary">
-                <span>🚀 Dapatkan Akses KLASSA Sekarang</span>
+                <span>Dapatkan Akses Sekarang</span>
               </a>
 
               <a href="https://wa.me/6281234567890?text=Halo%20KLASSA,%20saya%20tertarik%20untuk%20mencoba%20demo%20ekosistem%20KLASSA" target="_blank" rel="noopener" class="btn btn-whatsapp">
@@ -2339,11 +2434,15 @@
             </div>
 
             <div class="final-guarantee-strip">
-              <span>✓ Akun Langsung Aktif</span>
-              <span>•</span>
-              <span>Garansi 14 Hari Uang Kembali</span>
-              <span>•</span>
-              <span>Setup ±1 menit</span>
+              <div class="guarantee-row-mobile">
+                <span class="guarantee-item">✓ Akun Langsung Aktif</span>
+                <span class="guarantee-dot">•</span>
+                <span class="guarantee-item">Setup ±1 Menit</span>
+              </div>
+              <span class="guarantee-desktop-dot">•</span>
+              <div class="guarantee-row-mobile">
+                <span class="guarantee-item">Garansi 14 Hari Uang Kembali</span>
+              </div>
             </div>
           </div>
         </div>
