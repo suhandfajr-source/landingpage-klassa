@@ -609,7 +609,12 @@ function closeOrderModal(e) {
   }
 }
 
-function handleOrderSubmit(e) {
+// Base API URL Backend KLASSA
+const KLASSA_API_BASE = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+  ? 'http://localhost:2001'
+  : 'https://klassa-edutech.com';
+
+async function handleOrderSubmit(e) {
   e.preventDefault();
 
   const name = document.getElementById('order-name').value.trim();
@@ -625,42 +630,46 @@ function handleOrderSubmit(e) {
   }
 
   const submitBtn = document.getElementById('btn-submit-order');
+  const originalBtnHtml = submitBtn ? submitBtn.innerHTML : '';
+
   if (submitBtn) {
     submitBtn.disabled = true;
     submitBtn.innerHTML = '<span>Menyiapkan Pembayaran DOKU...</span>';
   }
 
-  const config = DOKU_PAYMENT_CONFIG[pkgId] || DOKU_PAYMENT_CONFIG['semester'];
-  const dokuTargetUrl = config.dokuUrl;
+  try {
+    const res = await fetch(`${KLASSA_API_BASE}/api/payment/checkout`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        planId: pkgId,
+        name: name,
+        email: email,
+        phone: phone,
+      }),
+    });
 
-  console.log('[KLASSA Order]', {
-    nama: name,
-    whatsapp: phone,
-    email: email,
-    paket: pkgName,
-    harga: pkgPrice,
-    dokuUrl: dokuTargetUrl,
-    timestamp: new Date().toISOString()
-  });
+    const data = await res.json();
 
-  setTimeout(() => {
-    alert(`Terima kasih Bapak/Ibu ${name}!
+    if (!res.ok) {
+      throw new Error(data.error || 'Gagal memproses tagihan pembayaran.');
+    }
 
-Pesanan Anda untuk ${pkgName} (Rp ${pkgPrice}) telah diproses.
+    if (!data.paymentUrl) {
+      throw new Error('URL pembayaran DOKU tidak ditemukan.');
+    }
 
-Sistem akan mengarahkan Anda ke portal pembayaran resmi DOKU.
-(Saat URL Payment Link DOKU riil sudah dipasang, browser otomatis membuka halaman pembayaran).`);
-    
-    // Uncomment bila link DOKU sudah aktif:
-    // window.location.href = dokuTargetUrl;
-
+    // Redirect langsung ke halaman pembayaran DOKU
+    window.location.href = data.paymentUrl;
+  } catch (err) {
+    console.error('[Order Error]:', err);
+    alert(err.message || 'Terjadi gangguan saat menghubungi server pembayaran. Silakan coba lagi.');
     if (submitBtn) {
       submitBtn.disabled = false;
-      submitBtn.innerHTML = '<span>Aktifkan Sekarang</span> <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>';
+      submitBtn.innerHTML = originalBtnHtml;
       if (window.lucide) window.lucide.createIcons();
     }
-    closeOrderModal();
-  }, 600);
+  }
 }
 
 // Expose to window for global access
