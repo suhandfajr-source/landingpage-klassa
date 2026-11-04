@@ -614,6 +614,54 @@ const KLASSA_API_BASE = window.location.hostname === 'localhost' || window.locat
   ? 'http://localhost:2001'
   : 'https://klassa-edutech.com';
 
+// State OTP Verification
+let isEmailVerified = false;
+let verifiedEmailAddress = '';
+let currentOtpSent = false;
+
+function resetEmailInput() {
+  isEmailVerified = false;
+  currentOtpSent = false;
+  const emailInput = document.getElementById('order-email');
+  const otpBox = document.getElementById('otp-verification-box');
+  const btnText = document.getElementById('btn-submit-text');
+  
+  if (emailInput) {
+    emailInput.disabled = false;
+    emailInput.focus();
+  }
+  if (otpBox) otpBox.style.display = 'none';
+  if (btnText) btnText.textContent = 'Verifikasi Email & Lanjut';
+}
+
+async function resendOtp() {
+  const email = document.getElementById('order-email').value.trim();
+  const name = document.getElementById('order-name').value.trim() || 'Pendidik';
+  const resendBtn = document.getElementById('btn-resend-otp');
+  if (resendBtn) {
+    resendBtn.disabled = true;
+    resendBtn.textContent = 'Mengirim...';
+  }
+
+  try {
+    const res = await fetch(`${KLASSA_API_BASE}/api/payment/otp`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ action: 'send', email, name }),
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || 'Gagal mengirim ulang OTP');
+    alert('Kode OTP baru telah dikirimkan ke email Anda.');
+  } catch (err) {
+    alert(err.message || 'Gagal mengirim OTP.');
+  } finally {
+    if (resendBtn) {
+      resendBtn.disabled = false;
+      resendBtn.textContent = 'Kirim Ulang';
+    }
+  }
+}
+
 async function handleOrderSubmit(e) {
   e.preventDefault();
 
@@ -621,8 +669,6 @@ async function handleOrderSubmit(e) {
   const phone = document.getElementById('order-phone').value.trim();
   const email = document.getElementById('order-email').value.trim();
   const pkgId = document.getElementById('order-package-id').value;
-  const pkgName = document.getElementById('order-package-name').value;
-  const pkgPrice = document.getElementById('order-package-price').value;
 
   if (!name || !phone || !email) {
     alert('Mohon lengkapi seluruh formulir data diri Anda.');
@@ -630,12 +676,98 @@ async function handleOrderSubmit(e) {
   }
 
   const submitBtn = document.getElementById('btn-submit-order');
+  const btnText = document.getElementById('btn-submit-text');
   const originalBtnHtml = submitBtn ? submitBtn.innerHTML : '';
+  const otpBox = document.getElementById('otp-verification-box');
+  const otpCodeInput = document.getElementById('order-otp-code');
+  const otpSentTarget = document.getElementById('otp-sent-target');
+  const emailInput = document.getElementById('order-email');
 
-  if (submitBtn) {
-    submitBtn.disabled = true;
-    submitBtn.innerHTML = '<span>Menyiapkan Pembayaran DOKU...</span>';
+  // STEP 1: JIKA EMAIL BELUM DIKIRIMKAN OTP -> KIRIM OTP KE EMAIL VIA SMTP
+  if (!currentOtpSent) {
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      if (btnText) btnText.textContent = 'Memeriksa & Mengirim OTP...';
+    }
+
+    try {
+      const res = await fetch(`${KLASSA_API_BASE}/api/payment/otp`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action: 'send', email, name }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data.error || 'Gagal mengirim email verifikasi. Pastikan email Anda benar.');
+      }
+
+      // Berhasil kirim OTP
+      currentOtpSent = true;
+      if (emailInput) emailInput.disabled = true;
+      if (otpSentTarget) otpSentTarget.textContent = email;
+      if (otpBox) otpBox.style.display = 'block';
+      if (otpCodeInput) {
+        otpCodeInput.value = '';
+        otpCodeInput.focus();
+      }
+      if (btnText) btnText.textContent = 'Verifikasi & Buka Kasir DOKU';
+    } catch (err) {
+      alert(err.message || 'Gagal mengirim kode OTP ke email.');
+    } finally {
+      if (submitBtn) submitBtn.disabled = false;
+    }
+    return;
   }
+
+  // STEP 2: JIKA SUDAH KIRIM OTP -> VERIFIKASI KODE OTP
+  if (!isEmailVerified) {
+    const code = (otpCodeInput ? otpCodeInput.value : '').trim();
+    if (!code || code.length !== 4) {
+      alert('Mohon masukkan 4 digit kode OTP yang telah dikirim ke email Anda.');
+      if (otpCodeInput) otpCodeInput.focus();
+      return;
+    }
+
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      if (btnText) btnText.textContent = 'Memverifikasi Kode...';
+    }
+
+    try {
+      const res = await fetch(`${KLASSA_API_BASE}/api/payment/otp`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action: 'verify', email, code }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data.error || 'Kode OTP salah atau kadaluarsa.');
+      }
+
+      // OTP Valid
+      isEmailVerified = true;
+      verifiedEmailAddress = email;
+      if (btnText) btnText.textContent = 'Menyiapkan Pembayaran DOKU...';
+
+      // Lanjut otomatis ke Checkout
+      await proceedToCheckout(pkgId, name, email, phone);
+    } catch (err) {
+      alert(err.message || 'Verifikasi gagal.');
+      if (submitBtn) submitBtn.disabled = false;
+      if (btnText) btnText.textContent = 'Verifikasi & Buka Kasir DOKU';
+    }
+    return;
+  }
+
+  // STEP 3: SUDAH VERIFIKASI -> PROCEED CHECKOUT
+  await proceedToCheckout(pkgId, name, email, phone);
+}
+
+async function proceedToCheckout(pkgId, name, email, phone) {
+  const submitBtn = document.getElementById('btn-submit-order');
+  const btnText = document.getElementById('btn-submit-text');
+  if (submitBtn) submitBtn.disabled = true;
+  if (btnText) btnText.textContent = 'Membuka Kasir Pembayaran...';
 
   try {
     const res = await fetch(`${KLASSA_API_BASE}/api/payment/checkout`, {
@@ -659,16 +791,22 @@ async function handleOrderSubmit(e) {
       throw new Error('URL pembayaran DOKU tidak ditemukan.');
     }
 
-    // Redirect langsung ke halaman pembayaran DOKU
+    // Lead means a successfully created real checkout, not a form/OTP click.
+    // Tracking failure must never prevent redirecting to DOKU.
+    try {
+      if (data.success && data.tracking && window.klassaMeta) {
+        await Promise.race([
+          window.klassaMeta.track('Lead', data.tracking),
+          new Promise(resolve => setTimeout(resolve, 1000)),
+        ]);
+      }
+    } catch (_) { /* ad blocker / tracking unavailable */ }
     window.location.href = data.paymentUrl;
   } catch (err) {
     console.error('[Order Error]:', err);
     alert(err.message || 'Terjadi gangguan saat menghubungi server pembayaran. Silakan coba lagi.');
-    if (submitBtn) {
-      submitBtn.disabled = false;
-      submitBtn.innerHTML = originalBtnHtml;
-      if (window.lucide) window.lucide.createIcons();
-    }
+    if (submitBtn) submitBtn.disabled = false;
+    if (btnText) btnText.textContent = 'Verifikasi & Buka Kasir DOKU';
   }
 }
 
@@ -676,6 +814,8 @@ async function handleOrderSubmit(e) {
 window.openOrderModal = openOrderModal;
 window.closeOrderModal = closeOrderModal;
 window.handleOrderSubmit = handleOrderSubmit;
+window.resetEmailInput = resetEmailInput;
+window.resendOtp = resendOtp;
 
 /* Demo Video Walkthrough Modal */
 const demoSteps = [

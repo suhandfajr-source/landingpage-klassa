@@ -67,7 +67,7 @@
     
     <div class="legal-header">
       <h1>Kebijakan Privasi (Privacy Policy)</h1>
-      <p>Terakhir Diperbarui: 31 Oktober 2026</p>
+      <p>Terakhir Diperbarui: 1 November 2026</p>
     </div>
 
     <div class="legal-section">
@@ -81,6 +81,7 @@
         <li><strong>Informasi Pendaftaran Akun &amp; Pembayaran:</strong> Nama lengkap, alamat email aktif, nomor WhatsApp/telepon, institusi sekolah, dan detail paket langganan yang dipilih.</li>
         <li><strong>Data Aktivitas Akademik:</strong> Administrasi pengajaran, modul ajar, bank soal, dan data pendukung pembelajaran yang Anda unggah secara sadar ke sistem.</li>
         <li><strong>Informasi Transaksi:</strong> Data invoice, status pembayaran dari gerbang pembayaran resmi (DOKU). Kami tidak pernah menyimpan nomor kartu kredit atau detail perbankan rahasia pengguna di server kami.</li>
+        <li><strong>Informasi Teknis dan Pengukuran Iklan:</strong> Pada halaman pemasaran dan pembayaran, Meta Pixel dapat memproses alamat IP, informasi browser/perangkat, URL halaman, cookie atau pengenal online, serta aktivitas kunjungan, pembuatan sesi checkout, dan pembelian. Informasi ini tidak selalu anonim.</li>
       </ul>
     </div>
 
@@ -92,12 +93,13 @@
         <li>Mengirimkan konfirmasi tagihan pembayaran resmi, invoice, dan link aktivasi akun.</li>
         <li>Membantu asisten kecerdasan buatan (AI) KLASSA dalam menyusun kurikulum dan materi ajar sesuai konteks yang diminta guru.</li>
         <li>Layanan dukungan pelanggan teknis melalui WhatsApp resmi KLASSA.</li>
+        <li>Mengukur hasil dan efektivitas iklan Meta, menghubungkan kunjungan dengan konversi, serta membantu optimasi kampanye pemasaran KLASSA.</li>
       </ul>
     </div>
 
     <div class="legal-section">
       <h2>3. Keamanan Data Pengguna</h2>
-      <p>Kami menerapkan standar enkripsi SSL/TLS berlapis dalam setiap pengiriman data antara perangkat Anda dan server kami. Data pribadi pengguna tidak akan pernah dijual, disewakan, atau dibagikan kepada pihak ketiga untuk keperluan periklanan.</p>
+      <p>Kami menggunakan HTTPS untuk melindungi pengiriman data. Untuk pengukuran iklan, informasi teknis dan aktivitas pemasaran tertentu dibagikan kepada Meta sebagaimana dijelaskan di bawah. Integrasi Pixel kami tidak secara sengaja mengirim nama, email, nomor telepon, isi akun guru, atau data siswa sebagai parameter event. Kami tidak memasang Pixel ini di dashboard guru atau portal siswa.</p>
     </div>
 
     <div class="legal-section">
@@ -106,7 +108,18 @@
     </div>
 
     <div class="legal-section">
-      <h2>5. Kontak Kami</h2>
+      <h2>5. Meta Pixel dan Pilihan Privasi</h2>
+      <p>Kami menggunakan Meta Pixel pada landing page dan alur pembayaran. Event <strong>PageView</strong> mencatat kunjungan, <strong>Lead</strong> mencatat sesi checkout yang berhasil dibuat, dan <strong>Purchase</strong> mencatat pembayaran yang sudah dikonfirmasi server. Parameter konversi mencakup ID/nama paket, nominal, mata uang, dan ID event transaksi untuk mengurangi pencatatan ganda.</p>
+      <p>Meta dapat menggunakan cookie/pengenal online untuk menghubungkan aktivitas ini dengan akun atau interaksi iklan Anda, sesuai <a href="https://www.facebook.com/privacy/policy/" target="_blank" rel="noopener noreferrer">Kebijakan Privasi Meta</a>. Pemrosesan oleh Meta dapat berlangsung di luar Indonesia. Pemblokiran iklan/cookie dapat membatasi pencatatan dan tidak menghalangi pembelian atau aktivasi akun.</p>
+      <p>Anda dapat mengatur <a href="https://www.facebook.com/adpreferences/" target="_blank" rel="noopener noreferrer">preferensi iklan Meta</a> dan pengaturan cookie/pelacakan browser. Preferensi iklan Meta tidak selalu menghentikan pengumpulan data Pixel. Integrasi kami menghormati sinyal Global Privacy Control dan Do Not Track yang terbaca oleh browser serta pilihan nonaktif di bawah.</p>
+      <p><button type="button" onclick="window.klassaMeta.optOut(); document.getElementById('privacy-choice-status').textContent = 'Pelacakan dinonaktifkan. Pilihan tersimpan untuk kunjungan berikutnya jika penyimpanan browser tersedia.';">Nonaktifkan Pixel pada situs ini</button></p>
+      <p id="privacy-choice-status" role="status" aria-live="polite"></p>
+      <p>Pilihan ini berlaku pada browser dan domain tempat Anda menekannya. Jika halaman pembayaran berada di domain lain, gunakan kontrol pelacakan pada halaman tersebut juga. Menghapus penyimpanan situs atau berpindah browser dapat menghapus pilihan ini. Local storage juga menyimpan penanda event yang sudah dikirim untuk mengurangi duplikasi; penanda tersebut dapat dihapus melalui pengaturan data situs browser.</p>
+      <p>Kebijakan ini menjelaskan praktik pemrosesan, bukan pernyataan bahwa kunjungan otomatis merupakan persetujuan. Jika hukum yang berlaku mensyaratkan persetujuan atau dasar pemrosesan tertentu, kewajiban tersebut tetap berlaku.</p>
+    </div>
+
+    <div class="legal-section">
+      <h2>6. Kontak dan Permintaan Privasi</h2>
       <p>Apabila Anda memiliki pertanyaan terkait Kebijakan Privasi ini, silakan hubungi tim kami melalui:</p>
       <ul>
         <li><strong>WhatsApp Layanan:</strong> +62 815-8695-1677</li>
@@ -114,5 +127,7 @@
       </ul>
     </div>
   </div>
+  <!-- Defines privacy controls only; no data-pageview and no Meta SDK load here. -->
+  <script src="js/meta-pixel.js?v=1"></script>
 </body>
 </html>

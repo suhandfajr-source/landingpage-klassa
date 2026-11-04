@@ -2669,13 +2669,30 @@
         <div class="form-group">
           <label for="order-email">Alamat Email <span class="required-star">*</span></label>
           <input type="email" id="order-email" class="modal-input" placeholder="contoh: siti.rahmawati@gmail.com" required>
-          <span class="input-hint">Digunakan untuk login ke ekosistem KLASSA &amp; invoice resmi.</span>
+          <span class="input-hint">Kode verifikasi OTP 4 digit &amp; invoice akan dikirim ke email ini.</span>
+        </div>
+
+        <!-- Step 2: OTP Verification Box (Hidden by default) -->
+        <div id="otp-verification-box" style="display: none; background: #f0fdf4; border: 1.5px solid #86efac; border-radius: 12px; padding: 14px; margin-bottom: 16px;">
+          <div style="font-size: 13px; font-weight: 600; color: #166534; margin-bottom: 4px;">Masukkan Kode OTP Email</div>
+          <div style="font-size: 12px; color: #475569; margin-bottom: 10px;">
+            Kode 4 digit telah dikirim ke <strong id="otp-sent-target" style="color: #0f172a;"></strong>.
+            <button type="button" onclick="resetEmailInput()" style="background: none; border: none; color: #2563eb; text-decoration: underline; font-size: 12px; cursor: pointer; padding: 0; margin-left: 4px;">Salah ketik?</button>
+          </div>
+          <div style="display: flex; gap: 8px;">
+            <input type="text" id="order-otp-code" maxlength="4" placeholder="4 Digit" style="flex: 1; text-align: center; font-size: 20px; font-weight: 700; letter-spacing: 6px; padding: 8px; border: 1px solid #cbd5e1; border-radius: 8px; font-family: monospace;">
+            <button type="button" id="btn-resend-otp" onclick="resendOtp()" style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 8px; padding: 0 12px; font-size: 12px; font-weight: 600; color: #475569; cursor: pointer;">Kirim Ulang</button>
+          </div>
         </div>
 
         <button type="submit" class="btn btn-primary btn-modal-submit" id="btn-submit-order">
-          <span>Aktifkan Sekarang</span>
+          <span id="btn-submit-text">Verifikasi Email &amp; Lanjut</span>
           <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
         </button>
+
+        <p style="font-size: 11px; color: #64748b; text-align: center; margin-top: 10px; line-height: 1.4;">
+          Dengan melanjutkan pembayaran, Anda menyetujui <a href="syarat-ketentuan.html" target="_blank" style="color: #0F766E; text-decoration: underline; font-weight: 600;">Syarat &amp; Ketentuan</a> serta <a href="kebijakan-pengembalian-dana.html" target="_blank" style="color: #0F766E; text-decoration: underline; font-weight: 600;">Kebijakan Pengembalian Dana</a>.
+        </p>
       </form>
 
       <div class="doku-secure-badge">
@@ -2686,6 +2703,7 @@
   </div>
 
   <!-- Script -->
-  <script src="js/main.js?v=31.0"></script>
+  <script src="js/meta-pixel.js?v=1" data-pageview></script>
+  <script src="js/main.js?v=32.0"></script>
 </body>
 </html>
