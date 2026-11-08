@@ -550,33 +550,21 @@ function closeTrialModal() {}
 function handleTrialSubmit(e) { if (e) e.preventDefault(); }
 
 /* ============================================================================
-   ORDER & DOKU PAYMENT MODAL HANDLERS
+   ORDER & PAYMENT MODAL HANDLERS
    ============================================================================ */
 
-// Placeholder URL Payment Link DOKU per paket (dapat diganti dengan URL DOKU Payment Link asli Anda)
-const DOKU_PAYMENT_CONFIG = {
-  'bulanan': {
-    name: 'Paket Bulanan',
-    price: '69.000',
-    dokuUrl: 'https://checkout.doku.com/payment-link-bulanan-placeholder'
-  },
-  'semester': {
-    name: 'Paket Semester',
-    price: '199.000',
-    dokuUrl: 'https://checkout.doku.com/payment-link-semester-placeholder'
-  },
-  'tahunan': {
-    name: 'Paket Tahunan',
-    price: '349.000',
-    dokuUrl: 'https://checkout.doku.com/payment-link-tahunan-placeholder'
-  }
+// Display only. Backend owns the payable price and configured payment provider.
+const PAYMENT_PACKAGE_CONFIG = {
+  bulanan: { name: 'Paket Bulanan', price: '69.000' },
+  semester: { name: 'Paket Semester', price: '199.000' },
+  tahunan: { name: 'Paket Tahunan', price: '349.000' },
 };
 
 function openOrderModal(pkgId, pkgName, pkgPrice) {
   const modal = document.getElementById('order-modal');
   if (!modal) return;
 
-  const config = DOKU_PAYMENT_CONFIG[pkgId] || { name: pkgName, price: pkgPrice };
+  const config = PAYMENT_PACKAGE_CONFIG[pkgId] || { name: pkgName, price: pkgPrice };
   const finalName = config.name || pkgName;
   const finalPrice = config.price || pkgPrice;
 
@@ -710,7 +698,7 @@ async function handleOrderSubmit(e) {
         otpCodeInput.value = '';
         otpCodeInput.focus();
       }
-      if (btnText) btnText.textContent = 'Verifikasi & Buka Kasir DOKU';
+      if (btnText) btnText.textContent = 'Verifikasi & Lanjut Bayar';
     } catch (err) {
       alert(err.message || 'Gagal mengirim kode OTP ke email.');
     } finally {
@@ -747,14 +735,14 @@ async function handleOrderSubmit(e) {
       // OTP Valid
       isEmailVerified = true;
       verifiedEmailAddress = email;
-      if (btnText) btnText.textContent = 'Menyiapkan Pembayaran DOKU...';
+      if (btnText) btnText.textContent = 'Menyiapkan Pembayaran...';
 
       // Lanjut otomatis ke Checkout
       await proceedToCheckout(pkgId, name, email, phone);
     } catch (err) {
       alert(err.message || 'Verifikasi gagal.');
       if (submitBtn) submitBtn.disabled = false;
-      if (btnText) btnText.textContent = 'Verifikasi & Buka Kasir DOKU';
+      if (btnText) btnText.textContent = 'Verifikasi & Lanjut Bayar';
     }
     return;
   }
@@ -788,11 +776,14 @@ async function proceedToCheckout(pkgId, name, email, phone) {
     }
 
     if (!data.paymentUrl) {
-      throw new Error('URL pembayaran DOKU tidak ditemukan.');
+      throw new Error('URL pembayaran tidak ditemukan.');
     }
 
+    if (data.environment === 'sandbox') {
+      alert('MODE UJI SANDBOX: transaksi ini tidak mengaktifkan langganan production. Jangan melakukan pembayaran nyata.');
+    }
     // Lead means a successfully created real checkout, not a form/OTP click.
-    // Tracking failure must never prevent redirecting to DOKU.
+    // Tracking failure must never prevent redirecting to the payment provider.
     try {
       if (data.success && data.tracking && window.klassaMeta) {
         await Promise.race([
@@ -806,7 +797,7 @@ async function proceedToCheckout(pkgId, name, email, phone) {
     console.error('[Order Error]:', err);
     alert(err.message || 'Terjadi gangguan saat menghubungi server pembayaran. Silakan coba lagi.');
     if (submitBtn) submitBtn.disabled = false;
-    if (btnText) btnText.textContent = 'Verifikasi & Buka Kasir DOKU';
+    if (btnText) btnText.textContent = 'Verifikasi & Lanjut Bayar';
   }
 }
 
