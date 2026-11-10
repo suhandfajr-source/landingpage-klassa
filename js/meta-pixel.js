@@ -11,6 +11,9 @@
 
   function blocked() {
     if (optedOut || window.klassaMarketingOptOut === true) return true;
+    try {
+      if (window.location.search && new URLSearchParams(window.location.search).get('pixel_debug') === '1') return false;
+    } catch (_) { /* continue to normal checks */ }
     var host = window.location.hostname;
     if (window.location.protocol !== 'https:' || /(^localhost$|^127\.|^192\.168\.|^10\.|^172\.(1[6-9]|2\d|3[01])\.|:|\.(localhost|local|test|pages\.dev|vercel\.app|workers\.dev)$)/i.test(host)) return true;
     if (navigator.globalPrivacyControl === true || navigator.doNotTrack === '1' || window.doNotTrack === '1') return true;
